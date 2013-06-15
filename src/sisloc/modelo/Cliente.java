@@ -1,9 +1,14 @@
 package sisloc.modelo;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Cliente {
@@ -22,6 +27,9 @@ public class Cliente {
 	private String email;
 	private String contato;
 	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn
+	private List<TelefoneCliente> telefones;
 	
 	public Long getId() {
 		return id;
@@ -88,6 +96,12 @@ public class Cliente {
 	}
 	public void setContato(String contato) {
 		this.contato = contato;
+	}
+	public List<TelefoneCliente> getTelefones() {
+		return telefones;
+	}
+	public void setTelefones(List<TelefoneCliente> telefones) {
+		this.telefones = telefones;
 	}
 	
 
