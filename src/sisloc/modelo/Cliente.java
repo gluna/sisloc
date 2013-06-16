@@ -97,12 +97,12 @@ public class Cliente {
 	public void setContato(String contato) {
 		this.contato = contato;
 	}
-	public List<TelefoneCliente> getTelefones() {
+	/*public List<TelefoneCliente> getTelefones() {
 		return telefones;
 	}
 	public void setTelefones(List<TelefoneCliente> telefones) {
 		this.telefones = telefones;
-	}
+	}*/
 	
 
 }

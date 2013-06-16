@@ -1,5 +1,7 @@
 package sisloc.controller;
 
+import java.util.List;
+
 import sisloc.dao.ClienteDao;
 import sisloc.modelo.Cliente;
 import br.com.caelum.vraptor.Path;
@@ -53,6 +55,12 @@ public class ClientesController {
 		cliente = dao.selectById(cliente);
 	    dao.excluir(cliente);
 	    //result.redirectTo(this.getClass()).consultar();	
+	}
+	
+	@Path("/clientes/consultar")
+	public List<Cliente> consultar(){
+		List<Cliente> t = dao.listaTodos();
+		return t;
 	}
 
 

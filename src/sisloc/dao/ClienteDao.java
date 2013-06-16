@@ -1,6 +1,8 @@
 package sisloc.dao;
 
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
@@ -50,6 +52,15 @@ public class ClienteDao {
 		q.setParameter("pid", cliente.getId());
 		 
 		return (Cliente)q.getSingleResult();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Cliente> listaTodos(){
+		List<Cliente> t;
+		
+		Query q = manager.createQuery("from Cliente order by nome");
+		t = (List<Cliente>) q.getResultList();		
+		return t;
 	}
 	
 

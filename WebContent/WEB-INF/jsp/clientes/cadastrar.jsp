@@ -9,6 +9,8 @@
 			<label>Complemento:</label>      <input type="text" name="cliente.complemento"      value="${cliente.complemento}"/>
 			<br><br>
 			<input type="submit" value="Enviar Dados"/><br/><br/>
+
 		</form>
+	
 	</body>
 <%@ include file="../../../footer.jsp" %> 

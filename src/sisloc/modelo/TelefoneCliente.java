@@ -14,9 +14,6 @@ public class TelefoneCliente {
 	private String tipo;
 	private String numero;
 	
-	/*@ManyToOne(cascade=CascadeType.ALL)
-	private Cliente cliente;*/
-	
 	public String getTipo() {
 		return tipo;
 	}
