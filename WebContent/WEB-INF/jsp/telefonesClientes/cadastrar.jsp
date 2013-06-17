@@ -1,6 +1,6 @@
 <%@ include file="../../../header.jsp" %>
 	<body>
-		<form action="<c:url value='/clientes/salvartelefones'/>" method="post">
+		<form action="<c:url value='/clientes/addTelefone'/>" method="post">
 			<br><br>
 			<label>ID:</label>		<input type="text" name="telefonecliente.id"		value="${telefonecliente.id}" readonly/>
 			<label>Tipo:</label>	<input type="text" name="telefonecliente.tipo"		value="${telefonecliente.tipo}"/>
