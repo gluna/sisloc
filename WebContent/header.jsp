@@ -21,7 +21,7 @@
 			<ul>
 				<li><a href="<c:url value="/clientes/cadastrar"/>">Cadastrar</a></li>
 				<li><a href="<c:url value="/telefonesclientes/cadastrar"/>">telefonesclientes</a></li>
-				<li><a href="#">Blog</a></li>
+				<li><a href="#">testex</a></li>
 				<li><a href="#">Photos</a></li>
 				<li><a href="#">About Us</a></li>
 				<li><a href="#">Links</a></li>
