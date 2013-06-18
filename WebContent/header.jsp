@@ -20,7 +20,7 @@
 		<div id="menu" class="container">
 			<ul>
 				<li><a href="<c:url value="/clientes/cadastrar"/>">Cadastrar</a></li>
-				<li><a href="<c:url value="/telefonesclientes/cadastrar"/>">telefonesclientes</a></li>
+				<li><a href="<c:url value="/produtos/cadastrar"/>">Produtos</a></li>
 				<li><a href="#">testex</a></li>
 				<li><a href="#">Photos</a></li>
 				<li><a href="#">About Us</a></li>

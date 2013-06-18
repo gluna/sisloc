@@ -26,7 +26,7 @@ public class ClientesController {
 	
 	@Post
 	@Path("/clientes/salvar")
-	public void salvar(Cliente cliente, String[] telefones){
+	public void salvar(Cliente cliente){
 		try {
 		     if(cliente != null) {
 		    	 if(cliente.getId() == null) {
