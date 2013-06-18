@@ -1,5 +1,6 @@
 package sisloc.modelo;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,8 +12,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Cliente {
+public class Cliente implements Serializable{
 
+	private static final long serialVersionUID = 8120420078276398980L;
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -97,12 +101,12 @@ public class Cliente {
 	public void setContato(String contato) {
 		this.contato = contato;
 	}
-	/*public List<TelefoneCliente> getTelefones() {
+	public List<TelefoneCliente> getTelefones() {
 		return telefones;
 	}
 	public void setTelefones(List<TelefoneCliente> telefones) {
 		this.telefones = telefones;
-	}*/
+	}
 	
 
 }

@@ -8,12 +8,12 @@ import br.com.caelum.vraptor.Result;
 @Resource
 public class TelefonesClientesController {
 
-	private ClienteDao dao;
-	private Result result;
+//	private ClienteDao dao;
+//	private Result result;
 	
 	public TelefonesClientesController(ClienteDao dao, Result result){
-		this.dao = dao;
-		this.result = result;
+		//this.dao = dao;
+		//this.result = result;
 	}
 	
 	@Path("/telefonesclientes/cadastrar")

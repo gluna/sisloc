@@ -1,11 +1,9 @@
 package sisloc.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import sisloc.dao.ClienteDao;
 import sisloc.modelo.Cliente;
-import sisloc.modelo.TelefoneCliente;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
@@ -16,7 +14,6 @@ public class ClientesController {
 	
 	private ClienteDao dao;
 	private Result result;
-	private List<TelefoneCliente> telefones;
 	
 	public ClientesController(ClienteDao dao, Result result){
 		this.dao = dao;
@@ -29,7 +26,7 @@ public class ClientesController {
 	
 	@Post
 	@Path("/clientes/salvar")
-	public void salvar(Cliente cliente){
+	public void salvar(Cliente cliente, String[] telefones){
 		try {
 		     if(cliente != null) {
 		    	 if(cliente.getId() == null) {
@@ -65,14 +62,5 @@ public class ClientesController {
 		List<Cliente> t = dao.listaTodos();
 		return t;
 	}
-	
-	public void addTelefone(TelefoneCliente telefone){
-		if (telefones == null){
-			telefones = new ArrayList<TelefoneCliente>();
-		}
-		this.telefones.add(telefone);
-		result.redirectTo(this.getClass()).cadastrar();
-	}
-
 
 }
