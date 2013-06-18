@@ -24,6 +24,7 @@
 				<input type="text" name="cliente.telefones[${status.index}].tipo" value="${telefone.tipo}" />
 				<input type="text" name="cliente.telefones[${status.index}].numero" value="${telefone.numero}" />
 				<input type="hidden" name="cliente.telefones[${status.index}].id" value="${telefone.id}" />
+				'<img src="${pageContext.request.contextPath}/images/remover.png" alt="-" class="button-remover" />'
 			</div>
 		</c:forEach>
 	</fieldset><br/>
@@ -39,6 +40,7 @@
 		'<div class="telefonecliente">' +
 			'<label>Numero:</label>' +
 			'<input type="text" name="cliente.telefones[0].numero" />' +
+			'<img src="${pageContext.request.contextPath}/images/excluir.png" alt="-" class="button-remover" />' +
 		'</div>';
 
 	$('.button-remover').live('click', function() {
