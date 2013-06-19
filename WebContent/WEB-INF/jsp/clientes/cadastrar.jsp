@@ -9,13 +9,22 @@
 				<li><a href="#tabs-1">Cadastro de Cliente</a></li>
 			</ul>
 			<div id="tabs-1">
-				<br><br> 
-				<label>ID:</label> <input type="text" name="cliente.id" value="${cliente.id}" readonly /> 
-				<label>Nome:</label> <input	type="text" name="cliente.nome" value="${cliente.nome}" />
-				<label>Endereço:</label> <input type="text" name="cliente.logradouro" value="${cliente.logradouro}" /> 
-				<label>Número:</label> <input type="text" name="cliente.numero" value="${cliente.numero}" /> 
-				<label>Complemento:</label> <input type="text" name="cliente.complemento" value="${cliente.complemento}" /> <br>
-		
+				<br><br>
+				<fieldset id="formulario" style="width: 1140px;"> 
+				<!--<label>ID:</label> --><input type="hidden" name="cliente.id" value="${cliente.id}" readonly />
+					<table height=20><tr><td align="right"> 
+						<label>Nome:</label></td> 
+						<td align="left"><input	type="text" name="cliente.nome" size=50 value="${cliente.nome}" /><br></td>
+						<td align="right"><label>CPF/CNPJ:</label></td> 
+						<td align="left"><input	type="text" name="cliente.ident" size=40 value="${cliente.ident}" /><br></td></tr></table>
+						<table height=20><tr><td align="right"><label>Endereço:</label> </td>
+						<td align="left"><input type="text" name="cliente.logradouro" size=100 value="${cliente.logradouro}" /> </td></tr></table> 
+						<table height=20><tr><td align="right"> <label>Complemento:</label></td> 
+						<td align="left"><input type="text" name="cliente.complemento" size=50 value="${cliente.complemento}" /> <br></td>
+						<td align="right"><label>Número:</label></td> 
+						<td align="right"> <input type="text" name="cliente.numero" size=10 value="${cliente.numero}" /><br><br> </td></tr>
+					</table>
+				</fieldset>
 				<br/>
 
 				<fieldset id="artista-container" style="width: 600px;">
@@ -35,8 +44,11 @@
 				</c:forEach>
 				</fieldset><br/>
 	
-				<br> 
-				<input type="submit" value="Enviar Dados" icon="ui-icon-disk"/><br />
+				<br>
+				<table align="center">
+					<tr><td> 
+					<input type="submit" value="Salvar" icon="ui-icon-disk"/><br /></tr></td>
+				</table>
 			</div>
 		</div>	
 	</form>
