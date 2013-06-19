@@ -11,27 +11,35 @@
 			<div id="tabs-1">
 				<br><br>
 				<fieldset id="formulario" style="width: 1140px;"> 
+				<legend>
+					Dados Pessoais:
+				</legend>
 				<!--<label>ID:</label> --><input type="hidden" name="cliente.id" value="${cliente.id}" readonly />
-					<table><tr><td align="right"> 
+					<table><tr><td align="right" width="95"> 
 						<label>Nome:</label></td> 
 						<td align="left"><input	type="text" name="cliente.nome" size=50 value="${cliente.nome}" /><br></td>
-						<td align="right"><label>CPF/CNPJ:</label></td> 
+						<td align="right" width="80"><label>CPF/CNPJ:</label></td> 
 						<td align="left"><input	type="text" name="cliente.ident" size=40 value="${cliente.ident}" /></td></tr></table><br>
-						<table><tr><td align="right"><label>Endereço:</label> </td>
-						<td align="left"><input type="text" name="cliente.logradouro" size=100 value="${cliente.logradouro}" /> </td></tr></table><br> 
+						<table><tr><td align="right" width="95"><label>Endereço:</label> </td>
+						<td align="left"><input type="text" name="cliente.logradouro" size=100 value="${cliente.logradouro}" /> </td>
+						<td align="right"><label>Número:</label></td> 
+						<td align="left"> <input type="text" name="cliente.numero" size=10 value="${cliente.numero}" /><br> </td></tr></table><br> 
 						<table><tr><td align="right"> <label>Complemento:</label></td> 
 						<td align="left"><input type="text" name="cliente.complemento" size=50 value="${cliente.complemento}" /> <br></td>
-						<td align="right"><label>Número:</label></td> 
-						<td align="left"> <input type="text" name="cliente.numero" size=10 value="${cliente.numero}" /><br> </td>
-						<td align="right"><label>Bairro:</label></td> 
-						<td align="left"> <input type="text" name="cliente.bairro" size=30 value="${cliente.bairro}" /><br> </td></tr>
+						<td align="right" width="85"><label>Bairro:</label></td> 
+						<td align="left"> <input type="text" name="cliente.bairro" size=30 value="${cliente.bairro}" /><br> </td>
+						</tr>
 					</table>
 				</fieldset>
 				<br/>
-
-				<fieldset id="artista-container" style="width: 600px;">
+				<fieldset id="telefone-container" style="width: 600px;">
 				<legend>
-					Artistas
+					Telefones:
+				</legend>
+				</fieldset><br/>
+				<fieldset id="telefone-container" style="width: 600px;">
+				<legend>
+					Telefones
 					<img src="${pageContext.request.contextPath}/images/novo.png" alt="+" onclick="adicionar();" />
 				</legend>
 
@@ -72,7 +80,7 @@
 	});
 
 	function adicionar() {
-		$('#artista-container').append(model);
+		$('#telefone-container').append(model);
 
 		reorderIndexes();
 	};
