@@ -19,17 +19,28 @@
 						<label>Nome:</label></td> 
 						<td align="left"><input	type="text" name="cliente.nome" size=50 value="${cliente.nome}" /><br></td>
 						<td align="right" width="80"><label>CPF/CNPJ:</label></td> 
-						<td align="left"><input	type="text" name="cliente.ident" size=40 value="${cliente.ident}" /></td></tr></table><br>
+						<td align="left"><input	type="text" name="cliente.cpfcnpj" size=29 value="${cliente.cpfcnpj}" /></td></tr></table><br>
 						<table><tr><td align="right" width="95"><label>Endereço:</label> </td>
-						<td align="left"><input type="text" name="cliente.logradouro" size=100 value="${cliente.logradouro}" /> </td>
+						<td align="left"><input type="text" name="cliente.logradouro" size=96 value="${cliente.logradouro}" /> </td>
 						<td align="right"><label>Número:</label></td> 
 						<td align="left"> <input type="text" name="cliente.numero" size=10 value="${cliente.numero}" /><br> </td></tr></table><br> 
 						<table><tr><td align="right"> <label>Complemento:</label></td> 
 						<td align="left"><input type="text" name="cliente.complemento" size=50 value="${cliente.complemento}" /> <br></td>
 						<td align="right" width="85"><label>Bairro:</label></td> 
-						<td align="left"> <input type="text" name="cliente.bairro" size=30 value="${cliente.bairro}" /><br> </td>
-						</tr>
-					</table>
+						<td align="left"> <input type="text" name="cliente.bairro" size=29 value="${cliente.bairro}" /><br> </td>
+						</tr></table><br>
+						<table><tr><td align="right" width="95"> <label>Cidade:</label></td> 
+						<td align="left"><input type="text" name="cliente.cidade" size=50 value="${cliente.cidade}" /> <br></td>
+						<td align="right" width="85"><label>UF:</label></td> 
+						<td align="left"> <input type="text" name="cliente.uf" size=2 value="${cliente.uf}" /><br> </td>
+						<td align="right" width="85"><label>CEP:</label></td> 
+						<td align="left"> <input type="text" name="cliente.cep" size=10 value="${cliente.cep}" /><br> </td>
+						</tr></table><br>
+						<table><tr><td align="right" width="95"> <label>E-mail:</label></td> 
+						<td align="left"><input type="text" name="cliente.email" size=50 value="${cliente.email}" /> <br></td>
+						<td align="right" width="85"><label>Contato:</label></td> 
+						<td align="left"> <input type="text" name="cliente.contato" size=52 value="${cliente.contato}" /><br> </td>
+						</tr></table>
 				</fieldset>
 				<br/>
 				<fieldset id="telefone-container" style="width: 600px;">
