@@ -126,14 +126,14 @@
 
 /*Cor da linha que aparece sobre os sub-menus*/
 #cssmenu ul ul a:hover{
-	background-color: #0078a3;
+	background-color: #DE5635;
     /*background-color: rgb(205,44,36);*/
     color: rgb(240,240,240);
 }
 
 /*Cor do menu selecionado e quando o mouse passa em cima*/
 #cssmenu a:hover {
-	background: #0078a3;
+	background: #DE5635;
 	text-decoration: none;
 	color: #FFFFFF;
 }
