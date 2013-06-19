@@ -7,6 +7,8 @@
 <head>
 <link href="http://fonts.googleapis.com/css?family=Oxygen:400,700,300" rel="stylesheet" type="text/css" />
 <link href="../css/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="../css/menu.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="../css/jquery-ui-1.10.3.custom.css" rel="stylesheet" />
 <title>Sistema de Tarefas</title>	
 </head>
 <body>
@@ -16,16 +18,17 @@
 		<h1><a href="<c:url value="/index/index"/>">SISLOC</a></h1>
 		<p>Sistema de Locação de Equipamentos</p>
 	</div>
-		<div id="menu-wrapper">
-		<div id="menu" class="container">
-			<ul>
-				<li><a href="<c:url value="/clientes/cadastrar"/>">Cadastrar</a></li>
-				<li><a href="<c:url value="/produtos/cadastrar"/>">Produtos</a></li>
-				<li><a href="#">Fornecedor</a></li>
-				<li><a href="#">Photos</a></li>
-				<li><a href="#">About Us</a></li>
-				<li><a href="#">Links</a></li>
-				<li><a href="#">Contact Us</a></li>
-			</ul>
-		</div>
+	<div id='cssmenu' class="container">
+		<ul>
+   			<li><a href='index.html'><span>Home</span></a></li>
+   			<li class='has-sub'><a href='#'><span>Cadastrar</span></a>
+      			<ul>
+         			<li><a href='#'><span>Clientes</span></a></li>
+         			<li><a href='#'><span>Produtos</span></a></li>
+         			<li><a href='#'><span>Fornecedores</span></a></li>
+      			</ul>
+   			</li>
+   			<li><a href='#'><span>Sobre</span></a></li>
+   			<li class='last'><a href='#'><span>Contato</span></a></li>
+		</ul>
 	</div>

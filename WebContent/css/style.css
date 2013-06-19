@@ -51,7 +51,7 @@ a:hover {
 }
 
 #wrapper {
-	overflow: hidden;
+	/*overflow: hidden;*/
 	background: #F1F2E9;
 }
 
