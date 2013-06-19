@@ -20,11 +20,11 @@
 	</div>
 	<div id='cssmenu' class="container">
 		<ul>
-   			<li><a href='index.html'><span>Home</span></a></li>
+   			<li><a href="<c:url value="/index/index"/>"><span>Home</span></a></li>
    			<li class='has-sub'><a href='#'><span>Cadastrar</span></a>
       			<ul>
-         			<li><a href='#'><span>Clientes</span></a></li>
-         			<li><a href='#'><span>Produtos</span></a></li>
+         			<li><a href="<c:url value="/clientes/cadastrar"/>"><span>Clientes</span></a></li>
+         			<li><a href="<c:url value="/produtos/cadastrar"/>"><span>Produtos</span></a></li>
          			<li><a href='#'><span>Fornecedores</span></a></li>
       			</ul>
    			</li>
