@@ -30,6 +30,7 @@ public class Cliente implements Serializable{
 	private String cep;
 	private String email;
 	private String contato;
+	private String cpfcnpj;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn
@@ -106,6 +107,12 @@ public class Cliente implements Serializable{
 	}
 	public void setTelefones(List<TelefoneCliente> telefones) {
 		this.telefones = telefones;
+	}
+	public String getCpfcnpj() {
+		return cpfcnpj;
+	}
+	public void setCpfcnpj(String cpfcnpj) {
+		this.cpfcnpj = cpfcnpj;
 	}
 	
 
