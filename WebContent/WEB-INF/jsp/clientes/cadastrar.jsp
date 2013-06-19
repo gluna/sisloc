@@ -36,7 +36,7 @@
 				</fieldset><br/>
 	
 				<br> 
-				<input type="submit" value="Enviar Dados" /><br />
+				<input type="submit" value="Enviar Dados" icon="ui-icon-disk"/><br />
 			</div>
 		</div>	
 	</form>
@@ -85,4 +85,13 @@
 	$(function() {
 		$( "#tabs" ).tabs();
 	});
+	$('input[type="submit"]').each(function () {
+		   $(this).hide().after('<button>').next().button({
+		        icons: { primary: $(this).attr('icon') },
+		        label: $(this).val()
+		    }).click(function (event) {
+		         event.preventDefault();
+		         $(this).prev().click();
+		    });
+		});
 </script>
