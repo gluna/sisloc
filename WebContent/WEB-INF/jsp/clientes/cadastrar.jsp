@@ -76,18 +76,19 @@
 				</fieldset>
 				<br/>
 				<fieldset> 
-				<legend>Telefones</legend> 
+				<legend>Telefones:</legend> 
 				<div class="telefones"> 
-					<p class="campoTelefone"> 
-						<input type="text" name="telefone[]" /> 
-						<a href="#" class="removerCampo">Remover Campo</a> 
-					</p> 
-				</div> 
+					<p class="campoTelefone">
+						<input type="text" name="telefone[]" /><br>
+						<input type="button" class="removerCampo" value="Remover" icon="ui-icon-closethick" />
+						<!-- <a href="#" class="removerCampo">Remover Campo</a>  --> 
+					</p>
+				</div>
 					<p> 
-						<a href="#" class="adicionarCampo">Adicionar Telefone</a> 
+						<input type="button" class="adicionarCampo" value="Adicionar" icon="ui-icon-disk" /> 
 					</p> 
 				</fieldset>
-				<fieldset id="telefone-container" style="width: 600px;">
+				<!-- <fieldset id="telefone-container" style="width: 600px;">
 				<legend>
 					Telefones
 					<img src="${pageContext.request.contextPath}/images/novo.png" alt="+" onclick="adicionar();" />
@@ -102,7 +103,7 @@
 						'<img src="${pageContext.request.contextPath}/images/remover.png" alt="-" class="button-remover" />'
 					</div>
 				</c:forEach>
-				</fieldset><br/>
+				</fieldset> --><br/>
 	
 				<br>
 				<table align="center">
@@ -159,6 +160,15 @@
 		$( "#tabs" ).tabs();
 	});
 	$('input[type="submit"]').each(function () {
+		   $(this).hide().after('<button>').next().button({
+		        icons: { primary: $(this).attr('icon') },
+		        label: $(this).val()
+		    }).click(function (event) {
+		         event.preventDefault();
+		         $(this).prev().click();
+		    });
+		});
+	$('input[type="button"]').each(function () {
 		   $(this).hide().after('<button>').next().button({
 		        icons: { primary: $(this).attr('icon') },
 		        label: $(this).val()

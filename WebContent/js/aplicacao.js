@@ -17,5 +17,14 @@ $(function () {
 		novoCampo.find("input").val(""); 
 		novoCampo.insertAfter(".telefones p.campoTelefone:last"); 
 		removeCampo(); 
-		}); 
+		});
+	
+	$(".add").click(function(){
+
+        var elemento = document.createElement('input');
+        var objContainer = document.getElementsByTagName('label')[0];
+        var cria = objContainer.appendChild(elemento);
+
+		});
+
 	});
