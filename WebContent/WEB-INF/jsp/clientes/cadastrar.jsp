@@ -1,7 +1,7 @@
 <%@ include file="../../../header.jsp"%>
-<!-- <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery.min.js"></script> -->
-<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script>
-<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/aplicacao.js"></script>
+<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+<!-- <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script> -->
+<!--  <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/aplicacao.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-ui-1.10.3.custom.js"></script>
 <body>
 	<form action="<c:url value='/clientes/salvar'/>" method="post">
@@ -76,18 +76,23 @@
 				</fieldset>
 				<br/>
 				<fieldset> 
-				<legend>Telefones:</legend> 
-				<div class="telefones"> 
-					<p class="campoTelefone">
-						<input type="text" name="telefone[]" /><br>
-						<input type="button" class="removerCampo" value="Remover" icon="ui-icon-closethick" />
-						<!-- <a href="#" class="removerCampo">Remover Campo</a>  --> 
-					</p>
-				</div>
-					<p> 
-						<input type="button" class="adicionarCampo" value="Adicionar" icon="ui-icon-disk" /> 
-					</p> 
-				</fieldset>
+				<fieldset id="preco-container" style="width: 600px;">
+					<legend>
+						Preços
+						<!-- <img src="${pageContext.request.contextPath}/images/novo.png" alt="+" onclick="adicionar();" /> -->
+						<input type="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-disk"/>
+					</legend>
+
+					<c:forEach items="${produto.precos}" var="precos" varStatus="status">
+					<div class="precos">
+						<label>preco:</label>
+						<input type="text" name="produto.precos[${status.index}].dias" value="${preco.dias}" />
+						<input type="text" name="produto.precos[${status.index}].preco" value="${preco.preco}" />
+				
+						'<img src="${pageContext.request.contextPath}/images/remover.png" alt="-" class="button-remover" />'
+					</div>
+				</c:forEach>
+				</fieldset><br/>
 				<!-- <fieldset id="telefone-container" style="width: 600px;">
 				<legend>
 					Telefones
@@ -118,42 +123,42 @@
 <%@ include file="../../../footer.jsp"%>
 
 <script type="text/javascript">
-	var model =
-		'<div class="telefonecliente">' +
-			'<label>Numero:</label>' +
-			'<input type="text" name="cliente.telefones[0].numero" />' +
-			'<img src="${pageContext.request.contextPath}/images/excluir.png" alt="-" class="button-remover" />' +
-		'</div>';
+var model =
+	'<div class="precos">' +
+		'<label>Dias:</label>' +
+		'<input type="text" name="produto.precos[0].dias" />' +
+		'<input type="text" name="produto.precos[0].preco" />' +
+		'<img src="${pageContext.request.contextPath}/images/excluir.png" alt="-" class="button-remover" />' +
+	'</div>';
 
-	$('.button-remover').live('click', function() {
-		alert('foi');
-		$(this).parent().remove();
-		reorderIndexes();
-	});
+$('.button-remover').live('click', function() {
+	$(this).parent().remove();
+	reorderIndexes();
+});
 
-	function adicionar() {
-		$('#telefone-container').append(model);
+function adicionar() {
+	$('#preco-container').append(model);
 
-		reorderIndexes();
-	};
-	
-	function reorderIndexes() {
-		var regex = /\[[0-9]\]/g;
-	
-		$('.telefonecliente').each(function(index) {
-			var $campos = $(this).find('input'),
-				$input	,
-				name	;
+	reorderIndexes();
+};
 
-			$campos.each(function() {
-				$input	= $(this),
-				name	= $input.attr('name');
+function reorderIndexes() {
+	var regex = /\[[0-9]\]/g;
 
-				$input.attr('name', name.replace(regex, '[' + index + ']'));
-			});
+	$('.precos').each(function(index) {
+		var $campos = $(this).find('input'),
+			$input	,
+			name	;
+
+		$campos.each(function() {
+			$input	= $(this),
+			name	= $input.attr('name');
+
+			$input.attr('name', name.replace(regex, '[' + index + ']'));
 		});
-		
-	};
+	});
+	
+};
 </script>
 <script>
 	$(function() {
