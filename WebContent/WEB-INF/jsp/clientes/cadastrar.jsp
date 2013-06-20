@@ -1,6 +1,7 @@
 <%@ include file="../../../header.jsp"%>
-<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+<!-- <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery.min.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script>
+<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/aplicacao.js"></script>
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-ui-1.10.3.custom.js"></script>
 <body>
 	<form action="<c:url value='/clientes/salvar'/>" method="post">
@@ -17,37 +18,75 @@
 				<!--<label>ID:</label> --><input type="hidden" name="cliente.id" value="${cliente.id}" readonly />
 					<table><tr><td align="right" width="95"> 
 						<label>Nome:</label></td> 
-						<td align="left"><input	type="text" name="cliente.nome" size=50 value="${cliente.nome}" /><br></td>
+						<td align="left"><input	class="maiuscula" type="text" name="cliente.nome" size=50 value="${cliente.nome}" /><br></td>
 						<td align="right" width="80"><label>CPF/CNPJ:</label></td> 
-						<td align="left"><input	type="text" name="cliente.cpfcnpj" size=29 value="${cliente.cpfcnpj}" /></td></tr></table><br>
+						<td align="left"><input class="maiuscula" type="text" name="cliente.cpfcnpj" size=29 value="${cliente.cpfcnpj}" /></td></tr></table><br>
 						<table><tr><td align="right" width="95"><label>Endereço:</label> </td>
-						<td align="left"><input type="text" name="cliente.logradouro" size=96 value="${cliente.logradouro}" /> </td>
+						<td align="left"><input class="maiuscula" type="text" name="cliente.logradouro" size=96 value="${cliente.logradouro}" /> </td>
 						<td align="right"><label>Número:</label></td> 
-						<td align="left"> <input type="text" name="cliente.numero" size=10 value="${cliente.numero}" /><br> </td></tr></table><br> 
+						<td align="left"> <input class="maiuscula" type="text" name="cliente.numero" size=10 value="${cliente.numero}" /><br> </td></tr></table><br> 
 						<table><tr><td align="right"> <label>Complemento:</label></td> 
-						<td align="left"><input type="text" name="cliente.complemento" size=50 value="${cliente.complemento}" /> <br></td>
+						<td align="left"><input class="maiuscula" type="text" name="cliente.complemento" size=50 value="${cliente.complemento}" /> <br></td>
 						<td align="right" width="85"><label>Bairro:</label></td> 
-						<td align="left"> <input type="text" name="cliente.bairro" size=29 value="${cliente.bairro}" /><br> </td>
+						<td align="left"> <input class="maiuscula" type="text" name="cliente.bairro" size=29 value="${cliente.bairro}" /><br> </td>
 						</tr></table><br>
 						<table><tr><td align="right" width="95"> <label>Cidade:</label></td> 
-						<td align="left"><input type="text" name="cliente.cidade" size=50 value="${cliente.cidade}" /> <br></td>
+						<td align="left"><input class="maiuscula" type="text" name="cliente.cidade" size=50 value="${cliente.cidade}" /> <br></td>
 						<td align="right" width="85"><label>UF:</label></td> 
-						<td align="left"> <input type="text" name="cliente.uf" size=2 value="${cliente.uf}" /><br> </td>
-						<td align="right" width="85"><label>CEP:</label></td> 
-						<td align="left"> <input type="text" name="cliente.cep" size=10 value="${cliente.cep}" /><br> </td>
+						<td align="left"> 
+						<select name="cliente.uf">
+								<option value="0">SELECIONE O ESTADO</option>
+								<option value="AC">ACRE</option>
+								<option value="AL">ALAGOAS</option>
+								<option value="AP">AMAPÁ</option>
+								<option value="AM">AMAZONAS</option>
+								<option value="BA">BAHIA</option>
+								<option value="CE">CEARÁ</option>
+								<option value="DF">DISTRITO FEDERAL</option>
+								<option value="ES">ESPIRITO SANTO</option>
+								<option value="GO">GOIÁS</option>
+								<option value="MA">MARANHÃO</option>
+								<option value="MS">MATO GROSSO DO SUL</option>
+								<option value="MT">MATO GROSSO</option>
+								<option value="MG">MINAS GERAIS</option>
+								<option value="PA">PARÁ</option>
+								<option value="PB">PARAÍBA</option>
+								<option value="PR">PARANÁ</option>
+								<option value="PE">PERNAMBUCO</option>
+								<option value="PI">PIAUÍ</option>
+								<option value="RJ">RIO DE JANEIRO</option>
+								<option value="RN">RIO GRANDE DO NORTE</option>
+								<option value="RS">RIO GRANDE DO SUL</option>
+								<option value="RO">RONDÔNIA</option>
+								<option value="RR">RORAIMA</option>
+								<option value="SC">SANTA CATARINA</option>
+								<option value="SP">SÃO PAULO</option>
+								<option value="SE">SERGIPE</option>
+								<option value="TO">TOCANTINS</option>
+						</select>
+						<!-- <input type="text" name="cliente.uf" size=2 value="${cliente.uf}" /> --><br> </td>
+						<td align="right" width="67"><label>CEP:</label></td> 
+						<td align="left"> <input class="maiuscula" type="text" name="cliente.cep" size=12 value="${cliente.cep}" /><br> </td>
 						</tr></table><br>
 						<table><tr><td align="right" width="95"> <label>E-mail:</label></td> 
-						<td align="left"><input type="text" name="cliente.email" size=50 value="${cliente.email}" /> <br></td>
+						<td align="left"><input class="maiuscula" type="text" name="cliente.email" size=50 value="${cliente.email}" /> <br></td>
 						<td align="right" width="85"><label>Contato:</label></td> 
-						<td align="left"> <input type="text" name="cliente.contato" size=52 value="${cliente.contato}" /><br> </td>
+						<td align="left"> <input class="maiuscula" type="text" name="cliente.contato" size=52 value="${cliente.contato}" /><br> </td>
 						</tr></table>
 				</fieldset>
 				<br/>
-				<fieldset id="telefone-container" style="width: 600px;">
-				<legend>
-					Telefones:
-				</legend>
-				</fieldset><br/>
+				<fieldset> 
+				<legend>Telefones</legend> 
+				<div class="telefones"> 
+					<p class="campoTelefone"> 
+						<input type="text" name="telefone[]" /> 
+						<a href="#" class="removerCampo">Remover Campo</a> 
+					</p> 
+				</div> 
+					<p> 
+						<a href="#" class="adicionarCampo">Adicionar Telefone</a> 
+					</p> 
+				</fieldset>
 				<fieldset id="telefone-container" style="width: 600px;">
 				<legend>
 					Telefones
@@ -86,6 +125,7 @@
 		'</div>';
 
 	$('.button-remover').live('click', function() {
+		alert('foi');
 		$(this).parent().remove();
 		reorderIndexes();
 	});
@@ -128,3 +168,8 @@
 		    });
 		});
 </script>
+<style type="text/css">
+input.maiuscula {
+  text-transform: uppercase;
+}
+</style>
