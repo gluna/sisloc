@@ -35,7 +35,7 @@
 						<td align="right" width="85"><label>UF:</label></td> 
 						<td align="left"> 
 						<select name="cliente.uf">
-								<option value="0">SELECIONE O ESTADO</option>
+								<option value="${cliente.uf}">${cliente.uf}</option>
 								<option value="AC">ACRE</option>
 								<option value="AL">ALAGOAS</option>
 								<option value="AP">AMAPÁ</option>
@@ -64,7 +64,7 @@
 								<option value="SE">SERGIPE</option>
 								<option value="TO">TOCANTINS</option>
 						</select>
-						<!-- <input type="text" name="cliente.uf" size=2 value="${cliente.uf}" /> --><br> </td>
+						<br> </td>
 						<td align="right" width="67"><label>CEP:</label></td> 
 						<td align="left"> <input class="maiuscula" type="text" name="cliente.cep" size=12 value="${cliente.cep}" /><br> </td>
 						</tr></table><br>
@@ -75,40 +75,21 @@
 						</tr></table>
 				</fieldset>
 				<br/>
-				<fieldset> 
-				<fieldset id="preco-container" style="width: 600px;">
-					<legend>
-						Preços
-						<!-- <img src="${pageContext.request.contextPath}/images/novo.png" alt="+" onclick="adicionar();" /> -->
-						<input type="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-disk"/>
-					</legend>
-
-					<c:forEach items="${produto.precos}" var="precos" varStatus="status">
-					<div class="precos">
-						<label>preco:</label>
-						<input type="text" name="produto.precos[${status.index}].dias" value="${preco.dias}" />
-						<input type="text" name="produto.precos[${status.index}].preco" value="${preco.preco}" />
-				
-						'<img src="${pageContext.request.contextPath}/images/remover.png" alt="-" class="button-remover" />'
-					</div>
-				</c:forEach>
-				</fieldset><br/>
-				<!-- <fieldset id="telefone-container" style="width: 600px;">
+				<fieldset id="telefone-container" style="width: 600px;">
 				<legend>
-					Telefones
-					<img src="${pageContext.request.contextPath}/images/novo.png" alt="+" onclick="adicionar();" />
+					Telefones:	
 				</legend>
-
+				<input type="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-contact"/>
 				<c:forEach items="${cliente.telefones}" var="telefonecliente" varStatus="status">
 					<div class="telefonecliente">
 						<label>Nome:</label>
 						<input type="text" name="cliente.telefones[${status.index}].tipo" value="${telefone.tipo}" />
 						<input type="text" name="cliente.telefones[${status.index}].numero" value="${telefone.numero}" />
 						<input type="hidden" name="cliente.telefones[${status.index}].id" value="${telefone.id}" />
-						'<img src="${pageContext.request.contextPath}/images/remover.png" alt="-" class="button-remover" />'
+						<input type="button" value="Remover" class="button-remover" icon="ui-icon-closethick"/>
 					</div>
 				</c:forEach>
-				</fieldset> --><br/>
+				</fieldset><br/>
 	
 				<br>
 				<table align="center">
@@ -124,11 +105,18 @@
 
 <script type="text/javascript">
 var model =
-	'<div class="precos">' +
-		'<label>Dias:</label>' +
-		'<input type="text" name="produto.precos[0].dias" />' +
-		'<input type="text" name="produto.precos[0].preco" />' +
-		'<img src="${pageContext.request.contextPath}/images/excluir.png" alt="-" class="button-remover" />' +
+	'<div class="telefonecliente">' +
+		'<label>Tipo:</label>' +
+		'<select name="cliente.telefones[0].tipo">' +
+		'<option value="${telefone.tipo}">${telefone.tipo}</option>'+
+		'<option value="COMERCIAL">COMERCIAL</option>' +
+		'<option value="RESIDENCIAL">RESIDENCIAL</option>' +
+		'<option value="CELULAR">CELULAR</option>' +
+		'</select>' +
+		'<label>Numero:</label>' +
+		'<input type="text" name="cliente.telefones[${status.index}].numero" value="${telefone.numero}" />' +
+		'<input type="hidden" name="cliente.telefones[${status.index}].id" value="${telefone.id}" />' +
+		'<input type="button" value="Remover" class="button-remover" icon="ui-icon-closethick"/>' +
 	'</div>';
 
 $('.button-remover').live('click', function() {
@@ -137,15 +125,16 @@ $('.button-remover').live('click', function() {
 });
 
 function adicionar() {
-	$('#preco-container').append(model);
-
+	$('#telefone-container').append(model);
+	
 	reorderIndexes();
+	
 };
 
 function reorderIndexes() {
 	var regex = /\[[0-9]\]/g;
 
-	$('.precos').each(function(index) {
+	$('.telefonecliente').each(function(index) {
 		var $campos = $(this).find('input'),
 			$input	,
 			name	;
