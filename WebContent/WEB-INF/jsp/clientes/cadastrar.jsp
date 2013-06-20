@@ -1,7 +1,6 @@
 <%@ include file="../../../header.jsp"%>
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <!-- <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script> -->
-<!--  <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/aplicacao.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-ui-1.10.3.custom.js"></script>
 <body>
 	<form action="<c:url value='/clientes/salvar'/>" method="post">
@@ -75,11 +74,13 @@
 						</tr></table>
 				</fieldset>
 				<br/>
-				<fieldset id="telefone-container" style="width: 600px;">
+				<fieldset id="telefone-container" style="width: 1140px;">
 				<legend>
 					Telefones:	
 				</legend>
-				<input type="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-contact"/>
+				<table align="right"><tr><td>
+					<input type="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-contact"/></td></tr>
+				</table>
 				<c:forEach items="${cliente.telefones}" var="telefonecliente" varStatus="status">
 					<div class="telefonecliente">
 						<label>Nome:</label>
@@ -106,15 +107,15 @@
 <script type="text/javascript">
 var model =
 	'<div class="telefonecliente">' +
-		'<label>Tipo:</label>' +
+		'<label>Tipo:</label>&nbsp' +
 		'<select name="cliente.telefones[0].tipo">' +
 		'<option value="${telefone.tipo}">${telefone.tipo}</option>'+
 		'<option value="COMERCIAL">COMERCIAL</option>' +
 		'<option value="RESIDENCIAL">RESIDENCIAL</option>' +
 		'<option value="CELULAR">CELULAR</option>' +
-		'</select>' +
-		'<label>Numero:</label>' +
-		'<input type="text" name="cliente.telefones[${status.index}].numero" value="${telefone.numero}" />' +
+		'</select>&nbsp&nbsp' +
+		'<label>Numero:</label>&nbsp' +
+		'<input type="text" name="cliente.telefones[${status.index}].numero" value="${telefone.numero}" />&nbsp&nbsp' +
 		'<input type="hidden" name="cliente.telefones[${status.index}].id" value="${telefone.id}" />' +
 		'<input type="button" value="Remover" class="button-remover" icon="ui-icon-closethick"/>' +
 	'</div>';
