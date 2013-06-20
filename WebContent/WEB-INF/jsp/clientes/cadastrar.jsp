@@ -83,9 +83,15 @@
 				</table>
 				<c:forEach items="${cliente.telefones}" var="telefonecliente" varStatus="status">
 					<div class="telefonecliente">
-						<label>Nome:</label>
-						<input type="text" name="cliente.telefones[${status.index}].tipo" value="${telefone.tipo}" />
-						<input type="text" name="cliente.telefones[${status.index}].numero" value="${telefone.numero}" />
+						<label>Tipo:</label>&nbsp
+						<select name="cliente.telefones[0].tipo">
+						<option value="${telefone.tipo}">${telefone.tipo}</option>
+						<option value="COMERCIAL">COMERCIAL</option>
+						<option value="RESIDENCIAL">RESIDENCIAL</option>
+						<option value="CELULAR">CELULAR</option>
+						</select>&nbsp&nbsp
+						<label>Numero:</label>&nbsp
+						<input type="text" name="cliente.telefones[${status.index}].numero" value="${telefone.numero}" />&nbsp&nbsp
 						<input type="hidden" name="cliente.telefones[${status.index}].id" value="${telefone.id}" />
 						<input type="button" value="Remover" class="button-remover" icon="ui-icon-closethick"/>
 					</div>
@@ -94,8 +100,8 @@
 	
 				<br>
 				<table align="center">
-					<tr><td> 
-					<input type="submit" value="Salvar" icon="ui-icon-disk"/><br /></tr></td>
+					<tr><td>
+					<input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br />	</td></tr>
 				</table>
 			</div>
 		</div>	
@@ -117,12 +123,16 @@ var model =
 		'<label>Numero:</label>&nbsp' +
 		'<input type="text" name="cliente.telefones[${status.index}].numero" value="${telefone.numero}" />&nbsp&nbsp' +
 		'<input type="hidden" name="cliente.telefones[${status.index}].id" value="${telefone.id}" />' +
-		'<input type="button" value="Remover" class="button-remover" icon="ui-icon-closethick"/>' +
+		'<input type="button" value="Remover" class="button-remover" style="background-image:url("${pageContext.request.contextPath}/images/remover.tiff")/>' +
 	'</div>';
 
 $('.button-remover').live('click', function() {
 	$(this).parent().remove();
 	reorderIndexes();
+});
+
+$('.salvar').live('click', function() {
+	alert("Dados salvos com sucesso!!");
 });
 
 function adicionar() {
@@ -152,26 +162,26 @@ function reorderIndexes() {
 </script>
 <script>
 	$(function() {
-		$( "#tabs" ).tabs();
+		$( "#tabs" ).tabs();		
+		$('input[type="submit"]').each(function () {
+			   $(this).hide().after('<button>').next().button({
+			        icons: { primary: $(this).attr('icon') },
+			        label: $(this).val()
+			    }).click(function (event) {
+			         event.preventDefault();
+			         $(this).prev().click();
+			    });
+			});
+		$('input[type="button"]').each(function () {
+			   $(this).hide().after('<button>').next().button({
+			        icons: { primary: $(this).attr('icon') },
+			        label: $(this).val()
+			    }).click(function (event) {
+			         event.preventDefault();
+			         $(this).prev().click();
+			    });
+			});
 	});
-	$('input[type="submit"]').each(function () {
-		   $(this).hide().after('<button>').next().button({
-		        icons: { primary: $(this).attr('icon') },
-		        label: $(this).val()
-		    }).click(function (event) {
-		         event.preventDefault();
-		         $(this).prev().click();
-		    });
-		});
-	$('input[type="button"]').each(function () {
-		   $(this).hide().after('<button>').next().button({
-		        icons: { primary: $(this).attr('icon') },
-		        label: $(this).val()
-		    }).click(function (event) {
-		         event.preventDefault();
-		         $(this).prev().click();
-		    });
-		});
 </script>
 <style type="text/css">
 input.maiuscula {
