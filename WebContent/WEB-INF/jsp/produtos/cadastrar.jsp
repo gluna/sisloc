@@ -50,6 +50,10 @@
 		$(this).parent().remove();
 		reorderIndexes();
 	});
+	
+	$('.salvar').live('click', function() {
+		alert("Dados salvos com sucesso!!");
+	});
 
 	function adicionar() {
 		$('#preco-container').append(model);
