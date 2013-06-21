@@ -24,8 +24,8 @@
    			<li class='has-sub'><a href='#'><span>Cadastrar</span></a>
       			<ul>
          			<li><a href="<c:url value="/clientes/cadastrar"/>"><span>Clientes</span></a></li>
-         			<li><a href="<c:url value="/produtos/cadastrar"/>"><span>Produtos</span></a></li>
          			<li><a href="<c:url value="/fornecedores/cadastrar"/>"><span>Fornecedores</span></a></li>
+         			<li><a href="<c:url value="/produtos/cadastrar"/>"><span>Produtos</span></a></li>
          			<li><a href="<c:url value="/orcamentos/cadastrar"/>"><span>Orçamentos</span></a></li>
       			</ul>
    			</li>

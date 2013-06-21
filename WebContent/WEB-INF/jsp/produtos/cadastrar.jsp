@@ -12,40 +12,35 @@
 				<br><br>
 				<fieldset id="formulario" style="width: 1140px;"> 
 				<legend>
-					Dados Pessoais:
+					Produto:
 				</legend>
 				<!--<label>ID:</label> --><input type="hidden" name="produto.id" value="${cliente.id}" readonly />
 					<table><tr><td align="right" width="95"> 
 						<label>Código:</label></td> 
-						<td align="left"><input	class="maiuscula" type="text" name="produto.codigo" size=50 value="${produto.codigo}" /><br></td>
+						<td align="left"><input	class="maiuscula" type="text" name="produto.codigo" size=29 value="${produto.codigo}" /><br></td>
 						<td align="right" width="80"><label>Nome:</label></td> 
-						<td align="left"><input class="maiuscula" type="text" name="produto.nome" size=29 value="${produto.nome}" /></td>
+						<td align="left"><input class="maiuscula" type="text" name="produto.nome" size=50 value="${produto.nome}" /></td>
 						<td align="right" width="95"><label>Quantidade:</label> </td>
 						<td align="left"><input class="maiuscula" type="text" name="produto.quantidade" size=10 value="${produto.quantidade}" /> </td></tr></table><br>
-						<table border="1"><tr>
-						<td align="right" width="95"><label>Descrição:</label></td><td></td></tr><tr> 
-						<td align="left" width="95"> <textarea rows="10" cols="100" class="maiuscula" name="cliente.numero" value="${cliente.numero}" /></textarea><br> </td></tr></table><br> 
+						<table><tr>
+						<td align="right" width="95"><label>Descrição:</label></td></tr></table>
+						<table><tr><td width="95"></td> 
+						<td align="right"><textarea style="resize:none; text-transform: uppercase;" rows="10" cols="123" name="cliente.numero" value="${cliente.numero}" /></textarea><br> </td></tr></table><br> 
 				</fieldset>
 				<br/>
-				<fieldset id="telefone-container" style="width: 1140px;">
+				<fieldset id="preco-container" style="width: 1140px;">
 				<legend>
-					Telefones:	
+					Preços:	
 				</legend>
 				<table align="right"><tr><td>
 					<input type="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-contact"/></td></tr>
 				</table>
-				<c:forEach items="${cliente.telefones}" var="telefonecliente" varStatus="status">
-					<div class="telefonecliente">
-						<label>Tipo:</label>&nbsp
-						<select name="cliente.telefones[0].tipo">
-						<option value="${telefone.tipo}">${telefone.tipo}</option>
-						<option value="COMERCIAL">COMERCIAL</option>
-						<option value="RESIDENCIAL">RESIDENCIAL</option>
-						<option value="CELULAR">CELULAR</option>
-						</select>&nbsp&nbsp
-						<label>Numero:</label>&nbsp
-						<input type="text" name="cliente.telefones[${status.index}].numero" value="${telefone.numero}" />&nbsp&nbsp
-						<input type="hidden" name="cliente.telefones[${status.index}].id" value="${telefone.id}" />
+				<c:forEach items="${produto.precos}" var="precos" varStatus="status">
+					<div class="precos">
+						<label>Dias:</label>&nbsp
+						<input type="text" name="produto.precos[${status.index}].dias" value="${preco.dias}" />&nbsp&nbsp
+						<label>Valor R$:</label>&nbsp
+						<input type="text" name="produto.precos[${status.index}].preco" value="${preco.preco}" />&nbsp&nbsp
 						<input type="button" value="Remover" class="button-remover" icon="ui-icon-closethick"/>
 					</div>
 				</c:forEach>
@@ -65,18 +60,12 @@
 
 <script type="text/javascript">
 var model =
-	'<div class="telefonecliente">' +
-		'<label>Tipo:</label>&nbsp' +
-		'<select name="cliente.telefones[0].tipo">' +
-		'<option value="${telefone.tipo}">${telefone.tipo}</option>'+
-		'<option value="COMERCIAL">COMERCIAL</option>' +
-		'<option value="RESIDENCIAL">RESIDENCIAL</option>' +
-		'<option value="CELULAR">CELULAR</option>' +
-		'</select>&nbsp&nbsp' +
-		'<label>Numero:</label>&nbsp' +
-		'<input type="text" name="cliente.telefones[${status.index}].numero" value="${telefone.numero}" />&nbsp&nbsp' +
-		'<input type="hidden" name="cliente.telefones[${status.index}].id" value="${telefone.id}" />' +
-		'<input type="button" value="Remover" class="button-remover" style="background-image:url("${pageContext.request.contextPath}/images/remover.tiff")/>' +
+	'<div class="precos">' +
+		'<label>Dias:</label>&nbsp' +
+		'<input type="text" name="produto.precos[${status.index}].dias" value="${preco.dias}" />&nbsp&nbsp' +
+		'<label>Valor R$:</label>&nbsp' +
+		'<input type="text" name="produto.precos[${status.index}].preco" value="${preco.preco}" />&nbsp&nbsp' +
+		'<input type="button" value="Remover" class="button-remover" icon="ui-icon-closethick"/>' +
 	'</div>';
 
 $('.button-remover').live('click', function() {
@@ -89,7 +78,7 @@ $('.salvar').live('click', function() {
 });
 
 function adicionar() {
-	$('#telefone-container').append(model);
+	$('#preco-container').append(model);
 	
 	reorderIndexes();
 	
@@ -98,7 +87,7 @@ function adicionar() {
 function reorderIndexes() {
 	var regex = /\[[0-9]\]/g;
 
-	$('.telefonecliente').each(function(index) {
+	$('.preco').each(function(index) {
 		var $campos = $(this).find('input'),
 			$input	,
 			name	;
