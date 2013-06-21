@@ -33,7 +33,7 @@
 					Preços:	
 				</legend>
 				<table align="right"><tr><td>
-					<input type="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-contact"/></td></tr>
+					<input type="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-tag"/></td></tr>
 				</table>
 				<c:forEach items="${produto.precos}" var="precos" varStatus="status">
 					<div class="precos">

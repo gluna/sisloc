@@ -1,41 +1,37 @@
 <%@ include file="../../../header.jsp"%>
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script>
+<!-- <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-ui-1.10.3.custom.js"></script>
 <body>
 	<form action="<c:url value='/orcamentos/salvar'/>" method="post">
 		<div id="tabs" class="container">
 			<ul>
-				<li><a href="#tabs-1">Cadastro de Cliente</a></li>
+				<li><a href="#tabs-1">Cadastro de Orçamento</a></li>
 			</ul>
 			<div id="tabs-1">
 				<br><br>
 				<fieldset id="formulario" style="width: 1140px;"> 
 				<legend>
-					Dados Pessoais:
+					Datas do Orçamento:
 				</legend>
-				<!--<label>ID:</label> --><input type="hidden" name="orcamento.id" value="${cliente.id}" readonly />
+				<!--<label>ID:</label> --><input type="hidden" name="orcamento.id" value="${orcamento.id}" readonly />
 					<table><tr><td align="right" width="95"> 
-						<label>Nome:</label></td> 
-						<td align="left"><input	type="text" name="orcamento.data" size=50 value="${orcamento.data}" /><br></td>
-						<td align="right" width="80"><label>CPF/CNPJ:</label></td> 
-						<td align="left"><input	type="text" name="orcamento.inicio" size=29 value="${orcamento.inicio}" /></td></tr></table><br>
-						<table><tr><td align="right" width="95"><label>Endereço:</label> </td>
-						<td align="left"><input type="text" name="orcamento.fim" size=96 value="${orcamento.fim}" /> </td>
+						<label>Data do Orçamento:</label></td> 
+						<td align="left"><input	type="text" class="data" name="orcamento.data" value="${orcamento.data}" /><br></td>
+						<td align="right" width="80"><label>Data Inicio:</label></td> 
+						<td align="left"><input	type="text" class="data" name="orcamento.inicio" value="${orcamento.inicio}" /></td><br>
+						<td align="right" width="80"><label>Data Fim:</label> </td>
+						<td align="left"><input type="text" class="data" name="orcamento.fim" value="${orcamento.fim}" /> </td>
 						</tr></table>
 				</fieldset>
 				<br/>
-				<fieldset id="detalhe-container" style="width: 600px;">
+				<fieldset id="detalhe-container" style="width: 1140px;">
 				<legend>
-					Telefones:
+					Detalhes do Orçamento:
 				</legend>
-				</fieldset><br/>
-				<fieldset id="detalhe-container" style="width: 600px;">
-				<legend>
-					Telefones
-					<img src="${pageContext.request.contextPath}/images/novo.png" alt="+" onclick="adicionar();" />
-				</legend>
-
+				<table align="right"><tr><td>
+					<input type="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-document"/></td></tr>
+				</table>
 				<c:forEach items="${orcamento.orcamentodetalhe}" var="orcamentodetalhe" varStatus="status">
 					<div class="orcamentodetalhe">
 						<label>Nome:</label>
@@ -51,7 +47,7 @@
 				<br>
 				<table align="center">
 					<tr><td> 
-					<input type="submit" value="Salvar" icon="ui-icon-disk"/><br /></tr></td>
+					<input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br /></tr></td>
 				</table>
 			</div>
 		</div>	
@@ -74,6 +70,10 @@
 	$('.button-remover').live('click', function() {
 		$(this).parent().remove();
 		reorderIndexes();
+	});
+	
+	$('.salvar').live('click', function() {
+		alert("Dados salvos com sucesso!!");
 	});
 
 	function adicionar() {
@@ -103,14 +103,37 @@
 <script>
 	$(function() {
 		$( "#tabs" ).tabs();
-	});
-	$('input[type="submit"]').each(function () {
-		   $(this).hide().after('<button>').next().button({
-		        icons: { primary: $(this).attr('icon') },
-		        label: $(this).val()
-		    }).click(function (event) {
-		         event.preventDefault();
-		         $(this).prev().click();
-		    });
+		$('input[type="submit"]').each(function () {
+			   $(this).hide().after('<button>').next().button({
+			        icons: { primary: $(this).attr('icon') },
+			        label: $(this).val()
+			    }).click(function (event) {
+			         event.preventDefault();
+			         $(this).prev().click();
+			    });
+			});
+		$('input[type="button"]').each(function () {
+			   $(this).hide().after('<button>').next().button({
+			        icons: { primary: $(this).attr('icon') },
+			        label: $(this).val()
+			    }).click(function (event) {
+			         event.preventDefault();
+			         $(this).prev().click();
+			    });
+			});
+		$(".data").datepicker({
+		    dateFormat: 'dd/mm/yy',
+		    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+		    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+		    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+		    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+		    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+		    nextText: 'Próximo',
+		    prevText: 'Anterior',
+		    showOn: "button",
+			buttonImage: "${pageContext.request.contextPath}/images/calendar.gif",
+			buttonImageOnly: true
 		});
+	});
+	
 </script>
