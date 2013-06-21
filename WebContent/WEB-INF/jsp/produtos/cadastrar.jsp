@@ -1,81 +1,143 @@
-<%@ include file="../../../header.jsp" %>
+<%@ include file="../../../header.jsp"%>
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-<!-- <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script>  -->
+<!-- <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-ui-1.10.3.custom.js"></script>
 <body>
 	<form action="<c:url value='/produtos/salvar'/>" method="post">
-		<br><br> 
-		<label>ID:</label> <input type="text" name="produto.id" value="${produto.id}" readonly /> 
-		<label>Código:</label> <input	type="text" name="produto.codigo" value="${produto.codigo}" />
-		<label>Nome:</label> <input type="text" name="produto.nome" value="${produto.nome}" /> 
-		<label>Descrição:</label> <input type="text" name="produto.descricao" value="${produto.descricao}" /> 
-		<label>quantidade:</label> <input type="text" name="produto.quantidade" value="${produto.quantidade}" /> <br>
-		
-		<br/>
-		
-		
-		<fieldset id="preco-container" style="width: 600px;">
-		<legend>
-			Preços
-			<img src="${pageContext.request.contextPath}/images/novo.png" alt="+" onclick="adicionar();" />
-		</legend>
-
-		<c:forEach items="${produto.precos}" var="precos" varStatus="status">
-			<div class="precos">
-				<label>preco:</label>
-				<input type="text" name="produto.precos[${status.index}].dias" value="${preco.dias}" />
-				<input type="text" name="produto.precos[${status.index}].preco" value="${preco.preco}" />
-				
-				'<img src="${pageContext.request.contextPath}/images/remover.png" alt="-" class="button-remover" />'
-			</div>
-		</c:forEach>
-	</fieldset><br/>
+		<div id="tabs" class="container">
+			<ul>
+				<li><a href="#tabs-1">Cadastro de Produtos</a></li>
+			</ul>
+			<div id="tabs-1">
+				<br><br>
+				<fieldset id="formulario" style="width: 1140px;"> 
+				<legend>
+					Dados Pessoais:
+				</legend>
+				<!--<label>ID:</label> --><input type="hidden" name="produto.id" value="${cliente.id}" readonly />
+					<table><tr><td align="right" width="95"> 
+						<label>Código:</label></td> 
+						<td align="left"><input	class="maiuscula" type="text" name="produto.codigo" size=50 value="${produto.codigo}" /><br></td>
+						<td align="right" width="80"><label>Nome:</label></td> 
+						<td align="left"><input class="maiuscula" type="text" name="produto.nome" size=29 value="${produto.nome}" /></td>
+						<td align="right" width="95"><label>Quantidade:</label> </td>
+						<td align="left"><input class="maiuscula" type="text" name="produto.quantidade" size=10 value="${produto.quantidade}" /> </td></tr></table><br>
+						<table border="1"><tr>
+						<td align="right" width="95"><label>Descrição:</label></td><td></td></tr><tr> 
+						<td align="left" width="95"> <textarea rows="10" cols="100" class="maiuscula" name="cliente.numero" value="${cliente.numero}" /></textarea><br> </td></tr></table><br> 
+				</fieldset>
+				<br/>
+				<fieldset id="telefone-container" style="width: 1140px;">
+				<legend>
+					Telefones:	
+				</legend>
+				<table align="right"><tr><td>
+					<input type="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-contact"/></td></tr>
+				</table>
+				<c:forEach items="${cliente.telefones}" var="telefonecliente" varStatus="status">
+					<div class="telefonecliente">
+						<label>Tipo:</label>&nbsp
+						<select name="cliente.telefones[0].tipo">
+						<option value="${telefone.tipo}">${telefone.tipo}</option>
+						<option value="COMERCIAL">COMERCIAL</option>
+						<option value="RESIDENCIAL">RESIDENCIAL</option>
+						<option value="CELULAR">CELULAR</option>
+						</select>&nbsp&nbsp
+						<label>Numero:</label>&nbsp
+						<input type="text" name="cliente.telefones[${status.index}].numero" value="${telefone.numero}" />&nbsp&nbsp
+						<input type="hidden" name="cliente.telefones[${status.index}].id" value="${telefone.id}" />
+						<input type="button" value="Remover" class="button-remover" icon="ui-icon-closethick"/>
+					</div>
+				</c:forEach>
+				</fieldset><br/>
 	
-	<br> <input type="submit" value="Enviar Dados" /><br />
+				<br>
+				<table align="center">
+					<tr><td>
+					<input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br />	</td></tr>
+				</table>
+			</div>
+		</div>	
 	</form>
 
 </body>
 <%@ include file="../../../footer.jsp"%>
 
 <script type="text/javascript">
-	var model =
-		'<div class="precos">' +
-			'<label>Dias:</label>' +
-			'<input type="text" name="produto.precos[0].dias" />' +
-			'<input type="text" name="produto.precos[0].preco" />' +
-			'<img src="${pageContext.request.contextPath}/images/excluir.png" alt="-" class="button-remover" />' +
-		'</div>';
+var model =
+	'<div class="telefonecliente">' +
+		'<label>Tipo:</label>&nbsp' +
+		'<select name="cliente.telefones[0].tipo">' +
+		'<option value="${telefone.tipo}">${telefone.tipo}</option>'+
+		'<option value="COMERCIAL">COMERCIAL</option>' +
+		'<option value="RESIDENCIAL">RESIDENCIAL</option>' +
+		'<option value="CELULAR">CELULAR</option>' +
+		'</select>&nbsp&nbsp' +
+		'<label>Numero:</label>&nbsp' +
+		'<input type="text" name="cliente.telefones[${status.index}].numero" value="${telefone.numero}" />&nbsp&nbsp' +
+		'<input type="hidden" name="cliente.telefones[${status.index}].id" value="${telefone.id}" />' +
+		'<input type="button" value="Remover" class="button-remover" style="background-image:url("${pageContext.request.contextPath}/images/remover.tiff")/>' +
+	'</div>';
 
-	$('.button-remover').live('click', function() {
-		$(this).parent().remove();
-		reorderIndexes();
-	});
+$('.button-remover').live('click', function() {
+	$(this).parent().remove();
+	reorderIndexes();
+});
+
+$('.salvar').live('click', function() {
+	alert("Dados salvos com sucesso!!");
+});
+
+function adicionar() {
+	$('#telefone-container').append(model);
 	
-	$('.salvar').live('click', function() {
-		alert("Dados salvos com sucesso!!");
-	});
-
-	function adicionar() {
-		$('#preco-container').append(model);
-
-		reorderIndexes();
-	};
+	reorderIndexes();
 	
-	function reorderIndexes() {
-		var regex = /\[[0-9]\]/g;
-	
-		$('.precos').each(function(index) {
-			var $campos = $(this).find('input'),
-				$input	,
-				name	;
+};
 
-			$campos.each(function() {
-				$input	= $(this),
-				name	= $input.attr('name');
+function reorderIndexes() {
+	var regex = /\[[0-9]\]/g;
 
-				$input.attr('name', name.replace(regex, '[' + index + ']'));
-			});
+	$('.telefonecliente').each(function(index) {
+		var $campos = $(this).find('input'),
+			$input	,
+			name	;
+
+		$campos.each(function() {
+			$input	= $(this),
+			name	= $input.attr('name');
+
+			$input.attr('name', name.replace(regex, '[' + index + ']'));
 		});
-		
-	};
+	});
+	
+};
 </script>
+<script>
+	$(function() {
+		$( "#tabs" ).tabs();		
+		$('input[type="submit"]').each(function () {
+			   $(this).hide().after('<button>').next().button({
+			        icons: { primary: $(this).attr('icon') },
+			        label: $(this).val()
+			    }).click(function (event) {
+			         event.preventDefault();
+			         $(this).prev().click();
+			    });
+			});
+		$('input[type="button"]').each(function () {
+			   $(this).hide().after('<button>').next().button({
+			        icons: { primary: $(this).attr('icon') },
+			        label: $(this).val()
+			    }).click(function (event) {
+			         event.preventDefault();
+			         $(this).prev().click();
+			    });
+			});
+	});
+</script>
+<style type="text/css">
+input.maiuscula {
+  text-transform: uppercase;
+}
+</style>
