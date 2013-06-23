@@ -63,4 +63,19 @@ public class FornecedorDao {
 		return t;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Fornecedor> consultaNome(Fornecedor fornecedor){
+		if(fornecedor == null){
+			fornecedor = new Fornecedor();
+		}
+		
+		List<Fornecedor> c;
+		
+		Query q = manager.createQuery("from Fornecedor c where c.nome like :nome order by nome");
+		q.setParameter("nome", fornecedor.getNome()+"%");
+		
+		c = (List<Fornecedor>) q.getResultList();		
+		return c;
+	}
+	
 }

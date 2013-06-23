@@ -62,6 +62,12 @@ public class FornecedoresController {
 		List<Fornecedor> t = dao.listaTodos();
 		return t;
 	}
+	
+	@Path("/fornecedores/consultanome")
+	public List<Fornecedor> consultanome(Fornecedor fornecedor){
+		List<Fornecedor> c = dao.consultaNome(fornecedor);	
+		return c;
+	}
 
 }
 

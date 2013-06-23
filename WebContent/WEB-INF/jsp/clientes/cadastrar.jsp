@@ -1,7 +1,7 @@
 <%@ include file="../../../header.jsp"%>
-<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-<!-- <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script> -->
-<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-ui-1.10.3.custom.js"></script>
+ <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery.min.js"></script> 
+<!-- <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script> --> 
+ <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-ui-1.10.3.custom.js"></script> 
 <body>
 	<form action="<c:url value='/clientes/salvar'/>" method="post">
 		<div id="tabs" class="container">
@@ -81,10 +81,10 @@
 				<table align="right"><tr><td>
 					<input type="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-contact"/></td></tr>
 				</table>
-				<c:forEach items="${cliente.telefones}" var="telefonecliente" varStatus="status">
+				<c:forEach items="${cliente.telefones}" var="telefone" varStatus="status">
 					<div class="telefonecliente">
 						<label>Tipo:</label>&nbsp
-						<select id="telefone" name="cliente.telefones[0].tipo">
+						<select id="telefone" name="cliente.telefones[${status.index}].tipo">
 						<option value="${telefone.tipo}">${telefone.tipo}</option>
 						<option value="COMERCIAL" class="comercial">&nbsp&nbsp&nbsp&nbspCOMERCIAL</option>
 						<option value="RESIDENCIAL" class="tel">&nbsp&nbsp&nbsp&nbspRESIDENCIAL</option>
@@ -101,7 +101,8 @@
 				<br>
 				<table align="center">
 					<tr><td>
-					<input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br />	</td></tr>
+					<input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br/>	
+					</td></tr>
 				</table>
 			</div>
 		</div>	
@@ -121,8 +122,8 @@ var model =
 		'<option value="CELULAR" class="cel">&nbsp&nbsp&nbsp&nbspCELULAR</option>' +
 		'</select>&nbsp&nbsp' +
 		'<label>Numero:</label>&nbsp' +
-		'<input type="text" name="cliente.telefones[${status.index}].numero" value="${telefone.numero}" />&nbsp&nbsp' +
-		'<input type="hidden" name="cliente.telefones[${status.index}].id" value="${telefone.id}" />' +
+		'<input type="text" name="cliente.telefones[0].numero" value="${telefone.numero}" />&nbsp&nbsp' +
+		'<input type="hidden" name="cliente.telefones[0].id" value="${telefone.id}" />' +
 		'<input type="button" class="button-remover" />' +
 	'</div>';
 
@@ -136,26 +137,48 @@ $('.salvar').live('click', function() {
 });
 
 function adicionar() {
+	
 	$('#telefone-container').append(model);
 	
 	reorderIndexes();
 	
 };
 
+function teste(){
+	(".telefonecliente").each(alert(index));
+}
+
 function reorderIndexes() {
 	var regex = /\[[0-9]\]/g;
-
+	
 	$('.telefonecliente').each(function(index) {
+		
 		var $campos = $(this).find('input'),
 			$input	,
 			name	;
 
 		$campos.each(function() {
+			
 			$input	= $(this),
 			name	= $input.attr('name');
-
-			$input.attr('name', name.replace(regex, '[' + index + ']'));
+			if($input.attr('type') != 'button'){
+				$input.attr('name', name.replace(regex, '[' + index + ']'));
+			}
 		});
+		
+		var $campos = $(this).find('select'),
+			$input	,
+			name	;
+
+	    $campos.each(function() {
+		
+			$input	= $(this),
+			name	= $input.attr('name');
+			if($input.attr('type') != 'button'){
+				$input.attr('name', name.replace(regex, '[' + index + ']'));
+			}
+	});
+		
 	});
 	
 };

@@ -37,9 +37,9 @@ public class ClienteDao {
 		return true;
 	}
 	
-	public boolean atualizar(Cliente tarefa){
+	public boolean atualizar(Cliente cliente){
 		try{
-			manager.merge(tarefa);
+			manager.merge(cliente);
 		}catch(Exception e){
 			System.out.println(e.getMessage());
 			return false;
@@ -61,6 +61,21 @@ public class ClienteDao {
 		Query q = manager.createQuery("from Cliente order by nome");
 		t = (List<Cliente>) q.getResultList();		
 		return t;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Cliente> consultaNome(Cliente cliente){
+		if(cliente == null){
+			cliente = new Cliente();
+		}
+		
+		List<Cliente> c;
+		
+		Query q = manager.createQuery("from Cliente c where c.nome like :nome order by nome");
+		q.setParameter("nome", cliente.getNome()+"%");
+		
+		c = (List<Cliente>) q.getResultList();		
+		return c;
 	}
 	
 

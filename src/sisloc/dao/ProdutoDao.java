@@ -62,5 +62,21 @@ public class ProdutoDao {
 		return t;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Produto> consultaNome(Produto produto){
+		if(produto == null){
+			produto = new Produto();
+		}
+		
+		List<Produto> c;
+		
+		Query q = manager.createQuery("from Produto c where c.nome like :nome order by nome");
+		q.setParameter("nome", produto.getNome()+"%");
+		
+		c = (List<Produto>) q.getResultList();		
+		return c;
+	}
+	
+	
 
 }

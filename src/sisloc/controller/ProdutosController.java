@@ -45,7 +45,7 @@ public class ProdutosController {
 	public void editar(Produto produto){
 		produto = dao.selectById(produto);
 	    if(produto != null) {
-	         result.include("cliente", produto);
+	         result.include("produto", produto);
 	    }
 	    result.redirectTo(this.getClass()).cadastrar();
 	}
@@ -61,6 +61,12 @@ public class ProdutosController {
 	public List<Produto> consultar(){
 		List<Produto> t = dao.listaTodos();
 		return t;
+	}
+	
+	@Path("/produtos/consultanome")
+	public List<Produto> consultanome(Produto produto){
+		List<Produto> c = dao.consultaNome(produto);	
+		return c;
 	}
 
 }

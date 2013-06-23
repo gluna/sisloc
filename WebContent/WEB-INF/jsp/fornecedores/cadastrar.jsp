@@ -81,10 +81,10 @@
 				<table align="right"><tr><td>
 					<input type="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-contact"/></td></tr>
 				</table>
-				<c:forEach items="${fornecedor.telefones}" var="telefonefornecedor" varStatus="status">
+				<c:forEach items="${fornecedor.telefones}" var="telefone" varStatus="status">
 					<div class="telefonefornecedor">
 						<label>Tipo:</label>&nbsp
-						<select id="telefone" name="fornecedor.telefones[0].tipo">
+						<select id="telefone" name="fornecedor.telefones[${status.index}].tipo">
 						<option value="${telefone.tipo}">${telefone.tipo}</option>
 						<option value="COMERCIAL" class="comercial">&nbsp&nbsp&nbsp&nbspCOMERCIAL</option>
 						<option value="RESIDENCIAL" class="tel">&nbsp&nbsp&nbsp&nbspRESIDENCIAL</option>
@@ -135,6 +135,11 @@ $('.salvar').live('click', function() {
 	alert("Dados salvos com sucesso!!");
 });
 
+function remover(){
+	$(this).parent().remove();
+	reorderIndexes();
+}
+
 function adicionar() {
 	$('#telefone-container').append(model);
 	
@@ -144,18 +149,34 @@ function adicionar() {
 
 function reorderIndexes() {
 	var regex = /\[[0-9]\]/g;
-
+	
 	$('.telefonefornecedor').each(function(index) {
 		var $campos = $(this).find('input'),
 			$input	,
 			name	;
 
 		$campos.each(function() {
+			
 			$input	= $(this),
 			name	= $input.attr('name');
-
-			$input.attr('name', name.replace(regex, '[' + index + ']'));
+			if($input.attr('type') != 'button'){
+				$input.attr('name', name.replace(regex, '[' + index + ']'));
+			}
 		});
+		
+		var $campos = $(this).find('select'),
+			$input	,
+			name	;
+
+	    $campos.each(function() {
+		
+			$input	= $(this),
+			name	= $input.attr('name');
+			if($input.attr('type') != 'button'){
+				$input.attr('name', name.replace(regex, '[' + index + ']'));
+			}
+	});
+		
 	});
 	
 };

@@ -29,6 +29,14 @@
          			<li><a href="<c:url value="/orcamentos/cadastrar"/>"><span>Orçamentos</span></a></li>
       			</ul>
    			</li>
+   			<li class='has-sub'><a href='#'><span>Consultar</span></a>
+      			<ul>
+         			<li><a href="<c:url value="/clientes/consultanome"/>"><span>Clientes</span></a></li>
+         			<li><a href="<c:url value="/fornecedores/consultanome"/>"><span>Fornecedores</span></a></li>
+         			<li><a href="<c:url value="/produtos/consultanome"/>"><span>Produtos</span></a></li>
+         			<li><a href="<c:url value="/orcamentos/consultanome"/>"><span>Orçamentos</span></a></li>
+      			</ul>
+   			</li>
    			<li><a href='#'><span>Sobre</span></a></li>
    			<li class='last'><a href='#'><span>Contato</span></a></li>
 		</ul>

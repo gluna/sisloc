@@ -14,7 +14,7 @@
 				<legend>
 					Produto:
 				</legend>
-				<!--<label>ID:</label> --><input type="hidden" name="produto.id" value="${cliente.id}" readonly />
+				<!--<label>ID:</label> --><input type="hidden" name="produto.id" value="${produto.id}" readonly />
 					<table><tr><td align="right" width="95"> 
 						<label>Código:</label></td> 
 						<td align="left"><input	class="maiuscula" type="text" name="produto.codigo" size=29 value="${produto.codigo}" /><br></td>
@@ -35,12 +35,13 @@
 				<table align="right"><tr><td>
 					<input type="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-tag"/></td></tr>
 				</table>
-				<c:forEach items="${produto.precos}" var="precos" varStatus="status">
+				<c:forEach items="${produto.precos}" var="preco" varStatus="status">
 					<div class="precos">
 						<label>Dias:</label>&nbsp
 						<input type="text" name="produto.precos[${status.index}].dias" value="${preco.dias}" />&nbsp&nbsp
 						<label>Valor R$:</label>&nbsp
 						<input type="text" name="produto.precos[${status.index}].preco" value="${preco.preco}" />&nbsp&nbsp
+						<input type="hidden" name="produto.precos[${status.index}].id" value="${preco.id}" />
 						<input type="button" class="button-remover" />
 					</div>
 				</c:forEach>
@@ -62,9 +63,10 @@
 var model =
 	'<div class="precos">' +
 		'<label>Dias:</label>&nbsp' +
-		'<input type="text" name="produto.precos[${status.index}].dias" value="${preco.dias}" />&nbsp&nbsp' +
+		'<input type="text" name="produto.precos[0].dias" value="${preco.dias}" />&nbsp&nbsp' +
 		'<label>Valor R$:</label>&nbsp' +
-		'<input type="text" name="produto.precos[${status.index}].preco" value="${preco.preco}" />&nbsp&nbsp' +
+		'<input type="text" name="produto.precos[0].preco" value="${preco.preco}" />&nbsp&nbsp' +
+		'<input type="hidden" name="produto.precos[0].id" value="${preco.id}" />'+
 		'<input type="button" class="button-remover" />' +
 	'</div>';
 
@@ -86,18 +88,35 @@ function adicionar() {
 
 function reorderIndexes() {
 	var regex = /\[[0-9]\]/g;
-
-	$('.preco').each(function(index) {
+	
+	$('.precos').each(function(index) {
+		
 		var $campos = $(this).find('input'),
 			$input	,
 			name	;
 
 		$campos.each(function() {
+			
 			$input	= $(this),
 			name	= $input.attr('name');
-
-			$input.attr('name', name.replace(regex, '[' + index + ']'));
+			if($input.attr('type') != 'button'){
+				$input.attr('name', name.replace(regex, '[' + index + ']'));
+			}
 		});
+		
+		var $campos = $(this).find('select'),
+			$input	,
+			name	;
+
+	    $campos.each(function() {
+		
+			$input	= $(this),
+			name	= $input.attr('name');
+			if($input.attr('type') != 'button'){
+				$input.attr('name', name.replace(regex, '[' + index + ']'));
+			}
+	});
+		
 	});
 	
 };
