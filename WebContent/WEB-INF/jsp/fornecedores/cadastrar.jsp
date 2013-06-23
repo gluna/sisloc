@@ -93,7 +93,7 @@
 						<label>Numero:</label>&nbsp
 						<input type="text" name="fornecedor.telefones[${status.index}].numero" value="${telefone.numero}" />&nbsp&nbsp
 						<input type="hidden" name="fornecedor.telefones[${status.index}].id" value="${telefone.id}" />
-						<input type="button" value="Remover" class="button-remover" icon="ui-icon-closethick"/>
+						<input type="button" class="button-remover" />
 					</div>
 				</c:forEach>
 				</fieldset><br/>
@@ -123,7 +123,7 @@ var model =
 		'<label>Numero:</label>&nbsp' +
 		'<input type="text" name="fornecedor.telefones[${status.index}].numero" value="${telefone.numero}" />&nbsp&nbsp' +
 		'<input type="hidden" name="fornecedor.telefones[${status.index}].id" value="${telefone.id}" />' +
-		'<input type="button" value="Remover" class="button-remover" icon="ui-icon-closethick"/>' +
+		'<input type="button" class="button-remover" />' +
 	'</div>';
 
 $('.button-remover').live('click', function() {
@@ -186,5 +186,12 @@ function reorderIndexes() {
 <style type="text/css">
 input.maiuscula {
   text-transform: uppercase;
+}
+.button-remover {
+  background-image: url('${pageContext.request.contextPath}/images/btn_remover.png');
+  cursor:pointer;
+  border: none;
+  width: 34px;
+  height: 33px;
 }
 </style>

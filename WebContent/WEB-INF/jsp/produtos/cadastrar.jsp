@@ -41,7 +41,7 @@
 						<input type="text" name="produto.precos[${status.index}].dias" value="${preco.dias}" />&nbsp&nbsp
 						<label>Valor R$:</label>&nbsp
 						<input type="text" name="produto.precos[${status.index}].preco" value="${preco.preco}" />&nbsp&nbsp
-						<input type="button" value="Remover" class="button-remover" icon="ui-icon-closethick"/>
+						<input type="button" class="button-remover" />
 					</div>
 				</c:forEach>
 				</fieldset><br/>
@@ -65,7 +65,7 @@ var model =
 		'<input type="text" name="produto.precos[${status.index}].dias" value="${preco.dias}" />&nbsp&nbsp' +
 		'<label>Valor R$:</label>&nbsp' +
 		'<input type="text" name="produto.precos[${status.index}].preco" value="${preco.preco}" />&nbsp&nbsp' +
-		'<input type="button" value="Remover" class="button-remover" icon="ui-icon-closethick"/>' +
+		'<input type="button" class="button-remover" />' +
 	'</div>';
 
 $('.button-remover').live('click', function() {
@@ -128,5 +128,12 @@ function reorderIndexes() {
 <style type="text/css">
 input.maiuscula {
   text-transform: uppercase;
+}
+.button-remover {
+  background-image: url('${pageContext.request.contextPath}/images/btn_remover.png');
+  cursor:pointer;
+  border: none;
+  width: 34px;
+  height: 33px;
 }
 </style>
