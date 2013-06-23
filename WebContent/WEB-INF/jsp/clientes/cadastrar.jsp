@@ -84,11 +84,11 @@
 				<c:forEach items="${cliente.telefones}" var="telefonecliente" varStatus="status">
 					<div class="telefonecliente">
 						<label>Tipo:</label>&nbsp
-						<select name="cliente.telefones[0].tipo">
+						<select id="telefone" name="cliente.telefones[0].tipo">
 						<option value="${telefone.tipo}">${telefone.tipo}</option>
-						<option value="COMERCIAL">COMERCIAL</option>
-						<option value="RESIDENCIAL">RESIDENCIAL</option>
-						<option value="CELULAR">CELULAR</option>
+						<option value="COMERCIAL" class="comercial">&nbsp&nbsp&nbsp&nbspCOMERCIAL</option>
+						<option value="RESIDENCIAL" class="tel">&nbsp&nbsp&nbsp&nbspRESIDENCIAL</option>
+						<option value="CELULAR" class="cel">&nbsp&nbsp&nbsp&nbspCELULAR</option>
 						</select>&nbsp&nbsp
 						<label>Numero:</label>&nbsp
 						<input type="text" name="cliente.telefones[${status.index}].numero" value="${telefone.numero}" />&nbsp&nbsp
@@ -114,11 +114,11 @@
 var model =
 	'<div class="telefonecliente">' +
 		'<label>Tipo:</label>&nbsp' +
-		'<select name="cliente.telefones[0].tipo">' +
+		'<select id="telefone" name="cliente.telefones[0].tipo">' +
 		'<option value="${telefone.tipo}">${telefone.tipo}</option>'+
-		'<option value="COMERCIAL">COMERCIAL</option>' +
-		'<option value="RESIDENCIAL">RESIDENCIAL</option>' +
-		'<option value="CELULAR">CELULAR</option>' +
+		'<option value="COMERCIAL" class="comercial">&nbsp&nbsp&nbsp&nbspCOMERCIAL</option>' +
+		'<option value="RESIDENCIAL" class="tel">&nbsp&nbsp&nbsp&nbspRESIDENCIAL</option>' +
+		'<option value="CELULAR" class="cel">&nbsp&nbsp&nbsp&nbspCELULAR</option>' +
 		'</select>&nbsp&nbsp' +
 		'<label>Numero:</label>&nbsp' +
 		'<input type="text" name="cliente.telefones[${status.index}].numero" value="${telefone.numero}" />&nbsp&nbsp' +
@@ -182,6 +182,7 @@ function reorderIndexes() {
 			    });
 			});
 	});
+	
 </script>
 <style type="text/css">
 input.maiuscula {
@@ -194,5 +195,20 @@ input.maiuscula {
   border: none;
   width: 34px;
   height: 33px;
+}
+
+#telefone .tel{
+  background-image: url('${pageContext.request.contextPath}/images/tel.png');
+  background-repeat: no-repeat;
+}
+
+#telefone .cel{
+  background-image: url('${pageContext.request.contextPath}/images/cel.png');
+  background-repeat: no-repeat;
+}
+
+#telefone .comercial{
+  background-image: url('${pageContext.request.contextPath}/images/comercial.png');
+  background-repeat: no-repeat;
 }
 </style>
