@@ -83,7 +83,6 @@ function adicionar() {
 	$('#preco-container').append(model);
 	
 	reorderIndexes();
-	
 };
 
 function reorderIndexes() {
