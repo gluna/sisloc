@@ -32,7 +32,7 @@
 				<table align="right"><tr><td>
 					<input type="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-document"/></td></tr>
 				</table>
-				<c:forEach items="${orcamento.orcamentodetalhe}" var="orcamentodetalhe" varStatus="status">
+				<!--<c:forEach items="${orcamento.orcamentodetalhe}" var="orcamentodetalhe" varStatus="status">
 					<div class="orcamentodetalhe">
 						<label>Nome:</label>
 						<input type="text" name="orcamento.orcamentodetalhe[${status.index}].produto" value="${orcamentodetalhe.produto}" />
@@ -41,7 +41,7 @@
 						<input type="hidden" name="orcamento.orcamentodetalhe[${status.index}].id" value="${orcamentodetalhe.id}" />
 						'<img src="${pageContext.request.contextPath}/images/remover.png" alt="-" class="button-remover" />'
 					</div>
-				</c:forEach>
+				</c:forEach>-->
 				</fieldset><br/>
 	
 				<br>
@@ -58,8 +58,13 @@
 
 <script type="text/javascript">
 	var model =
-		'<div class="telefonecliente">' +
+		'<div class="orcamentodetalhe">' +
 			'<label>Numero:</label>' +
+			'<select name="produto">' +
+			'<c:forEach var="produto" items="${produtoList}">' +
+			'<option value="<c:out value="${produto.nome}" />">${produto.nome}</option>' +
+			'</c:forEach>' +
+			'</select>' +
 			'<input type="text" name="orcamento.orcamentodetalhe[${status.index}].produto" value="${orcamentodetalhe.produto}" />'+
 			'<input type="text" name="orcamento.orcamentodetalhe[${status.index}].quantidade" value="${orcamentodetalhe.quantidade}" />'+
 			'<input type="text" name="orcamento.orcamentodetalhe[${status.index}].preco" value="${orcamentodetalhe.preco}" />'+
@@ -99,6 +104,31 @@
 		});
 		
 	};
+	$().ready(function() {
+
+        $("select[@nome=produtoList]" ).change(function(){
+
+                $('select[@nome=produtoList]' ).html('<option value="sda">Procurando :::::::</option>');
+
+                $.post('/produtos/consultar' ,
+
+                        { nome : $(this ).val() },
+
+                        function(resposta) {
+
+                        $('select[@nome=produtoList]' ).html(resposta);
+
+                        alert(resposta);
+
+                        }
+
+                       
+
+                );
+
+        });
+
+});
 </script>
 <script>
 	$(function() {
