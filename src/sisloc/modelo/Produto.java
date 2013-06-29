@@ -1,5 +1,6 @@
 package sisloc.modelo;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,7 +13,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Produto {
+public class Produto implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2257876564571767612L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

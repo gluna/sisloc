@@ -1,5 +1,7 @@
 package sisloc.modelo;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,8 +11,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
-public class OrcamentoDetalhe {
+public class OrcamentoDetalhe implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4019792442667854585L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;	

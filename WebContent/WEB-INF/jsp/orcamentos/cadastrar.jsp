@@ -72,7 +72,7 @@
 		
 		$('#produto').on('change', function(){   
 		    $.ajax({  
-		        url: urlProdutos,    
+		        url: '/produtos/consultar',    
 		        type : 'get',  
 		        dataType: 'json',  
 		        success : function(produto) {  
