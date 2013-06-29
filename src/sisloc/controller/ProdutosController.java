@@ -8,6 +8,7 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.view.Results;
 
 @Resource
 public class ProdutosController {
@@ -60,6 +61,7 @@ public class ProdutosController {
 	@Path("/produtos/consultar")
 	public List<Produto> consultar(){
 		List<Produto> t = dao.listaTodos();
+		result.use(Results.json()).withoutRoot().from(t).serialize();
 		return t;
 	}
 	

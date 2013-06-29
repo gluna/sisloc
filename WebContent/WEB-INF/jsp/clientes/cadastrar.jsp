@@ -93,7 +93,7 @@
 						<label>Numero:</label>&nbsp
 						<input type="text" name="cliente.telefones[${status.index}].numero" value="${telefone.numero}" />&nbsp&nbsp
 						<input type="hidden" name="cliente.telefones[${status.index}].id" value="${telefone.id}" />
-						<input type="button" class="button-remover" icon="ui-icon-closethick"/>
+						<input type="button" class="button-remover"/>
 					</div>
 				</c:forEach>
 				</fieldset><br/>

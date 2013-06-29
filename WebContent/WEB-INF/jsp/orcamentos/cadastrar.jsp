@@ -57,13 +57,11 @@
 <%@ include file="../../../footer.jsp"%>
 
 <script type="text/javascript">
+    var urlProdutos = '<c:url value="/produtos/consultar"/>';
 	var model =
 		'<div class="orcamentodetalhe">' +
 			'<label>Numero:</label>' +
-			'<select name="produto">' +
-			'<c:forEach var="produto" items="${produtoList}">' +
-			'<option value="<c:out value="${produto.nome}" />">${produto.nome}</option>' +
-			'</c:forEach>' +
+			'<select id="produto" name="produto">' +
 			'</select>' +
 			'<input type="text" name="orcamento.orcamentodetalhe[${status.index}].produto" value="${orcamentodetalhe.produto}" />'+
 			'<input type="text" name="orcamento.orcamentodetalhe[${status.index}].quantidade" value="${orcamentodetalhe.quantidade}" />'+
@@ -71,6 +69,20 @@
 			'<input type="hidden" name="orcamento.orcamentodetalhe[${status.index}].id" value="${orcamentodetalhe.id}" />'+
 			'<img src="${pageContext.request.contextPath}/images/excluir.png" alt="-" class="button-remover" />' +
 		'</div>';
+		
+		$('#produto').on('change', function(){   
+		    $.ajax({  
+		        url: urlProdutos,    
+		        type : 'get',  
+		        dataType: 'json',  
+		        success : function(produto) {  
+		            //$('#produto').empty(); // Precisa limpar a combo antes.    
+		            for (var i = 0; i < produto.length; i++){  
+		                $('#produto').append('<option value="' + produto[i].nome + '">' + produto[i].nome + '</option>');  
+		            }  
+		        }  
+		    });  
+		}); 
 
 	$('.button-remover').live('click', function() {
 		$(this).parent().remove();
@@ -104,31 +116,7 @@
 		});
 		
 	};
-	$().ready(function() {
 
-        $("select[@nome=produtoList]" ).change(function(){
-
-                $('select[@nome=produtoList]' ).html('<option value="sda">Procurando :::::::</option>');
-
-                $.post('/produtos/consultar' ,
-
-                        { nome : $(this ).val() },
-
-                        function(resposta) {
-
-                        $('select[@nome=produtoList]' ).html(resposta);
-
-                        alert(resposta);
-
-                        }
-
-                       
-
-                );
-
-        });
-
-});
 </script>
 <script>
 	$(function() {
