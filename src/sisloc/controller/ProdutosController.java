@@ -4,6 +4,7 @@ import java.util.List;
 
 import sisloc.dao.ProdutoDao;
 import sisloc.modelo.Produto;
+import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
@@ -61,13 +62,14 @@ public class ProdutosController {
 	@Path("/produtos/consultar")
 	public List<Produto> consultar(){
 		List<Produto> t = dao.listaTodos();
-		result.use(Results.json()).withoutRoot().from(t).serialize();
+		//result.use(Results.json()).withoutRoot().from(t).serialize();
 		return t;
 	}
 	
 	@Path("/produtos/consultanome")
 	public List<Produto> consultanome(Produto produto){
-		List<Produto> c = dao.consultaNome(produto);	
+		List<Produto> c = dao.consultaNome(produto);
+		//result.use(Results.json()).withoutRoot().from(c).serialize();
 		return c;
 	}
 

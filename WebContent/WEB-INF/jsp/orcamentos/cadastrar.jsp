@@ -25,12 +25,14 @@
 						</tr></table>
 				</fieldset>
 				<br/>
+				
 				<fieldset id="detalhe-container" style="width: 1140px;">
 				<legend>
 					Detalhes do Orçamento:
 				</legend>
 				<table align="right"><tr><td>
-					<input type="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-document"/></td></tr>
+					<input type="button" value="Adicionar" onclick="document.prod.submit();" icon="ui-icon-document"/></td>
+					</tr>
 				</table>
 				<!--<c:forEach items="${orcamento.orcamentodetalhe}" var="orcamentodetalhe" varStatus="status">
 					<div class="orcamentodetalhe">
@@ -42,6 +44,8 @@
 						'<img src="${pageContext.request.contextPath}/images/remover.png" alt="-" class="button-remover" />'
 					</div>
 				</c:forEach>-->
+					<div id="orcamentodetalhe" class="orcamentodetalhe">
+					</div>
 				</fieldset><br/>
 	
 				<br>
@@ -52,16 +56,26 @@
 			</div>
 		</div>	
 	</form>
-
+	<div id="dialog-form" title="Adicionar produto">
+		<form name="prod" action="<c:url value='/produtos/consultar'/>" method="post">
+			<fieldset>
+		    	<label for="name">Produto</label>
+		    	<select name="name">
+		    		<c:forEach items="${produtoList}" var="cliente">
+						  <option value="${produto.nome}">${produto.nome}</option>
+					</c:forEach>
+				</select>
+		  </fieldset>
+		</form>
+	</div>
 </body>
 <%@ include file="../../../footer.jsp"%>
 
 <script type="text/javascript">
-    var urlProdutos = '<c:url value="/produtos/consultar"/>';
 	var model =
 		'<div class="orcamentodetalhe">' +
 			'<label>Numero:</label>' +
-			'<select id="produto" name="produto">' +
+			'<select id="pr" name="pr">' +
 			'</select>' +
 			'<input type="text" name="orcamento.orcamentodetalhe[${status.index}].produto" value="${orcamentodetalhe.produto}" />'+
 			'<input type="text" name="orcamento.orcamentodetalhe[${status.index}].quantidade" value="${orcamentodetalhe.quantidade}" />'+
@@ -70,20 +84,48 @@
 			'<img src="${pageContext.request.contextPath}/images/excluir.png" alt="-" class="button-remover" />' +
 		'</div>';
 		
-		$('#produto').on('change', function(){   
-		    $.ajax({  
-		        url: '/produtos/consultar',    
-		        type : 'get',  
-		        dataType: 'json',  
-		        success : function(produto) {  
+		//$('#produto').on('change', function(){   
+		//    $.ajax({  
+		//        url: '/produtos/consultar',    
+		//        type : 'get',  
+		//        dataType: 'json',  
+		//        success : function(produto) {  
 		            //$('#produto').empty(); // Precisa limpar a combo antes.    
-		            for (var i = 0; i < produto.length; i++){  
-		                $('#produto').append('<option value="' + produto[i].nome + '">' + produto[i].nome + '</option>');  
-		            }  
-		        }  
-		    });  
-		}); 
+		//            for (var i = 0; i < produto.length; i++){  
+		//                $('#produto').append('<option value="' + produto[i].nome + '">' + produto[i].nome + '</option>');  
+		//            }  
+		//        }  
+		//    });  
+		//});
+		
+		//$('#produto').live('load', function(){
+		//	$.getJSON('<c:url value="/produtos/consultar/2"/>', function(json) {
+		//		$('#prodlist').empty();
+				//for (var i = 0; i < produto.length; i++){
+		//			$('#prodlist').append('<option value="' + produto.nome + '">' + produto.nome + '</option>');
+				//}
+		//	});
+		//});
 
+	//function carregar() {
+		//id = "container";
+		//$.getJSON('<c:url value="/produtos/consultar"/>', function(json) {
+			//alert("teste");
+		//});
+		//$.ajax({
+			//url: '/produtos/consultanome',
+			//data: 'container',
+			//type: 'get',
+			//dataType: 'json',
+			//success: function (prod) {
+				//$('#pr').empty();
+				//for (var i = 0; i < prod.length; i++){
+					//$('#pr').append('<option value="' + prod[i].nome + '">' + prod[i].nome + '</option>')
+				//}
+			//} 
+		//});
+	//}
+		
 	$('.button-remover').live('click', function() {
 		$(this).parent().remove();
 		reorderIndexes();
@@ -95,7 +137,7 @@
 
 	function adicionar() {
 		$('#detalhe-container').append(model);
-
+		//carregar();
 		reorderIndexes();
 	};
 	
@@ -152,6 +194,26 @@
 			buttonImage: "${pageContext.request.contextPath}/images/calendar.gif",
 			buttonImageOnly: true
 		});
+		var prod = $( "#name" );
+	 
+	    $( "#dialog-form" ).dialog({
+	      autoOpen: false,
+	      height: 300,
+	      width: 350,
+	      modal: true,
+	      buttons: {
+	        "Adicionar": function() {
+	 
+	            $( "#orcamentodetalhe" ).append( "<input type='text' value='" +
+	              prod.val() + "' />" +
+	            "</tr>" );
+	            $( this ).dialog( "close" );
+	        },
+	        Cancel: function() {
+	          $( this ).dialog( "close" );
+	        }
+	      }
+	   });
 	});
 	
 </script>

@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import org.hibernate.classic.Session;
+
 import sisloc.modelo.Produto;
 import br.com.caelum.vraptor.ioc.Component;
 
@@ -12,9 +14,11 @@ import br.com.caelum.vraptor.ioc.Component;
 public class ProdutoDao {
 	
 	public EntityManager manager;
+	public Session session;
 
-	public ProdutoDao(EntityManager manager){
+	public ProdutoDao(EntityManager manager, Session session){
 		 this.manager = manager;
+		 this.session = session;
 	}
 	
 	public boolean salvar(Produto produto){
@@ -55,11 +59,12 @@ public class ProdutoDao {
 	
 	@SuppressWarnings("unchecked")
 	public List<Produto> listaTodos(){
-		List<Produto> t;
+		return this.session.createCriteria(Produto.class).list();
+		/*List<Produto> t;
 		
 		Query q = manager.createQuery("from Produto order by nome");
 		t = (List<Produto>) q.getResultList();		
-		return t;
+		return t;*/
 	}
 	
 	@SuppressWarnings("unchecked")
