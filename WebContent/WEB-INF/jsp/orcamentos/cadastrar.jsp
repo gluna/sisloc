@@ -205,8 +205,7 @@
 	        "Adicionar": function() {
 	 
 	            $( "#orcamentodetalhe" ).append( "<input type='text' value='" +
-	              prod.val() + "' />" +
-	            "</tr>" );
+	              prod.val() + "' />" );
 	            $( this ).dialog( "close" );
 	        },
 	        Cancel: function() {
