@@ -1,30 +1,34 @@
 package sisloc.controller;
 
-import static br.com.caelum.vraptor.jasperreports.formats.Formats.Pdf;
-
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.ServletContext;
+
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 import sisloc.dao.OrcamentoDao;
 import sisloc.modelo.Orcamento;
-import sisloc.report.OrcamentoReport;
+import sisloc.util.SislocUtils;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
-import br.com.caelum.vraptor.interceptor.download.Download;
-import br.com.caelum.vraptor.jasperreports.Report;
-import br.com.caelum.vraptor.jasperreports.ReportDownload;
+
 
 @Resource
 public class OrcamentosController {
 
 	private OrcamentoDao dao;
 	private Result result;
+	private ServletContext context;
 	
-	public OrcamentosController(OrcamentoDao dao, Result result){
+	public OrcamentosController(OrcamentoDao dao, Result result,final ServletContext context){
 		this.dao = dao;
 		this.result = result;
+		this.context = context;
 	}
 	
 	@Path("/orcamentos/cadastrar")
@@ -70,13 +74,24 @@ public class OrcamentosController {
 		return t;
 	}
 	
-	@Path("/orcamentos/pdf") 
-	public Download pdfReport(Orcamento orcamento) {
-		orcamento = dao.selectById(orcamento);
-		List<Orcamento> orcamentos = new ArrayList<Orcamento>();
-		orcamentos.add(orcamento);
-		Report<Orcamento> report = new OrcamentoReport(orcamentos);
-		return new ReportDownload(report, Pdf());
+	@Path("/orcamentos/report/{orcamento.id}") 
+	public void pdfReport(Orcamento orcamento) {
+		try{
+			orcamento = dao.selectById(orcamento);
+			Map<String, Object> parametros = new HashMap<String, Object>();
+			parametros.put( "ORCAMENTO_ID", (long) 1 );
+			 
+			//JOptionPane.showMessageDialog(null, context.getRealPath("/sisloc/report/template/orcamentoreport.jasper"));
+			JasperPrint print = JasperFillManager.fillReport(context.getRealPath("/WEB-INF/classes/sisloc/report/template/orcamentoreport.jasper"), parametros, SislocUtils.getConnection());
+			//JasperExportManager.exportReportToPdfFile(print,"/home/gustavo/report-out.pdf");
+			JasperViewer.viewReport(print,false);
+			
+			/*List<Orcamento> orcamentos = new ArrayList<Orcamento>();
+			orcamentos.add(orcamento);
+			Report<Orcamento> report = new OrcamentoReport(orcamentos);*/
+		}catch(Exception e){e.printStackTrace();}
+		//return null; //new ReportDownload(report, Pdf()); 
+		result.redirectTo(this.getClass()).cadastrar();
 	}
 	
 }
