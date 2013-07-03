@@ -1,5 +1,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 
 <fmt:setLocale value="${locale}"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -9,6 +10,12 @@
 <link href="../css/style.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="../css/menu.css" rel="stylesheet" type="text/css" media="screen" />
 <link href="../css/jquery-ui-1.10.3.custom.css" rel="stylesheet" />
+<sql:setDataSource var="ds"
+	driver="org.postgresql.Driver"
+	url="jdbc:postgresql:sisloc"
+	user="postgres"
+	password="postgres"
+	scope="session"/>
 <title>Sistema de Tarefas</title>	
 </head>
 <body>

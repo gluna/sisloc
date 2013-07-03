@@ -31,7 +31,7 @@
 					Detalhes do Orçamento:
 				</legend>
 				<table align="right"><tr><td>
-					<input type="button" value="Adicionar" onclick="document.prod.submit();" icon="ui-icon-document"/></td>
+					<input type="button" id="add-prod" value="Adicionar" icon="ui-icon-document"/></td>
 					</tr>
 				</table>
 				<!--<c:forEach items="${orcamento.orcamentodetalhe}" var="orcamentodetalhe" varStatus="status">
@@ -44,7 +44,9 @@
 						'<img src="${pageContext.request.contextPath}/images/remover.png" alt="-" class="button-remover" />'
 					</div>
 				</c:forEach>-->
-					<div id="orcamentodetalhe" class="orcamentodetalhe">
+					<div class="orcamentodetalhe">
+					<table id="orcamentodetalhe" border="1">
+					</table>
 					</div>
 				</fieldset><br/>
 	
@@ -57,16 +59,18 @@
 		</div>	
 	</form>
 	<div id="dialog-form" title="Adicionar produto">
-		<form name="prod" action="<c:url value='/produtos/consultar'/>" method="post">
+		<sql:query var="qryProduto" dataSource="${ds}">
+                select nome from PRODUTO
+                order by nome
+        </sql:query>
 			<fieldset>
-		    	<label for="name">Produto</label>
+		    	<label for="name">Produto:</label>
 		    	<select name="name">
-		    		<c:forEach items="${produtoList}" var="cliente">
-						  <option value="${produto.nome}">${produto.nome}</option>
+		    		<c:forEach items="${qryProduto.rows}" var="prod">
+						  <option id="prod" value="${prod.nome}">${prod.nome}</option>
 					</c:forEach>
 				</select>
 		  </fieldset>
-		</form>
 	</div>
 </body>
 <%@ include file="../../../footer.jsp"%>
@@ -194,7 +198,7 @@
 			buttonImage: "${pageContext.request.contextPath}/images/calendar.gif",
 			buttonImageOnly: true
 		});
-		var prod = $( "#name" );
+		var prod = $( "#prod" );
 	 
 	    $( "#dialog-form" ).dialog({
 	      autoOpen: false,
@@ -204,8 +208,16 @@
 	      buttons: {
 	        "Adicionar": function() {
 	 
-	            $( "#orcamentodetalhe" ).append( "<input type='text' value='" +
-	              prod.val() + "' />" );
+	            $( "#orcamentodetalhe" ).append(
+	            		"<tr>" +
+	            		"<td>" +
+	            		"<label>Produto:</label>" +
+	            		"</td>" +
+	            		"<td>" +
+	            		"<input type='text' value='" +
+	              		prod.val() + "' />" +
+	              		"</td>" +
+	              		"</tr>" );
 	            $( this ).dialog( "close" );
 	        },
 	        Cancel: function() {
@@ -213,6 +225,10 @@
 	        }
 	      }
 	   });
+	    $( "#add-prod" )
+	      .click(function() {
+	        $( "#dialog-form" ).dialog( "open" );
+	      });
 	});
 	
 </script>
