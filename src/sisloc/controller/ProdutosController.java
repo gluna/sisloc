@@ -4,12 +4,10 @@ import java.util.List;
 
 import sisloc.dao.ProdutoDao;
 import sisloc.modelo.Produto;
-import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
-import br.com.caelum.vraptor.view.Results;
 
 @Resource
 public class ProdutosController {
