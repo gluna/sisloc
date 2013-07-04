@@ -68,6 +68,16 @@
 		    	<select name="name">
 		    		<c:forEach items="${qryProduto.rows}" var="prod">
 						  <option id="prod" value="${prod.nome}">${prod.nome}</option>
+						  <input type="hidden" value="${prod.id}">
+					</c:forEach>
+				</select>
+				<sql:query var="qryPreco" dataSource="${ds}">
+	                select preco from PRECO
+	                where precos_id = 2
+        		</sql:query>
+        		<select name="preco">
+		    		<c:forEach items="${qryPreco.rows}" var="preco_prod">
+						  <option id="preco" value="${preco_prod.preco}">${preco_prod.preco}</option>
 					</c:forEach>
 				</select>
 		  </fieldset>
