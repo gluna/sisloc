@@ -23,7 +23,11 @@ public class Locacao implements Serializable{
 	private Date dtlocacao;
 	private Date dtinicio;
 	private Date dtfim;
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn
 	private Cliente cliente;
+	
 	private Double valortotal;
 	private Double descontovalor;
 	private Double descontopercent;
