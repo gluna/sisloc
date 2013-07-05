@@ -34,6 +34,7 @@
          			<li><a href="<c:url value="/fornecedores/cadastrar"/>"><span>Fornecedores</span></a></li>
          			<li><a href="<c:url value="/produtos/cadastrar"/>"><span>Produtos</span></a></li>
          			<li><a href="<c:url value="/orcamentos/cadastrar"/>"><span>Orçamentos</span></a></li>
+         			<li><a href="<c:url value="/locacoes/cadastrar"/>"><span>Locações</span></a></li>
       			</ul>
    			</li>
    			<li class='has-sub'><a href='#'><span>Consultar</span></a>

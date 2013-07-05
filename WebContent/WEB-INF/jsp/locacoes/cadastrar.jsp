@@ -3,32 +3,32 @@
 <!-- <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-ui-1.10.3.custom.js"></script>
 <body>
-	<form action="<c:url value='/locacacoes/salvar'/>" method="post">
+	<form action="<c:url value='/orcamentos/salvar'/>" method="post">
 		<div id="tabs" class="container">
 			<ul>
-				<li><a href="#tabs-1">Cadastro de Locações</a></li>
+				<li><a href="#tabs-1">Cadastro de Orçamento</a></li>
 			</ul>
 			<div id="tabs-1">
 				<br><br>
 				<fieldset id="formulario" style="width: 1140px;"> 
 				<legend>
-					Datas da Locação:
+					Datas do Orçamento:
 				</legend>
-				<!--<label>ID:</label> --><input type="hidden" name="locacao.id" value="${locacao.id}" readonly />
+				<!--<label>ID:</label> --><input type="hidden" name="orcamento.id" value="${orcamento.id}" readonly />
 					<table><tr><td align="right" width="95"> 
-						<label>Data da Locação:</label></td> 
-						<td align="left"><input	type="text" class="data" name="locacao.data" value="${locacao.data}" /><br></td>
+						<label>Data do Orçamento:</label></td> 
+						<td align="left"><input	type="text" class="data" name="orcamento.data" value="${orcamento.data}" /><br></td>
 						<td align="right" width="80"><label>Data Inicio:</label></td> 
-						<td align="left"><input	type="text" class="data" name="locacao.inicio" value="${locacao.inicio}" /></td><br>
+						<td align="left"><input	type="text" class="data" name="orcamento.inicio" value="${orcamento.inicio}" /></td><br>
 						<td align="right" width="80"><label>Data Fim:</label> </td>
-						<td align="left"><input type="text" class="data" name="locacao.fim" value="${locacao.fim}" /> </td>
+						<td align="left"><input type="text" class="data" name="orcamento.fim" value="${orcamento.fim}" /> </td>
 						</tr></table>
 				</fieldset>
 				<br/>
 				
 				<fieldset id="detalhe-container" style="width: 1140px;">
 				<legend>
-					Detalhes da Locação:
+					Detalhes do Orçamento:
 				</legend>
 				<table align="right"><tr><td>
 					<input type="button" id="add-prod" value="Adicionar" icon="ui-icon-document"/></td>
@@ -44,8 +44,8 @@
 						'<img src="${pageContext.request.contextPath}/images/remover.png" alt="-" class="button-remover" />'
 					</div>
 				</c:forEach>-->
-					<div class="locacaodetalhe">
-					<table id="locacaodetalhe" border="1">
+					<div class="orcamentodetalhe">
+					<table id="orcamentodetalhe" border="1">
 					</table>
 					</div>
 				</fieldset><br/>
@@ -87,14 +87,14 @@
 
 <script type="text/javascript">
 	var model =
-		'<div class="locacaodetalhe">' +
+		'<div class="orcamentodetalhe">' +
 			'<label>Numero:</label>' +
 			'<select id="pr" name="pr">' +
 			'</select>' +
-			'<input type="text" name="locacao.locacaodetalhe[${status.index}].produto" value="${locacaodetalhe.produto}" />'+
-			'<input type="text" name="locacao.locacaodetalhe[${status.index}].quantidade" value="${locacaodetalhe.quantidade}" />'+
-			'<input type="text" name="locacao.locacaodetalhe[${status.index}].preco" value="${locacaodetalhe.preco}" />'+
-			'<input type="hidden" name="locacao.locacaodetalhe[${status.index}].id" value="${locacaodetalhe.id}" />'+
+			'<input type="text" name="orcamento.orcamentodetalhe[${status.index}].produto" value="${orcamentodetalhe.produto}" />'+
+			'<input type="text" name="orcamento.orcamentodetalhe[${status.index}].quantidade" value="${orcamentodetalhe.quantidade}" />'+
+			'<input type="text" name="orcamento.orcamentodetalhe[${status.index}].preco" value="${orcamentodetalhe.preco}" />'+
+			'<input type="hidden" name="orcamento.orcamentodetalhe[${status.index}].id" value="${orcamentodetalhe.id}" />'+
 			'<img src="${pageContext.request.contextPath}/images/excluir.png" alt="-" class="button-remover" />' +
 		'</div>';
 		
@@ -158,7 +158,7 @@
 	function reorderIndexes() {
 		var regex = /\[[0-9]\]/g;
 	
-		$('.locacaodetalhex').each(function(index) {
+		$('.orcamentodetalhex').each(function(index) {
 			var $campos = $(this).find('input'),
 				$input	,
 				name	;
@@ -196,7 +196,7 @@
 			    });
 			});
 		$(".data").datepicker({
-		    dateFormat: 'dd/mm/yyyy',
+		    dateFormat: 'dd/mm/yy',
 		    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
 		    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
 		    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
@@ -218,7 +218,7 @@
 	      buttons: {
 	        "Adicionar": function() {
 	 
-	            $( "#locacaodetalhe" ).append(
+	            $( "#orcamentodetalhe" ).append(
 	            		"<tr>" +
 	            		"<td>" +
 	            		"<label>Produto:</label>" +
