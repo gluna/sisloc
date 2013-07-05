@@ -24,7 +24,18 @@ public class Locacao implements Serializable{
 	private Date dtinicio;
 	private Date dtfim;
 	private Cliente cliente;
-	//TODO ver como sera feito a forma de pagamento
+	private Double valortotal;
+	private Double descontovalor;
+	private Double descontopercent;
+	private String formapagamento;
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn
+	private List<EnderecoLocacao> enderecos;
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn
+	private List<Pagamento> pagamentos;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn
@@ -76,5 +87,53 @@ public class Locacao implements Serializable{
 
 	public void setLocacaodetalhe(List<LocacaoDetalhe> locacaodetalhe) {
 		this.locacaodetalhe = locacaodetalhe;
+	}
+
+	public Double getValortotal() {
+		return valortotal;
+	}
+
+	public void setValortotal(Double valortotal) {
+		this.valortotal = valortotal;
+	}
+
+	public Double getDescontovalor() {
+		return descontovalor;
+	}
+
+	public void setDescontovalor(Double descontovalor) {
+		this.descontovalor = descontovalor;
+	}
+
+	public Double getDescontopercent() {
+		return descontopercent;
+	}
+
+	public void setDescontopercent(Double descontopercent) {
+		this.descontopercent = descontopercent;
+	}
+
+	public String getFormapagamento() {
+		return formapagamento;
+	}
+
+	public void setFormapagamento(String formapagamento) {
+		this.formapagamento = formapagamento;
+	}
+
+	public List<EnderecoLocacao> getEnderecos() {
+		return enderecos;
+	}
+
+	public void setEnderecos(List<EnderecoLocacao> enderecos) {
+		this.enderecos = enderecos;
+	}
+
+	public List<Pagamento> getPagamentos() {
+		return pagamentos;
+	}
+
+	public void setPagamentos(List<Pagamento> pagamentos) {
+		this.pagamentos = pagamentos;
 	}
 }
