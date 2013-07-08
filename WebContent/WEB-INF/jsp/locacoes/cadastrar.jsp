@@ -5,6 +5,8 @@
 <script src="${pageContext.request.contextPath}/js/jquery.jeditable.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-ui-1.10.3.custom.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/js/jquery.validate.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-1.9.1.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.jqGrid.min.js" type="text/javascript"></script>
 
 <body>
 	<form action="<c:url value='/locacoes/salvar'/>" method="post">
@@ -35,51 +37,105 @@
 						</tr>
 					</table>
 				</fieldset>
-				<table id="myDataTable">
-					<thead>
-						<tr>
-							<th>Company name</th>
-							<th>Address</th>
-							<th>Town</th>
-						</tr>
-					</thead>
-					<tbody>
-					</tbody>
+				<fieldset id="locacaodetalhe" style="width: 1140px;">
+				<legend>
+					Itens Locação:	
+				</legend>
+				<table align="right"><tr><td>
+					<input type="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-contact"/></td></tr>
 				</table>
-				<!-- <button id="btnAddNewRow">Add</button>
-				<button id="btnDeleteRow">Delete</button> -->
-				<div class="add_delete_toolbar" />
+				<c:forEach items="${locacao.locacaodetalhe}" var="detalhe" varStatus="status">
+				<div class="produtointem">
+					<select id="produto"  name="locacao.locacaodetalhe[0].produto" value="locacao.locacaodetalhe[0].produto">
+						<c:forEach items="${produtoList}" var="produto" varStatus="status">
+							<option value="${produto.id}">${produto.nome}</option>
+						</c:forEach>
+					</select>
+					<input type="text" name="locacao.locacaodetalhe[${status.index}].quantidade" value="${detalhe.quantidade}" />
+				</div>
+				</c:forEach>
+				</fieldset>
 				<table align="center">
-					<tr>
-						<td><input type="submit" value="Salvar" class="salvar"
-							icon="ui-icon-disk" /><br />
-					</tr>
-					</td>
-					</tr>
+					<tr><td>
+					<input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br/>	
+					</td></tr>
 				</table>
-
 			</div>
 		</div>
 	</form>
 	
-	<form id="dialog-form" action="#" class="display" cellpadding="0" cellspacing="0" border="0">
-		<label for="name">Name</label>
-		<input type="text" name="name" id="name" class="required" rel="0" /> <br /> 
-		<label for="name">Address</label>
-		<input type="text" name="address" id="address" rel="1" /> <br /> 
-		<label for="name" rel="2">Country</label>
-		<select name="country" id="country">
-			<option value="1">Serbia</option>
-			<option value="2">France</option>
-			<option value="3">Italy</option>
-		</select> <br />
-	</form>
 </body>
 <%@ include file="../../../footer.jsp"%>
-        <script language="JavaScript" type="text/javascript">
-            $(document).ready(function () {
-                $('#dialog-form').dataTable().makeEditable();
-            });
-        </script>
+ <script type="text/javascript">
+     
+     var model =
+    	    '<div class="produtointem">'+
+    		'<select id="produto" onchange="teste();" name="locacao.locacaodetalhe[0].produto.id" value="locacao.locacaodetalhe[0].produto.id">'+
+    		'	<c:forEach items="${produtoList}" var="produto" varStatus="status">'+	
+    		'		<option value="${produto.id}">${produto.nome}</option>'+
+    		'	</c:forEach>'+
+    		'</select>'+
+    		'<select id="preco" name="locacao.locacaodetalhe[0].preco" value="locacao.locacaodetalhe[0].preco">'+
+    		'	<c:forEach items="${produtoList}" var="produto" varStatus="status">'+	
+    		'		<option value="${produto.id}">${produto.nome}</option>'+
+    		'	</c:forEach>'+
+    		'</select>'+
+    		
+    		'<input type="text" name="locacao.locacaodetalhe[0].quantidade" value="${locacao.locacaodetalhe[0].quantidade}" />'+
+
+    		'</div>';
+
+    		$('.button-remover').live('click', function() {
+    			$(this).parent().remove();
+    			reorderIndexes();
+    		});
+    		
+    		function adicionar() {
+    			
+    			$('#locacaodetalhe').append(model);
+    			
+    			reorderIndexes();
+    			
+    		};
+    		
+    		function teste(){
+    			alert("funcionou");
+    		}
+    		
+    		function reorderIndexes() {
+    			var regex = /\[[0-9]\]/g;
+    			
+    			$('.produtointem').each(function(index) {
+    				
+    				var $campos = $(this).find('input'),
+    					$input	,
+    					name	;
+
+    				$campos.each(function() {
+    					
+    					$input	= $(this),
+    					name	= $input.attr('name');
+    					if($input.attr('type') != 'button'){
+    						$input.attr('name', name.replace(regex, '[' + index + ']'));
+    					}
+    				});
+    				
+    				var $campos = $(this).find('select'),
+    					$input	,
+    					name	;
+
+    			    $campos.each(function() {
+    				
+    					$input	= $(this),
+    					name	= $input.attr('name');
+    					if($input.attr('type') != 'button'){
+    						$input.attr('name', name.replace(regex, '[' + index + ']'));
+    					}
+    			});
+    				
+    			});
+    			
+    		};
+ </script>
 
 

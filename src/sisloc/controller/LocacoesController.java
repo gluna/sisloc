@@ -3,7 +3,10 @@ package sisloc.controller;
 import java.util.List;
 
 import sisloc.dao.LocacaoDao;
+import sisloc.dao.ProdutoDao;
 import sisloc.modelo.Locacao;
+import sisloc.modelo.LocacaoDetalhe;
+import sisloc.modelo.Produto;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
@@ -14,14 +17,18 @@ public class LocacoesController {
 	
 	private LocacaoDao dao;
 	private Result result;
+	private ProdutoDao produtodao;
 	
-	public LocacoesController(LocacaoDao dao, Result result){
+	public LocacoesController(LocacaoDao dao, Result result, ProdutoDao produtodao){
 		this.dao = dao;
 		this.result = result;
+		this.produtodao = produtodao;
 	}
 	
 	@Path("/locacoes/cadastrar")
-	public void cadastrar(){
+	public List<Produto> cadastrar(){
+		List<Produto> t = dao.listaProdutos();
+		return t;
 	}
 	
 	@Post
@@ -29,6 +36,9 @@ public class LocacoesController {
 	public void salvar(Locacao locacao){
 		try {
 		     if(locacao != null) {
+		    	 for(LocacaoDetalhe ld : locacao.getLocacaodetalhe() ){
+		    		 ld.setProduto(produtodao.selectById(ld.getProduto()));
+		    	 }
 		    	 if(locacao.getId() == null) {
 		    		 dao.salvar(locacao);
 		    	 } else {
@@ -62,5 +72,6 @@ public class LocacoesController {
 		List<Locacao> t = dao.listaTodos();
 		return t;
 	}
+	
 	
 }
