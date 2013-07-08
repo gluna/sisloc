@@ -15,10 +15,9 @@ import javax.persistence.OneToMany;
 @Entity
 public class Orcamento implements Serializable{
 	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 3572240094097478459L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Locacao implements Serializable{
@@ -24,7 +25,7 @@ public class Locacao implements Serializable{
 	private Date dtinicio;
 	private Date dtfim;
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn
 	private Cliente cliente;
 	
