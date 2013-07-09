@@ -45,7 +45,7 @@
 					</div>
 				</c:forEach>-->
 					<div class="orcamentodetalhe">
-					<table id="orcamentodetalhe" border="1">
+					<table id="orcamentodetalhe">
 					</table>
 					</div>
 				</fieldset><br/>
@@ -59,27 +59,14 @@
 		</div>	
 	</form>
 	<div id="dialog-form" title="Adicionar produto">
-		<sql:query var="qryProduto" dataSource="${ds}">
-                select nome from PRODUTO
-                order by nome
-        </sql:query>
 			<fieldset>
 		    	<label for="name">Produto:</label>
-		    	<select name="name">
-		    		<c:forEach items="${qryProduto.rows}" var="prod">
-						  <option id="prod" value="${prod.nome}">${prod.nome}</option>
-						  <input type="hidden" value="${prod.id}">
+		    	<select name="name" id="name">
+		    		<c:forEach items="${produtoList}" var="produto" varStatus="status">
+						  <option id="p" value="${produto.nome}">${produto.nome}</option>
 					</c:forEach>
 				</select>
-				<sql:query var="qryPreco" dataSource="${ds}">
-	                select preco from PRECO
-	                where precos_id = 2
-        		</sql:query>
-        		<select name="preco">
-		    		<c:forEach items="${qryPreco.rows}" var="preco_prod">
-						  <option id="preco" value="${preco_prod.preco}">${preco_prod.preco}</option>
-					</c:forEach>
-				</select>
+				
 		  </fieldset>
 	</div>
 </body>
@@ -208,9 +195,13 @@
 			buttonImage: "${pageContext.request.contextPath}/images/calendar.gif",
 			buttonImageOnly: true
 		});
-		var prod = $( "#prod" );
 	 
-	    $( "#dialog-form" ).dialog({
+		//$( "#name" ).change(function() {
+		//	alert(prod.val());
+		//});
+		var prod = "";
+		prod = $("#p");
+		$( "#dialog-form" ).dialog({
 	      autoOpen: false,
 	      height: 300,
 	      width: 350,
@@ -225,7 +216,7 @@
 	            		"</td>" +
 	            		"<td>" +
 	            		"<input type='text' value='" +
-	              		prod.val() + "' />" +
+	            		prod.val() + "' />" +
 	              		"</td>" +
 	              		"</tr>" );
 	            $( this ).dialog( "close" );

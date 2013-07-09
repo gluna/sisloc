@@ -1,12 +1,7 @@
 <%@ include file="../../../header.jsp"%>
-<script src="${pageContext.request.contextPath}/js/jquery.min.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/js/jquery.dataTables.min.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/js/jquery.dataTables.editable.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/js/jquery.jeditable.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/js/jquery-ui-1.10.3.custom.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/js/jquery.validate.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/js/jquery-1.9.1.js" type="text/javascript"></script>
-<script src="${pageContext.request.contextPath}/js/jquery.jqGrid.min.js" type="text/javascript"></script>
+<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+<!-- <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script> -->
+<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-ui-1.10.3.custom.js"></script>
 
 <body>
 	<form action="<c:url value='/locacoes/salvar'/>" method="post">
@@ -70,19 +65,21 @@
      
      var model =
     	    '<div class="produtointem">'+
+    	    '<label>Produto:</label>&nbsp' +
     		'<select id="produto" onchange="teste();" name="locacao.locacaodetalhe[0].produto.id" value="locacao.locacaodetalhe[0].produto.id">'+
     		'	<c:forEach items="${produtoList}" var="produto" varStatus="status">'+	
     		'		<option value="${produto.id}">${produto.nome}</option>'+
     		'	</c:forEach>'+
-    		'</select>'+
+    		'</select>&nbsp&nbsp'+
+    		'<label>R$:</label>&nbsp' +
     		'<select id="preco" name="locacao.locacaodetalhe[0].preco" value="locacao.locacaodetalhe[0].preco">'+
     		'	<c:forEach items="${produtoList}" var="produto" varStatus="status">'+	
     		'		<option value="${produto.id}">${produto.nome}</option>'+
     		'	</c:forEach>'+
-    		'</select>'+
-    		
-    		'<input type="text" name="locacao.locacaodetalhe[0].quantidade" value="${locacao.locacaodetalhe[0].quantidade}" />'+
-
+    		'</select>&nbsp&nbsp'+
+    		'<label>Quantidade:</label>&nbsp' +
+    		'<input type="text" name="locacao.locacaodetalhe[0].quantidade" value="${locacao.locacaodetalhe[0].quantidade}" />&nbsp&nbsp'+
+			'<input type="button" class="button-remover" />' +
     		'</div>';
 
     		$('.button-remover').live('click', function() {
@@ -93,7 +90,7 @@
     		function adicionar() {
     			
     			$('#locacaodetalhe').append(model);
-    			
+
     			reorderIndexes();
     			
     		};
@@ -137,5 +134,49 @@
     			
     		};
  </script>
-
+ <script>
+ $(function() {
+		$( "#tabs" ).tabs();
+		$('input[type="submit"]').each(function () {
+			   $(this).hide().after('<button>').next().button({
+			        icons: { primary: $(this).attr('icon') },
+			        label: $(this).val()
+			    }).click(function (event) {
+			         event.preventDefault();
+			         $(this).prev().click();
+			    });
+			});
+		$('input[type="button"]').each(function () {
+			   $(this).hide().after('<button>').next().button({
+			        icons: { primary: $(this).attr('icon') },
+			        label: $(this).val()
+			    }).click(function (event) {
+			         event.preventDefault();
+			         $(this).prev().click();
+			    });
+			});
+		$(".data").datepicker({
+		    dateFormat: 'dd/mm/yy',
+		    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+		    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+		    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+		    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+		    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+		    nextText: 'Próximo',
+		    prevText: 'Anterior',
+		    showOn: "button",
+			buttonImage: "${pageContext.request.contextPath}/images/calendar.gif",
+			buttonImageOnly: true
+		});
+ });
+ </script>
+<style type="text/css">
+.button-remover {
+  background-image: url('${pageContext.request.contextPath}/images/btn_remover.png');
+  cursor:pointer;
+  border: none;
+  width: 34px;
+  height: 33px;
+}
+</style>
 
