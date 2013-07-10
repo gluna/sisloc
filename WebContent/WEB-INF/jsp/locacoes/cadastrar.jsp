@@ -96,7 +96,10 @@
     		};
     		
     		function teste(){
-    			alert("funcionou");
+    			var produtos = '${produtoList}';
+ 				for(i=0;i<'${produtoList.size()}';i++){
+ 					alert("${produtoList["+i+"].id}");
+ 				}
     		}
     		
     		function reorderIndexes() {
