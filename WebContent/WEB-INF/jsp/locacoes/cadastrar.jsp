@@ -69,16 +69,14 @@
      var model =
     	    '<div class="produtointem">'+
     	    '<label>Produto:</label>&nbsp' +
-    		'<select id="produto" onchange="teste(value);" name="locacao.locacaodetalhe[0].produto.id" value="locacao.locacaodetalhe[0].produto.id">'+
-    		'	<c:forEach items="${produtoList}" var="produto" varStatus="status">'+	
+    		'<select id="produto" onchange="getpreco(value, name);" name="locacao.locacaodetalhe[0].produto.id" value="locacao.locacaodetalhe[0].produto.id">'+
+    		'	<option value="">Selecione um Item</option>'+
+    		'	<c:forEach items="${produtoList}" var="produto" varStatus="status">'+
     		'		<option value="${produto.id}">${produto.nome}</option>'+
     		'	</c:forEach>'+
     		'</select>&nbsp&nbsp'+
     		'<label>R$:</label>&nbsp' +
     		'<select id="preco" name="locacao.locacaodetalhe[0].preco" value="locacao.locacaodetalhe[0].preco">'+
-    		'	<c:forEach items="${produtoList}" var="produto" varStatus="status">'+	
-    		'		<option value="${produto.id}">${produto.nome}</option>'+
-    		'	</c:forEach>'+
     		'</select>&nbsp&nbsp'+
     		'<label>Quantidade:</label>&nbsp' +
     		'<input type="text" name="locacao.locacaodetalhe[0].quantidade" value="${locacao.locacaodetalhe[0].quantidade}" />&nbsp&nbsp'+
@@ -98,23 +96,41 @@
     			
     		};
     		
-    		function teste(id){
+    		function getpreco(id, nome){
+    			
+    			var indice = nome.substring(nome.indexOf('[')+1, nome.indexOf(']'));
+    			
     		    $.ajax({  
-    		        url: '/locacoes/getprecos/',  
+    		        url: '/sisloc/locacoes/getprecos/',  
     		        data: {p:id},  
     		        type : 'get',  
     		        dataType: 'json',  
     		        success : function(precos) {
-    		        	alert("funcionou");
-    		            //$('#cidade').empty(); // Precisa limpar a combo antes.  
-    		            // no java vc faz cidades.get(0).getName() e cidades.get(0).getId(),  
-    		            // Com JSON vc vai fazer cidades[0].name e cidades[0].id  
-    		            //for (var i = 0; i < cidades.length; i++){  
-    		            //    $('#cidade').append('<option value="' + cidades[i].id + '">' + cidades[i].name + '</option>');  
-    		            //}  
+    		            
+    		            	$('.produtointem').each(function(index) {
+
+    		    				var $campos = $(this).find('select'),
+    	    					$input	,
+    	    					name	;
+
+    	    			    $campos.each(function() {
+    	    					$input	= $(this),
+    	    					name	= $input.attr('id');
+    	    					npreco  = $input.attr('name');
+    	    					index2 = npreco.substring(npreco.indexOf('[')+1, npreco.indexOf(']'));
+    	    					if(name == 'preco' && indice == index2){
+    	    						$input.find('option').remove();
+    	    						for (var i = 0; i < precos.length; i++){
+    	    							$input.append('<option value="'+precos[i].id+'">'+precos[i].preco+'</option>');
+    	    						}
+    	    					}
+	    	    			});
+    		            		
+    		            	});    
     		        }  
-    		    });  
+    		    });
     		}
+    		
     		
     		function reorderIndexes() {
     			var regex = /\[[0-9]\]/g;
