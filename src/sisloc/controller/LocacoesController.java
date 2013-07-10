@@ -75,7 +75,7 @@ public class LocacoesController {
 		return t;
 	}
 	
-	@Path("/locacoes/getprecos/")
+	@Path("/locacoes/getprecos/{produto.id}")
 	public void getprecos(Long p){
 		Produto prod = new Produto();
 		prod.setId(p);
