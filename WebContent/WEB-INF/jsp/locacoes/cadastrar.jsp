@@ -53,6 +53,9 @@
 				<table align="center">
 					<tr><td>
 					<input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br/>	
+					</td>
+					<td>
+					<input type="submit" value="Imprimir" class="imprimir" icon="ui-icon-print"/><br/>	
 					</td></tr>
 				</table>
 			</div>
@@ -96,10 +99,7 @@
     		};
     		
     		function teste(){
-    			var produtos = '${produtoList}';
- 				for(i=0;i<'${produtoList.size()}';i++){
- 					alert("${produtoList["+i+"].id}");
- 				}
+    			alert("funcionou");
     		}
     		
     		function reorderIndexes() {

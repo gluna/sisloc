@@ -22,8 +22,14 @@
 <!-- <h3>Usuário: ${userSession.user.nome} <a href="${pageContext.request.contextPath}/logout"> Logout</h3> -->
 <div id="wrapper">
 	<div id="logo" class="container">
-		<h1><a href="<c:url value="/index/index"/>">SISLOC</a></h1>
+		<table>
+		<tr><td><img src="${pageContext.request.contextPath}/images/logo_pagina.png" height="100" width="200"></td>
+		<td width="280"></td>
+		<td><h1><a href="<c:url value="/index/index"/>">SISLOC</a></h1></td>
+		</tr>
+		</table>
 		<p>Sistema de Locação de Equipamentos</p>
+		
 	</div>
 	<div id='cssmenu' class="container">
 		<ul>
