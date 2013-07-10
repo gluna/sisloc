@@ -69,7 +69,7 @@
      var model =
     	    '<div class="produtointem">'+
     	    '<label>Produto:</label>&nbsp' +
-    		'<select id="produto" onchange="teste();" name="locacao.locacaodetalhe[0].produto.id" value="locacao.locacaodetalhe[0].produto.id">'+
+    		'<select id="produto" onchange="teste(value);" name="locacao.locacaodetalhe[0].produto.id" value="locacao.locacaodetalhe[0].produto.id">'+
     		'	<c:forEach items="${produtoList}" var="produto" varStatus="status">'+	
     		'		<option value="${produto.id}">${produto.nome}</option>'+
     		'	</c:forEach>'+
@@ -98,8 +98,22 @@
     			
     		};
     		
-    		function teste(){
-    			alert("funcionou");
+    		function teste(id){
+    		    $.ajax({  
+    		        url: '/locacoes/getprecos/',  
+    		        data: {p:id},  
+    		        type : 'get',  
+    		        dataType: 'json',  
+    		        success : function(precos) {
+    		        	alert("funcionou");
+    		            //$('#cidade').empty(); // Precisa limpar a combo antes.  
+    		            // no java vc faz cidades.get(0).getName() e cidades.get(0).getId(),  
+    		            // Com JSON vc vai fazer cidades[0].name e cidades[0].id  
+    		            //for (var i = 0; i < cidades.length; i++){  
+    		            //    $('#cidade').append('<option value="' + cidades[i].id + '">' + cidades[i].name + '</option>');  
+    		            //}  
+    		        }  
+    		    });  
     		}
     		
     		function reorderIndexes() {

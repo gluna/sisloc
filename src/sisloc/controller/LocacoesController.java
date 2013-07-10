@@ -6,11 +6,13 @@ import sisloc.dao.LocacaoDao;
 import sisloc.dao.ProdutoDao;
 import sisloc.modelo.Locacao;
 import sisloc.modelo.LocacaoDetalhe;
+import sisloc.modelo.Preco;
 import sisloc.modelo.Produto;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.view.Results;
 
 @Resource
 public class LocacoesController {
@@ -71,6 +73,14 @@ public class LocacoesController {
 	public List<Locacao> consultar(){
 		List<Locacao> t = dao.listaTodos();
 		return t;
+	}
+	
+	@Path("/locacoes/getprecos/")
+	public void getprecos(Long p){
+		Produto prod = new Produto();
+		prod.setId(p);
+		List<Preco> precos = produtodao.selectById(prod).getPrecos();
+		result.use(Results.json()).withoutRoot().from(precos).serialize();  
 	}
 	
 	
