@@ -121,7 +121,7 @@
     	    					if(name == 'preco' && indice == index2){
     	    						$input.find('option').remove();
     	    						for (var i = 0; i < precos.length; i++){
-    	    							$input.append('<option value="'+precos[i].id+'">'+precos[i].preco+'</option>');
+    	    							$input.append('<option value="'+precos[i].preco+'">'+precos[i].preco+'</option>');
     	    						}
     	    					}
 	    	    			});
