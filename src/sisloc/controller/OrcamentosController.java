@@ -10,12 +10,16 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
 import sisloc.dao.OrcamentoDao;
+import sisloc.dao.ProdutoDao;
 import sisloc.modelo.Orcamento;
+import sisloc.modelo.Preco;
+import sisloc.modelo.Produto;
 import sisloc.util.SislocUtils;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.view.Results;
 
 
 @Resource
@@ -24,15 +28,19 @@ public class OrcamentosController {
 	private OrcamentoDao dao;
 	private Result result;
 	private ServletContext context;
+	private ProdutoDao produtodao;
 	
-	public OrcamentosController(OrcamentoDao dao, Result result,final ServletContext context){
+	public OrcamentosController(OrcamentoDao dao, Result result,final ServletContext context, ProdutoDao produtodao){
 		this.dao = dao;
 		this.result = result;
 		this.context = context;
+		this.produtodao = produtodao;
 	}
 	
 	@Path("/orcamentos/cadastrar")
-	public void cadastrar(){
+	public List<Produto> cadastrar(){
+		List<Produto> t = produtodao.listaTodos();
+		return t;
 	}
 	
 	@Post
@@ -92,6 +100,14 @@ public class OrcamentosController {
 		}catch(Exception e){e.printStackTrace();}
 		//return null; //new ReportDownload(report, Pdf()); 
 		result.redirectTo(this.getClass()).cadastrar();
+	}
+	
+	@Path("/orcamentos/getprecos/{produto.id}")
+	public void getprecos(Long p){
+		Produto prod = new Produto();
+		prod.setId(p);
+		List<Preco> precos = produtodao.selectById(prod).getPrecos();
+		result.use(Results.json()).withoutRoot().from(precos).serialize();  
 	}
 	
 }

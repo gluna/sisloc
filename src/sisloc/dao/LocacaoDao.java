@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import sisloc.modelo.Locacao;
-import sisloc.modelo.Produto;
 import br.com.caelum.vraptor.ioc.Component;
 
 @Component
@@ -61,16 +60,6 @@ public class LocacaoDao {
 		Query q = manager.createQuery("from Locacao order by dtlocacao");
 		t = (List<Locacao>) q.getResultList();		
 		return t;
-	}
-	
-	@SuppressWarnings("unchecked")
-	public List<Produto> listaProdutos(){
-		List<Produto> p;
-		Query q = manager.createQuery("from Produto order by nome");
-		p = (List<Produto>) q.getResultList();		
-		return p;
-		
-	}
-		
+	}		
 
 }

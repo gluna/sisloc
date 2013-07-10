@@ -31,8 +31,7 @@
 					Detalhes do Orçamento:
 				</legend>
 				<table align="right"><tr><td>
-					<input type="button" id="add-prod" value="Adicionar" icon="ui-icon-document"/></td>
-					</tr>
+					<input type="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-contact"/></td></tr>
 				</table>
 				<!--<c:forEach items="${orcamento.orcamentodetalhe}" var="orcamentodetalhe" varStatus="status">
 					<div class="orcamentodetalhe">
@@ -73,59 +72,57 @@
 <%@ include file="../../../footer.jsp"%>
 
 <script type="text/javascript">
-	var model =
-		'<div class="orcamentodetalhe">' +
-			'<label>Numero:</label>' +
-			'<select id="pr" name="pr">' +
-			'</select>' +
-			'<input type="text" name="orcamento.orcamentodetalhe[${status.index}].produto" value="${orcamentodetalhe.produto}" />'+
-			'<input type="text" name="orcamento.orcamentodetalhe[${status.index}].quantidade" value="${orcamentodetalhe.quantidade}" />'+
-			'<input type="text" name="orcamento.orcamentodetalhe[${status.index}].preco" value="${orcamentodetalhe.preco}" />'+
-			'<input type="hidden" name="orcamento.orcamentodetalhe[${status.index}].id" value="${orcamentodetalhe.id}" />'+
-			'<img src="${pageContext.request.contextPath}/images/excluir.png" alt="-" class="button-remover" />' +
-		'</div>';
+var model =
+    '<div class="produtointem">'+
+    '<label>Produto:</label>&nbsp' +
+	'<select id="produto" onchange="getpreco(value, name);" name="orcamento.orcamentodetalhe[0].produto.id" value="orcamento.orcamentodetalhe[0].produto.id">'+
+	'	<option value="">Selecione um Item</option>'+
+	'	<c:forEach items="${produtoList}" var="produto" varStatus="status">'+
+	'		<option value="${produto.id}">${produto.nome}</option>'+
+	'	</c:forEach>'+
+	'</select>&nbsp&nbsp'+
+	'<label>R$:</label>&nbsp' +
+	'<select id="preco" name="orcamento.orcamentodetalhe[0].preco" value="orcamento.orcamentodetalhe[0].preco">'+
+	'</select>&nbsp&nbsp'+
+	'<label>Quantidade:</label>&nbsp' +
+	'<input type="text" name="orcamento.orcamentodetalhe[0].quantidade" value="${orcamento.orcamentodetalhe[0].quantidade}" />&nbsp&nbsp'+
+	'<input type="button" class="button-remover" />' +
+	'</div>';
+	
+	function getpreco(id, nome){
 		
-		//$('#produto').on('change', function(){   
-		//    $.ajax({  
-		//        url: '/produtos/consultar',    
-		//        type : 'get',  
-		//        dataType: 'json',  
-		//        success : function(produto) {  
-		            //$('#produto').empty(); // Precisa limpar a combo antes.    
-		//            for (var i = 0; i < produto.length; i++){  
-		//                $('#produto').append('<option value="' + produto[i].nome + '">' + produto[i].nome + '</option>');  
-		//            }  
-		//        }  
-		//    });  
-		//});
+		var indice = nome.substring(nome.indexOf('[')+1, nome.indexOf(']'));
 		
-		//$('#produto').live('load', function(){
-		//	$.getJSON('<c:url value="/produtos/consultar/2"/>', function(json) {
-		//		$('#prodlist').empty();
-				//for (var i = 0; i < produto.length; i++){
-		//			$('#prodlist').append('<option value="' + produto.nome + '">' + produto.nome + '</option>');
-				//}
-		//	});
-		//});
+	    $.ajax({  
+	        url: '/sisloc/orcamentos/getprecos/',  
+	        data: {p:id},  
+	        type : 'get',  
+	        dataType: 'json',  
+	        success : function(precos) {
+	            
+	            	$('.produtointem').each(function(index) {
 
-	//function carregar() {
-		//id = "container";
-		//$.getJSON('<c:url value="/produtos/consultar"/>', function(json) {
-			//alert("teste");
-		//});
-		//$.ajax({
-			//url: '/produtos/consultanome',
-			//data: 'container',
-			//type: 'get',
-			//dataType: 'json',
-			//success: function (prod) {
-				//$('#pr').empty();
-				//for (var i = 0; i < prod.length; i++){
-					//$('#pr').append('<option value="' + prod[i].nome + '">' + prod[i].nome + '</option>')
-				//}
-			//} 
-		//});
-	//}
+	    				var $campos = $(this).find('select'),
+    					$input	,
+    					name	;
+
+    			    $campos.each(function() {
+    					$input	= $(this),
+    					name	= $input.attr('id');
+    					npreco  = $input.attr('name');
+    					index2 = npreco.substring(npreco.indexOf('[')+1, npreco.indexOf(']'));
+    					if(name == 'preco' && indice == index2){
+    						$input.find('option').remove();
+    						for (var i = 0; i < precos.length; i++){
+    							$input.append('<option value="'+precos[i].preco+'">'+precos[i].preco+'</option>');
+    						}
+    					}
+	    			});
+	            		
+	            	});    
+	        }  
+	    });
+	}
 		
 	$('.button-remover').live('click', function() {
 		$(this).parent().remove();
@@ -138,24 +135,40 @@
 
 	function adicionar() {
 		$('#detalhe-container').append(model);
-		//carregar();
 		reorderIndexes();
 	};
 	
 	function reorderIndexes() {
 		var regex = /\[[0-9]\]/g;
-	
-		$('.orcamentodetalhex').each(function(index) {
+		
+		$('.produtointem').each(function(index) {
+			
 			var $campos = $(this).find('input'),
 				$input	,
 				name	;
 
 			$campos.each(function() {
+				
 				$input	= $(this),
 				name	= $input.attr('name');
-
-				$input.attr('name', name.replace(regex, '[' + index + ']'));
+				if($input.attr('type') != 'button'){
+					$input.attr('name', name.replace(regex, '[' + index + ']'));
+				}
 			});
+			
+			var $campos = $(this).find('select'),
+				$input	,
+				name	;
+
+		    $campos.each(function() {
+			
+				$input	= $(this),
+				name	= $input.attr('name');
+				if($input.attr('type') != 'button'){
+					$input.attr('name', name.replace(regex, '[' + index + ']'));
+				}
+		});
+			
 		});
 		
 	};

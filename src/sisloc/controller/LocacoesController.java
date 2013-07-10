@@ -29,7 +29,7 @@ public class LocacoesController {
 	
 	@Path("/locacoes/cadastrar")
 	public List<Produto> cadastrar(){
-		List<Produto> t = dao.listaProdutos();
+		List<Produto> t = produtodao.listaTodos();
 		return t;
 	}
 	
