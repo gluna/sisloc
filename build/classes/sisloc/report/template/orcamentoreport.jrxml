@@ -115,9 +115,6 @@ WHERE
 				</textElement>
 				<text><![CDATA[Nome da Empresa]]></text>
 			</staticText>
-			<image>
-				<reportElement uuid="1b2d11ac-34b2-4b27-be8e-26d05183699d" x="0" y="0" width="100" height="50"/>
-			</image>
 			<textField>
 				<reportElement uuid="26891e36-e711-4f72-9d58-9c591e0e4522" x="0" y="70" width="555" height="17"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -131,6 +128,10 @@ WHERE
 			<line>
 				<reportElement uuid="06eb8ebf-daa0-4737-9147-a8055ddb6636" x="0" y="92" width="555" height="1"/>
 			</line>
+			<image>
+				<reportElement uuid="8ff43988-c853-4e34-a01d-6284c7f95839" x="-1" y="0" width="71" height="50"/>
+				<imageExpression><![CDATA["/home/gustavo/Documentos/logocabecalho.png"]]></imageExpression>
+			</image>
 		</band>
 	</pageHeader>
 	<detail>
