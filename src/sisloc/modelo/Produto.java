@@ -15,9 +15,6 @@ import javax.persistence.OneToMany;
 @Entity
 public class Produto implements Serializable{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -2257876564571767612L;
 	
 	@Id

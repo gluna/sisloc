@@ -12,6 +12,7 @@ import net.sf.jasperreports.view.JasperViewer;
 import sisloc.dao.OrcamentoDao;
 import sisloc.dao.ProdutoDao;
 import sisloc.modelo.Orcamento;
+import sisloc.modelo.OrcamentoDetalhe;
 import sisloc.modelo.Preco;
 import sisloc.modelo.Produto;
 import sisloc.util.SislocUtils;
@@ -48,6 +49,9 @@ public class OrcamentosController {
 	public void salvar(Orcamento orcamento){
 		try {
 		     if(orcamento != null) {
+		    	 for(OrcamentoDetalhe od : orcamento.getOrcamentodetalhe() ){
+		    		 od.setProduto(produtodao.selectById(od.getProduto()));
+		    	 }
 		    	 if(orcamento.getId() == null) {
 		    		 dao.salvar(orcamento);
 		    	 } else {
