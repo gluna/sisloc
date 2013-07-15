@@ -70,17 +70,6 @@
 			</div>
 		</div>	
 	</form>
-	<div id="dialog-form" title="Adicionar produto">
-			<fieldset>
-		    	<label for="name">Produto:</label>
-		    	<select name="name" id="name">
-		    		<c:forEach items="${produtoList}" var="produto" varStatus="status">
-						  <option id="p" value="${produto.nome}">${produto.nome}</option>
-					</c:forEach>
-				</select>
-				
-		  </fieldset>
-	</div>
 </body>
 <%@ include file="../../../footer.jsp"%>
 
@@ -224,38 +213,6 @@ var model =
 	 
 		//$( "#name" ).change(function() {
 		//	alert(prod.val());
-		//});
-		var prod = "";
-		prod = $("#p");
-		$( "#dialog-form" ).dialog({
-	      autoOpen: false,
-	      height: 300,
-	      width: 350,
-	      modal: true,
-	      buttons: {
-	        "Adicionar": function() {
-	 
-	            $( "#orcamentodetalhe" ).append(
-	            		"<tr>" +
-	            		"<td>" +
-	            		"<label>Produto:</label>" +
-	            		"</td>" +
-	            		"<td>" +
-	            		"<input type='text' value='" +
-	            		prod.val() + "' />" +
-	              		"</td>" +
-	              		"</tr>" );
-	            $( this ).dialog( "close" );
-	        },
-	        Cancel: function() {
-	          $( this ).dialog( "close" );
-	        }
-	      }
-	   });
-	    $( "#add-prod" )
-	      .click(function() {
-	        $( "#dialog-form" ).dialog( "open" );
-	      });
 	});
 	
 </script>

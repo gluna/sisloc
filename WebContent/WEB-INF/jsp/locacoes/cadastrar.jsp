@@ -20,7 +20,16 @@
 					<td align="left"><input	type="text" name="locacao.id" value="${locacao.id}" readonly /><br></td>
 					<td align="right" width="95"><label>Nome do Cliente:</label></td>
 					<td align="left"><input	type="text" class="maiuscula" name="locacao.nome" size=50 value="${locacao.nome}" /><br></td>
-				</tr></table>
+				</tr></table> 
+				</fieldset>
+				<br/>
+				<fieldset id="endereco_cliente" style="width: 1140px;">
+				<legend>
+					Endereço da Locação:
+				</legend>
+				<table align="right"><tr><td>
+					<input type="button" value="Endereço" id="criar" icon="ui-icon-contact"/></td></tr>
+				</table>
 				</fieldset>
 				<br/>
 				<fieldset id="formulario" style="width: 1140px;">
@@ -74,7 +83,7 @@
 					<td align="right" width="95"><label>Desconto (R$):</label></td>
 					<td align="left"><input	type="text" name="locacao.descontovalor" value="${locacao.descontovalor}" /><br></td>
 				</tr></table>
-				</fieldset>
+				</fieldset><br>
 				<table align="center">
 					<tr><td>
 					<input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br/>	
@@ -86,7 +95,68 @@
 			</div>
 		</div>
 	</form>
-	
+	<div id="dialog-form" title="Adicionar Endereço">
+		<form>
+		<fieldset>
+		<table><tr><td align="right" width="95"><label>Endereço:</label> </td>
+						<td align="left"><input class="maiuscula" type="text" name="locacao.logradouro" size=96 value="${locacao.logradouro}" /> </td>
+						<td align="right"><label>Número:</label></td> 
+						<td align="left"> <input class="maiuscula" type="text" name="locacao.numero" size=10 value="${locacao.numero}" /><br> </td></tr></table><br> 
+						<table><tr><td align="right"> <label>Complemento:</label></td> 
+						<td align="left"><input class="maiuscula" type="text" name="locacao.complemento" size=50 value="${locacao.complemento}" /> <br></td>
+						<td align="right" width="85"><label>Bairro:</label></td> 
+						<td align="left"> <input class="maiuscula" type="text" name="locacao.bairro" size=29 value="${locacao.bairro}" /><br> </td>
+						</tr></table><br>
+						<table><tr><td align="right" width="95"> <label>Cidade:</label></td> 
+						<td align="left"><input class="maiuscula" type="text" name="locacao.cidade" size=50 value="${locacao.cidade}" /> <br></td>
+						<td align="right" width="85"><label>UF:</label></td> 
+						<td align="left"> 
+						<select name="locacao.uf">
+								<option value="${locacao.uf}">${locacao.uf}</option>
+								<option value="AC">ACRE</option>
+								<option value="AL">ALAGOAS</option>
+								<option value="AP">AMAPÁ</option>
+								<option value="AM">AMAZONAS</option>
+								<option value="BA">BAHIA</option>
+								<option value="CE">CEARÁ</option>
+								<option value="DF">DISTRITO FEDERAL</option>
+								<option value="ES">ESPIRITO SANTO</option>
+								<option value="GO">GOIÁS</option>
+								<option value="MA">MARANHÃO</option>
+								<option value="MS">MATO GROSSO DO SUL</option>
+								<option value="MT">MATO GROSSO</option>
+								<option value="MG">MINAS GERAIS</option>
+								<option value="PA">PARÁ</option>
+								<option value="PB">PARAÍBA</option>
+								<option value="PR">PARANÁ</option>
+								<option value="PE">PERNAMBUCO</option>
+								<option value="PI">PIAUÍ</option>
+								<option value="RJ">RIO DE JANEIRO</option>
+								<option value="RN">RIO GRANDE DO NORTE</option>
+								<option value="RS">RIO GRANDE DO SUL</option>
+								<option value="RO">RONDÔNIA</option>
+								<option value="RR">RORAIMA</option>
+								<option value="SC">SANTA CATARINA</option>
+								<option value="SP">SÃO PAULO</option>
+								<option value="SE">SERGIPE</option>
+								<option value="TO">TOCANTINS</option>
+						</select>
+						<br> </td>
+						<td align="right" width="67"><label>CEP:</label></td> 
+						<td align="left"> <input class="maiuscula" type="text" name="locacao.cep" size=12 value="${locacao.cep}" /><br> </td>
+						</tr></table><br>
+						<table><tr><td align="right" width="95"><label>Tipo:</label> </td>
+						<td align="left">
+						<select name="locacao.tipoendereco">
+								<option value="${locacao.tipoendereco}">${locacao.tipoendereco}</option>
+								<option value="ENTREGA">ENTREGA</option>
+								<option value="COBRANCA">COBRANCA</option>
+						</select></td>
+						<td align="right"><label>Número:</label></td> 
+						<td align="left"> <input class="maiuscula" type="text" name="cliente.numero" size=10 value="${cliente.numero}" /><br> </td></tr></table><br> 
+		</fieldset>
+		</form>
+	</div>
 </body>
 <%@ include file="../../../footer.jsp"%>
  <script type="text/javascript">
@@ -226,6 +296,44 @@
 			buttonImage: "${pageContext.request.contextPath}/images/calendar.gif",
 			buttonImageOnly: true
 		});
+		 $( "#criar" )
+		 .click(function() {
+		 $( "#dialog-form" ).dialog( "open" );
+		 });
+		 
+		 $( "#dialog-form" ).dialog({
+			 autoOpen: false,
+			 height: 340,
+			 width: 950,
+			 modal: true,
+			 buttons: {
+			 "Adicionar": function() {
+			 var bValid = true;
+			 allFields.removeClass( "ui-state-error" );
+			 bValid = bValid && checkLength( name, "username", 3, 16 );
+			 bValid = bValid && checkLength( email, "email", 6, 80 );
+			 bValid = bValid && checkLength( password, "password", 5, 16 );
+			 bValid = bValid && checkRegexp( name, /^[a-z]([0-9a-z_])+$/i, "Username may consist of a-z, 0-9, underscores, begin with a letter." );
+			 // From jquery.validate.js (by joern), contributed by Scott Gonzalez: http://projects.scottsplayground.com/email_address_validation/
+			 bValid = bValid && checkRegexp( email, /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i, "eg. ui@jquery.com" );
+			 bValid = bValid && checkRegexp( password, /^([0-9a-zA-Z])+$/, "Password field only allow : a-z 0-9" );
+			 if ( bValid ) {
+			 $( "#users tbody" ).append( "<tr>" +
+			 "<td>" + name.val() + "</td>" +
+			 "<td>" + email.val() + "</td>" +
+			 "<td>" + password.val() + "</td>" +
+			 "</tr>" );
+			 $( this ).dialog( "close" );
+			 }
+			 },
+			 Cancel: function() {
+			 $( this ).dialog( "close" );
+			 }
+			 },
+			 close: function() {
+			 allFields.val( "" ).removeClass( "ui-state-error" );
+			 }
+			 });
  });
  </script>
 <style type="text/css">

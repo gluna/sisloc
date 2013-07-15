@@ -96,7 +96,7 @@
 						<input type="button" class="button-remover"/>
 					</div>
 				</c:forEach>
-				</fieldset><br/>
+				</fieldset>
 	
 				<br>
 				<table align="center">
