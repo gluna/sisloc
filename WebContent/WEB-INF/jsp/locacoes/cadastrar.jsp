@@ -11,7 +11,18 @@
 			</ul>
 			<div id="tabs-1">
 				<br>
-				<br>
+				<fieldset id="nome_cliente" style="width: 1140px;">
+				<legend>
+					Dados da Locação:
+				</legend>
+				<table><tr>
+					<td align="right" width="95"><label>Número da Locação:</label></td>
+					<td align="left"><input	type="text" name="locacao.id" value="${locacao.id}" readonly /><br></td>
+					<td align="right" width="95"><label>Nome do Cliente:</label></td>
+					<td align="left"><input	type="text" class="maiuscula" name="locacao.nome" size=50 value="${locacao.nome}" /><br></td>
+				</tr></table>
+				</fieldset>
+				<br/>
 				<fieldset id="formulario" style="width: 1140px;">
 					<legend> Datas da Locação: </legend>
 					<!--<label>ID:</label> -->
@@ -49,6 +60,20 @@
 					<input type="text" name="locacao.locacaodetalhe[${status.index}].quantidade" value="${detalhe.quantidade}" />
 				</div>
 				</c:forEach>
+				</fieldset>
+				<br>
+				<fieldset id="nome_cliente" style="width: 1140px;">
+				<legend>
+					Valores da Locação:
+				</legend>
+				<table><tr>
+					<td align="right" width="95"><label>Nota R$:</label></td>
+					<td align="left"><input	type="text" name="locacao.valortotal" value="${locacao.valortotal}"/><br></td>
+					<td align="right" width="95"><label>Desconto (%):</label></td>
+					<td align="left"><input	type="text" name="locacao.descontopercent" value="${locacao.descontopercent}" /><br></td>
+					<td align="right" width="95"><label>Desconto (R$):</label></td>
+					<td align="left"><input	type="text" name="locacao.descontovalor" value="${locacao.descontovalor}" /><br></td>
+				</tr></table>
 				</fieldset>
 				<table align="center">
 					<tr><td>

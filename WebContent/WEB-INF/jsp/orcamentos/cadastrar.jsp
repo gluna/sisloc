@@ -9,12 +9,24 @@
 				<li><a href="#tabs-1">Cadastro de Orçamento</a></li>
 			</ul>
 			<div id="tabs-1">
-				<br><br>
+				<br>
+				<fieldset id="nome_cliente" style="width: 1140px;">
+				<legend>
+					Dados do Orçamento:
+				</legend>
+				<table><tr>
+					<td align="right" width="95"><label>Número do Orçamento:</label></td>
+					<td align="left"><input	type="text" name="orcamento.id" value="${orcamento.id}" readonly /><br></td>
+					<td align="right" width="95"><label>Nome do Cliente:</label></td>
+					<td align="left"><input	type="text" class="maiuscula" name="orcamento.nome" size=50 value="${orcamento.nome}" /><br></td>
+				</tr></table>
+				</fieldset>
+				<br/>
 				<fieldset id="formulario" style="width: 1140px;"> 
 				<legend>
 					Datas do Orçamento:
 				</legend>
-				<!--<label>ID:</label> --><input type="hidden" name="orcamento.id" value="${orcamento.id}" readonly />
+				<!--<label>ID:</label> <input type="hidden" name="orcamento.id" value="${orcamento.id}" readonly /> -->
 					<table><tr><td align="right" width="95"> 
 						<label>Data do Orçamento:</label></td> 
 						<td align="left"><input	type="text" class="data" name="orcamento.data" value="${orcamento.data}" /><br></td>
@@ -43,16 +55,17 @@
 						'<img src="${pageContext.request.contextPath}/images/remover.png" alt="-" class="button-remover" />'
 					</div>
 				</c:forEach>-->
-					<div class="orcamentodetalhe">
 					<table id="orcamentodetalhe">
 					</table>
-					</div>
 				</fieldset><br/>
 	
 				<br>
 				<table align="center">
 					<tr><td> 
-					<input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br /></tr></td>
+					<input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br />
+					<td>
+					<input type="submit" value="Imprimir" class="imprimir" icon="ui-icon-print"/><br/>	
+					</td></tr>
 				</table>
 			</div>
 		</div>	
@@ -246,3 +259,16 @@ var model =
 	});
 	
 </script>
+<style type="text/css">
+input.maiuscula {
+  text-transform: uppercase;
+}
+
+.button-remover {
+  background-image: url('${pageContext.request.contextPath}/images/btn_remover.png');
+  cursor:pointer;
+  border: none;
+  width: 34px;
+  height: 33px;
+}
+</style>

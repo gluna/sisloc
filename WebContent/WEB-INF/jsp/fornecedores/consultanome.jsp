@@ -9,7 +9,7 @@
 				<li><a href="#tabs-1">Consultar Fornecedor</a></li>
 			</ul>
 			<div id="tabs-1">
-				<br><br>
+				<br>
 				<fieldset id="formulario" style="width: 1140px;"> 
 				<legend>
 					Dados da Consulta:
