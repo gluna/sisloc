@@ -24,6 +24,7 @@ public class Locacao implements Serializable{
 	private Date dtlocacao;
 	private Date dtinicio;
 	private Date dtfim;
+	private Long empresa = (long) 1;
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn
@@ -140,5 +141,13 @@ public class Locacao implements Serializable{
 
 	public void setPagamentos(List<Pagamento> pagamentos) {
 		this.pagamentos = pagamentos;
+	}
+
+	public Long getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Long empresa) {
+		this.empresa = empresa;
 	}
 }
