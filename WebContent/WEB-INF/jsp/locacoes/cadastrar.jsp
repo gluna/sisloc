@@ -25,55 +25,13 @@
 				<br/>
 				<fieldset id="endereco_cliente" style="width: 1140px;">
 				<legend>
-					Endereço de Entrega:
-				</legend><input type="hidden" name="locacao.tipoendereco" value="${locacao.tipoendereco}" />
-				<table><tr><td align="right" width="95"><label>Endereço:</label> </td>
-						<td align="left"><input class="maiuscula" type="text" name="locacao.logradouro" size=96 value="${locacao.logradouro}" /> </td>
-						<td align="right"><label>Número:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="locacao.numero" size=10 value="${locacao.numero}" /><br> </td></tr></table><br> 
-						<table><tr><td align="right"> <label>Complemento:</label></td> 
-						<td align="left"><input class="maiuscula" type="text" name="locacao.complemento" size=50 value="${locacao.complemento}" /> <br></td>
-						<td align="right" width="85"><label>Bairro:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="locacao.bairro" size=29 value="${locacao.bairro}" /><br> </td>
-						</tr></table><br>
-						<table><tr><td align="right" width="95"> <label>Cidade:</label></td> 
-						<td align="left"><input class="maiuscula" type="text" name="locacao.cidade" size=50 value="${locacao.cidade}" /> <br></td>
-						<td align="right" width="85"><label>UF:</label></td> 
-						<td align="left"> 
-						<select name="locacao.uf">
-								<option value="${locacao.uf}">${locacao.uf}</option>
-								<option value="AC">ACRE</option>
-								<option value="AL">ALAGOAS</option>
-								<option value="AP">AMAPÁ</option>
-								<option value="AM">AMAZONAS</option>
-								<option value="BA">BAHIA</option>
-								<option value="CE">CEARÁ</option>
-								<option value="DF">DISTRITO FEDERAL</option>
-								<option value="ES">ESPIRITO SANTO</option>
-								<option value="GO">GOIÁS</option>
-								<option value="MA">MARANHÃO</option>
-								<option value="MS">MATO GROSSO DO SUL</option>
-								<option value="MT">MATO GROSSO</option>
-								<option value="MG">MINAS GERAIS</option>
-								<option value="PA">PARÁ</option>
-								<option value="PB">PARAÍBA</option>
-								<option value="PR">PARANÁ</option>
-								<option value="PE">PERNAMBUCO</option>
-								<option value="PI">PIAUÍ</option>
-								<option value="RJ">RIO DE JANEIRO</option>
-								<option value="RN">RIO GRANDE DO NORTE</option>
-								<option value="RS">RIO GRANDE DO SUL</option>
-								<option value="RO">RONDÔNIA</option>
-								<option value="RR">RORAIMA</option>
-								<option value="SC">SANTA CATARINA</option>
-								<option value="SP">SÃO PAULO</option>
-								<option value="SE">SERGIPE</option>
-								<option value="TO">TOCANTINS</option>
-						</select>
-						<br> </td>
-						<td align="right" width="67"><label>CEP:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="locacao.cep" size=12 value="${locacao.cep}" /><br> </td>
-						</tr></table><br>
+					Endereço:
+				</legend>
+				<table align="right"><tr><td>
+					<input type="button" value="Adicionar" onclick="adicionarend();" icon="ui-icon-contact"/></td></tr>
+				</table>
+				<div class="endintem">
+				</div>
 				</fieldset>
 				<br/>
 				<fieldset id="formulario" style="width: 1140px;">
@@ -143,7 +101,113 @@
 <%@ include file="../../../footer.jsp"%>
  <script type="text/javascript">
      
-     var model =
+     	var endmodel = 
+     		'<div class="endintem">'+
+     		'<table>' +
+     		'<tr>' +
+     		'<td align="right" width="95">' +
+     		'<label>Endereço:</label>' + 
+     		'</td>' +
+			'<td align="left">' +
+			'<input class="maiuscula" type="text" name="locacao.logradouro" size=96 value="${locacao.logradouro}" />' +
+			'</td>' +
+			'<td align="right">' +
+			'<label>Número:</label>' +
+			'</td>' + 
+			'<td align="left">' +
+			'<input class="maiuscula" type="text" name="locacao.numero" size=10 value="${locacao.numero}" />' +
+			'<br>' +
+			'</td>' +
+			'</tr>' +
+			'</table>' +
+			'<br>' + 
+			'<table>' +
+			'<tr>' +
+			'<td align="right">' +
+			'<label>Complemento:</label>' +
+			'</td>' + 
+			'<td align="left">' +
+			'<input class="maiuscula" type="text" name="locacao.complemento" size=50 value="${locacao.complemento}" />' +
+			'<br>' +
+			'</td>' +
+			'<td align="right" width="85">' +
+			'<label>Bairro:</label>' +
+			'</td>' +
+			'<td align="left">' +
+			'<input class="maiuscula" type="text" name="locacao.bairro" size=29 value="${locacao.bairro}" />' +
+			'<br>' +
+			'</td>' +
+			'<td align="right" width="35">' +
+			'<label>Tipo:</label>' +
+			'</td>' + 
+			'<td align="left">' + 
+			'<select name="locacao.tipoendereco">' +
+					'<option value="${locacao.tipoendereco}">${locacao.tipoendereco}</option>' +
+					'<option value="ENTREGA">ENTREGA</option>' +
+					'<option value="COBRANÇA">COBRANÇA</option>' +
+			'</select>' +
+			'</td>' +
+			'</tr>' +
+			'</table>' +
+			'<br>' +
+			'<table>' +
+			'<tr>' +
+			'<td align="right" width="95">' +
+			'<label>Cidade:</label>' +
+			'</td>' + 
+			'<td align="left">' +
+			'<input class="maiuscula" type="text" name="locacao.cidade" size=50 value="${locacao.cidade}" />' +
+			'<br>' +
+			'</td>' +
+			'<td align="right" width="85">' +
+			'<label>UF:</label>' +
+			'</td>' + 
+			'<td align="left">' + 
+			'<select name="locacao.uf">' +
+					'<option value="${locacao.uf}">${locacao.uf}</option>' +
+					'<option value="AC">ACRE</option>' +
+					'<option value="AL">ALAGOAS</option>' +
+					'<option value="AP">AMAPÁ</option>' +
+					'<option value="AM">AMAZONAS</option>' +
+					'<option value="BA">BAHIA</option>' +
+					'<option value="CE">CEARÁ</option>' +
+					'<option value="DF">DISTRITO FEDERAL</option>' +
+					'<option value="ES">ESPIRITO SANTO</option>' +
+					'<option value="GO">GOIÁS</option>' +
+					'<option value="MA">MARANHÃO</option>' +
+					'<option value="MS">MATO GROSSO DO SUL</option>' +
+					'<option value="MT">MATO GROSSO</option>' +
+					'<option value="MG">MINAS GERAIS</option>' +
+					'<option value="PA">PARÁ</option>' +
+					'<option value="PB">PARAÍBA</option>' +
+					'<option value="PR">PARANÁ</option>' +
+					'<option value="PE">PERNAMBUCO</option>' +
+					'<option value="PI">PIAUÍ</option>' +
+					'<option value="RJ">RIO DE JANEIRO</option>' +
+					'<option value="RN">RIO GRANDE DO NORTE</option>' +
+					'<option value="RS">RIO GRANDE DO SUL</option>' +
+					'<option value="RO">RONDÔNIA</option>' +
+					'<option value="RR">RORAIMA</option>' +
+					'<option value="SC">SANTA CATARINA</option>' +
+					'<option value="SP">SÃO PAULO</option>' +
+					'<option value="SE">SERGIPE</option>' +
+					'<option value="TO">TOCANTINS</option>' +
+			'</select>' +
+			'<br>' +
+			'</td>' +
+			'<td align="right" width="67">' +
+			'<label>CEP:</label>' +
+			'</td>' + 
+			'<td align="left">' +
+			'<input class="maiuscula" type="text" name="locacao.cep" size=12 value="${locacao.cep}" />' +
+			'<br>' +
+			'</td>' +
+			'</tr>' +
+			'</table>' +
+			'</div>' +
+			'<br>';
+ 
+ 		var model =
     	    '<div class="produtointem">'+
     	    '<label>Produto:</label>&nbsp' +
     		'<select id="produto" onchange="getpreco(value, name);" name="locacao.locacaodetalhe[0].produto.id" value="locacao.locacaodetalhe[0].produto.id">'+
@@ -165,6 +229,7 @@
     			reorderIndexes();
     		});
     		
+    		
     		function adicionar() {
     			
     			$('#locacaodetalhe').append(model);
@@ -172,6 +237,15 @@
     			reorderIndexes();
     			
     		};
+    		
+			function adicionarend() {
+    			
+    			$('#endereco_cliente').append(endmodel);
+
+    			//reorderIndexes();
+    			
+    		};
+    		
     		
     		function getpreco(id, nome){
     			
@@ -241,8 +315,8 @@
     			});
     				
     			});
-    			
     		};
+    			
  </script>
  <script>
  $(function() {
@@ -282,6 +356,13 @@
  </script>
 <style type="text/css">
 .button-remover {
+  background-image: url('${pageContext.request.contextPath}/images/btn_remover.png');
+  cursor:pointer;
+  border: none;
+  width: 34px;
+  height: 33px;
+}
+.button-remover-end {
   background-image: url('${pageContext.request.contextPath}/images/btn_remover.png');
   cursor:pointer;
   border: none;
