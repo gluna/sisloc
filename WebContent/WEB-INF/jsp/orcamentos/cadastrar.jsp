@@ -64,7 +64,7 @@
 					<tr><td> 
 					<input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br />
 					<td>
-					<input type="submit" value="Imprimir" class="imprimir" icon="ui-icon-print"/><br/>	
+					<input type="submit" value="Imprimir" class="imprimir" icon="ui-icon-print" action="<c:url value='/orcamentos/imprimirorcamento'/>"/><br/>	
 					</td></tr>
 				</table>
 			</div>

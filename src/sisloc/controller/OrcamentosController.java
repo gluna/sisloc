@@ -114,4 +114,14 @@ public class OrcamentosController {
 		result.use(Results.json()).withoutRoot().from(precos).serialize();  
 	}
 	
+	@Path("/orcamentos/imprimirorcamento")
+	public void imprimirorcamento(Orcamento orcamento){
+		salvar(orcamento);
+		if(orcamento.getId() == null){
+			System.out.println("nulo");
+		}else{
+			System.out.println("ok");
+		}
+	}
+	
 }

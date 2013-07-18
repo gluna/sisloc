@@ -16,7 +16,7 @@
 	user="postgres"
 	password="postgres"
 	scope="session"/>
-<title>Sistema de Tarefas</title>	
+<title>Sistema de Locação de Equipamentos</title>	
 </head>
 <body>
 <!-- <h3>Usuário: ${userSession.user.nome} <a href="${pageContext.request.contextPath}/logout"> Logout</h3> -->

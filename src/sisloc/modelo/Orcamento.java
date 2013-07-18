@@ -24,6 +24,7 @@ public class Orcamento implements Serializable{
 	private Date data;
 	private Date inicio;
 	private Date fim;
+	private String cliente;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn
@@ -67,6 +68,14 @@ public class Orcamento implements Serializable{
 
 	public void setFim(Date fim) {
 		this.fim = fim;
+	}
+
+	public String getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(String cliente) {
+		this.cliente = cliente;
 	}
 	
 
