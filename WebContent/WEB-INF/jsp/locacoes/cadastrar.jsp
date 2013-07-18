@@ -2,6 +2,7 @@
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <!-- <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-ui-1.10.3.custom.js"></script>
+<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery.maskMoney.js"></script>
 
 <body>
 	<form action="<c:url value='/locacoes/salvar'/>" method="post">
@@ -79,11 +80,11 @@
 				</legend>
 				<table><tr>
 					<td align="right" width="95"><label>Nota R$:</label></td>
-					<td align="left"><input	type="text" name="locacao.valortotal" value="${locacao.valortotal}"/><br></td>
+					<td align="left"><input	type="text" class="dinheiro" name="locacao.valortotal" value="${locacao.valortotal}"/><br></td>
 					<td align="right" width="95"><label>Desconto (%):</label></td>
 					<td align="left"><input	type="text" name="locacao.descontopercent" value="${locacao.descontopercent}" /><br></td>
 					<td align="right" width="95"><label>Desconto (R$):</label></td>
-					<td align="left"><input	type="text" name="locacao.descontovalor" value="${locacao.descontovalor}" /><br></td>
+					<td align="left"><input	type="text" class="dinheiro" name="locacao.descontovalor" value="${locacao.descontovalor}" /><br></td>
 				</tr></table>
 				</fieldset><br>
 				<table align="center">
@@ -316,6 +317,10 @@
     				
     			});
     		};
+    		
+    		$(document).ready(function(){
+                $("input.dinheiro").maskMoney({showSymbol:false, symbol:"R$", decimal:",", thousands:"."});
+          });
     			
  </script>
  <script>
