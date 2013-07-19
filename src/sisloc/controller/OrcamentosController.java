@@ -49,10 +49,11 @@ public class OrcamentosController {
 	public void salvar(Orcamento orcamento){
 		try {
 		     if(orcamento != null) {
+		    	 for(OrcamentoDetalhe od : orcamento.getOrcamentodetalhe() ){
+		    		 od.setProduto(produtodao.selectById(od.getProduto()));
+		    	 }
+
 		    	 if(orcamento.getId() == null) {
-			    	 for(OrcamentoDetalhe od : orcamento.getOrcamentodetalhe() ){
-			    		 od.setProduto(produtodao.selectById(od.getProduto()));
-			    	 }
 		    		 dao.salvar(orcamento);
 		    	 } else {
 		    		 dao.atualizar(orcamento);

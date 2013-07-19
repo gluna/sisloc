@@ -82,7 +82,7 @@ $('.salvar').live('click', function() {
 
 function adicionar() {
 	$('#preco-container').append(model);
-	$("input.dinheiro").maskMoney({showSymbol:false, symbol:"R$", decimal:",", thousands:"."});
+	//$("input.dinheiro").maskMoney({showSymbol:false, symbol:"R$", decimal:",", thousands:"."});
 	reorderIndexes();
 };
 

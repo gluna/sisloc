@@ -29,11 +29,11 @@
 				<!--<label>ID:</label> <input type="hidden" name="orcamento.id" value="${orcamento.id}" readonly /> -->
 					<table><tr><td align="right" width="95"> 
 						<label>Data do Orçamento:</label></td> 
-						<td align="left"><input	type="text" class="data" name="orcamento.data" value="${orcamento.data}" /><br></td>
+						<td align="left"><input	type="text" class="data" name="orcamento.data" value="<fmt:formatDate value="${orcamento.data}" dateStyle="medium" />" /><br></td>
 						<td align="right" width="80"><label>Data Inicio:</label></td> 
-						<td align="left"><input	type="text" class="data" name="orcamento.inicio" value="${orcamento.inicio}" /></td><br>
+						<td align="left"><input	type="text" class="data" name="orcamento.inicio" value="<fmt:formatDate value="${orcamento.inicio}" dateStyle="medium" />" /></td><br>
 						<td align="right" width="80"><label>Data Fim:</label> </td>
-						<td align="left"><input type="text" class="data" name="orcamento.fim" value="${orcamento.fim}" /> </td>
+						<td align="left"><input type="text" class="data" name="orcamento.fim" value="<fmt:formatDate value="${orcamento.fim}" dateStyle="medium" />" /> </td>
 						</tr></table>
 				</fieldset>
 				<br/>
@@ -46,18 +46,23 @@
 					<input type="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-contact"/></td></tr>
 				</table>
 				<c:forEach items="${orcamento.orcamentodetalhe}" var="orcamentodetalhe" varStatus="status">
-					<div class="orcamentodetalhe">
-						<label>Nome:</label>
-						<input type="text" name="orcamento.orcamentodetalhe[${status.index}].produto.nome" value="${orcamentodetalhe.produto.nome}" />
-						<input type="text" name="orcamento.orcamentodetalhe[${status.index}].quantidade" value="${orcamentodetalhe.quantidade}" />
-						<input type="text" name="orcamento.orcamentodetalhe[${status.index}].preco" value="${orcamentodetalhe.preco}" />
-						<input type="hidden" name="orcamento.orcamentodetalhe[${status.index}].id" value="${orcamentodetalhe.id}" />
-						'<img src="${pageContext.request.contextPath}/images/remover.png" alt="-" class="button-remover" />'
-					</div>
+					    <div class="produtointem">
+						    <label>Produto:</label>&nbsp
+							<select id="produto" onchange="getpreco(value, name);" name="orcamento.orcamentodetalhe[${status.index}].produto.id" value="orcamentodetalhe.produto.id">
+								<option value="${orcamentodetalhe.produto.id}">${orcamentodetalhe.produto.nome}</option>
+							</select>&nbsp&nbsp
+							<label>R$:</label>&nbsp
+							<select id="preco" name="orcamento.orcamentodetalhe[${status.index}].preco" value="orcamentodetalhe.preco">
+								<option value="${orcamentodetalhe.preco}">${orcamentodetalhe.preco}</option>
+							</select>&nbsp&nbsp
+							<label>Quantidade:</label>&nbsp
+							<input type="text" name="orcamento.orcamentodetalhe[${status.index}].quantidade" value="${orcamentodetalhe.quantidade}" />&nbsp&nbsp
+							<input type="hidden" name="orcamento.orcamentodetalhe[${status.index}].id" value="${orcamentodetalhe.id}" />
+							<input type="button" class="button-remover" />
+						</div>
 				</c:forEach>
-					<table id="orcamentodetalhe">
-					</table>
-				</fieldset><br/>
+				</fieldset>
+				<br/>
 	
 				<br>
 				<table align="center">
@@ -90,6 +95,7 @@ var model =
 	'</select>&nbsp&nbsp'+
 	'<label>Quantidade:</label>&nbsp' +
 	'<input type="text" name="orcamento.orcamentodetalhe[0].quantidade" value="${orcamento.orcamentodetalhe[0].quantidade}" />&nbsp&nbsp'+
+	'<input type="hidden" name="orcamento.orcamentodetalhe[0].id" value="${orcamentodetalhe.id}" />'+
 	'<input type="button" class="button-remover" />' +
 	'</div>';
 	
