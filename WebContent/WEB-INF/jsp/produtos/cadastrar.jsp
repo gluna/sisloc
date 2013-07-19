@@ -2,6 +2,7 @@
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <!-- <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-ui-1.10.3.custom.js"></script>
+<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery.maskMoney.js"></script>
 <body>
 	<form action="<c:url value='/produtos/salvar'/>" method="post">
 		 <div id="tabs" class="container">
@@ -40,7 +41,7 @@
 						<label>Dias:</label>&nbsp
 						<input type="text" name="produto.precos[${status.index}].dias" value="${preco.dias}" />&nbsp&nbsp
 						<label>Valor R$:</label>&nbsp
-						<input type="text" name="produto.precos[${status.index}].preco" value="${preco.preco}" />&nbsp&nbsp
+						<input type="text" class="dinheiro" name="produto.precos[${status.index}].preco" value="${preco.preco}" />&nbsp&nbsp
 						<input type="hidden" name="produto.precos[${status.index}].id" value="${preco.id}" />
 						<input type="button" class="button-remover" />
 					</div>
@@ -65,7 +66,7 @@ var model =
 		'<label>Dias:</label>&nbsp' +
 		'<input type="text" name="produto.precos[0].dias" value="${preco.dias}" />&nbsp&nbsp' +
 		'<label>Valor R$:</label>&nbsp' +
-		'<input type="text" name="produto.precos[0].preco" value="${preco.preco}" />&nbsp&nbsp' +
+		'<input type="text" class="dinheiro" name="produto.precos[0].preco" value="${preco.preco}" />&nbsp&nbsp' +
 		'<input type="hidden" name="produto.precos[0].id" value="${preco.id}" />'+
 		'<input type="button" class="button-remover" />' +
 	'</div>';
@@ -81,7 +82,7 @@ $('.salvar').live('click', function() {
 
 function adicionar() {
 	$('#preco-container').append(model);
-	
+	$("input.dinheiro").maskMoney({showSymbol:false, symbol:"R$", decimal:",", thousands:"."});
 	reorderIndexes();
 };
 
@@ -93,7 +94,6 @@ function reorderIndexes() {
 		var $campos = $(this).find('input'),
 			$input	,
 			name	;
-
 		$campos.each(function() {
 			
 			$input	= $(this),
@@ -119,6 +119,9 @@ function reorderIndexes() {
 	});
 	
 };
+$(document).ready(function(){
+    $("input.dinheiro").maskMoney({showSymbol:false, symbol:"R$", decimal:",", thousands:"."});
+});
 </script>
 <script>
 	$(function() {
