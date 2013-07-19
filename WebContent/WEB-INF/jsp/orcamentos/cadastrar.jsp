@@ -71,7 +71,7 @@
 					</td>
 					<td>
 					<!-- <input type="button" value="Imprimir" class="imprimir" icon="ui-icon-print" action="<c:url value='/orcamentos/salvar'/>"></a><br/> -->
-					<a href="<c:url value="/orcamentos/report/${orcamento.id}"/>" onclick="verificaid(${orcamento.id})"><span>Imprimir</span></a>	
+					<a href="<c:url value="/orcamentos/report/${orcamento.id}"/>" onclick="verificaid(${orcamento.id})" name="imprimir"><span>Imprimir</span></a>	
 					</td></tr>
 				</table>
 			</div>
@@ -208,6 +208,10 @@ var model =
 			         event.preventDefault();
 			         $(this).prev().click();
 			    });
+			});
+		$('a[name="imprimir"]').each(function () {
+			   $(this).button({icons: {primary: "ui-icon-print"}});
+			   //$(this).click();
 			});
 		$(".data").datepicker({
 		    dateFormat: 'dd/mm/yy',
