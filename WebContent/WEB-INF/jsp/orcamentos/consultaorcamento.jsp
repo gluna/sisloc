@@ -3,10 +3,10 @@
 <!-- <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script>  -->
  <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-ui-1.10.3.custom.js"></script>
  <body>
-<form action="<c:url value='/fornecedores/consultanome'/>" method="post">
+<form action="<c:url value='/orcamentos/consultaorcamento'/>" method="post">
 	<div id="tabs" class="container">
 			<ul>
-				<li><a href="#tabs-1">Consultar Fornecedor</a></li>
+				<li><a href="#tabs-1">Consultar Orçamentos</a></li>
 			</ul>
 			<div id="tabs-1">
 				<br>
@@ -16,7 +16,7 @@
 				</legend>
 					<table><tr><td align="right" width="95"> 
 						<label>Nome:</label></td> 
-						<td align="left"><input	class="maiuscula" type="text" name="fornecedor.nome" size=50 value="${fornecedor.nome}" /><br></td>
+						<td align="left"><input	class="maiuscula" type="text" name="orcamento.cliente" size=50 value="${orcamento.cliente}" /><br></td>
 						<td><input type="submit" value="Consultar" icon="ui-icon-search"/><br/></td>
 						</tr></table><br>
 				</fieldset>
@@ -28,10 +28,11 @@
 				<div id="users-contain" class="ui-widget">
 					<table id="users" class="ui-widget ui-widget-content">
 					<tbody>
-					<c:forEach items="${fornecedorList}" var="orcamento">
+					<c:forEach items="${orcamentoList}" var="orcamento">
 						<tr>
-						  <td>${fornecedor.nome}</td>
-						  <td><a href="<c:url value="/fornecedor/editar/${fornecedor.id}" />" name="editar">Editar</a></td>
+						  <td>${orcamento.id}</td>
+						  <td>${orcamento.cliente}</td>
+						  <td><a href="<c:url value="/orcamentos/editar/${orcamento.id}" />" name="editar">Editar</a></td>
 						  <!-- <td><a href="<c:url value="/fornecedores/excluir/${tarefa.id}"/>">Excluir</a></td> -->
 						</tr>
 					</c:forEach>

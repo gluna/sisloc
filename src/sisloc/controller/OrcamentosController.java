@@ -49,15 +49,16 @@ public class OrcamentosController {
 	public void salvar(Orcamento orcamento){
 		try {
 		     if(orcamento != null) {
-		    	 for(OrcamentoDetalhe od : orcamento.getOrcamentodetalhe() ){
-		    		 od.setProduto(produtodao.selectById(od.getProduto()));
-		    	 }
 		    	 if(orcamento.getId() == null) {
+			    	 for(OrcamentoDetalhe od : orcamento.getOrcamentodetalhe() ){
+			    		 od.setProduto(produtodao.selectById(od.getProduto()));
+			    	 }
 		    		 dao.salvar(orcamento);
 		    	 } else {
 		    		 dao.atualizar(orcamento);
 	             }
 	          }
+		     result.include("orcamento", orcamento);
 		     result.redirectTo(this.getClass()).cadastrar();
 		} catch (Exception e) {
 			result.include("msg", e.getMessage());
@@ -86,24 +87,28 @@ public class OrcamentosController {
 		return t;
 	}
 	
-	@Path("/orcamentos/report/{orcamento.id}") 
+	@Path({"/orcamentos/report/{orcamento.id}", "/orcamentos/report/"}) 
 	public void pdfReport(Orcamento orcamento) {
-		try{
-			orcamento = dao.selectById(orcamento);
-			Map<String, Object> parametros = new HashMap<String, Object>();
-			parametros.put( "ORCAMENTO_ID", (long) 1 );
-			 
-			//JOptionPane.showMessageDialog(null, context.getRealPath("/sisloc/report/template/orcamentoreport.jasper"));
-			JasperPrint print = JasperFillManager.fillReport(context.getRealPath("/WEB-INF/classes/sisloc/report/template/orcamentoreport.jasper"), parametros, SislocUtils.getConnection());
-			//JasperExportManager.exportReportToPdfFile(print,"/home/gustavo/report-out.pdf");
-			JasperViewer.viewReport(print,false);
+		if(orcamento != null) {
+			try{
+				orcamento = dao.selectById(orcamento);
+				Map<String, Object> parametros = new HashMap<String, Object>();
+				parametros.put( "ORCAMENTO_ID", orcamento.getId() );
+				 
+				//JOptionPane.showMessageDialog(null, context.getRealPath("/sisloc/report/template/orcamentoreport.jasper"));
+				JasperPrint print = JasperFillManager.fillReport(context.getRealPath("/WEB-INF/classes/sisloc/report/template/orcamentoreport.jasper"), parametros, SislocUtils.getConnection());
+				//JasperExportManager.exportReportToPdfFile(print,"/home/gustavo/report-out.pdf");
+				JasperViewer.viewReport(print,false);
+				result.include("orcamento", orcamento);
+				
+				/*List<Orcamento> orcamentos = new ArrayList<Orcamento>();
+				orcamentos.add(orcamento);
+				Report<Orcamento> report = new OrcamentoReport(orcamentos);*/
+			}catch(Exception e){e.printStackTrace();}
+			//return null; //new ReportDownload(report, Pdf());
 			
-			/*List<Orcamento> orcamentos = new ArrayList<Orcamento>();
-			orcamentos.add(orcamento);
-			Report<Orcamento> report = new OrcamentoReport(orcamentos);*/
-		}catch(Exception e){e.printStackTrace();}
-		//return null; //new ReportDownload(report, Pdf()); 
-		result.redirectTo(this.getClass()).cadastrar();
+		}
+    	result.permanentlyRedirectTo(this.getClass()).cadastrar();
 	}
 	
 	@Path("/orcamentos/getprecos/{produto.id}")
@@ -114,14 +119,10 @@ public class OrcamentosController {
 		result.use(Results.json()).withoutRoot().from(precos).serialize();  
 	}
 	
-	@Path("/orcamentos/imprimirorcamento")
-	public void imprimirorcamento(Orcamento orcamento){
-		salvar(orcamento);
-		if(orcamento.getId() == null){
-			System.out.println("nulo");
-		}else{
-			System.out.println("ok");
-		}
+	@Path("/orcamentos/consultaorcamento")
+	public List<Orcamento> consultaorcamento(Orcamento orcamento){
+		List<Orcamento> t = dao.consultaorcamento(orcamento);
+		return t;
 	}
 	
 }

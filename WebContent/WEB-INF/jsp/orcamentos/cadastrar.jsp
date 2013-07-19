@@ -18,7 +18,7 @@
 					<td align="right" width="95"><label>Número do Orçamento:</label></td>
 					<td align="left"><input	type="text" name="orcamento.id" value="${orcamento.id}" readonly /><br></td>
 					<td align="right" width="95"><label>Nome do Cliente:</label></td>
-					<td align="left"><input	type="text" class="maiuscula" name="orcamento.nome" size=50 value="${orcamento.nome}" /><br></td>
+					<td align="left"><input	type="text" class="maiuscula" name="orcamento.cliente" size=50 value="${orcamento.cliente}" /><br></td>
 				</tr></table>
 				</fieldset>
 				<br/>
@@ -45,16 +45,16 @@
 				<table align="right"><tr><td>
 					<input type="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-contact"/></td></tr>
 				</table>
-				<!--<c:forEach items="${orcamento.orcamentodetalhe}" var="orcamentodetalhe" varStatus="status">
+				<c:forEach items="${orcamento.orcamentodetalhe}" var="orcamentodetalhe" varStatus="status">
 					<div class="orcamentodetalhe">
 						<label>Nome:</label>
-						<input type="text" name="orcamento.orcamentodetalhe[${status.index}].produto" value="${orcamentodetalhe.produto}" />
+						<input type="text" name="orcamento.orcamentodetalhe[${status.index}].produto.nome" value="${orcamentodetalhe.produto.nome}" />
 						<input type="text" name="orcamento.orcamentodetalhe[${status.index}].quantidade" value="${orcamentodetalhe.quantidade}" />
 						<input type="text" name="orcamento.orcamentodetalhe[${status.index}].preco" value="${orcamentodetalhe.preco}" />
 						<input type="hidden" name="orcamento.orcamentodetalhe[${status.index}].id" value="${orcamentodetalhe.id}" />
 						'<img src="${pageContext.request.contextPath}/images/remover.png" alt="-" class="button-remover" />'
 					</div>
-				</c:forEach>-->
+				</c:forEach>
 					<table id="orcamentodetalhe">
 					</table>
 				</fieldset><br/>
@@ -63,8 +63,10 @@
 				<table align="center">
 					<tr><td> 
 					<input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br />
+					</td>
 					<td>
-					<input type="submit" value="Imprimir" class="imprimir" icon="ui-icon-print" action="<c:url value='/orcamentos/imprimirorcamento'/>"/><br/>	
+					<!-- <input type="button" value="Imprimir" class="imprimir" icon="ui-icon-print" action="<c:url value='/orcamentos/salvar'/>"></a><br/> -->
+					<a href="<c:url value="/orcamentos/report/${orcamento.id}"/>" onclick="verificaid(${orcamento.id})"><span>Imprimir</span></a>	
 					</td></tr>
 				</table>
 			</div>
@@ -174,7 +176,11 @@ var model =
 		});
 		
 	};
-
+  function verificaid(id){
+	  if(id == null){
+		  alert("Salve o Orçamento Primeiro");
+	  }
+  }
 </script>
 <script>
 	$(function() {

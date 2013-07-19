@@ -62,4 +62,16 @@ public class OrcamentoDao {
 		return t;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Orcamento> consultaorcamento(Orcamento orcamento){
+		if(orcamento == null){
+			orcamento = new Orcamento();
+		}
+		
+		Query q = manager.createQuery("from Orcamento t where t.cliente like :nome order by cliente");
+		q.setParameter("nome", orcamento.getCliente()+"%");
+		 
+		return (List<Orcamento>) q.getResultList();
+	}
+	
 }
