@@ -21,6 +21,8 @@
 					<td align="left"><input	type="text" name="locacao.id" value="${locacao.id}" readonly /><br></td>
 					<td align="right" width="95"><label>Nome do Cliente:</label></td>
 					<td align="left"><input	type="text" class="maiuscula" name="locacao.nome" size=50 value="${locacao.nome}" /><br></td>
+					<td align="right" width="80"><label>Frete:</label></td>
+					<td align="left"><input	type="text" class="dinheiro" name="locacao.frete" size=15 value="${locacao.frete}" /><br></td>
 				</tr></table> 
 				</fieldset>
 				<br/>
@@ -74,17 +76,27 @@
 				</c:forEach>
 				</fieldset>
 				<br>
+				<fieldset id="observacao" style="width: 1140px;">
+				<legend>
+					Observação:	
+				</legend>
+						<table><tr><td width="95"></td> 
+						<td align="right"><textarea style="resize:none; text-transform: uppercase;" rows="10" cols="123" name="locacao.obs" value="${locacao.obs}" /></textarea><br> </td></tr></table>
+				</fieldset>
+				<br>
 				<fieldset id="nome_cliente" style="width: 1140px;">
 				<legend>
 					Valores da Locação:
 				</legend>
 				<table><tr>
-					<td align="right" width="95"><label>Nota R$:</label></td>
+					<td align="right" width="95"><label>Valor (R$):</label></td>
 					<td align="left"><input	type="text" class="dinheiro" name="locacao.valortotal" value="${locacao.valortotal}"/><br></td>
 					<td align="right" width="95"><label>Desconto (%):</label></td>
 					<td align="left"><input	type="text" name="locacao.descontopercent" value="${locacao.descontopercent}" /><br></td>
 					<td align="right" width="95"><label>Desconto (R$):</label></td>
 					<td align="left"><input	type="text" class="dinheiro" name="locacao.descontovalor" value="${locacao.descontovalor}" /><br></td>
+					<td align="right" width="95"><label>Total (R$):</label></td>
+					<td align="left"><input	type="text" class="dinheiro" name="locacao.valortotal" value="${locacao.valortotal}" /><br></td>
 				</tr></table>
 				</fieldset><br>
 				<table align="center">
@@ -146,6 +158,7 @@
 					'<option value="${locacao.enderecolocacao[0].tipoendereco}">${locacao.enderecolocacao[0].tipoendereco}</option>' +
 					'<option value="ENTREGA">ENTREGA</option>' +
 					'<option value="COBRANÇA">COBRANÇA</option>' +
+					'<option value="ENTREGA/COBRANÇA">ENTREGA/COBRANÇA</option>' +
 			'</select>' +
 			'</td>' +
 			'</tr>' +
@@ -201,6 +214,18 @@
 			'</td>' + 
 			'<td align="left">' +
 			'<input class="maiuscula" type="text" name="locacao.enderecolocacao[0].cep" size=12 value="${locacao.enderecolocacao[0].cep}" />' +
+			'<br>' +
+			'</td>' +
+			'</tr>' +
+			'</table>' +
+			'<br>' +
+			'<table>' +
+			'<tr>' +
+			'<td align="right" width="95">' +
+			'<label>Contato:</label>' +
+			'</td>' + 
+			'<td align="left">' +
+			'<input class="maiuscula" type="text" name="locacao.contato" size=50 value="${locacao.contato}" />' +
 			'<br>' +
 			'</td>' +
 			'</tr>' +

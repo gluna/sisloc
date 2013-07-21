@@ -2,6 +2,7 @@
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <!-- <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-ui-1.10.3.custom.js"></script>
+<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery.maskMoney.js"></script>
 <body>
 	<form action="<c:url value='/orcamentos/salvar'/>" method="post">
 		<div id="tabs" class="container">
@@ -17,9 +18,15 @@
 				<table><tr>
 					<td align="right" width="95"><label>Número do Orçamento:</label></td>
 					<td align="left"><input	type="text" name="orcamento.id" value="${orcamento.id}" readonly /><br></td>
-					<td align="right" width="95"><label>Nome do Cliente:</label></td>
+					<td align="right" width="95"><label>Nome do Cliente/Empresa:</label></td>
 					<td align="left"><input	type="text" class="maiuscula" name="orcamento.cliente" size=50 value="${orcamento.cliente}" /><br></td>
+					<td align="right" width="80"><label>Frete:</label></td>
+					<td align="left"><input	type="text" class="dinheiro" name="orcamento.frete" size=15 value="${orcamento.frete}" /><br></td>
 				</tr></table>
+				<table><tr>
+						<td align="right" width="95"><label>Observação:</label></td></tr></table>
+						<table><tr><td width="95"></td> 
+						<td align="right"><textarea style="resize:none; text-transform: uppercase;" rows="10" cols="123" name="orcamento.obs" value="${orcamento.obs}" /></textarea><br> </td></tr></table><br>
 				</fieldset>
 				<br/>
 				<fieldset id="formulario" style="width: 1140px;"> 
@@ -124,7 +131,7 @@ var model =
     					if(name == 'preco' && indice == index2){
     						$input.find('option').remove();
     						for (var i = 0; i < precos.length; i++){
-    							$input.append('<option value="'+precos[i].preco+'">'+precos[i].preco+'</option>');
+    							$input.append('<option value="'+precos[i].preco+'">'+precos[i].preco+'&nbsp/&nbsp'+precos[i].dias+'&nbspdia(s)'+'</option>');
     						}
     					}
 	    			});
@@ -187,6 +194,10 @@ var model =
 		  alert("Salve o Orçamento Primeiro");
 	  }
   }
+  
+  $(document).ready(function(){
+	    $("input.dinheiro").maskMoney({showSymbol:false, symbol:"R$", decimal:",", thousands:"."});
+	});
 </script>
 <script>
 	$(function() {

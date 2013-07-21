@@ -16,10 +16,10 @@
 				</legend>
 				<!--<label>ID:</label> --><input type="hidden" name="fornecedor.id" value="${fornecedor.id}" readonly />
 					<table><tr><td align="right" width="95"> 
-						<label>Nome:</label></td> 
+						<label>Nome/Empresa:</label></td> 
 						<td align="left"><input	class="maiuscula" type="text" name="fornecedor.nome" size=50 value="${fornecedor.nome}" /><br></td>
 						<td align="right" width="80"><label>CPF/CNPJ:</label></td> 
-						<td align="left"><input class="maiuscula" type="text" name="fornecedor.cpfcnpj" size=29 value="${fornecedor.cpfcnpj}" /></td></tr></table><br>
+						<td align="left"><input class="maiuscula" type="text" name="fornecedor.cpfcnpj" size=28 value="${fornecedor.cpfcnpj}" /></td></tr></table><br>
 						<table><tr><td align="right" width="95"><label>Endereço:</label> </td>
 						<td align="left"><input class="maiuscula" type="text" name="fornecedor.logradouro" size=96 value="${fornecedor.logradouro}" /> </td>
 						<td align="right"><label>Número:</label></td> 
@@ -70,7 +70,9 @@
 						<table><tr><td align="right" width="95"> <label>E-mail:</label></td> 
 						<td align="left"><input class="maiuscula" type="text" name="fornecedor.email" size=50 value="${fornecedor.email}" /> <br></td>
 						<td align="right" width="85"><label>Contato:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="fornecedor.contato" size=52 value="${fornecedor.contato}" /><br> </td>
+						<td align="left"> <input class="maiuscula" type="text" name="fornecedor.contato" size=28 value="${fornecedor.contato}" /><br> </td>
+						<td align="right" width="50"><label>Rep:</label></td> 
+						<td align="left"> <input class="maiuscula" type="text" name="fornecedor.rep" size=28 value="${fornecedor.rep}" /><br> </td>
 						</tr></table>
 				</fieldset>
 				<br/>
@@ -92,6 +94,8 @@
 						</select>&nbsp&nbsp
 						<label>Numero:</label>&nbsp
 						<input type="text" name="fornecedor.telefones[${status.index}].numero" value="${telefone.numero}" />&nbsp&nbsp
+						<label>Contato:</label>&nbsp
+						<input type="text" name="fornecedor.telefones[${status.index}].contato" value="${telefone.contato}" />&nbsp&nbsp
 						<input type="hidden" name="fornecedor.telefones[${status.index}].id" value="${telefone.id}" />
 						<input type="button" class="button-remover" />
 					</div>
@@ -122,6 +126,8 @@ var model =
 		'</select>&nbsp&nbsp' +
 		'<label>Numero:</label>&nbsp' +
 		'<input type="text" name="fornecedor.telefones[${status.index}].numero" value="${telefone.numero}" />&nbsp&nbsp' +
+		'<label>Contato:</label>&nbsp' +
+		'<input type="text" name="fornecedor.telefones[0].contato" value="${telefone.contato}" />&nbsp&nbsp' +
 		'<input type="hidden" name="fornecedor.telefones[${status.index}].id" value="${telefone.id}" />' +
 		'<input type="button" class="button-remover" />' +
 	'</div>';

@@ -16,10 +16,10 @@
 				</legend>
 				<!--<label>ID:</label> --><input type="hidden" name="cliente.id" value="${cliente.id}" readonly />
 					<table><tr><td align="right" width="95"> 
-						<label>Nome:</label></td> 
+						<label>Nome/Empresa:</label></td> 
 						<td align="left"><input	class="maiuscula" type="text" name="cliente.nome" size=50 value="${cliente.nome}" /><br></td>
 						<td align="right" width="80"><label>CPF/CNPJ:</label></td> 
-						<td align="left"><input class="maiuscula" type="text" name="cliente.cpfcnpj" size=29 value="${cliente.cpfcnpj}" /></td></tr></table><br>
+						<td align="left"><input class="maiuscula" type="text" name="cliente.cpfcnpj" size=28 value="${cliente.cpfcnpj}" /></td></tr></table><br>
 						<table><tr><td align="right" width="95"><label>Endereço:</label> </td>
 						<td align="left"><input class="maiuscula" type="text" name="cliente.logradouro" size=96 value="${cliente.logradouro}" /> </td>
 						<td align="right"><label>Número:</label></td> 
@@ -65,12 +65,14 @@
 						</select>
 						<br> </td>
 						<td align="right" width="67"><label>CEP:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="cliente.cep" size=12 value="${cliente.cep}" /><br> </td>
+						<td align="left"> <input class="maiuscula" type="text" name="cliente.cep" size=13 value="${cliente.cep}" /><br> </td>
 						</tr></table><br>
 						<table><tr><td align="right" width="95"> <label>E-mail:</label></td> 
 						<td align="left"><input class="maiuscula" type="text" name="cliente.email" size=50 value="${cliente.email}" /> <br></td>
 						<td align="right" width="85"><label>Contato:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="cliente.contato" size=52 value="${cliente.contato}" /><br> </td>
+						<td align="left"> <input class="maiuscula" type="text" name="cliente.contato" size=28 value="${cliente.contato}" /><br> </td>
+						<td align="right" width="50"><label>Rep:</label></td> 
+						<td align="left"> <input class="maiuscula" type="text" name="cliente.rep" size=28 value="${cliente.rep}" /><br> </td>
 						</tr></table>
 				</fieldset>
 				<br/>
@@ -92,6 +94,8 @@
 						</select>&nbsp&nbsp
 						<label>Numero:</label>&nbsp
 						<input type="text" name="cliente.telefones[${status.index}].numero" value="${telefone.numero}" />&nbsp&nbsp
+						<label>Contato:</label>&nbsp
+						<input type="text" name="cliente.telefones[${status.index}].contato" value="${telefone.contato}" />&nbsp&nbsp
 						<input type="hidden" name="cliente.telefones[${status.index}].id" value="${telefone.id}" />
 						<input type="button" class="button-remover"/>
 					</div>
@@ -123,6 +127,8 @@ var model =
 		'</select>&nbsp&nbsp' +
 		'<label>Numero:</label>&nbsp' +
 		'<input type="text" name="cliente.telefones[0].numero" value="${telefone.numero}" />&nbsp&nbsp' +
+		'<label>Contato:</label>&nbsp' +
+		'<input type="text" name="cliente.telefones[0].contato" value="${telefone.contato}" />&nbsp&nbsp' +
 		'<input type="hidden" name="cliente.telefones[0].id" value="${telefone.id}" />' +
 		'<input type="button" class="button-remover" />' +
 	'</div>';
