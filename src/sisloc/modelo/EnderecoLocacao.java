@@ -20,6 +20,11 @@ public class EnderecoLocacao implements Serializable{
 	private String numero;
 	private String bairro;
 	private String complemento;
+	private String cidade;
+	private String uf;
+	private String cep;
+	private String contato;
+	
 	
 	public Long getId() {
 		return id;
@@ -56,6 +61,30 @@ public class EnderecoLocacao implements Serializable{
 	}
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
+	}
+	public String getCidade() {
+		return cidade;
+	}
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+	public String getUf() {
+		return uf;
+	}
+	public void setUf(String uf) {
+		this.uf = uf;
+	}
+	public String getCep() {
+		return cep;
+	}
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+	public String getContato() {
+		return contato;
+	}
+	public void setContato(String contato) {
+		this.contato = contato;
 	}
 	
 }

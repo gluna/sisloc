@@ -95,8 +95,8 @@
 					<td align="left"><input	type="text" name="locacao.descontopercent" value="${locacao.descontopercent}" /><br></td>
 					<td align="right" width="95"><label>Desconto (R$):</label></td>
 					<td align="left"><input	type="text" class="dinheiro" name="locacao.descontovalor" value="${locacao.descontovalor}" /><br></td>
-					<td align="right" width="95"><label>Total (R$):</label></td>
-					<td align="left"><input	type="text" class="dinheiro" name="locacao.valortotal" value="${locacao.valortotal}" /><br></td>
+					<!-- <td align="right" width="95"><label>Total (R$):</label></td>
+					<td align="left"><input	type="text" class="dinheiro" name="locacao.valortotal" value="${locacao.valortotal}" /><br></td> -->
 				</tr></table>
 				</fieldset><br>
 				<table align="center">
@@ -122,13 +122,13 @@
      		'<label>Endereço:</label>' + 
      		'</td>' +
 			'<td align="left">' +
-			'<input class="maiuscula" type="text" name="locacao.enderecolocacao[0].logradouro" size=96 value="${locacao.enderecolocacao[0].logradouro}" />' +
+			'<input class="maiuscula" type="text" name="locacao.enderecos[0].logradouro" size=96 value="${locacao.enderecos[0].logradouro}" />' +
 			'</td>' +
 			'<td align="right">' +
 			'<label>Número:</label>' +
 			'</td>' + 
 			'<td align="left">' +
-			'<input class="maiuscula" type="text" name="locacao.enderecolocacao[0].numero" size=10 value="${locacao.enderecolocacao[0].numero}" />' +
+			'<input class="maiuscula" type="text" name="locacao.enderecos[0].numero" size=10 value="${locacao.enderecos[0].numero}" />' +
 			'<br>' +
 			'</td>' +
 			'</tr>' +
@@ -140,22 +140,22 @@
 			'<label>Complemento:</label>' +
 			'</td>' + 
 			'<td align="left">' +
-			'<input class="maiuscula" type="text" name="locacao.enderecolocacao[0].complemento" size=50 value="${locacao.enderecolocacao[0].complemento}" />' +
+			'<input class="maiuscula" type="text" name="locacao.enderecos[0].complemento" size=50 value="${locacao.enderecos[0].complemento}" />' +
 			'<br>' +
 			'</td>' +
 			'<td align="right" width="85">' +
 			'<label>Bairro:</label>' +
 			'</td>' +
 			'<td align="left">' +
-			'<input class="maiuscula" type="text" name="locacao.enderecolocacao[0].bairro" size=29 value="${locacao.enderecolocacao[0].bairro}" />' +
+			'<input class="maiuscula" type="text" name="locacao.enderecos[0].bairro" size=29 value="${locacao.enderecos[0].bairro}" />' +
 			'<br>' +
 			'</td>' +
 			'<td align="right" width="35">' +
 			'<label>Tipo:</label>' +
 			'</td>' + 
 			'<td align="left">' + 
-			'<select name="locacao.enderecolocacao[0].tipoendereco">' +
-					'<option value="${locacao.enderecolocacao[0].tipoendereco}">${locacao.enderecolocacao[0].tipoendereco}</option>' +
+			'<select name="locacao.enderecos[0].tipoendereco">' +
+					'<option value="${locacao.enderecos[0].tipoendereco}">${locacao.enderecos[0].tipoendereco}</option>' +
 					'<option value="ENTREGA">ENTREGA</option>' +
 					'<option value="COBRANÇA">COBRANÇA</option>' +
 					'<option value="ENTREGA/COBRANÇA">ENTREGA/COBRANÇA</option>' +
@@ -170,15 +170,15 @@
 			'<label>Cidade:</label>' +
 			'</td>' + 
 			'<td align="left">' +
-			'<input class="maiuscula" type="text" name="locacao.enderecolocacao[0].cidade" size=50 value="${locacao.enderecolocacao[0].cidade}" />' +
+			'<input class="maiuscula" type="text" name="locacao.enderecos[0].cidade" size=50 value="${locacao.enderecos[0].cidade}" />' +
 			'<br>' +
 			'</td>' +
 			'<td align="right" width="85">' +
 			'<label>UF:</label>' +
 			'</td>' + 
 			'<td align="left">' + 
-			'<select name="locacao.enderecolocacao[0].uf">' +
-					'<option value="${locacao.enderecolocacao[0].uf}">${locacao.enderecolocacao[0].uf}</option>' +
+			'<select name="locacao.enderecos[0].uf">' +
+					'<option value="${locacao.enderecos[0].uf}">${locacao.enderecos[0].uf}</option>' +
 					'<option value="AC">ACRE</option>' +
 					'<option value="AL">ALAGOAS</option>' +
 					'<option value="AP">AMAPÁ</option>' +
@@ -213,7 +213,7 @@
 			'<label>CEP:</label>' +
 			'</td>' + 
 			'<td align="left">' +
-			'<input class="maiuscula" type="text" name="locacao.enderecolocacao[0].cep" size=12 value="${locacao.enderecolocacao[0].cep}" />' +
+			'<input class="maiuscula" type="text" name="locacao.enderecos[0].cep" size=12 value="${locacao.enderecos[0].cep}" />' +
 			'<br>' +
 			'</td>' +
 			'</tr>' +
@@ -225,7 +225,7 @@
 			'<label>Contato:</label>' +
 			'</td>' + 
 			'<td align="left">' +
-			'<input class="maiuscula" type="text" name="locacao.contato" size=50 value="${locacao.contato}" />' +
+			'<input class="maiuscula" type="text" name="locacao.enderecos[0].contato" size=50 value="${locacao.enderecos[0].contato}" />' +
 			'<br>' +
 			'</td>' +
 			'</tr>' +

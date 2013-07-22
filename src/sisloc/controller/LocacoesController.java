@@ -47,6 +47,7 @@ public class LocacoesController {
 		    		 dao.atualizar(locacao);
 	             }
 	          }
+		     result.include("locacao", locacao);
 		     result.redirectTo(this.getClass()).cadastrar();
 		} catch (Exception e) {
 			result.include("msg", e.getMessage());

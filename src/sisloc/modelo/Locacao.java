@@ -34,6 +34,7 @@ public class Locacao implements Serializable{
 	private Double descontovalor;
 	private Double descontopercent;
 	private String formapagamento;
+	private String obs;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn
@@ -149,5 +150,13 @@ public class Locacao implements Serializable{
 
 	public void setEmpresa(Long empresa) {
 		this.empresa = empresa;
+	}
+
+	public String getObs() {
+		return obs;
+	}
+
+	public void setObs(String obs) {
+		this.obs = obs;
 	}
 }
