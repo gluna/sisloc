@@ -6,12 +6,16 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 public class Locacao implements Serializable{
@@ -35,6 +39,7 @@ public class Locacao implements Serializable{
 	private Double descontopercent;
 	private String formapagamento;
 	private String obs;
+	private Double frete;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn
@@ -44,7 +49,8 @@ public class Locacao implements Serializable{
 	@JoinColumn
 	private List<Pagamento> pagamentos;
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SUBSELECT)
 	@JoinColumn
 	private List<LocacaoDetalhe> locacaodetalhe;
 
@@ -158,5 +164,13 @@ public class Locacao implements Serializable{
 
 	public void setObs(String obs) {
 		this.obs = obs;
+	}
+
+	public Double getFrete() {
+		return frete;
+	}
+
+	public void setFrete(Double frete) {
+		this.frete = frete;
 	}
 }

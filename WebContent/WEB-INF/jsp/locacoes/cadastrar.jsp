@@ -20,7 +20,7 @@
 					<td align="right" width="95"><label>Número da Locação:</label></td>
 					<td align="left"><input	type="text" name="locacao.id" value="${locacao.id}" readonly /><br></td>
 					<td align="right" width="95"><label>Nome do Cliente:</label></td>
-					<td align="left"><input	type="text" class="maiuscula" name="locacao.nome" size=50 value="${locacao.nome}" /><br></td>
+					<td align="left"><input	type="text" class="maiuscula" name="locacao.nome" size=50 value="${locacao.cliente}" /><br></td>
 					<td align="right" width="80"><label>Frete:</label></td>
 					<td align="left"><input	type="text" class="dinheiro" name="locacao.frete" size=15 value="${locacao.frete}" /><br></td>
 				</tr></table> 
@@ -33,8 +33,125 @@
 				<table align="right"><tr><td>
 					<input type="button" value="Adicionar" onclick="adicionarend();" icon="ui-icon-contact"/></td></tr>
 				</table>
-				<div class="endintem">
-				</div>
+				<c:forEach items="${locacao.enderecos}" var="endereco" varStatus="status">
+		     		<div class="endintem">
+		     		<table>
+		     		<tr>
+		     		<td align="right" width="95">
+		     		<label>Endereço:</label>
+		     		</td>
+					<td align="left">
+					<input class="maiuscula" type="text" name="locacao.enderecos[0].logradouro" size=96 value="${locacao.enderecos[0].logradouro}" />
+					</td>
+					<td align="right">
+					<label>Número:</label>
+					</td>
+					<td align="left">
+					<input class="maiuscula" type="text" name="locacao.enderecos[0].numero" size=10 value="${locacao.enderecos[0].numero}" />
+					<br>
+					</td>
+					</tr>
+					</table>
+					<br>
+					<table>
+					<tr>
+					<td align="right">
+					<label>Complemento:</label>
+					</td>
+					<td align="left">
+					<input class="maiuscula" type="text" name="locacao.enderecos[0].complemento" size=50 value="${locacao.enderecos[0].complemento}" />
+					<br>
+					</td>
+					<td align="right" width="85">
+					<label>Bairro:</label>
+					</td>
+					<td align="left">
+					<input class="maiuscula" type="text" name="locacao.enderecos[0].bairro" size=29 value="${locacao.enderecos[0].bairro}" />
+					<br>
+					</td>
+					<td align="right" width="35">
+					<label>Tipo:</label>
+					</td>
+					<td align="left"> 
+					<select name="locacao.enderecos[0].tipoendereco">
+							<option value="${locacao.enderecos[0].tipoendereco}">${locacao.enderecos[0].tipoendereco}</option>
+							<option value="ENTREGA">ENTREGA</option>
+							<option value="COBRANÇA">COBRANÇA</option>
+							<option value="ENTREGA/COBRANÇA">ENTREGA/COBRANÇA</option>
+					</select>
+					</td>
+					</tr>
+					</table>
+					<br>
+					<table>
+					<tr>
+					<td align="right" width="95">
+					<label>Cidade:</label>
+					</td>
+					<td align="left">
+					<input class="maiuscula" type="text" name="locacao.enderecos[0].cidade" size=50 value="${locacao.enderecos[0].cidade}" />
+					<br>
+					</td>
+					<td align="right" width="85">
+					<label>UF:</label>
+					</td>
+					<td align="left"> 
+					<select name="locacao.enderecos[0].uf">
+							<option value="${locacao.enderecos[0].uf}">${locacao.enderecos[0].uf}</option>
+							<option value="AC">ACRE</option>
+							<option value="AL">ALAGOAS</option>
+							<option value="AP">AMAPÁ</option>
+							<option value="AM">AMAZONAS</option>
+							<option value="BA">BAHIA</option>
+							<option value="CE">CEARÁ</option>
+							<option value="DF">DISTRITO FEDERAL</option>
+							<option value="ES">ESPIRITO SANTO</option>
+							<option value="GO">GOIÁS</option>
+							<option value="MA">MARANHÃO</option>
+							<option value="MS">MATO GROSSO DO SUL</option>
+							<option value="MT">MATO GROSSO</option>
+							<option value="MG">MINAS GERAIS</option>
+							<option value="PA">PARÁ</option>
+							<option value="PB">PARAÍBA</option>
+							<option value="PR">PARANÁ</option>
+							<option value="PE">PERNAMBUCO</option>
+							<option value="PI">PIAUÍ</option>
+							<option value="RJ">RIO DE JANEIRO</option>
+							<option value="RN">RIO GRANDE DO NORTE</option>
+							<option value="RS">RIO GRANDE DO SUL</option>
+							<option value="RO">RONDÔNIA</option>
+							<option value="RR">RORAIMA</option>
+							<option value="SC">SANTA CATARINA</option>
+							<option value="SP">SÃO PAULO</option>
+							<option value="SE">SERGIPE</option>
+							<option value="TO">TOCANTINS</option>
+					</select>
+					<br>
+					</td>
+					<td align="right" width="67">
+					<label>CEP:</label>
+					</td>
+					<td align="left">
+					<input class="maiuscula" type="text" name="locacao.enderecos[0].cep" size=12 value="${locacao.enderecos[0].cep}" />
+					<br>
+					</td>
+					</tr>
+					</table>
+					<br>
+					<table>
+					<tr>
+					<td align="right" width="95">
+					<label>Contato:</label>
+					</td>
+					<td align="left">
+					<input class="maiuscula" type="text" name="locacao.enderecos[0].contato" size=50 value="${locacao.enderecos[0].contato}" />
+					<br>
+					</td>
+					</tr>
+					</table>
+					</div>
+					<br>
+				</c:forEach>
 				</fieldset>
 				<br/>
 				<fieldset id="formulario" style="width: 1140px;">
@@ -45,15 +162,14 @@
 					<table>
 						<tr>
 							<td align="right" width="95"><label>Data da Locação:</label></td>
-							<td align="left"><input type="text" class="data"
-								name="locacao.dtlocacao" value="${locacao.dtlocacao}" /><br></td>
+							<td align="left"><input type="text" class="data" name="locacao.dtlocacao" value="<fmt:formatDate value="${locacao.dtlocacao}" dateStyle="medium" />" /><br></td>
 							<td align="right" width="80"><label>Data Inicio:</label></td>
 							<td align="left"><input type="text" class="data"
-								name="locacao.dtinicio" value="${locacao.dtinicio}" /></td>
+								name="locacao.dtinicio" value="<fmt:formatDate value="${locacao.dtinicio}" dateStyle="medium" />" /></td>
 							<br>
 							<td align="right" width="80"><label>Data Fim:</label></td>
 							<td align="left"><input type="text" class="data"
-								name="locacao.dtfim" value="${locacao.dtfim}" /></td>
+								name="locacao.dtfim" value="<fmt:formatDate value="${locacao.dtfim}" dateStyle="medium" />" /></td>
 						</tr>
 					</table>
 				</fieldset>
@@ -268,7 +384,7 @@
     			
     			$('#endereco_cliente').append(endmodel);
 
-    			//reorderIndexes();
+    			reorderIndexesend();
     			
     		};
     		
@@ -343,9 +459,43 @@
     			});
     		};
     		
-    		$(document).ready(function(){
-                $("input.dinheiro").maskMoney({showSymbol:false, symbol:"R$", decimal:",", thousands:"."});
-          });
+    		function reorderIndexesend() {
+    			var regex = /\[[0-9]\]/g;
+    			
+    			$('.endintem').each(function(index) {
+    				
+    				var $campos = $(this).find('input'),
+    					$input	,
+    					name	;
+
+    				$campos.each(function() {
+    					
+    					$input	= $(this),
+    					name	= $input.attr('name');
+    					if($input.attr('type') != 'button'){
+    						$input.attr('name', name.replace(regex, '[' + index + ']'));
+    					}
+    				});
+    				
+    				var $campos = $(this).find('select'),
+    					$input	,
+    					name	;
+
+    			    $campos.each(function() {
+    				
+    					$input	= $(this),
+    					name	= $input.attr('name');
+    					if($input.attr('type') != 'button'){
+    						$input.attr('name', name.replace(regex, '[' + index + ']'));
+    					}
+    			});
+    				
+    			});
+    		};
+    		
+    		//$(document).ready(function(){
+            //    $("input.dinheiro").maskMoney({showSymbol:false, symbol:"R$", decimal:",", thousands:"."});
+          	//});
     			
  </script>
  <script>
