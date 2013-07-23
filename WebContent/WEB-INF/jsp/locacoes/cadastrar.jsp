@@ -20,7 +20,20 @@
 					<td align="right" width="95"><label>Número da Locação:</label></td>
 					<td align="left"><input	type="text" name="locacao.id" value="${locacao.id}" readonly /><br></td>
 					<td align="right" width="95"><label>Nome do Cliente:</label></td>
-					<td align="left"><input	type="text" class="maiuscula" name="locacao.nome" size=50 value="${locacao.cliente}" /><br></td>
+					
+					<td align="left">
+					    		'<select id="produto" onchange="getpreco(value, name);" name="locacao.locacaodetalhe[0].produto.id" value="locacao.locacaodetalhe[0].produto.id">'+
+    		'	<option value="">Selecione um Item</option>'+
+    		'	<c:forEach items="${produtoList}" var="produto" varStatus="status">'+
+    		'		<option value="${produto.id}">${produto.nome}</option>'+
+    		'	</c:forEach>'+
+    		'</select>&nbsp&nbsp'+
+					
+					<!-- <input	type="text" class="maiuscula" name="locacao.cliente.nome" size=50 value="${locacao.cliente}" /> -->
+					 
+					
+					<br></td>
+					
 					<td align="right" width="80"><label>Frete:</label></td>
 					<td align="left"><input	type="text" class="dinheiro" name="locacao.frete" size=15 value="${locacao.frete}" /><br></td>
 				</tr></table> 
