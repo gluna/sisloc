@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import sisloc.modelo.Cliente;
 import sisloc.modelo.Locacao;
 import br.com.caelum.vraptor.ioc.Component;
 
@@ -60,6 +61,18 @@ public class LocacaoDao {
 		Query q = manager.createQuery("from Locacao order by dtlocacao");
 		t = (List<Locacao>) q.getResultList();		
 		return t;
-	}		
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Locacao> consultalocacao(Locacao locacao){
+		if(locacao == null){
+			Cliente c = new Cliente();
+			locacao = new Locacao();
+			locacao.setCliente(c);
+		}
+		Query q = manager.createQuery("from Locacao t where t.cliente.nome like :pid");
+		q.setParameter("pid", locacao.getCliente().getNome()+"%");
+		return (List<Locacao>) q.getResultList();
+	}
 
 }

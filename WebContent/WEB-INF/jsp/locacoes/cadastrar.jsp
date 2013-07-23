@@ -41,13 +41,13 @@
 		     		<label>Endereço:</label>
 		     		</td>
 					<td align="left">
-					<input class="maiuscula" type="text" name="locacao.enderecos[0].logradouro" size=96 value="${locacao.enderecos[0].logradouro}" />
+					<input class="maiuscula" type="text" name="locacao.enderecos[${status.index}].logradouro" size=96 value="${endereco.logradouro}" />
 					</td>
 					<td align="right">
 					<label>Número:</label>
 					</td>
 					<td align="left">
-					<input class="maiuscula" type="text" name="locacao.enderecos[0].numero" size=10 value="${locacao.enderecos[0].numero}" />
+					<input class="maiuscula" type="text" name="locacao.enderecos[${status.index}].numero" size=10 value="${endereco.numero}" />
 					<br>
 					</td>
 					</tr>
@@ -59,22 +59,22 @@
 					<label>Complemento:</label>
 					</td>
 					<td align="left">
-					<input class="maiuscula" type="text" name="locacao.enderecos[0].complemento" size=50 value="${locacao.enderecos[0].complemento}" />
+					<input class="maiuscula" type="text" name="locacao.enderecos[${status.index}].complemento" size=50 value="${endereco.complemento}" />
 					<br>
 					</td>
 					<td align="right" width="85">
 					<label>Bairro:</label>
 					</td>
 					<td align="left">
-					<input class="maiuscula" type="text" name="locacao.enderecos[0].bairro" size=29 value="${locacao.enderecos[0].bairro}" />
+					<input class="maiuscula" type="text" name="locacao.enderecos[${status.index}].bairro" size=29 value="${endereco.bairro}" />
 					<br>
 					</td>
 					<td align="right" width="35">
 					<label>Tipo:</label>
 					</td>
 					<td align="left"> 
-					<select name="locacao.enderecos[0].tipoendereco">
-							<option value="${locacao.enderecos[0].tipoendereco}">${locacao.enderecos[0].tipoendereco}</option>
+					<select name="locacao.enderecos[${status.index}].tipoendereco">
+							<option value="${endereco.tipoendereco}">${endereco.tipoendereco}</option>
 							<option value="ENTREGA">ENTREGA</option>
 							<option value="COBRANÇA">COBRANÇA</option>
 							<option value="ENTREGA/COBRANÇA">ENTREGA/COBRANÇA</option>
@@ -89,15 +89,15 @@
 					<label>Cidade:</label>
 					</td>
 					<td align="left">
-					<input class="maiuscula" type="text" name="locacao.enderecos[0].cidade" size=50 value="${locacao.enderecos[0].cidade}" />
+					<input class="maiuscula" type="text" name="locacao.enderecos[${status.index}].cidade" size=50 value="${endereco.cidade}" />
 					<br>
 					</td>
 					<td align="right" width="85">
 					<label>UF:</label>
 					</td>
 					<td align="left"> 
-					<select name="locacao.enderecos[0].uf">
-							<option value="${locacao.enderecos[0].uf}">${locacao.enderecos[0].uf}</option>
+					<select name="locacao.enderecos[${status.index}].uf">
+							<option value="${endereco.uf}">${endereco.uf}</option>
 							<option value="AC">ACRE</option>
 							<option value="AL">ALAGOAS</option>
 							<option value="AP">AMAPÁ</option>
@@ -132,7 +132,7 @@
 					<label>CEP:</label>
 					</td>
 					<td align="left">
-					<input class="maiuscula" type="text" name="locacao.enderecos[0].cep" size=12 value="${locacao.enderecos[0].cep}" />
+					<input class="maiuscula" type="text" name="locacao.enderecos[${status.index}].cep" size=12 value="${endereco.cep}" />
 					<br>
 					</td>
 					</tr>
@@ -144,7 +144,7 @@
 					<label>Contato:</label>
 					</td>
 					<td align="left">
-					<input class="maiuscula" type="text" name="locacao.enderecos[0].contato" size=50 value="${locacao.enderecos[0].contato}" />
+					<input class="maiuscula" type="text" name="locacao.enderecos[${status.index}].contato" size=50 value="${endereco.contato}" />
 					<br>
 					</td>
 					</tr>
@@ -181,14 +181,21 @@
 					<input type="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-contact"/></td></tr>
 				</table>
 				<c:forEach items="${locacao.locacaodetalhe}" var="detalhe" varStatus="status">
-				<div class="produtointem">
-					<select id="produto"  name="locacao.locacaodetalhe[0].produto" value="locacao.locacaodetalhe[0].produto">
-						<c:forEach items="${produtoList}" var="produto" varStatus="status">
-							<option value="${produto.id}">${produto.nome}</option>
-						</c:forEach>
-					</select>
-					<input type="text" name="locacao.locacaodetalhe[${status.index}].quantidade" value="${detalhe.quantidade}" />
-				</div>
+		   	        <div class="produtointem">
+		    	    <label>Produto:</label>&nbsp
+		    		<select id="produto" onchange="getpreco(value, name);" name="locacao.locacaodetalhe[0].produto.id" value="locacao.locacaodetalhe[0].produto.id">
+		    			<option value="">Selecione um Item</option>
+		    			<c:forEach items="${produtoList}" var="produto" varStatus="status">
+		    				<option value="${produto.id}">${produto.nome}</option>
+		    			</c:forEach>
+		    		</select>&nbsp&nbsp
+		    		<label>R$:</label>&nbsp
+		    		<select id="preco" name="locacao.locacaodetalhe[0].preco" value="locacao.locacaodetalhe[0].preco">
+		    		</select>&nbsp&nbsp
+		    		<label>Quantidade:</label>&nbsp
+		    		<input type="text" name="locacao.locacaodetalhe[0].quantidade" value="${locacao.locacaodetalhe[0].quantidade}" />&nbsp&nbsp
+					<input type="button" class="button-remover" />
+		    		</div>
 				</c:forEach>
 				</fieldset>
 				<br>
@@ -220,7 +227,8 @@
 					<input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br/>	
 					</td>
 					<td>
-					<input type="submit" value="Imprimir" class="imprimir" icon="ui-icon-print"/><br/>	
+					<!-- <input type="submit" value="Imprimir" class="imprimir" icon="ui-icon-print"/><br/>  -->
+					<a href="<c:url value="/locacoes/report/${locacao.id}"/>" onclick="verificaid(${locacao.id})" name="imprimir"><span>Imprimir</span></a>	
 					</td></tr>
 				</table>
 			</div>
@@ -492,6 +500,12 @@
     				
     			});
     		};
+    		
+    		  function verificaid(id){
+    			  if(id == null){
+    				  alert("Salve o Orçamento Primeiro");
+    			  }
+    		  }
     		
     		//$(document).ready(function(){
             //    $("input.dinheiro").maskMoney({showSymbol:false, symbol:"R$", decimal:",", thousands:"."});

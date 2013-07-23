@@ -41,7 +41,8 @@ public class Locacao implements Serializable{
 	private String obs;
 	private Double frete;
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SUBSELECT)
 	@JoinColumn
 	private List<EnderecoLocacao> enderecos;
 	

@@ -30,6 +30,7 @@ public class Orcamento implements Serializable{
 	private Date fim;
 	private String cliente;
 	private Double frete;
+	private String obs;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@Fetch(FetchMode.SUBSELECT) 
@@ -90,6 +91,14 @@ public class Orcamento implements Serializable{
 
 	public void setFrete(Double frete) {
 		this.frete = frete;
+	}
+
+	public String getObs() {
+		return obs;
+	}
+
+	public void setObs(String obs) {
+		this.obs = obs;
 	}
 	
 
