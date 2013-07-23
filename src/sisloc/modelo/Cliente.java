@@ -32,6 +32,7 @@ public class Cliente implements Serializable{
 	private String email;
 	private String contato;
 	private String cpfcnpj;
+	private String rep;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn
@@ -114,6 +115,12 @@ public class Cliente implements Serializable{
 	}
 	public void setCpfcnpj(String cpfcnpj) {
 		this.cpfcnpj = cpfcnpj;
+	}
+	public String getRep() {
+		return rep;
+	}
+	public void setRep(String rep) {
+		this.rep = rep;
 	}
 	
 
