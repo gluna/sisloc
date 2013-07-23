@@ -156,9 +156,7 @@
 				<br/>
 				<fieldset id="formulario" style="width: 1140px;">
 					<legend> Datas da Locação: </legend>
-					<!--<label>ID:</label> -->
-					<input type="hidden" name="locacao.id" value="${locacao.id}"
-						readonly />
+					
 					<table>
 						<tr>
 							<td align="right" width="95"><label>Data da Locação:</label></td>
@@ -180,20 +178,19 @@
 				<table align="right"><tr><td>
 					<input type="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-contact"/></td></tr>
 				</table>
-				<c:forEach items="${locacao.locacaodetalhe}" var="detalhe" varStatus="status">
+				<c:forEach items="${locacao.locacaodetalhe}" var="locacaodetalhe" varStatus="status">
 		   	        <div class="produtointem">
 		    	    <label>Produto:</label>&nbsp
-		    		<select id="produto" onchange="getpreco(value, name);" name="locacao.locacaodetalhe[0].produto.id" value="locacao.locacaodetalhe[0].produto.id">
-		    			<option value="">Selecione um Item</option>
-		    			<c:forEach items="${produtoList}" var="produto" varStatus="status">
-		    				<option value="${produto.id}">${produto.nome}</option>
-		    			</c:forEach>
+		    		<select id="produto" onchange="getpreco(value, name);" name="locacao.locacaodetalhe[${status.index}].produto.id" value="locacaodetalhe.produto.id">
+		    			<option value="${locacaodetalhe.produto.id}">${locacaodetalhe.produto.nome}</option>
 		    		</select>&nbsp&nbsp
 		    		<label>R$:</label>&nbsp
-		    		<select id="preco" name="locacao.locacaodetalhe[0].preco" value="locacao.locacaodetalhe[0].preco">
+		    		<select id="preco" name="locacao.locacaodetalhe[${status.index}].preco" value="locacaodetalhe.preco">
+		    			<option value="${locacaodetalhe.preco}">${locacaodetalhe.preco}</option>
 		    		</select>&nbsp&nbsp
 		    		<label>Quantidade:</label>&nbsp
-		    		<input type="text" name="locacao.locacaodetalhe[0].quantidade" value="${locacao.locacaodetalhe[0].quantidade}" />&nbsp&nbsp
+		    		<input type="text" name="locacao.locacaodetalhe[${status.index}].quantidade" value="${locacaodetalhe.quantidade}" />&nbsp&nbsp
+		    		<input type="hidden" name="locacao.locacaodetalhe[${status.index}].id" value="${locacaodetalhe.id}" />
 					<input type="button" class="button-remover" />
 		    		</div>
 				</c:forEach>
@@ -204,7 +201,7 @@
 					Observação:	
 				</legend>
 						<table><tr><td width="95"></td> 
-						<td align="right"><textarea style="resize:none; text-transform: uppercase;" rows="10" cols="123" name="locacao.obs" value="${locacao.obs}" /></textarea><br> </td></tr></table>
+						<td align="right"><textarea style="resize:none; text-transform: uppercase;" rows="10" cols="123" name="locacao.obs" >${locacao.obs}</textarea><br> </td></tr></table>
 				</fieldset>
 				<br>
 				<fieldset id="nome_cliente" style="width: 1140px;">
