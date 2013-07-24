@@ -6,7 +6,7 @@
 	<form action="<c:url value='/clientes/salvar'/>" method="post">
 		<div id="tabs" class="container">
 			<ul>
-				<li><a href="#tabs-1">Cadastro de Cliente</a></li>
+				<li><a href="#tabs-1">Visualização de Cliente</a></li>
 			</ul>
 			<div id="tabs-1">
 				<br>
@@ -31,8 +31,9 @@
 						</tr></table><br>
 						<table><tr><td align="right" width="95"> <label>Cidade:</label></td> 
 						<td align="left"><input class="maiuscula" type="text" name="cliente.cidade" size=50 value="${cliente.cidade}" readonly /> <br></td>
-						<td align="right" width="85"><label>UF:</label></td> 
-						<td align="left"> 
+						<td align="right" width="85"><label>UF:</label></td>
+						<td align="left"><input class="maiuscula" type="text" name="cliente.uf" size=25 value="${cliente.uf}" readonly /> <br></td>
+						<!-- <td align="left"> 
 						<select name="cliente.uf" readonly>
 								<option value="${cliente.uf}">${cliente.uf}</option>
 								<option value="AC">ACRE</option>
@@ -63,7 +64,7 @@
 								<option value="SE">SERGIPE</option>
 								<option value="TO">TOCANTINS</option>
 						</select>
-						<br> </td>
+						<br> </td> -->
 						<td align="right" width="67"><label>CEP:</label></td> 
 						<td align="left"> <input class="maiuscula" type="text" name="cliente.cep" size=13 value="${cliente.cep}" readonly /><br> </td>
 						</tr></table><br>
@@ -86,16 +87,11 @@
 				<c:forEach items="${cliente.telefones}" var="telefone" varStatus="status">
 					<div class="telefonecliente">
 						<label>Tipo:</label>&nbsp
-						<select id="telefone" name="cliente.telefones[${status.index}].tipo" readonly>
-						<option value="${telefone.tipo}">${telefone.tipo}</option>
-						<option value="COMERCIAL" class="comercial">&nbsp&nbsp&nbsp&nbspCOMERCIAL</option>
-						<option value="RESIDENCIAL" class="tel">&nbsp&nbsp&nbsp&nbspRESIDENCIAL</option>
-						<option value="CELULAR" class="cel">&nbsp&nbsp&nbsp&nbspCELULAR</option>
-						</select>&nbsp&nbsp
+						<input type="text" class="maiuscula" name="cliente.telefones[${status.index}].tipo" value="${telefone.tipo}" readonly />&nbsp&nbsp
 						<label>Numero:</label>&nbsp
-						<input type="text" name="cliente.telefones[${status.index}].numero" value="${telefone.numero}" readonly />&nbsp&nbsp
+						<input type="text" class="maiuscula" name="cliente.telefones[${status.index}].numero" value="${telefone.numero}" readonly />&nbsp&nbsp
 						<label>Contato:</label>&nbsp
-						<input type="text" name="cliente.telefones[${status.index}].contato" value="${telefone.contato}" readonly />&nbsp&nbsp
+						<input type="text" class="maiuscula" name="cliente.telefones[${status.index}].contato" value="${telefone.contato}" readonly />&nbsp&nbsp
 						<input type="hidden" name="cliente.telefones[${status.index}].id" value="${telefone.id}" />
 						<input type="button" class="button-remover"/>
 					</div>
@@ -105,7 +101,8 @@
 				<br>
 				<table align="center">
 					<tr><td>
-					<input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br/>	
+					<a href="<c:url value="/clientes/editar/${cliente.id}" />" name="editar">Editar</a>
+					<!-- <input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/> --><br/>	
 					</td></tr>
 				</table>
 			</div>
@@ -201,6 +198,10 @@ function reorderIndexes() {
 			         $(this).prev().click();
 			    });
 			});
+		$('a[name="editar"]').each(function () {
+			   $(this).button({icons: {primary: "ui-icon-pencil"}});
+			   $(this).click();
+			});
 		$('input[type="button"]').each(function () {
 			   $(this).hide().after('<button>').next().button({
 			        icons: { primary: $(this).attr('icon') },
@@ -216,6 +217,7 @@ function reorderIndexes() {
 <style type="text/css">
 input.maiuscula {
   text-transform: uppercase;
+  background-color: #FFFFE0;
 }
 
 .button-remover {
