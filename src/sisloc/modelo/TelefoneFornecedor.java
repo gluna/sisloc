@@ -19,6 +19,7 @@ public class TelefoneFornecedor implements Serializable{
 	private Long id;
 	private String tipo;
 	private String numero;
+	private String contato;
 	
 	public String getTipo() {
 		return tipo;
@@ -37,6 +38,12 @@ public class TelefoneFornecedor implements Serializable{
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public String getContato() {
+		return contato;
+	}
+	public void setContato(String contato) {
+		this.contato = contato.toUpperCase();
 	}
 	
 }

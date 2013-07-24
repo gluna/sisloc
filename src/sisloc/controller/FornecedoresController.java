@@ -3,6 +3,7 @@ package sisloc.controller;
 import java.util.List;
 
 import sisloc.dao.FornecedorDao;
+import sisloc.modelo.Cliente;
 import sisloc.modelo.Fornecedor;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
@@ -48,6 +49,15 @@ public class FornecedoresController {
 	         result.include("fornecedor", fornecedor);
 	    }
 	    result.redirectTo(this.getClass()).cadastrar();
+	}
+	
+	@Path("/fornecedores/visualizar/{fornecedor.id}")
+	public void visualizar(Fornecedor fornecedor){
+		fornecedor = dao.selectById(fornecedor);
+	    if(fornecedor != null) {
+	         result.include("fornecedor", fornecedor);
+	    }
+	    //result.redirectTo(this.getClass()).visualizar();
 	}
 	
 	@Path("/fornecedores/excluir/{fornecedor.id}")

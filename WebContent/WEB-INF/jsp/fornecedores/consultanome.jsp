@@ -28,10 +28,10 @@
 				<div id="users-contain" class="ui-widget">
 					<table id="users" class="ui-widget ui-widget-content">
 					<tbody>
-					<c:forEach items="${fornecedorList}" var="orcamento">
+					<c:forEach items="${fornecedorList}" var="fornecedor">
 						<tr>
 						  <td>${fornecedor.nome}</td>
-						  <td><a href="<c:url value="/fornecedor/editar/${fornecedor.id}" />" name="editar">Editar</a></td>
+						  <td><a href="<c:url value="/fornecedores/visualizar/${fornecedor.id}" />" name="visualizar">Visualizar</a></td>
 						  <!-- <td><a href="<c:url value="/fornecedores/excluir/${tarefa.id}"/>">Excluir</a></td> -->
 						</tr>
 					</c:forEach>
@@ -58,7 +58,7 @@
 			    });
 			});
 		$('a[name="editar"]').each(function () {
-			   $(this).button({icons: {primary: "ui-icon-pencil"}});
+			   $(this).button({icons: {primary: "ui-icon-contact"}});
 			   $(this).click();
 			});
 		$('input[type="button"]').each(function () {
