@@ -24,6 +24,7 @@ public class Produto implements Serializable{
 	private String nome;
 	private String descricao;
 	private Integer quantidade;
+	private Double valor;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn
@@ -75,6 +76,14 @@ public class Produto implements Serializable{
 
 	public void setPrecos(List<Preco> precos) {
 		this.precos = precos;
+	}
+
+	public Double getValor() {
+		return valor;
+	}
+
+	public void setValor(Double valor) {
+		this.valor = valor;
 	}
 
 }

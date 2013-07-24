@@ -46,7 +46,8 @@ public class Locacao implements Serializable{
 	@JoinColumn
 	private List<EnderecoLocacao> enderecos;
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SUBSELECT)
 	@JoinColumn
 	private List<Pagamento> pagamentos;
 	

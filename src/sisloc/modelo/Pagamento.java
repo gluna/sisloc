@@ -19,7 +19,7 @@ public class Pagamento implements Serializable{
 	private Double valor;
 	private Date dtvencimento;
 	private Date dtpagamento;
-	private String moeda;
+	private String forma;
 	
 	public Long getId() {
 		return id;
@@ -46,10 +46,10 @@ public class Pagamento implements Serializable{
 		this.dtpagamento = dtpagamento;
 	}
 	public String getMoeda() {
-		return moeda;
+		return forma;
 	}
 	public void setMoeda(String moeda) {
-		this.moeda = moeda.toUpperCase();
+		this.forma = moeda.toUpperCase();
 	}
 
 }

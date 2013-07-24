@@ -32,7 +32,7 @@
 					<br></td>
 					
 					<td align="right" width="80"><label>Frete:</label></td>
-					<td align="left"><input	type="text" class="dinheiro" name="locacao.frete" size=15 value="${locacao.frete}" /><br></td>
+					<td align="left"><input	type="text" class="dinheiro" name="locacao.frete" value="${locacao.frete}" /><br></td>
 				</tr></table> 
 				</fieldset>
 				<br/>
@@ -229,6 +229,22 @@
 					<td align="left"><input	type="text" class="dinheiro" name="locacao.valortotal" value="${locacao.valortotal}" /><br></td> -->
 				</tr></table>
 				</fieldset><br>
+				<fieldset id="pagamentos" style="width: 1140px;">
+				<legend>Pagamentos:</legend>
+				<table align="right"><tr><td>
+					<input type="button" value="Adicionar" onclick="adicionarpagamento();" icon="ui-icon-contact"/></td></tr>
+				</table>
+					<c:forEach items="${locacao.pagamentos}" var="pagamento" varStatus="status">
+			    		<div class="pagamentos">
+			    		<label>Valor R$:</label>
+			    		<input type="text" name="locacao.pagamentos[${status.index}].valor" value="${pagamento.valor}" />
+			    		<label>Dt. Venciento:</label>
+			    		<input type="text" name="locacao.pagamentos[${status.index}].dtvencimento" value="<fmt:formatDate value="${pagamento.dtvencimento}" dateStyle="medium" />" />
+			    		<input type="hidden" name="locacao.pagamentos[${status.index}].id" value="${pagamento.id}" />
+			    		<input type="button" class="button-remover" />
+			    		</div>
+			    	</c:forEach>
+				</fieldset>
 				<table align="center">
 					<tr><td>
 					<input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br/>	
@@ -380,6 +396,16 @@
     		'<input type="text" name="locacao.locacaodetalhe[0].quantidade" value="${locacao.locacaodetalhe[0].quantidade}" />&nbsp&nbsp'+
 			'<input type="button" class="button-remover" />' +
     		'</div>';
+    		
+    	var pagamentomodel= 
+    		'<div class="pagamentos">'+
+    		'<label>Valor R$:</label>'+
+    		'<input type="text" name="locacao.pagamentos[0].valor" value="${locacao.pagamentos[0].valor}" />'+
+    		'<label>Dt. Venciento:</label>'+
+    		'<input type="text" name="locacao.pagamentos[0].dtvencimento" value="${locacao.pagamentos[0].dtvencimento}" />'+
+    		'<input type="button" class="button-remover" />' +
+    		'</div>';
+    		
 
     		$('.button-remover').live('click', function() {
     			$(this).parent().remove();
@@ -402,6 +428,13 @@
     			reorderIndexesend();
     			
     		};
+    		
+    		function adicionarpagamento(){
+    			
+    			$('#pagamentos').append(pagamentomodel);
+
+    			reorderIndexespagamentos();    			
+    		}
     		
     		
     		function getpreco(id, nome){
@@ -540,6 +573,41 @@
     				
     			});
     		};
+
+    		function reorderIndexespagamento() {
+    			var regex = /\[[0-9]\]/g;
+    			
+    			$('.pagamentos').each(function(index) {
+    				
+    				var $campos = $(this).find('input'),
+    					$input	,
+    					name	;
+
+    				$campos.each(function() {
+    					
+    					$input	= $(this),
+    					name	= $input.attr('name');
+    					if($input.attr('type') != 'button'){
+    						$input.attr('name', name.replace(regex, '[' + index + ']'));
+    					}
+    				});
+    				
+    				var $campos = $(this).find('select'),
+    					$input	,
+    					name	;
+
+    			    $campos.each(function() {
+    				
+    					$input	= $(this),
+    					name	= $input.attr('name');
+    					if($input.attr('type') != 'button'){
+    						$input.attr('name', name.replace(regex, '[' + index + ']'));
+    					}
+    			});
+    				
+    			});
+    		};
+
     		
     		  function verificaid(id){
     			  if(id == null){

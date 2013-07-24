@@ -55,6 +55,7 @@ public class LocacoesController {
 		    	 for(LocacaoDetalhe ld : locacao.getLocacaodetalhe() ){
 		    		 ld.setProduto(produtodao.selectById(ld.getProduto()));
 		    	 }
+		    	 locacao.setCliente(clientedao.selectById(locacao.getCliente()));
 		    	 if(locacao.getId() == null) {
 		    		 dao.salvar(locacao);
 		    	 } else {

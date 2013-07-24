@@ -24,15 +24,13 @@
 						<td align="right" width="95"><label>Quantidade:</label> </td>
 						<td align="left"><input class="maiuscula" type="text" name="produto.quantidade" size=10 value="${produto.quantidade}" /> </td></tr></table><br>
 						<table><tr><td align="right" width="95"> 
-						<label>Nº Série:</label></td> 
-						<td align="left"><input	class="maiuscula" type="text" name="produto.serie" size=29 value="${produto.serie}" /><br></td>
 						<td align="right" width="80"><label>Dev. R$:</label></td> 
-						<td align="left"><input class="dinheiro" type="text" name="produto.devolucao" size=15 value="${produto.devolucao}" /></td>
+						<td align="left"><input class="dinheiro" type="text" name="produto.valor" size=15 value="${produto.valor}" /></td>
 						</tr></table><br>
 						<table><tr>
 						<td align="right" width="95"><label>Descrição:</label></td></tr></table>
 						<table><tr><td width="95"></td> 
-						<td align="right"><textarea style="resize:none; text-transform: uppercase;" rows="10" cols="123" name="produto.descricao" value="${produto.descricao}" /></textarea><br> </td></tr></table><br> 
+						<td align="right"><textarea style="resize:none; text-transform: uppercase;" rows="10" cols="123" name="produto.descricao" />${produto.descricao}</textarea><br> </td></tr></table><br> 
 				</fieldset>
 				<br/>
 				<fieldset id="preco-container" style="width: 1140px;">
