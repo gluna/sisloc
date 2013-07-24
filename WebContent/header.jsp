@@ -7,9 +7,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <link href="http://fonts.googleapis.com/css?family=Oxygen:400,700,300" rel="stylesheet" type="text/css" />
-<link href="../css/style.css" rel="stylesheet" type="text/css" media="screen" />
-<link href="../css/menu.css" rel="stylesheet" type="text/css" media="screen" />
-<link href="../css/jquery-ui-1.10.3.custom.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="${pageContext.request.contextPath}/css/menu.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="${pageContext.request.contextPath}/css/jquery-ui-1.10.3.custom.css" rel="stylesheet" />
 <sql:setDataSource var="ds"
 	driver="org.postgresql.Driver"
 	url="jdbc:postgresql:sisloc"

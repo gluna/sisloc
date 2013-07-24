@@ -22,12 +22,9 @@
 					<td align="right" width="95"><label>Nome do Cliente:</label></td>
 					
 					<td align="left">
-					    		'<select id="produto" onchange="getpreco(value, name);" name="locacao.locacaodetalhe[0].produto.id" value="locacao.locacaodetalhe[0].produto.id">'+
-    		'	<option value="">Selecione um Item</option>'+
-    		'	<c:forEach items="${produtoList}" var="produto" varStatus="status">'+
-    		'		<option value="${produto.id}">${produto.nome}</option>'+
-    		'	</c:forEach>'+
-    		'</select>&nbsp&nbsp'+
+						<select id="cliente" onload="getcliente();" name="locacao.cliente.id" value="locacao.cliente.id">
+							<option value="">Selecione um Item</option>
+						</select>
 					
 					<!-- <input	type="text" class="maiuscula" name="locacao.cliente.nome" size=50 value="${locacao.cliente}" /> -->
 					 
@@ -441,6 +438,40 @@
     		        }  
     		    });
     		}
+    		
+    		function getcliente(){
+    			
+    		    $.ajax({  
+    		        url: '/sisloc/locacoes/getcliente/',  
+    		        data: {},  
+    		        type : 'get',  
+    		        dataType: 'json',  
+    		        success : function() {
+    		            
+    		            	$('.produtointem').each(function(index) {
+
+    		    				var $campos = $(this).find('select'),
+    	    					$input	,
+    	    					name	;
+
+    	    			    $campos.each(function() {
+    	    					$input	= $(this),
+    	    					name	= $input.attr('id');
+    	    					npreco  = $input.attr('name');
+    	    					index2 = npreco.substring(npreco.indexOf('[')+1, npreco.indexOf(']'));
+    	    					if(name == 'preco' && indice == index2){
+    	    						$input.find('option').remove();
+    	    						for (var i = 0; i < precos.length; i++){
+    	    							$input.append('<option value="'+precos[i].preco+'">'+precos[i].preco+'</option>');
+    	    						}
+    	    					}
+	    	    			});
+    		            		
+    		            	});    
+    		        }  
+    		    });
+    		}
+
     		
     		
     		function reorderIndexes() {
