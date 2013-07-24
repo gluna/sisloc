@@ -57,8 +57,8 @@
 			         $(this).prev().click();
 			    });
 			});
-		$('a[name="editar"]').each(function () {
-			   $(this).button({icons: {primary: "ui-icon-pencil"}});
+		$('a[name="visualizar"]').each(function () {
+			   $(this).button({icons: {primary: "ui-icon-contact"}});
 			   $(this).click();
 			});
 		$('input[type="button"]').each(function () {
