@@ -50,6 +50,15 @@ public class ClientesController {
 	    result.redirectTo(this.getClass()).cadastrar();
 	}
 	
+	@Path("/clientes/visualizar/{cliente.id}")
+	public void visualizar(Cliente cliente){
+		cliente = dao.selectById(cliente);
+	    if(cliente != null) {
+	         result.include("cliente", cliente);
+	    }
+	    //result.redirectTo(this.getClass()).visualizar();
+	}
+	
 	@Path("/clientes/excluir/{cliente.id}")
 	public void excluir(Cliente cliente){
 		cliente = dao.selectById(cliente);
