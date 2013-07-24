@@ -24,13 +24,13 @@ public class TelefoneFornecedor implements Serializable{
 		return tipo;
 	}
 	public void setTipo(String tipo) {
-		this.tipo = tipo;
+		this.tipo = tipo.toUpperCase();
 	}
 	public String getNumero() {
 		return numero;
 	}
 	public void setNumero(String numero) {
-		this.numero = numero;
+		this.numero = numero.toUpperCase();
 	}
 	public Long getId() {
 		return id;

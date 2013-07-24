@@ -4,7 +4,7 @@
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-ui-1.10.3.custom.js"></script>
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery.maskMoney.js"></script>
 
-<body>
+<body onload="getcliente(${locacao.id});">
 	<form action="<c:url value='/locacoes/salvar'/>" method="post">
 		<div id="tabs" class="container">
 			<ul>
@@ -22,8 +22,8 @@
 					<td align="right" width="95"><label>Nome do Cliente:</label></td>
 					
 					<td align="left">
-						<select id="cliente" onload="getcliente();" name="locacao.cliente.id" value="locacao.cliente.id">
-							<option value="">Selecione um Item</option>
+						<select id="cliente"  name="locacao.cliente.id" value="locacao.cliente.id">
+							<option value="${locacao.cliente.id}">${locacao.cliente.nome}</option>
 						</select>
 					
 					<!-- <input	type="text" class="maiuscula" name="locacao.cliente.nome" size=50 value="${locacao.cliente}" /> -->
@@ -439,16 +439,15 @@
     		    });
     		}
     		
-    		function getcliente(){
-    			
+    		function getcliente(id){
+    			if(id == null){
     		    $.ajax({  
-    		        url: '/sisloc/locacoes/getcliente/',  
-    		        data: {},  
+    		        url: '/sisloc/locacoes/getclientes',  
     		        type : 'get',  
     		        dataType: 'json',  
-    		        success : function() {
+    		        success : function(clientes) {
     		            
-    		            	$('.produtointem').each(function(index) {
+    		            	$('.container').each(function(index) {
 
     		    				var $campos = $(this).find('select'),
     	    					$input	,
@@ -457,12 +456,11 @@
     	    			    $campos.each(function() {
     	    					$input	= $(this),
     	    					name	= $input.attr('id');
-    	    					npreco  = $input.attr('name');
-    	    					index2 = npreco.substring(npreco.indexOf('[')+1, npreco.indexOf(']'));
-    	    					if(name == 'preco' && indice == index2){
+    	    					if(name == 'cliente'){
     	    						$input.find('option').remove();
-    	    						for (var i = 0; i < precos.length; i++){
-    	    							$input.append('<option value="'+precos[i].preco+'">'+precos[i].preco+'</option>');
+    	    						$input.append('<option value="">Selecione um Item</option>');
+    	    						for (var i = 0; i < clientes.length; i++){
+    	    							$input.append('<option value="'+clientes[i].id+'">'+clientes[i].nome+'</option>');
     	    						}
     	    					}
 	    	    			});
@@ -470,6 +468,7 @@
     		            	});    
     		        }  
     		    });
+    			}
     		}
 
     		

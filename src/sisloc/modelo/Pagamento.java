@@ -49,7 +49,7 @@ public class Pagamento implements Serializable{
 		return moeda;
 	}
 	public void setMoeda(String moeda) {
-		this.moeda = moeda;
+		this.moeda = moeda.toUpperCase();
 	}
 
 }

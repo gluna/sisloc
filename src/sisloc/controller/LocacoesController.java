@@ -9,8 +9,10 @@ import javax.servlet.ServletContext;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
+import sisloc.dao.ClienteDao;
 import sisloc.dao.LocacaoDao;
 import sisloc.dao.ProdutoDao;
+import sisloc.modelo.Cliente;
 import sisloc.modelo.Locacao;
 import sisloc.modelo.LocacaoDetalhe;
 import sisloc.modelo.Preco;
@@ -29,12 +31,14 @@ public class LocacoesController {
 	private Result result;
 	private ProdutoDao produtodao;
 	private ServletContext context;
+	private ClienteDao clientedao;
 	
-	public LocacoesController(LocacaoDao dao, Result result, ProdutoDao produtodao,ServletContext context){
+	public LocacoesController(LocacaoDao dao, Result result, ProdutoDao produtodao,ServletContext context, ClienteDao clientedao){
 		this.dao = dao;
 		this.result = result;
 		this.produtodao = produtodao;
 		this.context = context;
+		this.clientedao = clientedao;
 	}
 	
 	@Path("/locacoes/cadastrar")
@@ -92,6 +96,12 @@ public class LocacoesController {
 		prod.setId(p);
 		List<Preco> precos = produtodao.selectById(prod).getPrecos();
 		result.use(Results.json()).withoutRoot().from(precos).serialize();  
+	}
+	
+	@Path("/locacoes/getclientes")
+	public void getclientes(){
+		List<Cliente> clientes =  clientedao.listaTodos();
+		result.use(Results.json()).withoutRoot().from(clientes).serialize();  
 	}
 	
 	@Path({"/locacoes/report/{locacao.id}", "/locacoes/report/"}) 

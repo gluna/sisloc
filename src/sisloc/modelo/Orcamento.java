@@ -82,7 +82,7 @@ public class Orcamento implements Serializable{
 	}
 
 	public void setCliente(String cliente) {
-		this.cliente = cliente;
+		this.cliente = cliente.toUpperCase();
 	}
 
 	public Double getFrete() {
