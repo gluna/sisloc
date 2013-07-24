@@ -31,7 +31,7 @@
 					<c:forEach items="${clienteList}" var="cliente">
 						<tr>
 						  <td>${cliente.nome}</td>
-						  <td><a href="<c:url value="/clientes/editar/${cliente.id}" />" name="editar">Editar</a></td>
+						  <td><a href="<c:url value="/clientes/visualizar/${cliente.id}" />" name="visualizar">Visualizar</a></td>
 						  <!-- <td><a href="<c:url value="/clientes/excluir/${tarefa.id}"/>">Excluir</a></td> -->
 						</tr>
 					</c:forEach>

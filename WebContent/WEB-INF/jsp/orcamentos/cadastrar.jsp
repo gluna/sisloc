@@ -196,7 +196,7 @@ var model =
   }
   
   $(document).ready(function(){
-	    $("input.dinheiro").maskMoney({showSymbol:false, symbol:"R$", decimal:",", thousands:"."});
+	    $("input.dinheiro").maskMoney({showSymbol:false, symbol:"R$", decimal:".", thousands:"."});
 	});
 </script>
 <script>
