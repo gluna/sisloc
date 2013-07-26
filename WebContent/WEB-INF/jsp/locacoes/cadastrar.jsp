@@ -19,7 +19,7 @@
 				<table><tr>
 					<td align="right" width="95"><label>Número da Locação:</label></td>
 					<td align="left"><input	type="text" name="locacao.id" value="${locacao.id}" readonly /><br></td>
-					<td align="right" width="95"><label>Nome do Cliente:</label></td>
+					<td align="right" width="95"><label>Cliente:</label></td>
 					
 					<td align="left">
 						<select id="cliente"  name="locacao.cliente.id" value="locacao.cliente.id">
@@ -400,9 +400,9 @@
     	var pagamentomodel= 
     		'<div class="pagamentos">'+
     		'<label>Valor R$:</label>'+
-    		'<input type="text" name="locacao.pagamentos[0].valor" value="${locacao.pagamentos[0].valor}" />'+
-    		'<label>Dt. Venciento:</label>'+
-    		'<input type="text" name="locacao.pagamentos[0].dtvencimento" value="${locacao.pagamentos[0].dtvencimento}" />'+
+    		'<input type="text" name="locacao.pagamentos[0].valor" value="${locacao.pagamentos[0].valor}" />&nbsp'+
+    		'<label>Data de Venciento:</label>'+
+    		'<input type="text" class="data" name="locacao.pagamentos[0].dtvencimento" value="<fmt:formatDate value="${locacao.pagamentos[0].dtvencimento}" dateStyle="medium" />" /> &nbsp&nbsp' +
     		'<input type="button" class="button-remover" />' +
     		'</div>';
     		
@@ -432,6 +432,20 @@
     		function adicionarpagamento(){
     			
     			$('#pagamentos').append(pagamentomodel);
+    			
+    			$(".data").datepicker({
+    			    dateFormat: 'dd/mm/yy',
+    			    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+    			    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+    			    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+    			    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+    			    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+    			    nextText: 'Próximo',
+    			    prevText: 'Anterior',
+    			    showOn: "button",
+    				buttonImage: "${pageContext.request.contextPath}/images/calendar.gif",
+    				buttonImageOnly: true
+    			});
 
     			reorderIndexespagamentos();    			
     		}
@@ -640,6 +654,10 @@
 			         event.preventDefault();
 			         $(this).prev().click();
 			    });
+			});
+		$('a[name="imprimir"]').each(function () {
+			   $(this).button({icons: {primary: "ui-icon-print"}});
+			   //$(this).click();
 			});
 		$(".data").datepicker({
 		    dateFormat: 'dd/mm/yy',
