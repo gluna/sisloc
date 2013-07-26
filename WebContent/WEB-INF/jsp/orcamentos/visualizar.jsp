@@ -17,16 +17,16 @@
 				</legend>
 				<table><tr>
 					<td align="right" width="95"><label>Número do Orçamento:</label></td>
-					<td align="left"><input	type="text" name="orcamento.id" value="${orcamento.id}" readonly /><br></td>
+					<td align="left"><input	type="text" class="maiuscula" name="orcamento.id" value="${orcamento.id}" readonly /><br></td>
 					<td align="right" width="95"><label>Nome do Cliente/Empresa:</label></td>
-					<td align="left"><input	type="text" class="maiuscula" name="orcamento.cliente" size=50 value="${orcamento.cliente}" /><br></td>
+					<td align="left"><input	type="text" class="maiuscula" name="orcamento.cliente" size=50 value="${orcamento.cliente}" readonly/><br></td>
 					<td align="right" width="80"><label>Frete:</label></td>
-					<td align="left"><input	type="text" class="dinheiro" name="orcamento.frete" size=15 value="${orcamento.frete}" /><br></td>
+					<td align="left"><input	type="text" class="dinheiro" name="orcamento.frete" size=15 value="${orcamento.frete}" readonly/><br></td>
 				</tr></table>
 				<table><tr>
 						<td align="right" width="95"><label>Observação:</label></td></tr></table>
 						<table><tr><td width="95"></td> 
-						<td align="right"><textarea style="resize:none; text-transform: uppercase;" rows="10" cols="123" name="orcamento.obs" value="${orcamento.obs}" /></textarea><br> </td></tr></table><br>
+						<td align="right"><textarea style="resize:none; text-transform: uppercase; background-color: #FFFFE0;" rows="10" cols="123" name="orcamento.obs" value="${orcamento.obs}" readonly/></textarea><br> </td></tr></table><br>
 				</fieldset>
 				<br/>
 				<fieldset id="formulario" style="width: 1140px;"> 
@@ -36,11 +36,11 @@
 				<!--<label>ID:</label> <input type="hidden" name="orcamento.id" value="${orcamento.id}" readonly /> -->
 					<table><tr><td align="right" width="95"> 
 						<label>Data do Orçamento:</label></td> 
-						<td align="left"><input	type="text" class="data" name="orcamento.data" value="<fmt:formatDate value="${orcamento.data}" dateStyle="medium" />" /><br></td>
+						<td align="left"><input	type="text" class="data" name="orcamento.data" value="<fmt:formatDate value="${orcamento.data}" dateStyle="medium" />" readonly/><br></td>
 						<td align="right" width="80"><label>Data Inicio:</label></td> 
-						<td align="left"><input	type="text" class="data" name="orcamento.inicio" value="<fmt:formatDate value="${orcamento.inicio}" dateStyle="medium" />" /></td><br>
+						<td align="left"><input	type="text" class="data" name="orcamento.inicio" value="<fmt:formatDate value="${orcamento.inicio}" dateStyle="medium" />" readonly/></td><br>
 						<td align="right" width="80"><label>Data Fim:</label> </td>
-						<td align="left"><input type="text" class="data" name="orcamento.fim" value="<fmt:formatDate value="${orcamento.fim}" dateStyle="medium" />" /> </td>
+						<td align="left"><input type="text" class="data" name="orcamento.fim" value="<fmt:formatDate value="${orcamento.fim}" dateStyle="medium" />" readonly/> </td>
 						</tr></table>
 				</fieldset>
 				<br/>
@@ -49,23 +49,19 @@
 				<legend>
 					Detalhes do Orçamento:
 				</legend>
-				<table align="right"><tr><td>
-					<input type="button" name="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-contact"/></td></tr>
-				</table>
+				<!-- <table align="right"><tr><td>
+					<input type="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-contact"/>  </td></tr>
+				</table> -->
 				<c:forEach items="${orcamento.orcamentodetalhe}" var="orcamentodetalhe" varStatus="status">
 					    <div class="produtointem">
 						    <label>Produto:</label>&nbsp
-							<select id="produto" onchange="getpreco(value, name);" name="orcamento.orcamentodetalhe[${status.index}].produto.id" value="orcamentodetalhe.produto.id">
-								<option value="${orcamentodetalhe.produto.id}">${orcamentodetalhe.produto.nome}</option>
-							</select>&nbsp&nbsp
+						    <input type="text" class="maiuscula" name="orcamento.orcamentodetalhe[${status.index}].produto.nome" value="${orcamentodetalhe.produto.nome}" readonly/>&nbsp&nbsp
 							<label>R$:</label>&nbsp
-							<select id="preco" name="orcamento.orcamentodetalhe[${status.index}].preco" value="orcamentodetalhe.preco">
-								<option value="${orcamentodetalhe.preco}">${orcamentodetalhe.preco}</option>
-							</select>&nbsp&nbsp
+							<input type="text" class="maiuscula" name="orcamento.orcamentodetalhe[${status.index}].preco" value="${orcamentodetalhe.preco}" readonly/>&nbsp&nbsp
 							<label>Quantidade:</label>&nbsp
-							<input type="text" name="orcamento.orcamentodetalhe[${status.index}].quantidade" value="${orcamentodetalhe.quantidade}" />&nbsp&nbsp
+							<input type="text" class="maiuscula" name="orcamento.orcamentodetalhe[${status.index}].quantidade" value="${orcamentodetalhe.quantidade}" readonly/>&nbsp&nbsp
 							<input type="hidden" name="orcamento.orcamentodetalhe[${status.index}].id" value="${orcamentodetalhe.id}" />
-							<input type="button" class="button-remover" />
+							<!-- <input type="button" class="button-remover" /> -->
 						</div>
 				</c:forEach>
 				</fieldset>
@@ -73,8 +69,9 @@
 	
 				<br>
 				<table align="center">
-					<tr><td> 
-					<input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br />
+					<tr><td>
+					<a href="<c:url value="/orcamentos/editar/${orcamento.id}" />" name="editar">Editar</a> 
+					<!--  <input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br /> -->
 					</td>
 					<td>
 					<!-- <input type="button" value="Imprimir" class="imprimir" icon="ui-icon-print" action="<c:url value='/orcamentos/salvar'/>"></a><br/> -->
@@ -224,6 +221,10 @@ var model =
 			   $(this).button({icons: {primary: "ui-icon-print"}});
 			   //$(this).click();
 			});
+		$('a[name="editar"]').each(function () {
+			   $(this).button({icons: {primary: "ui-icon-pencil"}});
+			   $(this).click();
+			});
 		$(".data").datepicker({
 		    dateFormat: 'dd/mm/yy',
 		    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
@@ -234,6 +235,7 @@ var model =
 		    nextText: 'Próximo',
 		    prevText: 'Anterior',
 		    showOn: "button",
+		    display: none,
 			buttonImage: "${pageContext.request.contextPath}/images/calendar.gif",
 			buttonImageOnly: true
 		});
@@ -246,6 +248,13 @@ var model =
 <style type="text/css">
 input.maiuscula {
   text-transform: uppercase;
+  background-color: #FFFFE0;
+}
+input.data {
+  background-color: #FFFFE0;
+}
+input.dinheiro {
+  background-color: #FFFFE0;
 }
 
 .button-remover {
