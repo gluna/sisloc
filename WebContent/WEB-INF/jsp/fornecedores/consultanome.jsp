@@ -57,7 +57,7 @@
 			         $(this).prev().click();
 			    });
 			});
-		$('a[name="editar"]').each(function () {
+		$('a[name="visualizar"]').each(function () {
 			   $(this).button({icons: {primary: "ui-icon-contact"}});
 			   $(this).click();
 			});
