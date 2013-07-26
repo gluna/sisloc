@@ -50,6 +50,15 @@ public class ProdutosController {
 	    result.redirectTo(this.getClass()).cadastrar();
 	}
 	
+	@Path("/produtos/visualizar/{produto.id}")
+	public void visualizar(Produto produto){
+		produto = dao.selectById(produto);
+	    if(produto != null) {
+	         result.include("produto", produto);
+	    }
+	    //result.redirectTo(this.getClass()).cadastrar();
+	}
+	
 	@Path("/produtos/excluir/{produto.id}")
 	public void excluir(Produto produto){
 		produto = dao.selectById(produto);

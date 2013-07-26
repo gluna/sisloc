@@ -31,7 +31,7 @@
 					<c:forEach items="${produtoList}" var="produto">
 						<tr>
 						  <td>${produto.nome}</td>
-						  <td><a href="<c:url value="/produtos/editar/${produto.id}" />" name="editar">Editar</a></td>
+						  <td><a href="<c:url value="/produtos/visualizar/${produto.id}" />" name="visualizar">Visualizar</a></td>
 						  <!-- <td><a href="<c:url value="/produtos/excluir/${tarefa.id}"/>">Excluir</a></td> -->
 						</tr>
 					</c:forEach>
@@ -57,8 +57,8 @@
 			         $(this).prev().click();
 			    });
 			});
-		$('a[name="editar"]').each(function () {
-			   $(this).button({icons: {primary: "ui-icon-pencil"}});
+		$('a[name="visualizar"]').each(function () {
+			   $(this).button({icons: {primary: "ui-icon-contact"}});
 			   $(this).click();
 			});
 		$('input[type="button"]').each(function () {

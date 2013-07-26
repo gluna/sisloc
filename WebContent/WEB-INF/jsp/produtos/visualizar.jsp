@@ -18,36 +18,36 @@
 				<!--<label>ID:</label> --><input type="hidden" name="produto.id" value="${produto.id}" readonly />
 					<table><tr><td align="right" width="95"> 
 						<label>Código:</label></td> 
-						<td align="left"><input	class="maiuscula" type="text" name="produto.codigo" size=29 value="${produto.codigo}" /><br></td>
+						<td align="left"><input	class="maiuscula" type="text" name="produto.codigo" size=29 value="${produto.codigo}" readonly/><br></td>
 						<td align="right" width="80"><label>Nome:</label></td> 
-						<td align="left"><input class="maiuscula" type="text" name="produto.nome" size=50 value="${produto.nome}" /></td>
+						<td align="left"><input class="maiuscula" type="text" name="produto.nome" size=50 value="${produto.nome}" readonly/></td>
 						<td align="right" width="95"><label>Quantidade:</label> </td>
-						<td align="left"><input class="maiuscula" type="text" name="produto.quantidade" size=10 value="${produto.quantidade}" /> </td></tr></table><br>
+						<td align="left"><input class="maiuscula" type="text" name="produto.quantidade" size=10 value="${produto.quantidade}" readonly/> </td></tr></table><br>
 						<table><tr><td align="right" width="95"> 
 						<td align="right" width="80"><label>Dev. R$:</label></td> 
-						<td align="left"><input class="dinheiro" type="text" name="produto.valor" size=15 value="${produto.valor}" /></td>
+						<td align="left"><input class="dinheiro" type="text" name="produto.valor" size=15 value="${produto.valor}" readonly/></td>
 						</tr></table><br>
 						<table><tr>
 						<td align="right" width="95"><label>Descrição:</label></td></tr></table>
 						<table><tr><td width="95"></td> 
-						<td align="right"><textarea style="resize:none; text-transform: uppercase;" rows="10" cols="123" name="produto.descricao" />${produto.descricao}</textarea><br> </td></tr></table><br> 
+						<td align="right"><textarea style="resize:none; text-transform: uppercase; background-color: #FFFFE0;" rows="10" cols="123" name="produto.descricao" readonly/>${produto.descricao}</textarea><br> </td></tr></table><br> 
 				</fieldset>
 				<br/>
 				<fieldset id="preco-container" style="width: 1140px;">
 				<legend>
 					Preços:	
 				</legend>
-				<table align="right"><tr><td>
-					<input type="button" name="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-tag"/></td></tr>
-				</table>
+				<!--<table align="right"><tr><td>
+					 <input type="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-tag"/></td></tr> 
+				</table>-->
 				<c:forEach items="${produto.precos}" var="preco" varStatus="status">
 					<div class="precos">
 						<label>Dias:</label>&nbsp
-						<input type="text" name="produto.precos[${status.index}].dias" value="${preco.dias}" />&nbsp&nbsp
+						<input type="text" class="dias" name="produto.precos[${status.index}].dias" value="${preco.dias}" readonly/>&nbsp&nbsp
 						<label>Valor R$:</label>&nbsp
-						<input type="text" class="dinheiro" name="produto.precos[${status.index}].preco" value="${preco.preco}" />&nbsp&nbsp
+						<input type="text" class="dinheiro" name="produto.precos[${status.index}].preco" value="${preco.preco}" readonly/>&nbsp&nbsp
 						<input type="hidden" name="produto.precos[${status.index}].id" value="${preco.id}" />
-						<input type="button" class="button-remover" />
+						<!-- <input type="button" class="button-remover" />  -->
 					</div>
 				</c:forEach>
 				</fieldset><br/>
@@ -55,7 +55,8 @@
 				<br>
 				<table align="center">
 					<tr><td>
-					<input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br />	</td></tr>
+					<a href="<c:url value="/produtos/editar/${produto.id}" />" name="editar">Editar</a>
+					<!-- <input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br />	 --></td></tr>
 				</table>
 			</div>
 		</div>	
@@ -86,7 +87,7 @@ $('.salvar').live('click', function() {
 
 function adicionar() {
 	$('#preco-container').append(model);
-	$("input.dinheiro").maskMoney({showSymbol:false, symbol:"R$", decimal:".", thousands:"."});
+	$("input.dinheiro").maskMoney({showSymbol:false, symbol:"R$", decimal:",", thousands:"."});
 	reorderIndexes();
 };
 
@@ -139,7 +140,11 @@ $(document).ready(function(){
 			         $(this).prev().click();
 			    });
 			});
-		$('input[name="button"]').each(function () {
+		$('a[name="editar"]').each(function () {
+			   $(this).button({icons: {primary: "ui-icon-pencil"}});
+			   $(this).click();
+			});
+		$('input[type="button"]').each(function () {
 			   $(this).hide().after('<button>').next().button({
 			        icons: { primary: $(this).attr('icon') },
 			        label: $(this).val()
@@ -153,6 +158,13 @@ $(document).ready(function(){
 <style type="text/css">
 input.maiuscula {
   text-transform: uppercase;
+  background-color: #FFFFE0;
+}
+input.dinheiro {
+  background-color: #FFFFE0;
+}
+input.dias {
+  background-color: #FFFFE0;
 }
 .button-remover {
   background-image: url('${pageContext.request.contextPath}/images/btn_remover.png');
