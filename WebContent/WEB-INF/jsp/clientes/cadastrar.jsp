@@ -81,7 +81,7 @@
 					Telefones:	
 				</legend>
 				<table align="right"><tr><td>
-					<input type="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-contact"/></td></tr>
+					<input type="button" name="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-contact"/></td></tr>
 				</table>
 				<c:forEach items="${cliente.telefones}" var="telefone" varStatus="status">
 					<div class="telefonecliente">
@@ -201,7 +201,7 @@ function reorderIndexes() {
 			         $(this).prev().click();
 			    });
 			});
-		$('input[type="button"]').each(function () {
+		$('input[name="button"]').each(function () {
 			   $(this).hide().after('<button>').next().button({
 			        icons: { primary: $(this).attr('icon') },
 			        label: $(this).val()

@@ -61,7 +61,7 @@
 						<label>Contato:</label>&nbsp
 						<input type="text" class="maiuscula" name="cliente.telefones[${status.index}].contato" value="${telefone.contato}" readonly />&nbsp&nbsp
 						<input type="hidden" name="cliente.telefones[${status.index}].id" value="${telefone.id}" />
-						<input type="button" class="button-remover"/>
+						<!-- <input type="button" class="button-remover1"/>  -->
 					</div>
 				</c:forEach>
 				</fieldset>
@@ -189,6 +189,14 @@ input.maiuscula {
 }
 
 .button-remover {
+  background-image: url('${pageContext.request.contextPath}/images/btn_remover.png');
+  cursor:pointer;
+  border: none;
+  width: 34px;
+  height: 33px;
+}
+
+.button-remover1 {
   background-image: url('${pageContext.request.contextPath}/images/btn_remover.png');
   cursor:pointer;
   border: none;
