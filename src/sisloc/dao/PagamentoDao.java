@@ -43,4 +43,8 @@ public class PagamentoDao {
 		return true;
 	}
 	
+	public Pagamento selectById(Pagamento pagamento){
+		return null;
+	}
+	
 }

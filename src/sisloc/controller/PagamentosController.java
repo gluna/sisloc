@@ -2,6 +2,7 @@ package sisloc.controller;
 
 import java.util.List;
 
+import sisloc.dao.LocacaoDao;
 import sisloc.dao.PagamentoDao;
 import sisloc.modelo.Pagamento;
 import br.com.caelum.vraptor.Path;
@@ -14,10 +15,12 @@ public class PagamentosController {
 
 	private PagamentoDao dao;
 	private Result result;
+	private LocacaoDao locacaodao;
 	
-	public PagamentosController(PagamentoDao dao, Result result){
+	public PagamentosController(PagamentoDao dao, Result result, LocacaoDao locacaodao){
 		this.dao = dao;
 		this.result = result;
+		this.locacaodao = locacaodao;
 	}
 	
 	@Path("/pagamentos/cadastrar")
@@ -50,14 +53,9 @@ public class PagamentosController {
 	    result.redirectTo(this.getClass()).cadastrar();
 	}
 	
-	@Path("/pagamentos/visualizar/{pagamento.id}")
-	public void visualizar(Pagamento pagamento){
-		pagamento = dao.selectById(pagamento);
-	    if(pagamento != null) {
-	         result.include("pagamento", pagamento);
-	    }
-	    //result.redirectTo(this.getClass()).visualizar();
+	@Path("/pagamentos/consultanome/")
+	public List<Pagamento> consultanome(Pagamento pagamento){
+		return null;
 	}
-	
 }
 
