@@ -338,7 +338,7 @@
 					'<option value="MA">MARANHÃO</option>' +
 					'<option value="MS">MATO GROSSO DO SUL</option>' +
 					'<option value="MT">MATO GROSSO</option>' +
-					'<option value="MG">MINAS GERAIS</option>' +
+					'<option value="MG">MINAS GERAIS</option>' +<input type="hidden" name="locacao.pagamentos[${status.index}].id" value="${pagamento.id}" />
 					'<option value="PA">PARÁ</option>' +
 					'<option value="PB">PARAÍBA</option>' +
 					'<option value="PR">PARANÁ</option>' +
@@ -403,6 +403,7 @@
     		'<input type="text" class="dinheiro" name="locacao.pagamentos[0].valor" value="${locacao.pagamentos[0].valor}" />&nbsp'+
     		'<label>Data de Venciento:</label>'+
     		'<input type="text" class="data" name="locacao.pagamentos[0].dtvencimento" value="<fmt:formatDate value="${locacao.pagamentos[0].dtvencimento}" dateStyle="medium" />" /> &nbsp&nbsp' +
+    		'<input type="hidden" name="locacao.pagamentos[0].id" value="${locacao.pagamentos[0].id}" />'+
     		'<input type="button" class="button-remover" />' +
     		'</div>';
     		
