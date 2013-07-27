@@ -452,7 +452,7 @@
                     $("input.dinheiro").maskMoney({showSymbol:false, symbol:"R$", decimal:".", thousands:"."});
               	});
 
-    			reorderIndexespagamentos();    			
+    			reorderIndexespagamento();    			
     		}
     		
     		
@@ -513,17 +513,38 @@
     	    						$input.append('<option value="">Selecione um Item</option>');
     	    						for (var i = 0; i < clientes.length; i++){
     	    							$input.append('<option value="'+clientes[i].id+'">'+clientes[i].nome+'</option>');
-    	    						}
-    	    					}
+    	    						};
+    	    					};
 	    	    			});
     		            		
     		            	});    
     		        }  
     		    });
-    			}
+    			};
     		}
 
-    		
+    		function somar() {
+    			var regex = /\[[0-9]\]/g;
+    			
+    			$('.produtointem').each(function(index) {
+    				
+    				var $campos = $(this).find('input'),
+    					$input	,
+    					soma	,
+    					name	;
+
+    				$campos.each(function() {
+    					
+    					$input	= $(this),
+    					name	= $input.attr('name');
+    					if($input.attr('id') == 'preco'){
+    						soma = 
+    						$input.attr('name', name.replace(regex, '[' + index + ']'));
+    					}
+    				});
+    				
+    			});
+    		};
     		
     		function reorderIndexes() {
     			var regex = /\[[0-9]\]/g;
