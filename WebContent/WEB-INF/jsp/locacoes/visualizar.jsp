@@ -8,7 +8,7 @@
 	<form action="<c:url value='/locacoes/salvar'/>" method="post">
 		<div id="tabs" class="container">
 			<ul>
-				<li><a href="#tabs-1">Cadastro de Locações</a></li>
+				<li><a href="#tabs-1">Visualização de Locações</a></li>
 			</ul>
 			<div id="tabs-1">
 				<br>
@@ -191,9 +191,9 @@
 				</fieldset><br>
 				<fieldset id="pagamentos" style="width: 1140px;">
 				<legend>Pagamentos:</legend>
-				<table align="right"><tr><td>
-					<input type="button" value="Adicionar" onclick="adicionarpagamento();" icon="ui-icon-contact"/></td></tr>
-				</table>
+				<!--<table align="right"><tr><td>
+					 <input type="button" value="Adicionar" onclick="adicionarpagamento();" icon="ui-icon-contact"/></td></tr>
+				</table> -->
 					<c:forEach items="${locacao.pagamentos}" var="pagamento" varStatus="status">
 			    		<div class="pagamentos">
 			    		<label>Valor R$:</label>
