@@ -33,7 +33,7 @@
 						  <td>${orcamento.id}</td>
 						  <td>${orcamento.cliente}</td>
 						  <td><a href="<c:url value="/orcamentos/visualizar/${orcamento.id}" />" name="visualizar">Visualizar</a></td>
-						  <!-- <td><a href="<c:url value="/fornecedores/excluir/${tarefa.id}"/>">Excluir</a></td> -->
+						  <td><a href="<c:url value="/locacoes/importarorcamento/${orcamento.id}"/>" name="importar">Importar</a></td>
 						</tr>
 					</c:forEach>
 					</tbody></table></div>
