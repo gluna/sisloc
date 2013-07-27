@@ -5,6 +5,7 @@ import java.util.List;
 import sisloc.dao.LocacaoDao;
 import sisloc.dao.PagamentoDao;
 import sisloc.modelo.Locacao;
+import sisloc.modelo.Pagamento;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
@@ -32,11 +33,14 @@ public class PagamentosController {
 	public void salvar(Locacao locacao){
 		try {
 		     if(locacao != null) {
-		    	 if(locacao.getId() == null) {
-		    		 locacaodao.salvar(locacao);
-		    	 } else {
-		    		 locacaodao.atualizar(locacao);
-	             }
+		    	 for(Pagamento p : locacao.getPagamentos()){
+		    		 
+			    	 if(p.getId() == null) {
+			    		 dao.salvar(p);
+			    	 } else {
+			    		 dao.atualizar(p);
+		             }
+		    	 }
 	          }
 		     result.redirectTo(this.getClass()).cadastrar();
 		} catch (Exception e) {
