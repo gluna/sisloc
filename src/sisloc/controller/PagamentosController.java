@@ -4,7 +4,7 @@ import java.util.List;
 
 import sisloc.dao.LocacaoDao;
 import sisloc.dao.PagamentoDao;
-import sisloc.modelo.Pagamento;
+import sisloc.modelo.Locacao;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
@@ -28,14 +28,14 @@ public class PagamentosController {
 	}
 	
 	@Post
-	@Path("/clientes/salvar")
-	public void salvar(Pagamento pagamento){
+	@Path("/pagamentos/salvar")
+	public void salvar(Locacao locacao){
 		try {
-		     if(pagamento != null) {
-		    	 if(pagamento.getId() == null) {
-		    		 dao.salvar(pagamento);
+		     if(locacao != null) {
+		    	 if(locacao.getId() == null) {
+		    		 locacaodao.salvar(locacao);
 		    	 } else {
-		    		 dao.atualizar(pagamento);
+		    		 locacaodao.atualizar(locacao);
 	             }
 	          }
 		     result.redirectTo(this.getClass()).cadastrar();
@@ -44,18 +44,19 @@ public class PagamentosController {
 		}
 	}
 	
-	@Path("/pagamentos/editar/{pagamento.id}")
-	public void editar(Pagamento pagamento){
-		pagamento = dao.selectById(pagamento);
-	    if(pagamento != null) {
-	         result.include("pagamento", pagamento);
+	@Path("/pagamentos/editar/{locacao.id}")
+	public void editar(Locacao locacao){
+		locacao = locacaodao.selectById(locacao);
+	    if(locacao != null) {
+	         result.include("locacao", locacao);
 	    }
 	    result.redirectTo(this.getClass()).cadastrar();
 	}
 	
-	@Path("/pagamentos/consultanome/")
-	public List<Pagamento> consultanome(Pagamento pagamento){
-		return null;
+	@Path("/pagamentos/consultalocacao")
+	public List<Locacao> consultalocacao(Locacao locacao){
+		List<Locacao> t = locacaodao.consultalocacao(locacao);
+		return t;
 	}
 }
 

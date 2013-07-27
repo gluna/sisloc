@@ -1,12 +1,12 @@
 <%@ include file="../../../header.jsp"%>
- <!-- <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>  -->
-<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script>
+<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+<!-- <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script>  -->
  <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-ui-1.10.3.custom.js"></script>
  <body>
-<form action="<c:url value='/pagamentos/consultanome'/>" method="post">
+<form action="<c:url value='/pagamentos/consultalocacao'/>" method="post">
 	<div id="tabs" class="container">
 			<ul>
-				<li><a href="#tabs-1">Consultar Cliente</a></li>
+				<li><a href="#tabs-1">Consultar Locações</a></li>
 			</ul>
 			<div id="tabs-1">
 				<br>
@@ -16,12 +16,12 @@
 				</legend>
 					<table><tr><td align="right" width="95"> 
 						<label>Nome:</label></td> 
-						<td align="left"><input	class="maiuscula" type="text" name="locacao.cliente.nome" size=50 value="${locacao.cliente.nomex}" /><br></td>
+						<td align="left"><input	class="maiuscula" type="text" name="locacao.cliente.nome" size=50 value="${locacao.cliente.nome}" /><br></td>
 						<td><input type="submit" value="Consultar" icon="ui-icon-search"/><br/></td>
 						</tr></table><br>
 				</fieldset>
 				<br/>
-				<fieldset id="locacoes-container" style="width: 1140px;">
+				<fieldset id="telefone-container" style="width: 1140px;">
 				<legend>
 					Dados Localizados:	
 				</legend>
@@ -32,8 +32,9 @@
 						<tr>
 						  <td>${locacao.id}</td>
 						  <td>${locacao.cliente.nome}</td>
+						  <td><fmt:formatDate value="${locacao.dtlocacao}" dateStyle="medium" /></td>
 						  <td><a href="<c:url value="/pagamentos/editar/${locacao.id}" />" name="editar">Editar</a></td>
-						  <!-- <td><a href="<c:url value="/clientes/excluir/${tarefa.id}"/>">Excluir</a></td> -->
+						  <!-- <td><a href="<c:url value="/fornecedores/excluir/${tarefa.id}"/>">Excluir</a></td> -->
 						</tr>
 					</c:forEach>
 					</tbody></table></div>
@@ -58,8 +59,8 @@
 			         $(this).prev().click();
 			    });
 			});
-		$('a[name="visualizar"]').each(function () {
-			   $(this).button({icons: {primary: "ui-icon-contact"}});
+		$('a[name="editar"]').each(function () {
+			   $(this).button({icons: {primary: "ui-icon-pencil"}});
 			   $(this).click();
 			});
 		$('input[type="button"]').each(function () {

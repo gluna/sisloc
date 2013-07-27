@@ -45,11 +45,11 @@ public class Pagamento implements Serializable{
 	public void setDtpagamento(Date dtpagamento) {
 		this.dtpagamento = dtpagamento;
 	}
-	public String getMoeda() {
+	public String getForma() {
 		return forma;
 	}
-	public void setMoeda(String moeda) {
-		this.forma = moeda.toUpperCase();
+	public void setForma(String forma) {
+		this.forma = forma.toUpperCase();
 	}
 
 }
