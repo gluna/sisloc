@@ -338,7 +338,7 @@
 					'<option value="MA">MARANHÃO</option>' +
 					'<option value="MS">MATO GROSSO DO SUL</option>' +
 					'<option value="MT">MATO GROSSO</option>' +
-					'<option value="MG">MINAS GERAIS</option>' +<input type="hidden" name="locacao.pagamentos[${status.index}].id" value="${pagamento.id}" />
+					'<option value="MG">MINAS GERAIS</option>' +
 					'<option value="PA">PARÁ</option>' +
 					'<option value="PB">PARAÍBA</option>' +
 					'<option value="PR">PARANÁ</option>' +
