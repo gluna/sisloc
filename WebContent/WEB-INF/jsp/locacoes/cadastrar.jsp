@@ -400,7 +400,7 @@
     	var pagamentomodel= 
     		'<div class="pagamentos">'+
     		'<label>Valor R$:</label>'+
-    		'<input type="text" name="locacao.pagamentos[0].valor" value="${locacao.pagamentos[0].valor}" />&nbsp'+
+    		'<input type="text" class="dinheiro" name="locacao.pagamentos[0].valor" value="${locacao.pagamentos[0].valor}" />&nbsp'+
     		'<label>Data de Venciento:</label>'+
     		'<input type="text" class="data" name="locacao.pagamentos[0].dtvencimento" value="<fmt:formatDate value="${locacao.pagamentos[0].dtvencimento}" dateStyle="medium" />" /> &nbsp&nbsp' +
     		'<input type="button" class="button-remover" />' +
@@ -446,6 +446,10 @@
     				buttonImage: "${pageContext.request.contextPath}/images/calendar.gif",
     				buttonImageOnly: true
     			});
+    			
+    			$(document).ready(function(){
+                    $("input.dinheiro").maskMoney({showSymbol:false, symbol:"R$", decimal:".", thousands:"."});
+              	});
 
     			reorderIndexespagamentos();    			
     		}
@@ -629,9 +633,9 @@
     			  }
     		  }
     		
-    		//$(document).ready(function(){
-            //    $("input.dinheiro").maskMoney({showSymbol:false, symbol:"R$", decimal:",", thousands:"."});
-          	//});
+    		$(document).ready(function(){
+                $("input.dinheiro").maskMoney({showSymbol:false, symbol:"R$", decimal:".", thousands:"."});
+          	});
     			
  </script>
  <script>
