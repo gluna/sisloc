@@ -32,7 +32,7 @@
 						<tr>
 						  <td>${orcamento.id}</td>
 						  <td>${orcamento.cliente}</td>
-						  <td><a href="<c:url value="/orcamentos/editar/${orcamento.id}" />" name="editar">Editar</a></td>
+						  <td><a href="<c:url value="/orcamentos/visualizar/${orcamento.id}" />" name="visualizar">Visualizar</a></td>
 						  <!-- <td><a href="<c:url value="/fornecedores/excluir/${tarefa.id}"/>">Excluir</a></td> -->
 						</tr>
 					</c:forEach>
@@ -58,8 +58,8 @@
 			         $(this).prev().click();
 			    });
 			});
-		$('a[name="editar"]').each(function () {
-			   $(this).button({icons: {primary: "ui-icon-pencil"}});
+		$('a[name="visualizar"]').each(function () {
+			   $(this).button({icons: {primary: "ui-icon-contact"}});
 			   $(this).click();
 			});
 		$('input[type="button"]').each(function () {

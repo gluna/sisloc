@@ -75,6 +75,15 @@ public class OrcamentosController {
 	    result.redirectTo(this.getClass()).cadastrar();
 	}
 	
+	@Path("/orcamentos/visualizar/{orcamento.id}")
+	public void visualizar(Orcamento orcamento){
+		orcamento = dao.selectById(orcamento);
+	    if(orcamento != null) {
+	         result.include("orcamento", orcamento);
+	    }
+	    //result.redirectTo(this.getClass()).cadastrar();
+	}
+	
 	@Path("/orcamentos/excluir/{orcamento.id}")
 	public void excluir(Orcamento orcamento){
 		orcamento = dao.selectById(orcamento);
