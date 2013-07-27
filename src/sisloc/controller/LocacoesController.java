@@ -78,6 +78,15 @@ public class LocacoesController {
 	    result.redirectTo(this.getClass()).cadastrar();
 	}
 	
+	@Path("/locacoes/visualizar/{locacao.id}")
+	public void visualizar(Locacao locacao){
+		locacao = dao.selectById(locacao);
+	    if(locacao != null) {
+	         result.include("locacao", locacao);
+	    }
+	    //result.redirectTo(this.getClass()).cadastrar();
+	}
+	
 	@Path("/locacoes/excluir/{locacao.id}")
 	public void excluir(Locacao locacao){
 		locacao = dao.selectById(locacao);

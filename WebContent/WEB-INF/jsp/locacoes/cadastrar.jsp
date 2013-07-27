@@ -41,7 +41,7 @@
 					Endereço:
 				</legend>
 				<table align="right"><tr><td>
-					<input type="button" value="Adicionar" onclick="adicionarend();" icon="ui-icon-contact"/></td></tr>
+					<input type="button" name="button" value="Adicionar" onclick="adicionarend();" icon="ui-icon-contact"/></td></tr>
 				</table>
 				<c:forEach items="${locacao.enderecos}" var="endereco" varStatus="status">
 		     		<div class="endintem">
@@ -186,7 +186,7 @@
 					Itens Locação:	
 				</legend>
 				<table align="right"><tr><td>
-					<input type="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-contact"/></td></tr>
+					<input type="button" name="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-contact"/></td></tr>
 				</table>
 				<c:forEach items="${locacao.locacaodetalhe}" var="locacaodetalhe" varStatus="status">
 		   	        <div class="produtointem">
@@ -232,7 +232,7 @@
 				<fieldset id="pagamentos" style="width: 1140px;">
 				<legend>Pagamentos:</legend>
 				<table align="right"><tr><td>
-					<input type="button" value="Adicionar" onclick="adicionarpagamento();" icon="ui-icon-contact"/></td></tr>
+					<input type="button" name="button" value="Adicionar" onclick="adicionarpagamento();" icon="ui-icon-contact"/></td></tr>
 				</table>
 					<c:forEach items="${locacao.pagamentos}" var="pagamento" varStatus="status">
 			    		<div class="pagamentos">
@@ -650,7 +650,7 @@
 			         $(this).prev().click();
 			    });
 			});
-		$('input[type="button"]').each(function () {
+		$('input[name="button"]').each(function () {
 			   $(this).hide().after('<button>').next().button({
 			        icons: { primary: $(this).attr('icon') },
 			        label: $(this).val()
