@@ -59,7 +59,11 @@
 			    });
 			});
 		$('a[name="visualizar"]').each(function () {
-			   $(this).button({icons: {primary: "ui-icon-contact"}});
+			   $(this).button({icons: {primary: "ui-icon-folder-open"}});
+			   $(this).click();
+			});
+		$('a[name="importar"]').each(function () {
+			   $(this).button({icons: {primary: "ui-icon-link"}});
 			   $(this).click();
 			});
 		$('input[type="button"]').each(function () {

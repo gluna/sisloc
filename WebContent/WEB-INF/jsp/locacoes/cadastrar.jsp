@@ -220,7 +220,7 @@
 				</legend>
 				<table><tr>
 					<td align="right" width="95"><label>Valor (R$):</label></td>
-					<td align="left"><input	type="text" class="dinheiro" name="locacao.valortotal" value="${locacao.valortotal}"/><br></td>
+					<td align="left"><input	type="text" class="dinheiro" name="valortotal" value="${locacao.valortotal}"/><br></td>
 					<td align="right" width="95"><label>Desconto (%):</label></td>
 					<td align="left"><input	type="text" name="locacao.descontopercent" value="${locacao.descontopercent}" /><br></td>
 					<td align="right" width="95"><label>Desconto (R$):</label></td>
@@ -384,14 +384,14 @@
  		var model =
     	    '<div class="produtointem">'+
     	    '<label>Produto:</label>&nbsp' +
-    		'<select id="produto" onchange="getpreco(value, name);" name="locacao.locacaodetalhe[0].produto.id" value="locacao.locacaodetalhe[0].produto.id">'+
+    		'<select id="produto" onchange="getpreco(value, name);" name="locacaolocacaodetalheprodutoid[0]" value="locacao.locacaodetalhe[0].produto.id">'+
     		'	<option value="">Selecione um Item</option>'+
     		'	<c:forEach items="${produtoList}" var="produto" varStatus="status">'+
     		'		<option value="${produto.id}">${produto.nome}</option>'+
     		'	</c:forEach>'+
     		'</select>&nbsp&nbsp'+
     		'<label>R$:</label>&nbsp' +
-    		'<select id="preco" name="locacao.locacaodetalhe[0].preco" value="locacao.locacaodetalhe[0].preco">'+
+    		'<select id="preco" class="precoitem" name="locacao.locacaodetalhe[0].preco" value="locacao.locacaodetalhe[0].preco">'+
     		'</select>&nbsp&nbsp'+
     		'<label>Quantidade:</label>&nbsp' +
     		'<input type="text" name="locacao.locacaodetalhe[0].quantidade" value="${locacao.locacaodetalhe[0].quantidade}" />&nbsp&nbsp'+
@@ -558,24 +558,39 @@
     			});
     		};
     		
-    		function checar() {
-    			campo1 = document.form.select1; 
-    		}
-    		
-    		function id( el ){
-    			return document.getElementById( el );
-    		}
-    		
-    		function getMoney( el ){
-    			var money = id( el ).value;
-    			return  money;
-    		}
-    		
     		function soma()
     		{
-    			//var total = $('.precounit').length;
-    			var total = getMoney('produto');
-    			alert(total);
+    			$('.produtointem').each(function(index) {
+    				
+    				var $campos = $(this).find('select'),
+					$input	,
+					name	;
+    				var valor3 = $('.precoitem').length;
+    				
+    				$campos.each(function() {
+    					$input	= $(this),
+    					name	= $input.attr('class');
+    					if(name == 'precoitem'){
+    						for (var i = 0; i < document.getElementsByName("locacaolocacaodetalheprodutoid").length; i++) {
+    							//alert(valor3);
+    							var campo1 = document.form.valortotal;
+        		    			var valor1 = campo1.value;
+        		    			var valor2 = document.getElementsByName("locacaolocacaodetalheprodutoid")[i].value;
+        		    			alert(valor2);
+        		    			//valor1 = valor1 + valor2;
+        		    			//document.form.valortotal.value = "";
+        		    			//document.form.valortotal.value = valor1;
+    						};
+    						//var campo1 = document.form.valortotal;
+    		    			//var valor1 = campo1.value;
+    		    			//var valor2 = document.getElementById('preco').value;
+    		    			
+    		    			//alert(valor2);
+    					}
+	    			});
+    				
+    			});
+    			
     		}
     		
     		function reorderIndexesend() {
