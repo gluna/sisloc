@@ -5,7 +5,7 @@
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery.maskMoney.js"></script>
 
 <body onload="getcliente(${locacao.id});">
-	<form action="<c:url value='/locacoes/salvar'/>" method="post">
+	<form name="form" action="<c:url value='/locacoes/salvar'/>" method="post">
 		<div id="tabs" class="container">
 			<ul>
 				<li><a href="#tabs-1">Cadastro de Locações</a></li>
@@ -252,7 +252,8 @@
 					<td>
 					<!-- <input type="submit" value="Imprimir" class="imprimir" icon="ui-icon-print"/><br/>  -->
 					<a href="<c:url value="/locacoes/report/${locacao.id}"/>" onclick="verificaid(${locacao.id})" name="imprimir"><span>Imprimir</span></a>	
-					</td></tr>
+					</td>
+					<td><input type="button" name="button" value="Somar" onclick="soma();" icon="ui-icon-contact"/></td></tr>
 				</table>
 			</div>
 		</div>
@@ -459,7 +460,7 @@
     		function getpreco(id, nome){
     			
     			var indice = nome.substring(nome.indexOf('[')+1, nome.indexOf(']'));
-    			
+    			var r = Math.floor((Math.random()*1000)+1);
     		    $.ajax({  
     		        url: '/sisloc/locacoes/getprecos/',  
     		        data: {p:id},  
@@ -481,7 +482,7 @@
     	    					if(name == 'preco' && indice == index2){
     	    						$input.find('option').remove();
     	    						for (var i = 0; i < precos.length; i++){
-    	    							$input.append('<option value="'+precos[i].preco+'">'+precos[i].preco+'</option>');
+    	    							$input.append('<option class="precounit" value="'+precos[i].preco+'">'+precos[i].preco+'</option>');
     	    						}
     	    					}
 	    	    			});
@@ -522,29 +523,6 @@
     		    });
     			};
     		}
-
-    		function somar() {
-    			var regex = /\[[0-9]\]/g;
-    			
-    			$('.produtointem').each(function(index) {
-    				
-    				var $campos = $(this).find('input'),
-    					$input	,
-    					soma	,
-    					name	;
-
-    				$campos.each(function() {
-    					
-    					$input	= $(this),
-    					name	= $input.attr('name');
-    					if($input.attr('id') == 'preco'){
-    						soma = 
-    						$input.attr('name', name.replace(regex, '[' + index + ']'));
-    					}
-    				});
-    				
-    			});
-    		};
     		
     		function reorderIndexes() {
     			var regex = /\[[0-9]\]/g;
@@ -579,6 +557,26 @@
     				
     			});
     		};
+    		
+    		function checar() {
+    			campo1 = document.form.select1; 
+    		}
+    		
+    		function id( el ){
+    			return document.getElementById( el );
+    		}
+    		
+    		function getMoney( el ){
+    			var money = id( el ).value;
+    			return  money;
+    		}
+    		
+    		function soma()
+    		{
+    			//var total = $('.precounit').length;
+    			var total = getMoney('produto');
+    			alert(total);
+    		}
     		
     		function reorderIndexesend() {
     			var regex = /\[[0-9]\]/g;

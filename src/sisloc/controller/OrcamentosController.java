@@ -9,8 +9,10 @@ import javax.servlet.ServletContext;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
+import sisloc.dao.ClienteDao;
 import sisloc.dao.OrcamentoDao;
 import sisloc.dao.ProdutoDao;
+import sisloc.modelo.Cliente;
 import sisloc.modelo.Orcamento;
 import sisloc.modelo.OrcamentoDetalhe;
 import sisloc.modelo.Preco;
@@ -30,12 +32,14 @@ public class OrcamentosController {
 	private Result result;
 	private ServletContext context;
 	private ProdutoDao produtodao;
+	private ClienteDao clientedao;
 	
-	public OrcamentosController(OrcamentoDao dao, Result result,final ServletContext context, ProdutoDao produtodao){
+	public OrcamentosController(OrcamentoDao dao, Result result,final ServletContext context, ClienteDao clientedao, ProdutoDao produtodao){
 		this.dao = dao;
 		this.result = result;
 		this.context = context;
 		this.produtodao = produtodao;
+		this.clientedao = clientedao;
 	}
 	
 	@Path("/orcamentos/cadastrar")
@@ -95,6 +99,12 @@ public class OrcamentosController {
 	public List<Orcamento> consultar(){
 		List<Orcamento> t = dao.listaTodos();
 		return t;
+	}
+	
+	@Path("/orcamentos/getclientes")
+	public void getclientes(){
+		List<Cliente> clientes =  clientedao.listaTodos();
+		result.use(Results.json()).withoutRoot().from(clientes).serialize();  
 	}
 	
 	@Path({"/orcamentos/report/{orcamento.id}", "/orcamentos/report/"}) 

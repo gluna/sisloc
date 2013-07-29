@@ -3,8 +3,8 @@
 <!-- <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-ui-1.10.3.custom.js"></script>
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery.maskMoney.js"></script>
-<body>
-	<form action="<c:url value='/orcamentos/salvar'/>" method="post">
+<body onload="getcliente(${orcamento.id});">
+	<form name="form1" action="<c:url value='/orcamentos/salvar'/>" method="post">
 		<div id="tabs" class="container">
 			<ul>
 				<li><a href="#tabs-1">Cadastro de Orçamento</a></li>
@@ -19,8 +19,9 @@
 					<td align="right" width="95"><label>Número do Orçamento:</label></td>
 					<td align="left"><input	type="text" name="orcamento.id" value="${orcamento.id}" readonly /><br></td>
 					<td align="right" width="95"><label>Nome do Cliente/Empresa:</label></td>
-					<td align="left"><input	type="text" class="maiuscula" name="orcamento.cliente" size=50 value="${orcamento.cliente}" /><br></td>
-					<td align="right" width="80"><label>Frete:</label></td>
+					<td align="left"><input	type="text" class="maiuscula" name="orcamentocliente" size=50 value="${orcamento.cliente}" /><br></td>
+					<td><input type="button" name="button" id="add-user" value="Procurar" icon="ui-icon-search"/></td>
+					<td align="right" width="50"><label>Frete:</label></td>
 					<td align="left"><input	type="text" class="dinheiro" name="orcamento.frete" size=15 value="${orcamento.frete}" /><br></td>
 				</tr></table>
 				<table><tr>
@@ -84,6 +85,17 @@
 			</div>
 		</div>	
 	</form>
+	
+	<div id="dialog-form" class="caixa" title="Adicionar Cliente/Empresa">
+		<form name="form">
+			<fieldset>
+				<label for="name">Cliente/Empresa:</label>
+				<select id="cliente"  name="clienteid" value="orcamento.cliente.id">
+				</select>
+			</fieldset>
+		</form>
+	</div>
+	
 </body>
 <%@ include file="../../../footer.jsp"%>
 
@@ -154,6 +166,38 @@ var model =
 		$('#detalhe-container').append(model);
 		reorderIndexes();
 	};
+	
+	function getcliente(id){
+		if(id == null){
+	    $.ajax({  
+	        url: '/sisloc/orcamentos/getclientes',  
+	        type : 'get',  
+	        dataType: 'json',  
+	        success : function(clientes) {
+	            
+	            	$('.caixa').each(function(index) {
+
+	    				var $campos = $(this).find('select'),
+    					$input	,
+    					name	;
+
+    			    $campos.each(function() {
+    					$input	= $(this),
+    					name	= $input.attr('id');
+    					if(name == 'cliente'){
+    						$input.find('option').remove();
+    						$input.append('<option value="">Selecione um Item</option>');
+    						for (var i = 0; i < clientes.length; i++){
+    							$input.append('<option value="'+clientes[i].nome+'">'+clientes[i].nome+'</option>');
+    						};
+    					};
+	    			});
+	            		
+	            	});    
+	        }  
+	    });
+		};
+	}
 	
 	function reorderIndexes() {
 		var regex = /\[[0-9]\]/g;
@@ -237,6 +281,40 @@ var model =
 			buttonImage: "${pageContext.request.contextPath}/images/calendar.gif",
 			buttonImageOnly: true
 		});
+		
+		 $( "#add-user" )
+			 //.button()
+			 .click(function() {
+			 	$( "#dialog-form" ).dialog( "open" );
+		 });
+		  
+		 $( "#dialog-form" ).dialog({
+			 autoOpen: false,
+			 show: {
+				 effect: "blind",
+				 duration: 1000
+				 },
+				 hide: {
+				 effect: "explode",
+				 duration: 1000
+				 },
+			 height: 180,
+			 width: 350,
+			 modal: true,
+			 buttons: {
+			 "Adicionar": function() {
+				 var campo1 = document.form.clienteid;
+				 var valor1 = campo1.value;
+				 document.form1.orcamentocliente.value = valor1;
+				 $( this ).dialog( "close" );
+			 },
+			 	Cancel: function() {
+			 		$( this ).dialog( "close" );
+			 	}
+			 },
+			 	close: function() {
+			 	}
+			 });
 	 
 		//$( "#name" ).change(function() {
 		//	alert(prod.val());
