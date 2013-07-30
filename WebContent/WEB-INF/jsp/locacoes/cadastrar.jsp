@@ -225,8 +225,8 @@
 					<td align="left"><input	type="text" name="locacao.descontopercent" value="${locacao.descontopercent}" /><br></td>
 					<td align="right" width="95"><label>Desconto (R$):</label></td>
 					<td align="left"><input	type="text" class="dinheiro" name="locacao.descontovalor" value="${locacao.descontovalor}" /><br></td>
-					<td align="right" width="95"><label>Total (R$):</label></td>
-					<td align="left"><input	type="text" class="dinheiro" name="valortotal1" value="${locacao.valortotal1}" /><br></td>
+					<td align="right" width="80"><label>Total (R$):</label></td>
+					<td align="left"><input	type="text" class="dinheiro" name="valorfinal" value="${locacao.valorfinal}" /><br></td>
 				</tr></table>
 				</fieldset><br>
 				<fieldset id="pagamentos" style="width: 1140px;">
