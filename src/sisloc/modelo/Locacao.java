@@ -40,6 +40,7 @@ public class Locacao implements Serializable{
 	private String formapagamento;
 	private String obs;
 	private Double frete;
+	private Double valorfinal;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@Fetch(FetchMode.SUBSELECT)
@@ -188,5 +189,13 @@ public class Locacao implements Serializable{
 
 	public void setDevolucaolocacao(List<DevolucaoLocacao> devolucaolocacao) {
 		this.devolucaolocacao = devolucaolocacao;
+	}
+
+	public Double getValorfinal() {
+		return valorfinal;
+	}
+
+	public void setValorfinal(Double valorfinal) {
+		this.valorfinal = valorfinal;
 	}
 }
