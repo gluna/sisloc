@@ -220,13 +220,13 @@
 				</legend>
 				<table><tr>
 					<td align="right" width="95"><label>Valor (R$):</label></td>
-					<td align="left"><input	type="text" class="dinheiro" name="valortotal" value="${locacao.valortotal}"/><br></td>
+					<td align="left"><input	type="text" class="dinheiro1" name="valortotal" value="${locacao.valortotal}" readonly/><br></td>
 					<td align="right" width="95"><label>Desconto (%):</label></td>
 					<td align="left"><input	type="text" name="locacao.descontopercent" value="${locacao.descontopercent}" /><br></td>
 					<td align="right" width="95"><label>Desconto (R$):</label></td>
 					<td align="left"><input	type="text" class="dinheiro" name="locacao.descontovalor" value="${locacao.descontovalor}" /><br></td>
-					<!-- <td align="right" width="95"><label>Total (R$):</label></td>
-					<td align="left"><input	type="text" class="dinheiro" name="locacao.valortotal" value="${locacao.valortotal}" /><br></td> -->
+					<td align="right" width="95"><label>Total (R$):</label></td>
+					<td align="left"><input	type="text" class="dinheiro" name="valortotal1" value="${locacao.valortotal1}" /><br></td>
 				</tr></table>
 				</fieldset><br>
 				<fieldset id="pagamentos" style="width: 1140px;">
@@ -563,7 +563,6 @@
     		function soma()
     		{
     			var contaselect = $('.precoitem').length;
-    			alert(contaselect);
     			
     			if (contaselect == 1){
     				$('.precoitem').each(function() {
@@ -576,8 +575,6 @@
     				var acumulador = 0;
     				$('.precoitem').each(function() {
 	    				var valorselect = parseFloat($(this).val(), 10);
-	    				alert(acumulador);
-	    				alert(valorselect);
 	    				acumulador = acumulador+valorselect;
 	    				document.form.valortotal.value = acumulador;
     				});
@@ -720,6 +717,10 @@
   border: none;
   width: 34px;
   height: 33px;
+}
+input.dinheiro1 {
+  text-transform: uppercase;
+  background-color: #FFFFE0;
 }
 </style>
 
