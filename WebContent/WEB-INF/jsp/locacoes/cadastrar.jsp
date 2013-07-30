@@ -253,7 +253,7 @@
 					<!-- <input type="submit" value="Imprimir" class="imprimir" icon="ui-icon-print"/><br/>  -->
 					<a href="<c:url value="/locacoes/report/${locacao.id}"/>" onclick="verificaid(${locacao.id})" name="imprimir"><span>Imprimir</span></a>	
 					</td>
-					<td><input type="button" name="button" value="Somar" onclick="soma();" icon="ui-icon-contact"/></td></tr>
+					</tr>
 				</table>
 			</div>
 		</div>
