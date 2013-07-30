@@ -384,14 +384,14 @@
  		var model =
     	    '<div class="produtointem">'+
     	    '<label>Produto:</label>&nbsp' +
-    		'<select id="produto" onchange="getpreco(value, name);" name="locacaolocacaodetalheprodutoid[0]" value="locacao.locacaodetalhe[0].produto.id">'+
+    		'<select id="produto" onchange="getpreco(value, name);" name="locacao.locacaodetalhe[0].produto.id" value="locacao.locacaodetalhe[0].produto.id">'+
     		'	<option value="">Selecione um Item</option>'+
     		'	<c:forEach items="${produtoList}" var="produto" varStatus="status">'+
     		'		<option value="${produto.id}">${produto.nome}</option>'+
     		'	</c:forEach>'+
     		'</select>&nbsp&nbsp'+
     		'<label>R$:</label>&nbsp' +
-    		'<select id="preco" class="precoitem" name="locacao.locacaodetalhe[0].preco" value="locacao.locacaodetalhe[0].preco">'+
+    		'<select id="preco" class="precoitem" onchange="soma();" name="locacao.locacaodetalhe[0].preco" value="locacao.locacaodetalhe[0].preco">'+
     		'</select>&nbsp&nbsp'+
     		'<label>Quantidade:</label>&nbsp' +
     		'<input type="text" name="locacao.locacaodetalhe[0].quantidade" value="${locacao.locacaodetalhe[0].quantidade}" />&nbsp&nbsp'+
@@ -481,6 +481,7 @@
     	    					index2 = npreco.substring(npreco.indexOf('[')+1, npreco.indexOf(']'));
     	    					if(name == 'preco' && indice == index2){
     	    						$input.find('option').remove();
+    	    						$input.append('<option value="">Selecione</option>');
     	    						for (var i = 0; i < precos.length; i++){
     	    							$input.append('<option class="precounit" value="'+precos[i].preco+'">'+precos[i].preco+'</option>');
     	    						}
@@ -558,38 +559,30 @@
     			});
     		};
     		
+    		
     		function soma()
     		{
-    			$('.produtointem').each(function(index) {
+    			var contaselect = $('.precoitem').length;
+    			alert(contaselect);
+    			
+    			if (contaselect == 1){
+    				$('.precoitem').each(function() {
+    					var campovalortotal1 = parseFloat($(this).val(), 10);
+	    				document.form.valortotal.value = campovalortotal1;
+    				});
+    			}
+    			
+    			if (contaselect > 1){
+    				var acumulador = 0;
+    				$('.precoitem').each(function() {
+	    				var valorselect = parseFloat($(this).val(), 10);
+	    				alert(acumulador);
+	    				alert(valorselect);
+	    				acumulador = acumulador+valorselect;
+	    				document.form.valortotal.value = acumulador;
+    				});
     				
-    				var $campos = $(this).find('select'),
-					$input	,
-					name	;
-    				var valor3 = $('.precoitem').length;
-    				
-    				$campos.each(function() {
-    					$input	= $(this),
-    					name	= $input.attr('class');
-    					if(name == 'precoitem'){
-    						for (var i = 0; i < document.getElementsByName("locacaolocacaodetalheprodutoid").length; i++) {
-    							//alert(valor3);
-    							var campo1 = document.form.valortotal;
-        		    			var valor1 = campo1.value;
-        		    			var valor2 = document.getElementsByName("locacaolocacaodetalheprodutoid")[i].value;
-        		    			alert(valor2);
-        		    			//valor1 = valor1 + valor2;
-        		    			//document.form.valortotal.value = "";
-        		    			//document.form.valortotal.value = valor1;
-    						};
-    						//var campo1 = document.form.valortotal;
-    		    			//var valor1 = campo1.value;
-    		    			//var valor2 = document.getElementById('preco').value;
-    		    			
-    		    			//alert(valor2);
-    					}
-	    			});
-    				
-    			});
+	    		};
     			
     		}
     		
