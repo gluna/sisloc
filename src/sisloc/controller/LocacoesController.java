@@ -174,4 +174,10 @@ public class LocacoesController {
 		
 	}
 	
+	@Path("/locacoes/devolucao/{locacao.id}")
+	public void devolucao(Locacao locacao){
+		locacao = dao.selectById(locacao);
+		result.include("locacao", locacao);
+	}
+	
 }

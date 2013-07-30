@@ -56,6 +56,12 @@ public class Locacao implements Serializable{
 	@JoinColumn
 	private List<LocacaoDetalhe> locacaodetalhe;
 
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SUBSELECT)
+	@JoinColumn
+	private List<DevolucaoLocacao> devolucaolocacao;
+
+	
 	public Long getId() {
 		return id;
 	}
@@ -174,5 +180,13 @@ public class Locacao implements Serializable{
 
 	public void setFrete(Double frete) {
 		this.frete = frete;
+	}
+
+	public List<DevolucaoLocacao> getDevolucaolocacao() {
+		return devolucaolocacao;
+	}
+
+	public void setDevolucaolocacao(List<DevolucaoLocacao> devolucaolocacao) {
+		this.devolucaolocacao = devolucaolocacao;
 	}
 }
