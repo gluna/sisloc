@@ -1,6 +1,7 @@
 package sisloc.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,7 @@ import sisloc.dao.LocacaoDao;
 import sisloc.dao.OrcamentoDao;
 import sisloc.dao.ProdutoDao;
 import sisloc.modelo.Cliente;
+import sisloc.modelo.DevolucaoLocacao;
 import sisloc.modelo.Locacao;
 import sisloc.modelo.LocacaoDetalhe;
 import sisloc.modelo.Orcamento;
@@ -74,6 +76,29 @@ public class LocacoesController {
 			result.include("msg", e.getMessage());
 		}
 	}
+
+	@Post
+	@Path("/locacoes/salvardevolucao")
+	public void salvardevolucao(Locacao locacao){
+		try {
+		     if(locacao != null) {
+		    	 for(DevolucaoLocacao dl : locacao.getDevolucaolocacao() ){
+		    		 dl.setProduto(produtodao.selectById(dl.getProduto()));
+		    		 dl.setDtdevolucao(new Date());
+		    	 }
+		    	 if(locacao.getId() == null) {
+		    		 dao.salvar(locacao);
+		    	 } else {
+		    		 dao.atualizar(locacao);
+	             }
+	          }
+		     result.include("locacao", locacao);
+		     result.redirectTo(this.getClass()).devolucao(locacao);
+		} catch (Exception e) {
+			result.include("msg", e.getMessage());
+		}
+	}
+
 	
 	@Path("/locacoes/editar/{locacao.id}")
 	public void editar(Locacao locacao){

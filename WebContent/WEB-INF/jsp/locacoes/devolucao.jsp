@@ -5,7 +5,7 @@
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery.maskMoney.js"></script>
 
 <body>
-	<form name="form" action="<c:url value='/locacoes/salvar'/>" method="post">
+	<form name="form" action="<c:url value='/locacoes/salvardevolucao'/>" method="post">
 		<div id="tabs" class="container">
 			<ul>
 				<li><a href="#tabs-1">Devolução de Equipamentos</a></li>
@@ -43,26 +43,38 @@
 							<br>
 							<td align="right" width="80"><label>Data Fim:</label></td>
 							<td align="left"><input type="text" class="data"
-								name="locacao.dtfim" value="<fmt:formatDate value="${locacao.dtfim}" dateStyle="medium" readonly/>" /></td>
+								name="locacao.dtfim" value="<fmt:formatDate value="${locacao.dtfim}" dateStyle="medium" />" readonly/></td>
 						</tr>
 					</table>
 				</fieldset>
-				<fieldset id="locacaodetalhe" style="width: 1140px;">
+				<fieldset id="itenslocacao" style="width: 1140px;"><legend>Itens Locação</legend>
+					<c:forEach items="${locacao.locacaodetalhe}" var="locacaodetalhe" varStatus="status">
+			   	        <div class="produtointem">
+			    	    <label>Produto:</label>&nbsp
+						<input type="text" name="locacao.locacaodetalhe[${status.index}].produto.nome" value="${locacaodetalhe.produto.nome}" readonly/>&nbsp&nbsp			    		
+						<label>R$:</label>&nbsp
+						<input type="text" name="locacao.locacaodetalhe[${status.index}].preco" value="${locacaodetalhe.preco}" readonly/>&nbsp&nbsp			    		
+						<label>Quantidade:</label>&nbsp
+			    		<input type="text" name="locacao.locacaodetalhe[${status.index}].quantidade" value="${locacaodetalhe.quantidade}" readonly/>&nbsp&nbsp
+			    		<input type="hidden" name="locacao.locacaodetalhe[${status.index}].id" value="${locacaodetalhe.id}" />
+			    		</div>
+					</c:forEach>				
+				</fieldset>
+				<fieldset id="itensdevolucao" style="width: 1140px;">
 				<legend>
-					Itens Locação:	
+					Itens Devolução:	
 				</legend>
 				<table align="right"><tr><td>
 					<input type="button" name="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-contact"/></td></tr>
 				</table>
 				<c:forEach items="${locacao.devolucaolocacao}" var="devolucao" varStatus="status">
-		   	        <div class="produtointem">
+		   	        <div class="devolucaoitem">
 		    	    <label>Produto:</label>&nbsp
-		    		<select id="produto" name="locacao.devolucaolocacao[${status.index}].produto.id" value="devolucao.produto.id">
-		    			<option value="${devolucao.produto.id}">${devolucao.produto.nome}</option>
-		    		</select>&nbsp&nbsp
+		    	    <input type="text" name="locacao.devolucaolocacao[${status.index}].produto.nome" value="${devolucao.produto.nome}" readonly/>
 		    		<label>Quantidade:</label>&nbsp
-		    		<input type="text" name="locacao.devolucaolocacao[${status.index}].quantidade" value="${devolucao.quantidade}" />&nbsp&nbsp
-		    		<input type="text" name="locacao.devolucaolocacao[${status.index}].quantidade" value="${devolucao.quantidade}" />
+		    		<input type="text" name="locacao.devolucaolocacao[${status.index}].quantidade" value="${devolucao.quantidade}" readonly/>&nbsp&nbsp
+		    		<label>Produto:</label>&nbsp
+		    	    <input type="text" name="locacao.devolucaolocacao[${status.index}].dtdevolucao" value="<fmt:formatDate value="${devolucao.dtdevolucao}" dateStyle="medium" />" readonly/>		    		
 		    		<input type="hidden" name="locacao.devolucaolocacao[${status.index}].id" value="${devolucao.id}" />
 		    		</div>
 				</c:forEach>
@@ -73,7 +85,7 @@
 					Observação:	
 				</legend>
 						<table><tr><td width="95"></td> 
-						<td align="right"><textarea style="resize:none; text-transform: uppercase;" rows="10" cols="123" name="locacao.obs" >${locacao.obs}</textarea><br> </td></tr></table>
+						<td align="right"><textarea style="resize:none; text-transform: uppercase;" rows="10" cols="123" name="locacao.obs" readonly>${locacao.obs}</textarea><br> </td></tr></table>
 				</fieldset>
 				<br>
 				<table align="center">
@@ -95,10 +107,13 @@
      
  
  		var model =
- 					'<div class="produtointem">'+
+ 					'<div class="devolucaoitem">'+
  					'<label>Produto:</label>&nbsp'+
  					'<select id="produto" name="locacao.devolucaolocacao[${status.index}].produto.id" value="devolucao.produto.id">'+
- 					'<option value="${devolucao.produto.id}">${devolucao.produto.nome}</option>'+
+ 					'	<option value=""></option>'+
+ 		    		'	<c:forEach items="${locacao.locacaodetalhe}" var="detalhe" varStatus="status">'+
+ 		    		'		<option value="${detalhe.produto.id}">${detalhe.produto.nome}</option>'+
+ 		    		'	</c:forEach>'+
  					'</select>&nbsp&nbsp'+
  					'<label>Quantidade:</label>&nbsp'+
  					'<input type="text" name="locacao.devolucaolocacao[${status.index}].quantidade" value="${devolucao.quantidade}" />&nbsp&nbsp'+
@@ -113,7 +128,7 @@
     		
     		function adicionar() {
     			
-    			$('#locacaodetalhe').append(model);
+    			$('#itensdevolucao').append(model);
 
     			reorderIndexes();
     			
@@ -122,7 +137,7 @@
     		function reorderIndexes() {
     			var regex = /\[[0-9]\]/g;
     			
-    			$('.produtointem').each(function(index) {
+    			$('.devolucaoitem').each(function(index) {
     				
     				var $campos = $(this).find('input'),
     					$input	,
