@@ -59,7 +59,11 @@
 			    });
 			});
 		$('a[name="visualizar"]').each(function () {
-			   $(this).button({icons: {primary: "ui-icon-contact"}});
+			   $(this).button({icons: {primary: "ui-icon-clipboard"}});
+			   $(this).click();
+			});
+		$('a[name="devolucao"]').each(function () {
+			   $(this).button({icons: {primary: "ui-icon-transferthick-e-w"}});
 			   $(this).click();
 			});
 		$('input[type="button"]').each(function () {

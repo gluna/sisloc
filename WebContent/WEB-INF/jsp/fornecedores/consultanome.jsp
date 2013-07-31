@@ -58,7 +58,7 @@
 			    });
 			});
 		$('a[name="visualizar"]').each(function () {
-			   $(this).button({icons: {primary: "ui-icon-contact"}});
+			   $(this).button({icons: {primary: "ui-icon-clipboard"}});
 			   $(this).click();
 			});
 		$('input[type="button"]').each(function () {
