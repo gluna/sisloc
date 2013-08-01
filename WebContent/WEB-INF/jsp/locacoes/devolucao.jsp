@@ -18,21 +18,20 @@
 				</legend>
 				<table><tr>
 					<td align="right" width="95"><label>Número da Locação:</label></td>
-					<td align="left"><input	type="text" name="locacao.id" value="${locacao.id}" readonly /><br></td>
+					<td align="left"><input	type="text" class="maiuscula" name="locacao.id" value="${locacao.id}" readonly /><br></td>
 					<td align="right" width="95"><label>Cliente:</label></td>
 					
 					<td align="left">
-						<input id="cliente" type="text" name="locacao.cliente.nome" value="${locacao.cliente.nome}" readonly/>				
+						<input id="cliente" type="text" class="maiuscula" name="locacao.cliente.nome" size=50 value="${locacao.cliente.nome}" readonly/>				
 					<br></td>
 					
 					<td align="right" width="80"><label>Frete:</label></td>
-					<td align="left"><input	type="text" class="dinheiro" name="locacao.frete" value="${locacao.frete}" readonly/><br></td>
+					<td align="left"><input	type="text" class="maiuscula" name="locacao.frete" value="${locacao.frete}" readonly/><br></td>
 				</tr></table> 
 				</fieldset>
 				<br/>
 				<fieldset id="formulario" style="width: 1140px;">
 					<legend> Datas da Locação: </legend>
-					
 					<table>
 						<tr>
 							<td align="right" width="95"><label>Data da Locação:</label></td>
@@ -46,20 +45,20 @@
 								name="locacao.dtfim" value="<fmt:formatDate value="${locacao.dtfim}" dateStyle="medium" />" readonly/></td>
 						</tr>
 					</table>
-				</fieldset>
-				<fieldset id="itenslocacao" style="width: 1140px;"><legend>Itens Locação</legend>
+				</fieldset><br/>
+				<fieldset id="itenslocacao" style="width: 1140px;"><legend>Itens da Locação</legend>
 					<c:forEach items="${locacao.locacaodetalhe}" var="locacaodetalhe" varStatus="status">
 			   	        <div class="produtointem">
 			    	    <label>Produto:</label>&nbsp
-						<input type="text" name="locacao.locacaodetalhe[${status.index}].produto.nome" value="${locacaodetalhe.produto.nome}" readonly/>&nbsp&nbsp			    		
+						<input type="text" class="maiuscula" name="locacao.locacaodetalhe[${status.index}].produto.nome" value="${locacaodetalhe.produto.nome}" readonly/>&nbsp&nbsp			    		
 						<label>R$:</label>&nbsp
-						<input type="text" name="locacao.locacaodetalhe[${status.index}].preco" value="${locacaodetalhe.preco}" readonly/>&nbsp&nbsp			    		
+						<input type="text" class="maiuscula" name="locacao.locacaodetalhe[${status.index}].preco" value="${locacaodetalhe.preco}" readonly/>&nbsp&nbsp			    		
 						<label>Quantidade:</label>&nbsp
-			    		<input type="text" name="locacao.locacaodetalhe[${status.index}].quantidade" value="${locacaodetalhe.quantidade}" readonly/>&nbsp&nbsp
+			    		<input type="text" class="maiuscula" name="locacao.locacaodetalhe[${status.index}].quantidade" value="${locacaodetalhe.quantidade}" readonly/>&nbsp&nbsp
 			    		<input type="hidden" name="locacao.locacaodetalhe[${status.index}].id" value="${locacaodetalhe.id}" />
 			    		</div>
 					</c:forEach>				
-				</fieldset>
+				</fieldset><br/>
 				<fieldset id="itensdevolucao" style="width: 1140px;">
 				<legend>
 					Itens Devolução:	
@@ -85,7 +84,7 @@
 					Observação:	
 				</legend>
 						<table><tr><td width="95"></td> 
-						<td align="right"><textarea style="resize:none; text-transform: uppercase;" rows="10" cols="123" name="locacao.obs" readonly>${locacao.obs}</textarea><br> </td></tr></table>
+						<td align="right"><textarea style="resize:none; text-transform: uppercase; background-color: #FFFFE0;" rows="10" cols="123" name="locacao.obs" readonly>${locacao.obs}</textarea><br> </td></tr></table>
 				</fieldset>
 				<br>
 				<table align="center">
@@ -94,9 +93,9 @@
 					</td>
 					<td>
 					<!-- <input type="submit" value="Imprimir" class="imprimir" icon="ui-icon-print"/><br/>  -->
-					<a href="<c:url value="/locacoes/report/${locacao.id}"/>" onclick="verificaid(${locacao.id})" name="imprimir"><span>Imprimir</span></a>	
+					<!-- <a href="<c:url value="/locacoes/report/${locacao.id}"/>" onclick="verificaid(${locacao.id})" name="imprimir"><span>Imprimir</span></a>	 -->
 					</td>
-					<td><input type="button" name="button" value="Somar" onclick="soma();" icon="ui-icon-contact"/></td></tr>
+					</tr>
 				</table>
 			</div>
 		</div>
@@ -208,12 +207,20 @@
 		    nextText: 'Próximo',
 		    prevText: 'Anterior',
 		    showOn: "button",
+		    display: none,
 			buttonImage: "${pageContext.request.contextPath}/images/calendar.gif",
 			buttonImageOnly: true
 		});
  });
  </script>
 <style type="text/css">
+input.maiuscula {
+  text-transform: uppercase;
+  background-color: #FFFFE0;
+}
+.data {
+  background-color: #FFFFE0;
+}
 .button-remover {
   background-image: url('${pageContext.request.contextPath}/images/btn_remover.png');
   cursor:pointer;
