@@ -50,11 +50,11 @@
 					<c:forEach items="${locacao.locacaodetalhe}" var="locacaodetalhe" varStatus="status">
 			   	        <div class="produtointem">
 			    	    <label>Produto:</label>&nbsp
-						<input type="text" class="maiuscula" name="locacao.locacaodetalhe[${status.index}].produto.nome" value="${locacaodetalhe.produto.nome}" readonly/>&nbsp&nbsp			    		
+						<input type="text" class="itemlocado" name="locacao.locacaodetalhe[${status.index}].produto.nome" value="${locacaodetalhe.produto.nome}" readonly/>&nbsp&nbsp			    		
 						<label>R$:</label>&nbsp
 						<input type="text" class="maiuscula" name="locacao.locacaodetalhe[${status.index}].preco" value="${locacaodetalhe.preco}" readonly/>&nbsp&nbsp			    		
 						<label>Quantidade:</label>&nbsp
-			    		<input type="text" class="maiuscula" name="locacao.locacaodetalhe[${status.index}].quantidade" value="${locacaodetalhe.quantidade}" readonly/>&nbsp&nbsp
+			    		<input type="text" class="qtdelocada" name="locacao.locacaodetalhe[${status.index}].quantidade" value="${locacaodetalhe.quantidade}" readonly/>&nbsp&nbsp
 			    		<input type="hidden" name="locacao.locacaodetalhe[${status.index}].id" value="${locacaodetalhe.id}" />
 			    		</div>
 					</c:forEach>				
@@ -69,11 +69,11 @@
 				<c:forEach items="${locacao.devolucaolocacao}" var="devolucao" varStatus="status">
 		   	        <div class="devolucaoitem">
 		    	    <label>Produto:</label>&nbsp
-		    	    <input type="text" name="locacao.devolucaolocacao[${status.index}].produto.nome" value="${devolucao.produto.nome}" readonly/>
+		    	    <input type="text" class="itemdevolucao" name="locacao.devolucaolocacao[${status.index}].produto.nome" value="${devolucao.produto.nome}" readonly/>
 		    		<label>Quantidade:</label>&nbsp
-		    		<input type="text" name="locacao.devolucaolocacao[${status.index}].quantidade" value="${devolucao.quantidade}" readonly/>&nbsp&nbsp
-		    		<label>Produto:</label>&nbsp
-		    	    <input type="text" name="locacao.devolucaolocacao[${status.index}].dtdevolucao" value="<fmt:formatDate value="${devolucao.dtdevolucao}" dateStyle="medium" />" readonly/>		    		
+		    		<input type="text" class="qtdedevolucao" name="locacao.devolucaolocacao[${status.index}].quantidade" value="${devolucao.quantidade}" readonly/>&nbsp&nbsp
+		    		<label>Data:</label>&nbsp
+		    	    <input type="text" class="data" name="locacao.devolucaolocacao[${status.index}].dtdevolucao" value="<fmt:formatDate value="${devolucao.dtdevolucao}" dateStyle="medium" />" readonly/>		    		
 		    		<input type="hidden" name="locacao.devolucaolocacao[${status.index}].id" value="${devolucao.id}" />
 		    		</div>
 				</c:forEach>
@@ -89,7 +89,7 @@
 				<br>
 				<table align="center">
 					<tr><td>
-					<input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br/>	
+					<input type="button" onclick="conta();" value="Salvar" class="salvar" icon="ui-icon-disk"/><br/>	
 					</td>
 					<td>
 					<!-- <input type="submit" value="Imprimir" class="imprimir" icon="ui-icon-print"/><br/>  -->
@@ -106,16 +106,17 @@
      
  
  		var model =
+ 					'<br>' +
  					'<div class="devolucaoitem">'+
  					'<label>Produto:</label>&nbsp'+
- 					'<select id="produto" name="locacao.devolucaolocacao[${status.index}].produto.id" value="devolucao.produto.id">'+
+ 					'<select id="produto" class="itemdevolucao" name="locacao.devolucaolocacao[${status.index}].produto.id" value="devolucao.produto.id">'+
  					'	<option value=""></option>'+
  		    		'	<c:forEach items="${locacao.locacaodetalhe}" var="detalhe" varStatus="status">'+
  		    		'		<option value="${detalhe.produto.id}">${detalhe.produto.nome}</option>'+
  		    		'	</c:forEach>'+
  					'</select>&nbsp&nbsp'+
  					'<label>Quantidade:</label>&nbsp'+
- 					'<input type="text" name="locacao.devolucaolocacao[${status.index}].quantidade" value="${devolucao.quantidade}" />&nbsp&nbsp'+
+ 					'<input type="text" class="qtdedevolucao" name="locacao.devolucaolocacao[${status.index}].quantidade" value="${devolucao.quantidade}" />&nbsp&nbsp'+
  					'<input type="hidden" name="locacao.devolucaolocacao[${status.index}].id" value="${devolucao.id}" />'+
  					'</div>';
     		
@@ -166,6 +167,19 @@
     				
     			});
     		};
+    		
+    		function conta() {
+    			$('.itemlocado').each(function() {
+    				var locado = $(this).val();
+    				var qtdeloc = $('.qtdelocada').val();
+    				alert(qtdeloc);
+    				$('.itemdevolucao').each(function() {
+    					var itemdev = $(this).val();
+	    				if (locado  == itemdev)
+	    					alert("foi");
+    				});
+    			});
+    		}
     		   		
     		$(document).ready(function(){
                 $("input.dinheiro").maskMoney({showSymbol:false, symbol:"R$", decimal:".", thousands:"."});
@@ -215,6 +229,22 @@
  </script>
 <style type="text/css">
 input.maiuscula {
+  text-transform: uppercase;
+  background-color: #FFFFE0;
+}
+input.itemlocado {
+  text-transform: uppercase;
+  background-color: #FFFFE0;
+}
+input.qtdelocada {
+  text-transform: uppercase;
+  background-color: #FFFFE0;
+}
+input.itemdevolucao {
+  text-transform: uppercase;
+  background-color: #FFFFE0;
+}
+input.qtdedevolucao {
   text-transform: uppercase;
   background-color: #FFFFE0;
 }
