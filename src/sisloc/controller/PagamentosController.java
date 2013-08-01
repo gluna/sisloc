@@ -48,6 +48,29 @@ public class PagamentosController {
 		}
 	}
 	
+	@Post
+	@Path("/pagamentos/salvarcontasapagar")
+	public void salvar(Pagamento pagamento){
+		try {
+		     if(pagamento != null) {	
+		    	 	pagamento.setTipo("P");
+			    	 if(pagamento.getId() == null) {
+			    		 dao.salvar(pagamento);
+			    	 } else {
+			    		 dao.atualizar(pagamento);
+		             }
+	          }
+		     result.redirectTo(this.getClass()).cadastrarcontasapagar();
+		} catch (Exception e) {
+			result.include("msg", e.getMessage());
+		}
+	}
+	
+	@Path("/pagamentos/cadastrarcontasapagar")
+	public void cadastrarcontasapagar(){
+		
+	}
+	
 	@Path("/pagamentos/editar/{locacao.id}")
 	public void editar(Locacao locacao){
 		locacao = locacaodao.selectById(locacao);

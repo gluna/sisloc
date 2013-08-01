@@ -19,7 +19,9 @@ public class Pagamento implements Serializable{
 	private Double valor;
 	private Date dtvencimento;
 	private Date dtpagamento;
-	private String forma;
+	private String forma; //cheque, dinheiro, cartao
+	private String tipo; //entrada ou saida
+	private String descricao;
 	
 	public Long getId() {
 		return id;
@@ -50,6 +52,18 @@ public class Pagamento implements Serializable{
 	}
 	public void setForma(String forma) {
 		this.forma = forma.toUpperCase();
+	}
+	public String getTipo() {
+		return tipo;
+	}
+	public void setTipo(String tipo) {
+		this.tipo = tipo.toUpperCase();
+	}
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao.toUpperCase();
 	}
 
 }

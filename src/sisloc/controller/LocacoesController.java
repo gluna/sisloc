@@ -21,6 +21,7 @@ import sisloc.modelo.Locacao;
 import sisloc.modelo.LocacaoDetalhe;
 import sisloc.modelo.Orcamento;
 import sisloc.modelo.OrcamentoDetalhe;
+import sisloc.modelo.Pagamento;
 import sisloc.modelo.Preco;
 import sisloc.modelo.Produto;
 import sisloc.util.SislocUtils;
@@ -62,6 +63,9 @@ public class LocacoesController {
 		     if(locacao != null) {
 		    	 for(LocacaoDetalhe ld : locacao.getLocacaodetalhe() ){
 		    		 ld.setProduto(produtodao.selectById(ld.getProduto()));
+		    	 }
+		    	 for(Pagamento p : locacao.getPagamentos()){
+		    		 p.setTipo("R");
 		    	 }
 		    	 locacao.setCliente(clientedao.selectById(locacao.getCliente()));
 		    	 if(locacao.getId() == null) {
