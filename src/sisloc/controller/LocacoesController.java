@@ -64,8 +64,10 @@ public class LocacoesController {
 		    	 for(LocacaoDetalhe ld : locacao.getLocacaodetalhe() ){
 		    		 ld.setProduto(produtodao.selectById(ld.getProduto()));
 		    	 }
-		    	 for(Pagamento p : locacao.getPagamentos()){
-		    		 p.setTipo("R");
+		    	 if(locacao.getPagamentos() != null){
+			    	 for(Pagamento p : locacao.getPagamentos()){
+			    		 p.setTipo("R");
+			    	 }
 		    	 }
 		    	 locacao.setCliente(clientedao.selectById(locacao.getCliente()));
 		    	 if(locacao.getId() == null) {
