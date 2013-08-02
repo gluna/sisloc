@@ -46,15 +46,15 @@
 						</tr>
 					</table>
 				</fieldset><br/>
-				<fieldset id="itenslocacao" style="width: 1140px;"><legend>Itens da Locação</legend>
+				<fieldset id="itenslocacao" class="loc" style="width: 1140px;"><legend>Itens da Locação</legend>
 					<c:forEach items="${locacao.locacaodetalhe}" var="locacaodetalhe" varStatus="status">
 			   	        <div class="produtointem">
 			    	    <label>Produto:</label>&nbsp
-						<input type="text" class="itemlocado" name="locacao.locacaodetalhe[${status.index}].produto.nome" value="${locacaodetalhe.produto.nome}" readonly/>&nbsp&nbsp			    		
+						<input type="text" id="produto" name="locacao.locacaodetalhe[${status.index}].produto.nome" value="${locacaodetalhe.produto.nome}" readonly/>&nbsp&nbsp			    		
 						<label>R$:</label>&nbsp
 						<input type="text" class="maiuscula" name="locacao.locacaodetalhe[${status.index}].preco" value="${locacaodetalhe.preco}" readonly/>&nbsp&nbsp			    		
 						<label>Quantidade:</label>&nbsp
-			    		<input type="text" class="qtdelocada" name="locacao.locacaodetalhe[${status.index}].quantidade" value="${locacaodetalhe.quantidade}" readonly/>&nbsp&nbsp
+			    		<input type="text" id="qtde" name="locacao.locacaodetalhe[${status.index}].quantidade" value="${locacaodetalhe.quantidade}" readonly/>&nbsp&nbsp
 			    		<input type="hidden" name="locacao.locacaodetalhe[${status.index}].id" value="${locacaodetalhe.id}" />
 			    		</div>
 					</c:forEach>				
@@ -89,7 +89,7 @@
 				<br>
 				<table align="center">
 					<tr><td>
-					<input type="button" onclick="conta();" value="Salvar" class="salvar" icon="ui-icon-disk"/><br/>	
+					<input type="button" name="button" onclick="conta();" value="Salvar" class="salvar" icon="ui-icon-disk"/><br/>	
 					</td>
 					<td>
 					<!-- <input type="submit" value="Imprimir" class="imprimir" icon="ui-icon-print"/><br/>  -->
@@ -169,15 +169,15 @@
     		};
     		
     		function conta() {
-    			$('.itemlocado').each(function() {
-    				var locado = $(this).val();
-    				var qtdeloc = $('.qtdelocada').val();
-    				alert(qtdeloc);
-    				$('.itemdevolucao').each(function() {
-    					var itemdev = $(this).val();
-	    				if (locado  == itemdev)
+    			$('.loc').each(function() {
+    				var auxnomeloc = document.getElementById("produto");
+    				var nomeloc = auxnomeloc.value;
+    				//alert(nomeloc);
+    				//$('.itemdevolucao').each(function() {
+    					//var itemdev = $(this).val();
+	    				if (nomeloc  == "CADEIRA")
 	    					alert("foi");
-    				});
+    				//});
     			});
     		}
     		   		
