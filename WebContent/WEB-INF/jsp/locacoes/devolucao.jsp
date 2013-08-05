@@ -46,15 +46,15 @@
 						</tr>
 					</table>
 				</fieldset><br/>
-				<fieldset id="itenslocacao" class="loc" style="width: 1140px;"><legend>Itens da Locação</legend>
+				<fieldset id="itenslocacao" style="width: 1140px;"><legend>Itens da Locação</legend>
 					<c:forEach items="${locacao.locacaodetalhe}" var="locacaodetalhe" varStatus="status">
 			   	        <div class="produtointem">
 			    	    <label>Produto:</label>&nbsp
-						<input type="text" id="produto" name="locacao.locacaodetalhe[${status.index}].produto.nome" value="${locacaodetalhe.produto.nome}" readonly/>&nbsp&nbsp			    		
+						<input type="text" class="maiuscula" name="locacao.locacaodetalhe[${status.index}].produto.nome" value="${locacaodetalhe.produto.nome}" readonly/>&nbsp&nbsp			    		
 						<label>R$:</label>&nbsp
 						<input type="text" class="maiuscula" name="locacao.locacaodetalhe[${status.index}].preco" value="${locacaodetalhe.preco}" readonly/>&nbsp&nbsp			    		
 						<label>Quantidade:</label>&nbsp
-			    		<input type="text" id="qtde" name="locacao.locacaodetalhe[${status.index}].quantidade" value="${locacaodetalhe.quantidade}" readonly/>&nbsp&nbsp
+			    		<input type="text" class="loc" name="locacao.locacaodetalhe[${status.index}].quantidade" value="${locacaodetalhe.quantidade}" readonly/>&nbsp&nbsp
 			    		<input type="hidden" name="locacao.locacaodetalhe[${status.index}].id" value="${locacaodetalhe.id}" />
 			    		</div>
 					</c:forEach>				
@@ -69,9 +69,9 @@
 				<c:forEach items="${locacao.devolucaolocacao}" var="devolucao" varStatus="status">
 		   	        <div class="devolucaoitem">
 		    	    <label>Produto:</label>&nbsp
-		    	    <input type="text" class="itemdevolucao" name="locacao.devolucaolocacao[${status.index}].produto.nome" value="${devolucao.produto.nome}" readonly/>
+		    	    <input type="text" class="maiuscula" name="locacao.devolucaolocacao[${status.index}].produto.nome" value="${devolucao.produto.nome}" readonly/>
 		    		<label>Quantidade:</label>&nbsp
-		    		<input type="text" class="qtdedevolucao" name="locacao.devolucaolocacao[${status.index}].quantidade" value="${devolucao.quantidade}" readonly/>&nbsp&nbsp
+		    		<input type="text" class="dev" name="locacao.devolucaolocacao[${status.index}].quantidade" value="${devolucao.quantidade}" readonly/>&nbsp&nbsp
 		    		<label>Data:</label>&nbsp
 		    	    <input type="text" class="data" name="locacao.devolucaolocacao[${status.index}].dtdevolucao" value="<fmt:formatDate value="${devolucao.dtdevolucao}" dateStyle="medium" />" readonly/>		    		
 		    		<input type="hidden" name="locacao.devolucaolocacao[${status.index}].id" value="${devolucao.id}" />
@@ -109,14 +109,14 @@
  					'<br>' +
  					'<div class="devolucaoitem">'+
  					'<label>Produto:</label>&nbsp'+
- 					'<select id="produto" class="itemdevolucao" name="locacao.devolucaolocacao[${status.index}].produto.id" value="devolucao.produto.id">'+
+ 					'<select id="produto" name="locacao.devolucaolocacao[${status.index}].produto.id" value="devolucao.produto.id">'+
  					'	<option value=""></option>'+
  		    		'	<c:forEach items="${locacao.locacaodetalhe}" var="detalhe" varStatus="status">'+
  		    		'		<option value="${detalhe.produto.id}">${detalhe.produto.nome}</option>'+
  		    		'	</c:forEach>'+
  					'</select>&nbsp&nbsp'+
  					'<label>Quantidade:</label>&nbsp'+
- 					'<input type="text" class="qtdedevolucao" name="locacao.devolucaolocacao[${status.index}].quantidade" value="${devolucao.quantidade}" />&nbsp&nbsp'+
+ 					'<input type="text" class="dev" style="background-color: #FFFFFF;" name="locacao.devolucaolocacao[${status.index}].quantidade" value="${devolucao.quantidade}" />&nbsp&nbsp'+
  					'<input type="hidden" name="locacao.devolucaolocacao[${status.index}].id" value="${devolucao.id}" />'+
  					'</div>';
     		
@@ -169,16 +169,26 @@
     		};
     		
     		function conta() {
+    			var aculoc = 0;
+    			var acudev = 0;
+    			
     			$('.loc').each(function() {
-    				var auxnomeloc = document.getElementById("produto");
-    				var nomeloc = auxnomeloc.value;
-    				//alert(nomeloc);
-    				//$('.itemdevolucao').each(function() {
-    					//var itemdev = $(this).val();
-	    				if (nomeloc  == "CADEIRA")
-	    					alert("foi");
-    				//});
+    				var aux = parseFloat($(this).val(), 10);
+    				aculoc = aculoc + aux;
     			});
+    			
+    			$('.dev').each(function() {
+    				var aux = parseFloat($(this).val(), 10);
+    				acudev = acudev + aux;
+    			});
+    			
+    			if (acudev > aculoc) {
+    				alert("O número de itens devolvidos é maior que o número de itens locados!!");
+    			}
+    			else {
+    				document.form.submit();
+    				alert("Dados salvos com sucesso!!");
+    			}
     		}
     		   		
     		$(document).ready(function(){
@@ -225,6 +235,7 @@
 			buttonImage: "${pageContext.request.contextPath}/images/calendar.gif",
 			buttonImageOnly: true
 		});
+		
  });
  </script>
 <style type="text/css">
@@ -245,6 +256,14 @@ input.itemdevolucao {
   background-color: #FFFFE0;
 }
 input.qtdedevolucao {
+  text-transform: uppercase;
+  background-color: #FFFFE0;
+}
+input.loc {
+  text-transform: uppercase;
+  background-color: #FFFFE0;
+}
+input.dev {
   text-transform: uppercase;
   background-color: #FFFFE0;
 }
