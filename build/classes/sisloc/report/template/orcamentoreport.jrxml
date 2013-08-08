@@ -101,27 +101,27 @@ WHERE
 					<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{orcamento_fim})]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement uuid="8461441b-0d33-4c31-b052-c572c407b795" x="5" y="61" width="100" height="15"/>
+					<reportElement uuid="8461441b-0d33-4c31-b052-c572c407b795" positionType="FixRelativeToBottom" x="5" y="61" width="100" height="15"/>
 					<textElement/>
 					<text><![CDATA[Produdo]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="75c18f4e-be0f-4d5c-8457-9ad0384d9f9f" x="320" y="61" width="60" height="15"/>
+					<reportElement uuid="75c18f4e-be0f-4d5c-8457-9ad0384d9f9f" positionType="FixRelativeToBottom" x="320" y="61" width="60" height="15"/>
 					<textElement textAlignment="Right"/>
 					<text><![CDATA[Quantidade]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="abdec031-86a8-4129-9aca-345d448ac8fa" x="390" y="61" width="74" height="15"/>
+					<reportElement uuid="abdec031-86a8-4129-9aca-345d448ac8fa" positionType="FixRelativeToBottom" x="390" y="61" width="74" height="15"/>
 					<textElement textAlignment="Right"/>
 					<text><![CDATA[Preço Unit]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="581c653d-7848-47b4-bfd0-343000748f27" x="477" y="61" width="74" height="15"/>
+					<reportElement uuid="581c653d-7848-47b4-bfd0-343000748f27" positionType="FixRelativeToBottom" x="477" y="61" width="74" height="15"/>
 					<textElement textAlignment="Right"/>
 					<text><![CDATA[Preço Total]]></text>
 				</staticText>
 				<line>
-					<reportElement uuid="ee6d6cbc-6e82-4936-9cc9-93cfdae31da1" x="0" y="75" width="555" height="1"/>
+					<reportElement uuid="ee6d6cbc-6e82-4936-9cc9-93cfdae31da1" positionType="FixRelativeToBottom" x="0" y="75" width="555" height="1"/>
 				</line>
 				<textField>
 					<reportElement uuid="21546df7-4158-4dcf-8518-33560d60506d" x="5" y="1" width="436" height="15"/>
@@ -129,8 +129,8 @@ WHERE
 					<textFieldExpression><![CDATA["Cliente: "+$F{orcamento_cliente}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement uuid="1d31d079-4679-4906-8469-7bf3154d27f1" stretchType="RelativeToTallestObject" x="59" y="35" width="492" height="15"/>
-					<textElement verticalAlignment="Middle"/>
+					<reportElement uuid="1d31d079-4679-4906-8469-7bf3154d27f1" stretchType="RelativeToTallestObject" x="59" y="36" width="492" height="15"/>
+					<textElement verticalAlignment="Top"/>
 					<textFieldExpression><![CDATA[$F{orcamento_obs}]]></textFieldExpression>
 				</textField>
 				<staticText>

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
 
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -33,13 +34,16 @@ public class OrcamentosController {
 	private ServletContext context;
 	private ProdutoDao produtodao;
 	private ClienteDao clientedao;
+	private HttpServletResponse response;
 	
-	public OrcamentosController(OrcamentoDao dao, Result result,final ServletContext context, ClienteDao clientedao, ProdutoDao produtodao){
+	public OrcamentosController(OrcamentoDao dao, Result result,final ServletContext context, 
+			ClienteDao clientedao, ProdutoDao produtodao, HttpServletResponse response){
 		this.dao = dao;
 		this.result = result;
 		this.context = context;
 		this.produtodao = produtodao;
 		this.clientedao = clientedao;
+		this.response = response;
 	}
 	
 	@Path("/orcamentos/cadastrar")
@@ -115,17 +119,18 @@ public class OrcamentosController {
 				Map<String, Object> parametros = new HashMap<String, Object>();
 				parametros.put( "ORCAMENTO_ID", orcamento.getId() );
 				 
-				//JOptionPane.showMessageDialog(null, context.getRealPath("/sisloc/report/template/orcamentoreport.jasper"));
 				JasperPrint print = JasperFillManager.fillReport(context.getRealPath("/WEB-INF/classes/sisloc/report/template/orcamentoreport.jasper"), parametros, SislocUtils.getConnection());
-				//JasperExportManager.exportReportToPdfFile(print,"/home/gustavo/report-out.pdf");
+
 				JasperViewer.viewReport(print,false);
-				result.include("orcamento", orcamento);
 				
-				/*List<Orcamento> orcamentos = new ArrayList<Orcamento>();
-				orcamentos.add(orcamento);
-				Report<Orcamento> report = new OrcamentoReport(orcamentos);*/
+				//inicio
+				//JasperExportManager.exportReportToPdfFile(print, "RelatorioClientes.pdf");//context.getRealPath("/WEB-INF/jsp/report/RelatorioClientes.pdf"));
+				
+				//response.sendRedirect("RelatorioClientes.pdf");
+				//System.out.println("aqui");
+				//fim
+				result.include("orcamento", orcamento);			
 			}catch(Exception e){e.printStackTrace();}
-			//return null; //new ReportDownload(report, Pdf());
 			
 		}
     	result.permanentlyRedirectTo(this.getClass()).cadastrar();

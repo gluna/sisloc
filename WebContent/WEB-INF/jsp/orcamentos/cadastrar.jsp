@@ -79,7 +79,7 @@
 					</td>
 					<td>
 					<!-- <input type="button" value="Imprimir" class="imprimir" icon="ui-icon-print" action="<c:url value='/orcamentos/salvar'/>"></a><br/> -->
-					<!--<a href="<c:url value="/orcamentos/report/${orcamento.id}"/>" onclick="verificaid(${orcamento.id})" name="imprimir"><span>Imprimir</span></a>	-->
+					<a href="<c:url value="/orcamentos/report/${orcamento.id}"/>" onclick="verificaid(${orcamento.id})" name="imprimir"><span>Imprimir</span></a>
 					</td></tr>
 				</table>
 			</div>
