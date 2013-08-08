@@ -220,13 +220,13 @@
 				</legend>
 				<table><tr>
 					<td align="right" width="95"><label>Valor (R$):</label></td>
-					<td align="left"><input	type="text" class="dinheiro1" name="valortotal" value="${locacao.valortotal}" readonly/><br></td>
+					<td align="left"><input	type="text" class="dinheiro1" name="locacao.valortotal" value="${locacao.valortotal}" readonly/><br></td>
 					<td align="right" width="95"><label>Desconto (%):</label></td>
-					<td align="left"><input	type="text" name="descontopercent" onchange="descontapercentual();" value="${locacao.descontopercent}" /><br></td>
+					<td align="left"><input	type="text" name="locacao.descontopercent" onchange="descontapercentual();" value="${locacao.descontopercent}" /><br></td>
 					<td align="right" width="95"><label>Desconto (R$):</label></td>
-					<td align="left"><input	type="text" class="dinheiro" name="desc" onchange="descontavalor();" value="${locacao.descontovalor}" /><br></td>
+					<td align="left"><input	type="text" class="dinheiro" name="locacao.descontovalor" onchange="descontavalor();" value="${locacao.descontovalor}" /><br></td>
 					<td align="right" width="80"><label>Total (R$):</label></td>
-					<td align="left"><input	type="text" class="dinheiro1" name="valorfinal" value="${locacao.valorfinal}" readonly/><br></td>
+					<td align="left"><input	type="text" class="dinheiro1" name="locacao.valorfinal" value="${locacao.valorfinal}" readonly/><br></td>
 				</tr></table>
 				</fieldset><br>
 				<fieldset id="pagamentos" style="width: 1140px;">

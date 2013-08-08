@@ -34,13 +34,13 @@ public class Locacao implements Serializable{
 	@JoinColumn
 	private Cliente cliente;
 	
-	private Double valortotal;
+	private Double valortotal; //valor sem descontos
 	private Double descontovalor;
 	private Double descontopercent;
 	private String formapagamento;
 	private String obs;
 	private Double frete;
-	private Double valorfinal;
+	private Double valorfinal; //valor final apos os descontos
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@Fetch(FetchMode.SUBSELECT)

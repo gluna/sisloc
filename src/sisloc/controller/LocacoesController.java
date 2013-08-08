@@ -67,6 +67,7 @@ public class LocacoesController {
 		    	 if(locacao.getPagamentos() != null){
 			    	 for(Pagamento p : locacao.getPagamentos()){
 			    		 p.setTipo("R");
+			    		 p.setDescricao("Pagamento Locação");
 			    	 }
 		    	 }
 		    	 locacao.setCliente(clientedao.selectById(locacao.getCliente()));

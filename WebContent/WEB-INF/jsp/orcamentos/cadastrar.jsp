@@ -27,7 +27,7 @@
 				<table><tr>
 						<td align="right" width="95"><label>Observação:</label></td></tr></table>
 						<table><tr><td width="95"></td> 
-						<td align="right"><textarea style="resize:none; text-transform: uppercase;" rows="10" cols="123" name="orcamento.obs" value="${orcamento.obs}" /></textarea><br> </td></tr></table><br>
+						<td align="right"><textarea style="resize:none; text-transform: uppercase;" rows="10" cols="123" name="orcamento.obs" />${orcamento.obs}</textarea><br> </td></tr></table><br>
 				</fieldset>
 				<br/>
 				<fieldset id="formulario" style="width: 1140px;"> 

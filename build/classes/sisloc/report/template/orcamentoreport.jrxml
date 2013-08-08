@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version last-->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="orcamentoreport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e11db4c8-648f-4287-a4ed-1c3ae74fefda">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sisloc"/>
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.1"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="28"/>
+	<property name="ireport.y" value="72"/>
 	<parameter name="ORCAMENTO_ID" class="java.lang.Long"/>
 	<queryString>
 		<![CDATA[SELECT
@@ -14,10 +13,28 @@
      orcamento."inicio" AS orcamento_inicio,
      produto."nome" AS produto_nome,
      orcamentodetalhe."quantidade" AS orcamentodetalhe_quantidade,
-     orcamentodetalhe."preco" AS orcamentodetalhe_preco
+     orcamentodetalhe."preco" AS orcamentodetalhe_preco,
+     empresa."id" AS empresa_id,
+     empresa."nomefantasia" AS empresa_nomefantasia,
+     empresa."razaosocial" AS empresa_razaosocial,
+     empresa."bairro" AS empresa_bairro,
+     empresa."cep" AS empresa_cep,
+     empresa."cidade" AS empresa_cidade,
+     empresa."cnpj" AS empresa_cnpj,
+     empresa."complemento" AS empresa_complemento,
+     empresa."email" AS empresa_email,
+     empresa."ie" AS empresa_ie,
+     empresa."logradouro" AS empresa_logradouro,
+     empresa."numero" AS empresa_numero,
+     empresa."tel" AS empresa_tel,
+     empresa."uf" AS empresa_uf,
+     orcamento."cliente" AS orcamento_cliente,
+     orcamento."frete" AS orcamento_frete,
+     orcamento."obs" AS orcamento_obs
 FROM
      "public"."produto" produto INNER JOIN "public"."orcamentodetalhe" orcamentodetalhe ON produto."id" = orcamentodetalhe."produto_id"
      INNER JOIN "orcamento" orcamento ON orcamentodetalhe."orcamentodetalhe_id" = orcamento."id"
+     INNER JOIN "public"."empresa" empresa ON orcamento."empresa" = empresa."id"
 WHERE
      orcamento.id = $P{ORCAMENTO_ID}]]>
 	</queryString>
@@ -28,6 +45,23 @@ WHERE
 	<field name="produto_nome" class="java.lang.String"/>
 	<field name="orcamentodetalhe_quantidade" class="java.lang.Integer"/>
 	<field name="orcamentodetalhe_preco" class="java.lang.Double"/>
+	<field name="empresa_id" class="java.lang.Long"/>
+	<field name="empresa_nomefantasia" class="java.lang.String"/>
+	<field name="empresa_razaosocial" class="java.lang.String"/>
+	<field name="empresa_bairro" class="java.lang.String"/>
+	<field name="empresa_cep" class="java.lang.String"/>
+	<field name="empresa_cidade" class="java.lang.String"/>
+	<field name="empresa_cnpj" class="java.lang.String"/>
+	<field name="empresa_complemento" class="java.lang.String"/>
+	<field name="empresa_email" class="java.lang.String"/>
+	<field name="empresa_ie" class="java.lang.String"/>
+	<field name="empresa_logradouro" class="java.lang.String"/>
+	<field name="empresa_numero" class="java.lang.String"/>
+	<field name="empresa_tel" class="java.lang.String"/>
+	<field name="empresa_uf" class="java.lang.String"/>
+	<field name="orcamento_cliente" class="java.lang.String"/>
+	<field name="orcamento_frete" class="java.lang.Double"/>
+	<field name="orcamento_obs" class="java.lang.String"/>
 	<variable name="TOTAL_ORCAMENTO" class="java.lang.Double" calculation="Sum">
 		<variableExpression><![CDATA[$F{orcamentodetalhe_quantidade}*$F{orcamentodetalhe_preco}]]></variableExpression>
 		<initialValueExpression><![CDATA[new Double(0)]]></initialValueExpression>
@@ -37,32 +71,32 @@ WHERE
 		<groupHeader>
 			<band height="77">
 				<textField>
-					<reportElement uuid="c9224898-1586-4e77-849a-433c560fe346" x="255" y="5" width="70" height="15"/>
-					<textElement/>
+					<reportElement uuid="c9224898-1586-4e77-849a-433c560fe346" x="366" y="18" width="70" height="15"/>
+					<textElement verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{orcamento_data})]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement uuid="f2eade23-217d-494a-beac-e912044fc838" x="145" y="26" width="44" height="15"/>
-					<textElement/>
+					<reportElement uuid="f2eade23-217d-494a-beac-e912044fc838" x="145" y="18" width="44" height="15"/>
+					<textElement verticalAlignment="Middle"/>
 					<text><![CDATA[Dt. Fim]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="6a7fb6df-ae75-44ad-aa07-028cc82069a4" x="177" y="5" width="80" height="15"/>
-					<textElement/>
+					<reportElement uuid="6a7fb6df-ae75-44ad-aa07-028cc82069a4" x="288" y="18" width="80" height="15"/>
+					<textElement verticalAlignment="Middle"/>
 					<text><![CDATA[Dt. Orçamento]]></text>
 				</staticText>
 				<textField>
-					<reportElement uuid="549534a0-03e3-4a83-800f-e39d99593c6f" x="54" y="26" width="70" height="15"/>
-					<textElement/>
+					<reportElement uuid="549534a0-03e3-4a83-800f-e39d99593c6f" x="54" y="18" width="70" height="15"/>
+					<textElement verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{orcamento_inicio})]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement uuid="2e698927-34b9-42b3-889c-d3be0a81cd59" x="5" y="26" width="49" height="15"/>
-					<textElement/>
+					<reportElement uuid="2e698927-34b9-42b3-889c-d3be0a81cd59" x="5" y="18" width="49" height="15"/>
+					<textElement verticalAlignment="Middle"/>
 					<text><![CDATA[Dt. Inicio]]></text>
 				</staticText>
 				<textField>
-					<reportElement uuid="efc8d948-7220-415a-bb61-0df535285e3c" x="189" y="26" width="70" height="15"/>
+					<reportElement uuid="efc8d948-7220-415a-bb61-0df535285e3c" x="189" y="18" width="70" height="15"/>
 					<textElement/>
 					<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{orcamento_fim})]]></textFieldExpression>
 				</textField>
@@ -89,6 +123,21 @@ WHERE
 				<line>
 					<reportElement uuid="ee6d6cbc-6e82-4936-9cc9-93cfdae31da1" x="0" y="75" width="555" height="1"/>
 				</line>
+				<textField>
+					<reportElement uuid="21546df7-4158-4dcf-8518-33560d60506d" x="5" y="1" width="436" height="15"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA["Cliente: "+$F{orcamento_cliente}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="1d31d079-4679-4906-8469-7bf3154d27f1" stretchType="RelativeToTallestObject" x="59" y="35" width="492" height="15"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{orcamento_obs}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="a5c55c1e-0217-42bf-8160-f3407205f786" x="5" y="35" width="49" height="15"/>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[Dt. Inicio]]></text>
+				</staticText>
 			</band>
 		</groupHeader>
 		<groupFooter>
@@ -107,31 +156,43 @@ WHERE
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="96" splitType="Stretch">
-			<staticText>
-				<reportElement uuid="b270dee2-9602-4556-a4e8-1cd930234554" x="100" y="0" width="455" height="50"/>
-				<textElement>
-					<font size="13"/>
-				</textElement>
-				<text><![CDATA[Nome da Empresa]]></text>
-			</staticText>
+		<band height="114" splitType="Stretch">
 			<textField>
-				<reportElement uuid="26891e36-e711-4f72-9d58-9c591e0e4522" x="0" y="70" width="555" height="17"/>
+				<reportElement uuid="26891e36-e711-4f72-9d58-9c591e0e4522" x="0" y="86" width="555" height="17"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA["ORÇAMENTO DE LOCAÇÃO DE BENS MÓVEIS Nº - "+$F{orcamento_id}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement uuid="fb4f367b-0c94-400a-b221-a5a0a9802a6c" x="0" y="64" width="555" height="1"/>
+				<reportElement uuid="fb4f367b-0c94-400a-b221-a5a0a9802a6c" x="0" y="80" width="555" height="1"/>
 			</line>
 			<line>
-				<reportElement uuid="06eb8ebf-daa0-4737-9147-a8055ddb6636" x="0" y="92" width="555" height="1"/>
+				<reportElement uuid="06eb8ebf-daa0-4737-9147-a8055ddb6636" x="0" y="108" width="555" height="1"/>
 			</line>
 			<image>
 				<reportElement uuid="8ff43988-c853-4e34-a01d-6284c7f95839" x="-1" y="0" width="71" height="50"/>
-				<imageExpression><![CDATA["/home/gustavo/Documentos/logocabecalho.png"]]></imageExpression>
 			</image>
+			<textField>
+				<reportElement uuid="eeda0240-2eb9-497b-98b1-f4d08934388b" x="75" y="0" width="436" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{empresa_nomefantasia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4b4690a5-9725-430e-9233-54ede7a6d9ee" x="75" y="16" width="436" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{empresa_logradouro}+", "+$F{empresa_numero}+", "+$F{empresa_bairro}+", "+$F{empresa_cidade}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="dbf7e203-b0a4-42b0-bae1-2ef683a4611f" x="75" y="32" width="436" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["CNPJ: "+$F{empresa_cnpj}+"    IE: "+$F{empresa_ie}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="80bbba53-ba10-4a7b-8b20-a4c01a2efe0e" x="75" y="48" width="436" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["TEL: "+$F{empresa_tel}+"    EMAIL: "+$F{empresa_email}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<detail>
@@ -186,21 +247,26 @@ WHERE
 	<summary>
 		<band height="132" splitType="Stretch">
 			<line>
-				<reportElement uuid="f54b663b-63b0-40c0-80c5-b8e4a4a76457" x="228" y="90" width="300" height="1"/>
+				<reportElement uuid="f54b663b-63b0-40c0-80c5-b8e4a4a76457" x="228" y="119" width="300" height="1"/>
 			</line>
 			<textField pattern="dd MMMM yyyy">
-				<reportElement uuid="f7724657-4f6d-4e3f-9d7e-d09f33f6f349" stretchType="RelativeToBandHeight" x="390" y="14" width="121" height="20"/>
+				<reportElement uuid="f7724657-4f6d-4e3f-9d7e-d09f33f6f349" stretchType="RelativeToBandHeight" x="390" y="43" width="121" height="20"/>
 				<textElement>
 					<font size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="85ebedaa-a2be-4b25-97bd-5cc3fe1d4dfd" x="240" y="14" width="171" height="20"/>
+				<reportElement uuid="85ebedaa-a2be-4b25-97bd-5cc3fe1d4dfd" x="240" y="43" width="171" height="20"/>
 				<textElement>
 					<font size="11"/>
 				</textElement>
 				<text><![CDATA[Campos dos Goytacazes,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e4d699e5-474f-4fb3-b83b-6cdde75518ed" x="5" y="5" width="546" height="20"/>
+				<textElement/>
+				<text><![CDATA[Este orçamento é válido por 15 dias]]></text>
 			</staticText>
 		</band>
 	</summary>

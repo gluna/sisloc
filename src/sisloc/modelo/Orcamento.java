@@ -31,6 +31,7 @@ public class Orcamento implements Serializable{
 	private String cliente;
 	private Double frete;
 	private String obs;
+	private Long empresa = (long) 1;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@Fetch(FetchMode.SUBSELECT) 
@@ -98,7 +99,15 @@ public class Orcamento implements Serializable{
 	}
 
 	public void setObs(String obs) {
-		this.obs = obs;
+		this.obs = obs.toUpperCase();
+	}
+
+	public Long getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Long empresa) {
+		this.empresa = empresa;
 	}
 	
 
