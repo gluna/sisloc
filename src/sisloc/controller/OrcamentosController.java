@@ -1,6 +1,5 @@
 package sisloc.controller;
 
-import java.awt.Dialog;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.view.JasperViewer;
 import sisloc.dao.ClienteDao;
 import sisloc.dao.OrcamentoDao;
 import sisloc.dao.ProdutoDao;
