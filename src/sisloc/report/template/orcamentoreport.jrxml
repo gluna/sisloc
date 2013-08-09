@@ -3,7 +3,7 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sisloc"/>
 	<property name="ireport.zoom" value="1.1"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="72"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="ORCAMENTO_ID" class="java.lang.Long"/>
 	<queryString>
 		<![CDATA[SELECT
@@ -103,7 +103,7 @@ WHERE
 				<staticText>
 					<reportElement uuid="8461441b-0d33-4c31-b052-c572c407b795" positionType="FixRelativeToBottom" x="5" y="61" width="100" height="15"/>
 					<textElement/>
-					<text><![CDATA[Produdo]]></text>
+					<text><![CDATA[Produto]]></text>
 				</staticText>
 				<staticText>
 					<reportElement uuid="75c18f4e-be0f-4d5c-8457-9ad0384d9f9f" positionType="FixRelativeToBottom" x="320" y="61" width="60" height="15"/>

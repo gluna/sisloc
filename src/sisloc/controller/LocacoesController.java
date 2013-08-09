@@ -7,10 +7,11 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
 
+import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.view.JasperViewer;
 import sisloc.dao.ClienteDao;
 import sisloc.dao.LocacaoDao;
 import sisloc.dao.OrcamentoDao;
@@ -40,14 +41,17 @@ public class LocacoesController {
 	private ServletContext context;
 	private ClienteDao clientedao;
 	private OrcamentoDao orcamentodao;
+	private HttpServletResponse response;
 	
-	public LocacoesController(LocacaoDao dao, Result result, ProdutoDao produtodao,ServletContext context, ClienteDao clientedao,OrcamentoDao orcamentodao){
+	public LocacoesController(LocacaoDao dao, Result result, ProdutoDao produtodao,ServletContext context, 
+			ClienteDao clientedao,OrcamentoDao orcamentodao, HttpServletResponse response){
 		this.dao = dao;
 		this.result = result;
 		this.produtodao = produtodao;
 		this.context = context;
 		this.clientedao = clientedao;
 		this.orcamentodao = orcamentodao;
+		this.response = response;
 	}
 	
 	@Path("/locacoes/cadastrar")
@@ -160,17 +164,14 @@ public class LocacoesController {
 				Map<String, Object> parametros = new HashMap<String, Object>();
 				parametros.put( "LOCACAO_ID", locacao.getId() );
 				 
-				//JOptionPane.showMessageDialog(null, context.getRealPath("/sisloc/report/template/orcamentoreport.jasper"));
 				JasperPrint print = JasperFillManager.fillReport(context.getRealPath("/WEB-INF/classes/sisloc/report/template/locacaoreport.jasper"), parametros, SislocUtils.getConnection());
-				//JasperExportManager.exportReportToPdfFile(print,"/home/gustavo/report-out.pdf");
-				JasperViewer.viewReport(print,false);
-				result.include("locacao", locacao);
+				//visualiza o rel apenas no servidor
+				//JasperViewer.viewReport(print,false);
 				
-				/*List<Orcamento> orcamentos = new ArrayList<Orcamento>();
-				orcamentos.add(orcamento);
-				Report<Orcamento> report = new OrcamentoReport(orcamentos);*/
+				//envia um pdf para o cliente
+		        JasperExportManager.exportReportToPdfStream(print, response.getOutputStream());  
+		        
 			}catch(Exception e){e.printStackTrace();}
-			//return null; //new ReportDownload(report, Pdf());
 			
 		}
     	result.permanentlyRedirectTo(this.getClass()).cadastrar();

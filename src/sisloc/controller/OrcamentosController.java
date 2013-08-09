@@ -118,6 +118,7 @@ public class OrcamentosController {
 				orcamento = dao.selectById(orcamento);
 				Map<String, Object> parametros = new HashMap<String, Object>();
 				parametros.put( "ORCAMENTO_ID", orcamento.getId() );
+				
 				result.include("orcamento", orcamento); 
 				JasperPrint print = JasperFillManager.fillReport(context.getRealPath("/WEB-INF/classes/sisloc/report/template/orcamentoreport.jasper"), parametros, SislocUtils.getConnection());
 
