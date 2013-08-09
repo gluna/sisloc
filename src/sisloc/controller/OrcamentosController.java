@@ -1,5 +1,6 @@
 package sisloc.controller;
 
+import java.awt.Dialog;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,6 +8,7 @@ import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
@@ -118,18 +120,16 @@ public class OrcamentosController {
 				orcamento = dao.selectById(orcamento);
 				Map<String, Object> parametros = new HashMap<String, Object>();
 				parametros.put( "ORCAMENTO_ID", orcamento.getId() );
-				 
+				result.include("orcamento", orcamento); 
 				JasperPrint print = JasperFillManager.fillReport(context.getRealPath("/WEB-INF/classes/sisloc/report/template/orcamentoreport.jasper"), parametros, SislocUtils.getConnection());
 
-				JasperViewer.viewReport(print,false);
+				//visualiza o rel apenas no servidor
+				//JasperViewer.viewReport(print,false);
 				
-				//inicio
-				//JasperExportManager.exportReportToPdfFile(print, "RelatorioClientes.pdf");//context.getRealPath("/WEB-INF/jsp/report/RelatorioClientes.pdf"));
-				
-				//response.sendRedirect("RelatorioClientes.pdf");
-				//System.out.println("aqui");
-				//fim
-				result.include("orcamento", orcamento);			
+				//envia um pdf para o cliente
+		        JasperExportManager.exportReportToPdfStream(print, response.getOutputStream());  
+		            
+							
 			}catch(Exception e){e.printStackTrace();}
 			
 		}
