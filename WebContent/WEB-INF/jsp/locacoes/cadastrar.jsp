@@ -483,7 +483,7 @@
     	    						$input.find('option').remove();
     	    						$input.append('<option value="">Selecione</option>');
     	    						for (var i = 0; i < precos.length; i++){
-    	    							$input.append('<option class="precounit" value="'+precos[i].preco+'">'+precos[i].preco+'</option>');
+    	    							$input.append('<option value="'+precos[i].preco+'">'+precos[i].preco+'&nbsp/&nbsp'+precos[i].dias+'&nbspdia(s)'+'</option>');
     	    						}
     	    					}
 	    	    			});
