@@ -3,7 +3,7 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sisloc"/>
 	<property name="ireport.zoom" value="1.1"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="96"/>
 	<parameter name="ORCAMENTO_ID" class="java.lang.Long"/>
 	<queryString>
 		<![CDATA[SELECT
@@ -129,7 +129,7 @@ WHERE
 					<textFieldExpression><![CDATA["Cliente: "+$F{orcamento_cliente}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement uuid="1d31d079-4679-4906-8469-7bf3154d27f1" stretchType="RelativeToTallestObject" x="59" y="36" width="492" height="15"/>
+					<reportElement uuid="1d31d079-4679-4906-8469-7bf3154d27f1" stretchType="RelativeToBandHeight" x="59" y="36" width="492" height="15"/>
 					<textElement verticalAlignment="Top"/>
 					<textFieldExpression><![CDATA[$F{orcamento_obs}]]></textFieldExpression>
 				</textField>

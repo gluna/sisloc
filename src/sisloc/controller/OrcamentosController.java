@@ -119,7 +119,7 @@ public class OrcamentosController {
 				Map<String, Object> parametros = new HashMap<String, Object>();
 				parametros.put( "ORCAMENTO_ID", orcamento.getId() );
 				
-				result.include("orcamento", orcamento); 
+				
 				JasperPrint print = JasperFillManager.fillReport(context.getRealPath("/WEB-INF/classes/sisloc/report/template/orcamentoreport.jasper"), parametros, SislocUtils.getConnection());
 
 				//visualiza o rel apenas no servidor
@@ -132,6 +132,7 @@ public class OrcamentosController {
 			}catch(Exception e){e.printStackTrace();}
 			
 		}
+		result.include("orcamento", orcamento); 
     	result.permanentlyRedirectTo(this.getClass()).cadastrar();
 	}
 	

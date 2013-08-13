@@ -174,6 +174,7 @@ public class LocacoesController {
 			}catch(Exception e){e.printStackTrace();}
 			
 		}
+		result.include("locacao", locacao);
     	result.permanentlyRedirectTo(this.getClass()).cadastrar();
 	}
 	
