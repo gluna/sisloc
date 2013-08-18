@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version last-->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="entradasaidareport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c3a641b4-9324-431f-966b-1ccdf51534c1">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sisloc"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="DT_INICIO" class="java.util.Date"/>
 	<parameter name="DT_FIM" class="java.util.Date"/>
 	<queryString>
-		<![CDATA[SELECT 
-  pagamento.id, 
-  pagamento.dtpagamento, 
-  pagamento.dtvencimento, 
-  pagamento.moeda, 
-  pagamento.valor, 
-  pagamento.pagamentos_id, 
-  pagamento.forma, 
-  pagamento.descricao, 
+		<![CDATA[SELECT
+  pagamento.id,
+  pagamento.dtpagamento,
+  pagamento.dtvencimento,
+  pagamento.moeda,
+  pagamento.valor,
+  pagamento.pagamentos_id,
+  pagamento.forma,
+  pagamento.descricao,
   pagamento.tipo
-FROM 
+FROM
   public.pagamento
-WHERE 
+WHERE
     pagamento.dtpagamento >= $P{DT_INICIO}
 and pagamento.dtpagamento <= $P{DT_FIM};]]>
 	</queryString>
@@ -34,7 +36,7 @@ and pagamento.dtpagamento <= $P{DT_FIM};]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="105" splitType="Stretch">
+		<band height="129" splitType="Stretch">
 			<textField>
 				<reportElement uuid="4a91e545-1e9f-4121-b3b7-e1ddb885b827" x="90" y="48" width="461" height="15">
 					<property name="local_mesure_unitheight" value="pixel"/>
@@ -104,6 +106,16 @@ and pagamento.dtpagamento <= $P{DT_FIM};]]>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
+			</textField>
+			<textField>
+				<reportElement uuid="643a37b5-ad2b-453b-8295-c6ac778e8ce2" x="31" y="108" width="70" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($P{DT_INICIO})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="fc8e78f2-cb71-43a3-8438-c25d3084df06" x="144" y="108" width="70" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($P{DT_FIM})]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
