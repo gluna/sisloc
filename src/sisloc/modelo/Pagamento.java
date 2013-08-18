@@ -20,7 +20,7 @@ public class Pagamento implements Serializable{
 	private Date dtvencimento;
 	private Date dtpagamento;
 	private String forma; //cheque, dinheiro, cartao
-	private String tipo; //entrada ou saida
+	private String tipo; //entrada='E' ou saida='S'
 	private String descricao;
 	
 	public Long getId() {
