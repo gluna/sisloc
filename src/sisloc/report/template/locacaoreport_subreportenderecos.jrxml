@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="locacaoreport_subreportenderecos" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="c16fa40b-3b79-43c9-bc26-a4f46496da16">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     enderecolocacao."id" AS enderecolocacao_id,
+     enderecolocacao."bairro" AS enderecolocacao_bairro,
+     enderecolocacao."complemento" AS enderecolocacao_complemento,
+     enderecolocacao."logradouro" AS enderecolocacao_logradouro,
+     enderecolocacao."numero" AS enderecolocacao_numero,
+     enderecolocacao."tipoendereco" AS enderecolocacao_tipoendereco,
+     enderecolocacao."enderecos_id" AS enderecolocacao_enderecos_id,
+     enderecolocacao."cep" AS enderecolocacao_cep,
+     enderecolocacao."cidade" AS enderecolocacao_cidade,
+     enderecolocacao."contato" AS enderecolocacao_contato,
+     enderecolocacao."uf" AS enderecolocacao_uf
+FROM
+     "public"."enderecolocacao" enderecolocacao]]>
+	</queryString>
+	<field name="enderecolocacao_bairro" class="java.lang.String"/>
+	<field name="enderecolocacao_complemento" class="java.lang.String"/>
+	<field name="enderecolocacao_logradouro" class="java.lang.String"/>
+	<field name="enderecolocacao_numero" class="java.lang.String"/>
+	<field name="enderecolocacao_tipoendereco" class="java.lang.String"/>
+	<field name="enderecolocacao_enderecos_id" class="java.lang.Long"/>
+	<field name="enderecolocacao_cep" class="java.lang.String"/>
+	<field name="enderecolocacao_cidade" class="java.lang.String"/>
+	<field name="enderecolocacao_contato" class="java.lang.String"/>
+	<field name="enderecolocacao_uf" class="java.lang.String"/>
+	<field name="enderecolocacao_id" class="java.lang.Long"/>
+	<group name="enderecolocacao_id">
+		<groupExpression><![CDATA[$F{enderecolocacao_id}]]></groupExpression>
+	</group>
+	<group name="enderecolocacao_enderecos_id">
+		<groupExpression><![CDATA[$F{enderecolocacao_enderecos_id}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement uuid="9856a6f3-87a9-4a0f-8e6f-a88936aceab0" x="29" y="10" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{enderecolocacao_logradouro}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

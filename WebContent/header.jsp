@@ -53,6 +53,12 @@
          			<li><a href="<c:url value="/locacoes/consultalocacao"/>"><span>Locações</span></a></li>
       			</ul>
    			</li>
+   			<li class='has-sub'><a href='#'><span>Relatórios</span></a>
+      			<ul>
+         			<li><a href="<c:url value=""/>"><span>Entrada e Saída</span></a></li>
+      			</ul>
+   			</li>
+   			
    			<li><a href='#'><span>Sobre</span></a></li>
    			<li class='last'><a href='#'><span>Contato</span></a></li>
 		</ul>

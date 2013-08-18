@@ -53,7 +53,7 @@ public class PagamentosController {
 	public void salvar(Pagamento pagamento){
 		try {
 		     if(pagamento != null) {	
-		    	 	pagamento.setTipo("P");
+		    	 	pagamento.setTipo("S");
 			    	 if(pagamento.getId() == null) {
 			    		 dao.salvar(pagamento);
 			    	 } else {
@@ -85,5 +85,28 @@ public class PagamentosController {
 		List<Locacao> t = locacaodao.consultalocacao(locacao);
 		return t;
 	}
+	
+	/*@Path({"/pagamentos/report/{locacao.id}", "/pagamentos/report/"}) 
+	public void pdfReport(Date inicio, Date fim) {
+		if(locacao != null) {
+			try{
+				locacao = dao.selectById(locacao);
+				Map<String, Object> parametros = new HashMap<String, Object>();
+				parametros.put( "LOCACAO_ID", locacao.getId() );
+				 
+				JasperPrint print = JasperFillManager.fillReport(context.getRealPath("/WEB-INF/classes/sisloc/report/template/locacaoreport.jasper"), parametros, SislocUtils.getConnection());
+				//visualiza o rel apenas no servidor
+				//JasperViewer.viewReport(print,false);
+				
+				//envia um pdf para o cliente
+		        JasperExportManager.exportReportToPdfStream(print, response.getOutputStream());  
+		        
+			}catch(Exception e){e.printStackTrace();}
+			
+		}
+		result.include("locacao", locacao);
+    	result.permanentlyRedirectTo(this.getClass()).cadastrar();
+	}*/
+
 }
 

@@ -19,7 +19,7 @@
 							<!-- <td align="right" width="95"><label>Número da Locação:</label></td> -->
 							<td align="left"><input type="hidden" class="maiuscula" name="pagamento.id" value="${pagamento.id}" readonly /><br></td>
 							<td align="right" width="95"><label>Dt. Vencimento:</label></td>
-							<td align="left"><input type="text" class="data" name="pagamento.dtvencimento" value="<fmt:formatDate value="${pagamento.dtvencimento}" dateStyle="medium" />" />
+							<td align="left">
 							<td align="right" width="95"><label>Valor:</label></td>
 							<td align="left"><input type="text" class="text" name="pagamento.valor" value="${pagamento.valor}" /> 
 							<td align="right" width="95"><label>Descrição:</label></td>

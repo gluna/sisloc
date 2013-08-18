@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportlocacoes" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d337ba3e-11ab-428d-8a5a-d54e80ca39e7">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="144"/>
+	<parameter name="DT_INICIO" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DT_FIM" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     locacao."id" AS locacao_id,
+     locacao."descontopercent" AS locacao_descontopercent,
+     locacao."descontovalor" AS locacao_descontovalor,
+     locacao."dtfim" AS locacao_dtfim,
+     locacao."dtinicio" AS locacao_dtinicio,
+     locacao."dtlocacao" AS locacao_dtlocacao,
+     locacao."formapagamento" AS locacao_formapagamento,
+     locacao."valortotal" AS locacao_valortotal,
+     locacao."cliente_id" AS locacao_cliente_id,
+     locacao."obs" AS locacao_obs,
+     locacao."frete" AS locacao_frete,
+     locacao."valorfinal" AS locacao_valorfinal,
+     empresa."id" AS empresa_id,
+     empresa."nomefantasia" AS empresa_nomefantasia,
+     empresa."razaosocial" AS empresa_razaosocial,
+     empresa."contrato" AS empresa_contrato,
+     empresa."bairro" AS empresa_bairro,
+     empresa."cep" AS empresa_cep,
+     empresa."cidade" AS empresa_cidade,
+     empresa."cnpj" AS empresa_cnpj,
+     empresa."complemento" AS empresa_complemento,
+     empresa."ie" AS empresa_ie,
+     empresa."logradouro" AS empresa_logradouro,
+     empresa."numero" AS empresa_numero,
+     empresa."uf" AS empresa_uf,
+     empresa."email" AS empresa_email,
+     empresa."tel" AS empresa_tel,
+     locacao."empresa" AS locacao_empresa,
+     cliente."nome" AS cliente_nome
+FROM
+     "public"."locacao" locacao INNER JOIN "public"."empresa" empresa ON locacao."empresa" = empresa."id"
+     INNER JOIN "public"."cliente" cliente ON locacao."cliente_id" = cliente."id"
+WHERE
+     locacao.dtlocacao >= $P{DT_INICIO}
+     and locacao.dtlocacao <= $P{DT_FIM}
+
+order by locacao.dtlocacao, locacao.id]]>
+	</queryString>
+	<field name="locacao_id" class="java.lang.Long"/>
+	<field name="locacao_descontopercent" class="java.lang.Double"/>
+	<field name="locacao_descontovalor" class="java.lang.Double"/>
+	<field name="locacao_dtfim" class="java.sql.Timestamp"/>
+	<field name="locacao_dtinicio" class="java.sql.Timestamp"/>
+	<field name="locacao_dtlocacao" class="java.sql.Timestamp"/>
+	<field name="locacao_formapagamento" class="java.lang.String"/>
+	<field name="locacao_valortotal" class="java.lang.Double"/>
+	<field name="locacao_cliente_id" class="java.lang.Long"/>
+	<field name="locacao_obs" class="java.lang.String"/>
+	<field name="locacao_frete" class="java.lang.Double"/>
+	<field name="locacao_valorfinal" class="java.lang.Double"/>
+	<field name="empresa_id" class="java.lang.Long"/>
+	<field name="empresa_nomefantasia" class="java.lang.String"/>
+	<field name="empresa_razaosocial" class="java.lang.String"/>
+	<field name="empresa_contrato" class="java.lang.String"/>
+	<field name="empresa_bairro" class="java.lang.String"/>
+	<field name="empresa_cep" class="java.lang.String"/>
+	<field name="empresa_cidade" class="java.lang.String"/>
+	<field name="empresa_cnpj" class="java.lang.String"/>
+	<field name="empresa_complemento" class="java.lang.String"/>
+	<field name="empresa_ie" class="java.lang.String"/>
+	<field name="empresa_logradouro" class="java.lang.String"/>
+	<field name="empresa_numero" class="java.lang.String"/>
+	<field name="empresa_uf" class="java.lang.String"/>
+	<field name="empresa_email" class="java.lang.String"/>
+	<field name="empresa_tel" class="java.lang.String"/>
+	<field name="locacao_empresa" class="java.lang.Long"/>
+	<field name="cliente_nome" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="105" splitType="Stretch">
+			<textField>
+				<reportElement uuid="597a6089-1f13-488a-ab8a-47f6388695df" x="91" y="50" width="461" height="15">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="local_mesure_unitx" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Tel: "+$F{empresa_tel}+" Email: "+$F{empresa_email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="54461a62-4f64-460f-8cd1-e32f98cc99a1" x="91" y="2" width="461" height="15">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="local_mesure_unitx" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{empresa_nomefantasia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="765d96ac-186e-4a60-b751-f99ea67bf6c3" x="91" y="18" width="461" height="15">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="local_mesure_unitx" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{empresa_logradouro}+", "+$F{empresa_numero}+", "+$F{empresa_bairro}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement uuid="6cffbebb-4629-4ce9-9adc-c2aeba847530" x="1" y="2" width="80" height="65"/>
+			</image>
+			<textField>
+				<reportElement uuid="fffbcc0f-d4dc-4058-8ee6-48e434e638eb" x="91" y="34" width="461" height="15">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="local_mesure_unitx" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{empresa_cidade}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="eab0e56f-3ce2-42e9-b032-aecf1631c92c" mode="Transparent" x="0" y="81" width="555" height="17" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box padding="0" topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="1.0" firstLineIndent="0" leftIndent="0" rightIndent="0" spacingBefore="0" spacingAfter="0" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[RELATÓRIO DE LOCAÇÕES]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="c5c9a698-f6c3-42ed-80c4-50c6173412e7" x="0" y="75" width="555" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="86ab90a2-28d1-4599-b0de-26f6abec563c" x="0" y="103" width="555" height="1"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="19" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="7" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="37" splitType="Stretch">
+			<textField>
+				<reportElement uuid="49772a1b-60ae-4a90-8b8e-34755f99acff" x="21" y="1" width="70" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{locacao_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="64f8bf22-f840-4feb-b3be-01aa547f2f83" x="155" y="1" width="397" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cliente_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b5242401-b1f2-453d-b2d7-f45457d3f240" x="60" y="18" width="85" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{locacao_dtlocacao})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="44ed0ae5-41d0-4300-b2f0-6dd5834b1f8d" x="238" y="18" width="95" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{locacao_valortotal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="8d5981fa-de1d-4ef0-aa1e-3f9a29793e78" x="2" y="1" width="19" height="15">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[ID: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3710abe1-7bcb-483c-b873-11045ee8c9e2" x="110" y="1" width="45" height="15">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Cliente: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="59f87c35-c4f7-49ed-abee-cd0278c37810" x="2" y="18" width="58" height="15">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Dt. Locação]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4084f343-9b5d-468e-9340-242374d1f531" x="203" y="18" width="35" height="15">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Valor:]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="17" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="58768173-c85d-4d38-b036-059f6ac16b29" x="10" y="1" width="100" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f041532f-9a28-4abe-98d0-ab27419d22b3" x="453" y="1" width="80" height="15"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Pág. "+$V{PAGE_NUMBER}+"/"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="26e261eb-98b7-43b2-8b82-75cf59938662" x="533" y="1" width="23" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="14" splitType="Stretch"/>
+	</summary>
+</jasperReport>
