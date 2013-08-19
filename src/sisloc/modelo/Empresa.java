@@ -1,5 +1,6 @@
 package sisloc.modelo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,7 @@ public class Empresa {
 	private Long id;
 	private String nomefantasia;
 	private String razaosocial;
+	@Column(columnDefinition="text")
 	private String contrato;
 	private String cnpj;
 	private String ie;
