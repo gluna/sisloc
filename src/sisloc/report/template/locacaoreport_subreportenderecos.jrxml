@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="locacaoreport_subreportenderecos" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="c16fa40b-3b79-43c9-bc26-a4f46496da16">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<queryString language="SQL">
+	<parameter name="ENDERECO_ID" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
 		<![CDATA[SELECT
      enderecolocacao."id" AS enderecolocacao_id,
      enderecolocacao."bairro" AS enderecolocacao_bairro,
@@ -17,8 +20,10 @@
      enderecolocacao."contato" AS enderecolocacao_contato,
      enderecolocacao."uf" AS enderecolocacao_uf
 FROM
-     "public"."enderecolocacao" enderecolocacao]]>
+     "public"."enderecolocacao" enderecolocacao
+where enderecoLOCACAO.enderecos_id = $P{ENDERECO_ID}]]>
 	</queryString>
+	<field name="enderecolocacao_id" class="java.lang.Long"/>
 	<field name="enderecolocacao_bairro" class="java.lang.String"/>
 	<field name="enderecolocacao_complemento" class="java.lang.String"/>
 	<field name="enderecolocacao_logradouro" class="java.lang.String"/>
@@ -29,7 +34,6 @@ FROM
 	<field name="enderecolocacao_cidade" class="java.lang.String"/>
 	<field name="enderecolocacao_contato" class="java.lang.String"/>
 	<field name="enderecolocacao_uf" class="java.lang.String"/>
-	<field name="enderecolocacao_id" class="java.lang.Long"/>
 	<group name="enderecolocacao_id">
 		<groupExpression><![CDATA[$F{enderecolocacao_id}]]></groupExpression>
 	</group>
@@ -40,12 +44,50 @@ FROM
 		<band splitType="Stretch"/>
 	</background>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="72" splitType="Stretch">
 			<textField>
-				<reportElement uuid="9856a6f3-87a9-4a0f-8e6f-a88936aceab0" x="29" y="10" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{enderecolocacao_logradouro}]]></textFieldExpression>
+				<reportElement uuid="9856a6f3-87a9-4a0f-8e6f-a88936aceab0" x="26" y="19" width="518" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{enderecolocacao_logradouro}+","+$F{enderecolocacao_numero}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement uuid="f78f78b3-de57-4fa7-b70c-b5f4629d78ae" x="2" y="19" width="24" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Rua]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="bdbcc03f-8db3-4d48-b098-2c48e4308449" x="37" y="36" width="507" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{enderecolocacao_bairro}+"  CEP: "+$F{enderecolocacao_cep}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="11dc70bf-7f4c-4c90-85b7-0011932dd0f8" x="2" y="36" width="35" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Bairro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="36faa2b6-3060-4993-a5d3-f99012794012" x="2" y="53" width="35" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Cidade]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="4bf0e0c7-4226-4227-b553-38324f304c4f" x="37" y="53" width="486" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{enderecolocacao_cidade}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="03cdea02-8bf1-4864-abff-da57d2a00a99" x="2" y="2" width="75" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Tipo Endereço]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="baef4a86-597e-46c0-964b-73616fb9fd30" x="77" y="2" width="467" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{enderecolocacao_tipoendereco}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="e4e56838-13f6-4d81-ac31-f39761896748" x="0" y="70" width="554" height="1"/>
+			</line>
 		</band>
 	</detail>
 </jasperReport>

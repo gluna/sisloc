@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version last-->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="orcamentoreport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e11db4c8-648f-4287-a4ed-1c3ae74fefda">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sisloc"/>
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="232"/>
+	<property name="ireport.y" value="240"/>
 	<import value="static net.sf.jasperreports.expressions.functions.MathFunctions.*"/>
 	<parameter name="LOCACAO_ID" class="java.lang.Long"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
@@ -146,7 +145,7 @@ WHERE
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="388" splitType="Stretch">
+		<band height="363" splitType="Stretch">
 			<property name="local_mesure_unitheight" value="pixel"/>
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField>
@@ -392,12 +391,14 @@ WHERE
 			<line>
 				<reportElement uuid="f96e058c-4834-4164-b805-80f6b4995e6d" x="0" y="298" width="555" height="1"/>
 			</line>
-			<staticText>
-				<reportElement uuid="a9002348-05a7-4213-b196-b60e9039acd6" x="20" y="341" width="519" height="20"/>
-				<textElement/>
-				<text><![CDATA[ESPACO PARA OS ENDERECOS DA LOCACAO
-]]></text>
-			</staticText>
+			<subreport>
+				<reportElement uuid="113540b2-8e1e-4e8d-abca-9e966ce3663b" x="2" y="326" width="550" height="33"/>
+				<subreportParameter name="ENDERECO_ID">
+					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "locacaoreport_subreportenderecos.jasper"]]></subreportExpression>
+			</subreport>
 		</band>
 	</pageHeader>
 	<detail>
