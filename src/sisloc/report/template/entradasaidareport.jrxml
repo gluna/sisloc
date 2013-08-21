@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="entradasaidareport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c3a641b4-9324-431f-966b-1ccdf51534c1">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sisloc"/>
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="229"/>
 	<parameter name="DT_INICIO" class="java.util.Date"/>
 	<parameter name="DT_FIM" class="java.util.Date"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/gustavo/git/sisloc/src/sisloc/report/template/"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
   pagamento.id,
   pagamento.dtpagamento,
   pagamento.dtvencimento,
-  pagamento.moeda,
   pagamento.valor,
   pagamento.pagamentos_id,
   pagamento.forma,
@@ -26,7 +28,6 @@ and pagamento.dtpagamento <= $P{DT_FIM};]]>
 	<field name="id" class="java.lang.Long"/>
 	<field name="dtpagamento" class="java.sql.Timestamp"/>
 	<field name="dtvencimento" class="java.sql.Timestamp"/>
-	<field name="moeda" class="java.lang.String"/>
 	<field name="valor" class="java.lang.Double"/>
 	<field name="pagamentos_id" class="java.lang.Long"/>
 	<field name="forma" class="java.lang.String"/>
@@ -37,48 +38,9 @@ and pagamento.dtpagamento <= $P{DT_FIM};]]>
 	</background>
 	<title>
 		<band height="129" splitType="Stretch">
-			<textField>
-				<reportElement uuid="4a91e545-1e9f-4121-b3b7-e1ddb885b827" x="90" y="48" width="461" height="15">
-					<property name="local_mesure_unitheight" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="local_mesure_unity" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-					<property name="local_mesure_unitx" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<paragraph lineSpacing="1_1_2"/>
-				</textElement>
-			</textField>
-			<textField>
-				<reportElement uuid="a4ace6a8-2c48-41a2-877b-20ad2b652170" x="90" y="32" width="461" height="15">
-					<property name="local_mesure_unitheight" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="local_mesure_unity" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-					<property name="local_mesure_unitx" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<paragraph lineSpacing="1_1_2"/>
-				</textElement>
-			</textField>
 			<line>
 				<reportElement uuid="0a81a10a-1d87-49eb-bdb4-9d5c14902a5f" x="0" y="73" width="555" height="1"/>
 			</line>
-			<textField>
-				<reportElement uuid="40c679e6-cd81-47f8-9b76-e85c3222d394" x="90" y="0" width="461" height="15">
-					<property name="local_mesure_unitheight" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="local_mesure_unity" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-					<property name="local_mesure_unitx" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<paragraph lineSpacing="1_1_2"/>
-				</textElement>
-			</textField>
 			<image>
 				<reportElement uuid="034c8d80-e853-4d90-b507-e78b019fa18d" x="0" y="0" width="80" height="65"/>
 			</image>
@@ -95,34 +57,42 @@ and pagamento.dtpagamento <= $P{DT_FIM};]]>
 				<text><![CDATA[REL DE ENTRADA E SAÍDA]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="b2ab2a84-60bd-4296-8e3f-77d6ac2c22f6" x="90" y="16" width="461" height="15">
-					<property name="local_mesure_unitheight" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="local_mesure_unity" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-					<property name="local_mesure_unitx" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<paragraph lineSpacing="1_1_2"/>
-				</textElement>
-			</textField>
-			<textField>
-				<reportElement uuid="643a37b5-ad2b-453b-8295-c6ac778e8ce2" x="31" y="108" width="70" height="15"/>
-				<textElement/>
+				<reportElement uuid="643a37b5-ad2b-453b-8295-c6ac778e8ce2" x="67" y="107" width="70" height="15"/>
+				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($P{DT_INICIO})]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="fc8e78f2-cb71-43a3-8438-c25d3084df06" x="144" y="108" width="70" height="15"/>
-				<textElement/>
+				<reportElement uuid="fc8e78f2-cb71-43a3-8438-c25d3084df06" x="230" y="107" width="70" height="15"/>
+				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($P{DT_FIM})]]></textFieldExpression>
 			</textField>
+			<subreport>
+				<reportElement uuid="075a69d4-63f2-4ff9-ba79-fd4d121cc8f0" positionType="Float" x="84" y="2" width="467" height="61"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "cabecalhosubreport.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement uuid="b20a59df-bf7b-4bee-a779-bad042d0d7fe" x="10" y="107" width="54" height="15">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Data Inicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="677bc0b6-8dde-4708-a9e9-2538cf4c6570" x="176" y="107" width="54" height="15">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Data Fim]]></text>
+			</staticText>
 		</band>
 	</title>
-	<pageHeader>
-		<band height="19" splitType="Stretch">
+	<columnHeader>
+		<band height="21" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="4737cdc8-7f75-4389-b32e-5131d16f0cf0" x="5" y="2" width="70" height="15">
+				<reportElement uuid="4737cdc8-7f75-4389-b32e-5131d16f0cf0" x="2" y="2" width="70" height="15">
 					<property name="local_mesure_unitheight" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -130,7 +100,7 @@ and pagamento.dtpagamento <= $P{DT_FIM};]]>
 				<text><![CDATA[Data]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="020049de-7873-41fb-852e-34307e604c93" x="150" y="2" width="70" height="15">
+				<reportElement uuid="020049de-7873-41fb-852e-34307e604c93" x="100" y="2" width="70" height="15">
 					<property name="local_mesure_unitheight" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -138,48 +108,51 @@ and pagamento.dtpagamento <= $P{DT_FIM};]]>
 				<text><![CDATA[Referencia]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="be555f63-8619-4c8d-8f68-ed2511045394" x="230" y="2" width="70" height="15">
+				<reportElement uuid="be555f63-8619-4c8d-8f68-ed2511045394" x="350" y="2" width="40" height="15">
 					<property name="local_mesure_unitheight" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<textElement verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Tipo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="5bafad2e-35dd-4140-95ef-7ad246e6f4ce" x="370" y="2" width="70" height="15">
+				<reportElement uuid="5bafad2e-35dd-4140-95ef-7ad246e6f4ce" x="481" y="2" width="70" height="15">
 					<property name="local_mesure_unitheight" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<textElement verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Valor]]></text>
 			</staticText>
+			<line>
+				<reportElement uuid="6070ee3e-a611-4f14-99b1-03b3e5a3ed43" x="0" y="19" width="555" height="1"/>
+			</line>
 		</band>
-	</pageHeader>
-	<columnHeader>
-		<band height="13" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
 		<band height="21" splitType="Stretch">
 			<textField>
-				<reportElement uuid="fcc43c69-2322-4bc8-9962-97fbc8985dce" x="10" y="1" width="70" height="15"/>
+				<reportElement uuid="fcc43c69-2322-4bc8-9962-97fbc8985dce" x="2" y="2" width="70" height="15"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{dtpagamento})]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="6a755dee-2316-4a49-a0a6-2d8ad207d8af" x="144" y="2" width="70" height="15"/>
+				<reportElement uuid="6a755dee-2316-4a49-a0a6-2d8ad207d8af" x="100" y="2" width="70" height="15"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="15340c40-6a9a-4a7c-b9a0-c19a9b62e7d9" x="227" y="2" width="70" height="15"/>
-				<textElement/>
+				<reportElement uuid="15340c40-6a9a-4a7c-b9a0-c19a9b62e7d9" x="350" y="2" width="40" height="15"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="6130b64f-76cd-4a48-bb98-6fa6259332d9" x="323" y="2" width="70" height="15"/>
-				<textElement/>
+				<reportElement uuid="6130b64f-76cd-4a48-bb98-6fa6259332d9" x="468" y="2" width="83" height="15"/>
+				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement uuid="935f32ad-4b1a-4ffa-bda0-d1cd1718cba4" x="0" y="19" width="555" height="1"/>
+			</line>
 		</band>
 	</detail>
 	<pageFooter>

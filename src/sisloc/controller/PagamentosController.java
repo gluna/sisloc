@@ -1,11 +1,21 @@
 package sisloc.controller;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
+
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 import sisloc.dao.LocacaoDao;
 import sisloc.dao.PagamentoDao;
 import sisloc.modelo.Locacao;
 import sisloc.modelo.Pagamento;
+import sisloc.util.SislocUtils;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
@@ -17,11 +27,15 @@ public class PagamentosController {
 	private PagamentoDao dao;
 	private Result result;
 	private LocacaoDao locacaodao;
+	private ServletContext context;
+	private HttpServletResponse response;
 	
-	public PagamentosController(PagamentoDao dao, Result result, LocacaoDao locacaodao){
+	public PagamentosController(PagamentoDao dao, Result result, LocacaoDao locacaodao, ServletContext context, HttpServletResponse response){
 		this.dao = dao;
 		this.result = result;
 		this.locacaodao = locacaodao;
+		this.context = context;
+		this.response = response;
 	}
 	
 	@Path("/pagamentos/cadastrar")
@@ -86,27 +100,31 @@ public class PagamentosController {
 		return t;
 	}
 	
-	/*@Path({"/pagamentos/report/{locacao.id}", "/pagamentos/report/"}) 
+	@Path({"/pagamentos/report/{inicio}/{fim}", "/pagamentos/report"}) 
 	public void pdfReport(Date inicio, Date fim) {
-		if(locacao != null) {
-			try{
-				locacao = dao.selectById(locacao);
-				Map<String, Object> parametros = new HashMap<String, Object>();
-				parametros.put( "LOCACAO_ID", locacao.getId() );
-				 
-				JasperPrint print = JasperFillManager.fillReport(context.getRealPath("/WEB-INF/classes/sisloc/report/template/locacaoreport.jasper"), parametros, SislocUtils.getConnection());
-				//visualiza o rel apenas no servidor
-				//JasperViewer.viewReport(print,false);
-				
-				//envia um pdf para o cliente
-		        JasperExportManager.exportReportToPdfStream(print, response.getOutputStream());  
-		        
-			}catch(Exception e){e.printStackTrace();}
+		try{
+			//List<Pagamento> pagamentos = dao. selectById(locacao);
+			Map<String, Object> parametros = new HashMap<String, Object>();
+			parametros.put( "DT_INICIO", inicio );
+			parametros.put( "DT_FIM", fim );
+			 
+			JasperPrint print = JasperFillManager.fillReport(context.getRealPath("/WEB-INF/classes/sisloc/report/template/entradasaidareport.jasper"), parametros, SislocUtils.getConnection());
+			//visualiza o rel apenas no servidor
+			JasperViewer.viewReport(print,false);
 			
-		}
-		result.include("locacao", locacao);
+			//envia um pdf para o cliente
+	        //JasperExportManager.exportReportToPdfStream(print, response.getOutputStream());  
+	        
+		}catch(Exception e){e.printStackTrace();}
+			
+		//result.include("locacao", locacao);
     	result.permanentlyRedirectTo(this.getClass()).cadastrar();
-	}*/
+	}
+	
+	@Path("/pagamentos/entradasaidareport")
+	public void entradasaidareport(){
+		
+	}
 
 }
 
