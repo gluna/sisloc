@@ -42,6 +42,5 @@ public class TelefoneCliente implements Serializable{
 	}
 	public void setContato(String contato) {
 		this.contato = contato.toUpperCase();
-	}
-	
+	}	
 }
