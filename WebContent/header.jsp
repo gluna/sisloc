@@ -56,6 +56,7 @@
    			<li class='has-sub'><a href='#'><span>Relatórios</span></a>
       			<ul>
          			<li><a href="<c:url value="/pagamentos/entradasaidareport"/>"><span>Entrada e Saída</span></a></li>
+         			<li><a href="<c:url value="/pagamentos/contasapagarreport"/>"><span>Contas a Pagar</span></a></li>
       			</ul>
    			</li>
    			

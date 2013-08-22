@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 import sisloc.dao.LocacaoDao;
 import sisloc.dao.PagamentoDao;
 import sisloc.modelo.Locacao;
@@ -100,7 +101,7 @@ public class PagamentosController {
 		return t;
 	}
 	
-	@Path({"/pagamentos/report/{inicio}/{fim}", "/pagamentos/report"}) 
+	@Path("/pagamentos/report") 
 	public void pdfReport(Date inicio, Date fim) {
 		try{
 			//List<Pagamento> pagamentos = dao. selectById(locacao);
@@ -125,6 +126,32 @@ public class PagamentosController {
 	public void entradasaidareport(){
 		
 	}
+	
+	@Path("/pagamentos/contasapagar") 
+	public void contasapagar(Date inicio, Date fim) {
+			try{
+				//List<Pagamento> pagamentos = dao. selectById(locacao);
+				Map<String, Object> parametros = new HashMap<String, Object>();
+				parametros.put( "DT_INICIO", inicio );
+				parametros.put( "DT_FIM", fim );
+				 
+				JasperPrint print = JasperFillManager.fillReport(context.getRealPath("/WEB-INF/classes/sisloc/report/template/contasapagarreport.jasper"), parametros, SislocUtils.getConnection());
+				//visualiza o rel apenas no servidor
+				JasperViewer.viewReport(print,false);
+				
+				//envia um pdf para o cliente
+		        //JasperExportManager.exportReportToPdfStream(print, response.getOutputStream());  
+		        
+			}catch(Exception e){e.printStackTrace();}
+
+    	result.permanentlyRedirectTo(this.getClass()).contasapagarreport();
+	}
+	
+	@Path("/pagamentos/contasapagarreport")
+	public void contasapagarreport(){
+		
+	}
+
 
 }
 
