@@ -23,6 +23,8 @@
 							<br></td></tr></table>
 							<c:forEach items="${locacao.pagamentos}" var="pagamento" varStatus="status">
 							<input type="hidden" name="locacao.pagamentos[${status.index}].id" value="${pagamento.id}" readonly />
+							<input type="hidden" name="locacao.pagamentos[${status.index}].tipo" value="${pagamento.tipo}" readonly />
+							<input type="hidden" name="locacao.pagamentos[${status.index}].descricao" value="${pagamento.descricao}" readonly />
 							<table><tr><td align="right" width="95">
 								<label>Valor:</label></td><td align="left">
 								<input type="text" name="locacao.pagamentos[${status.index}].valor" value="${pagamento.valor}" readonly /></td><br>

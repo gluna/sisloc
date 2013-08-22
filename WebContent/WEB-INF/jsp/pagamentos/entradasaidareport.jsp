@@ -12,7 +12,6 @@
 	<label>Dt. Fim:</label>
 	<input type="text" class="data" name="fim" value="<fmt:formatDate value="${fim}" dateStyle="medium" />" />
 	<br>
-	<a href="<c:url value="/locacoes/report/${inicio}/${fim} }"/>" name="imprimir"><span>Imprimir</span></a>
 	<input type="submit" value="Imprimir" class="imprimir" icon="ui-icon-disk"/><br/>
 	</form>
 </body>

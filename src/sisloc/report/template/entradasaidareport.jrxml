@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="entradasaidareport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c3a641b4-9324-431f-966b-1ccdf51534c1">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sisloc"/>
-	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="229"/>
+	<property name="ireport.y" value="77"/>
 	<parameter name="DT_INICIO" class="java.util.Date"/>
 	<parameter name="DT_FIM" class="java.util.Date"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
@@ -23,7 +23,8 @@ FROM
   public.pagamento
 WHERE
     pagamento.dtpagamento >= $P{DT_INICIO}
-and pagamento.dtpagamento <= $P{DT_FIM};]]>
+and pagamento.dtpagamento <= $P{DT_FIM}
+order by pagamento.dtpagamento;]]>
 	</queryString>
 	<field name="id" class="java.lang.Long"/>
 	<field name="dtpagamento" class="java.sql.Timestamp"/>
@@ -100,7 +101,7 @@ and pagamento.dtpagamento <= $P{DT_FIM};]]>
 				<text><![CDATA[Data]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="020049de-7873-41fb-852e-34307e604c93" x="100" y="2" width="70" height="15">
+				<reportElement uuid="020049de-7873-41fb-852e-34307e604c93" x="80" y="2" width="70" height="15">
 					<property name="local_mesure_unitheight" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -108,7 +109,7 @@ and pagamento.dtpagamento <= $P{DT_FIM};]]>
 				<text><![CDATA[Referencia]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="be555f63-8619-4c8d-8f68-ed2511045394" x="350" y="2" width="40" height="15">
+				<reportElement uuid="be555f63-8619-4c8d-8f68-ed2511045394" x="400" y="2" width="40" height="15">
 					<property name="local_mesure_unitheight" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -136,19 +137,19 @@ and pagamento.dtpagamento <= $P{DT_FIM};]]>
 				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{dtpagamento})]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="6a755dee-2316-4a49-a0a6-2d8ad207d8af" x="100" y="2" width="70" height="15"/>
+				<reportElement uuid="6a755dee-2316-4a49-a0a6-2d8ad207d8af" x="80" y="2" width="320" height="15"/>
 				<textElement/>
 				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="15340c40-6a9a-4a7c-b9a0-c19a9b62e7d9" x="350" y="2" width="40" height="15"/>
+				<reportElement uuid="15340c40-6a9a-4a7c-b9a0-c19a9b62e7d9" x="400" y="2" width="40" height="15"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="6130b64f-76cd-4a48-bb98-6fa6259332d9" x="468" y="2" width="83" height="15"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[NumberFormat.getCurrencyInstance().format($F{valor})]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement uuid="935f32ad-4b1a-4ffa-bda0-d1cd1718cba4" x="0" y="19" width="555" height="1"/>
