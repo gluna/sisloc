@@ -151,6 +151,32 @@ public class PagamentosController {
 	public void contasapagarreport(){
 		
 	}
+	
+	@Path("/pagamentos/contasareceber") 
+	public void contasareceber(Date inicio, Date fim) {
+			try{
+				//List<Pagamento> pagamentos = dao. selectById(locacao);
+				Map<String, Object> parametros = new HashMap<String, Object>();
+				parametros.put( "DT_INICIO", inicio );
+				parametros.put( "DT_FIM", fim );
+				 
+				JasperPrint print = JasperFillManager.fillReport(context.getRealPath("/WEB-INF/classes/sisloc/report/template/contasareceberreport.jasper"), parametros, SislocUtils.getConnection());
+				//visualiza o rel apenas no servidor
+				//JasperViewer.viewReport(print,false);
+				
+				//envia um pdf para o cliente
+		        JasperExportManager.exportReportToPdfStream(print, response.getOutputStream());  
+		        
+			}catch(Exception e){e.printStackTrace();}
+
+    	result.permanentlyRedirectTo(this.getClass()).contasareceberreport();
+	}
+	
+	@Path("/pagamentos/contasareceberreport")
+	public void contasareceberreport(){
+		
+	}
+
 
 
 }
