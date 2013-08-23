@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportlocacoes" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d337ba3e-11ab-428d-8a5a-d54e80ca39e7">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="144"/>
+	<property name="ireport.y" value="222"/>
 	<parameter name="DT_INICIO" class="java.util.Date">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -82,7 +82,7 @@ order by locacao.dtlocacao, locacao.id]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="105" splitType="Stretch">
+		<band height="134" splitType="Stretch">
 			<textField>
 				<reportElement uuid="597a6089-1f13-488a-ab8a-47f6388695df" x="91" y="50" width="461" height="15">
 					<property name="local_mesure_unitheight" value="pixel"/>
@@ -126,7 +126,7 @@ order by locacao.dtlocacao, locacao.id]]>
 				<textFieldExpression><![CDATA[$F{empresa_logradouro}+", "+$F{empresa_numero}+", "+$F{empresa_bairro}]]></textFieldExpression>
 			</textField>
 			<image>
-				<reportElement uuid="6cffbebb-4629-4ce9-9adc-c2aeba847530" x="1" y="2" width="80" height="65"/>
+				<reportElement uuid="6cffbebb-4629-4ce9-9adc-c2aeba847530" x="0" y="0" width="80" height="65"/>
 			</image>
 			<textField>
 				<reportElement uuid="fffbcc0f-d4dc-4058-8ee6-48e434e638eb" x="91" y="34" width="461" height="15">
@@ -157,38 +157,58 @@ order by locacao.dtlocacao, locacao.id]]>
 			<line>
 				<reportElement uuid="86ab90a2-28d1-4599-b0de-26f6abec563c" x="0" y="103" width="555" height="1"/>
 			</line>
+			<staticText>
+				<reportElement uuid="d93a16c1-16d6-4c8c-9247-950bd93f9d33" x="176" y="111" width="54" height="15">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Data Fim]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="885c2861-9a88-4266-86e0-2e88fa4de2e0" x="67" y="111" width="70" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($P{DT_INICIO})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="dd68d9b1-3206-4089-9981-b5e7c5225263" x="232" y="111" width="70" height="15"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($P{DT_FIM})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="fda61fa2-06dc-4614-9b0b-36d2efbee7db" x="10" y="111" width="54" height="15">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Data Inicio]]></text>
+			</staticText>
 		</band>
 	</title>
-	<pageHeader>
-		<band height="19" splitType="Stretch"/>
-	</pageHeader>
-	<columnHeader>
-		<band height="7" splitType="Stretch"/>
-	</columnHeader>
 	<detail>
-		<band height="37" splitType="Stretch">
+		<band height="38" splitType="Stretch">
 			<textField>
-				<reportElement uuid="49772a1b-60ae-4a90-8b8e-34755f99acff" x="21" y="1" width="70" height="15"/>
+				<reportElement uuid="49772a1b-60ae-4a90-8b8e-34755f99acff" x="21" y="2" width="70" height="15"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{locacao_id}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="64f8bf22-f840-4feb-b3be-01aa547f2f83" x="155" y="1" width="397" height="15"/>
+				<reportElement uuid="64f8bf22-f840-4feb-b3be-01aa547f2f83" x="155" y="2" width="397" height="15"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{cliente_nome}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="b5242401-b1f2-453d-b2d7-f45457d3f240" x="60" y="18" width="85" height="15"/>
+				<reportElement uuid="b5242401-b1f2-453d-b2d7-f45457d3f240" x="64" y="19" width="85" height="15"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{locacao_dtlocacao})]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="44ed0ae5-41d0-4300-b2f0-6dd5834b1f8d" x="238" y="18" width="95" height="15"/>
+				<reportElement uuid="44ed0ae5-41d0-4300-b2f0-6dd5834b1f8d" x="238" y="19" width="95" height="15"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{locacao_valortotal}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="8d5981fa-de1d-4ef0-aa1e-3f9a29793e78" x="2" y="1" width="19" height="15">
+				<reportElement uuid="8d5981fa-de1d-4ef0-aa1e-3f9a29793e78" x="2" y="2" width="19" height="15">
 					<property name="local_mesure_unitheight" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -196,7 +216,7 @@ order by locacao.dtlocacao, locacao.id]]>
 				<text><![CDATA[ID: ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="3710abe1-7bcb-483c-b873-11045ee8c9e2" x="110" y="1" width="45" height="15">
+				<reportElement uuid="3710abe1-7bcb-483c-b873-11045ee8c9e2" x="110" y="2" width="45" height="15">
 					<property name="local_mesure_unitheight" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -204,7 +224,7 @@ order by locacao.dtlocacao, locacao.id]]>
 				<text><![CDATA[Cliente: ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="59f87c35-c4f7-49ed-abee-cd0278c37810" x="2" y="18" width="58" height="15">
+				<reportElement uuid="59f87c35-c4f7-49ed-abee-cd0278c37810" x="2" y="19" width="60" height="15">
 					<property name="local_mesure_unitheight" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -212,13 +232,16 @@ order by locacao.dtlocacao, locacao.id]]>
 				<text><![CDATA[Dt. Locação]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="4084f343-9b5d-468e-9340-242374d1f531" x="203" y="18" width="35" height="15">
+				<reportElement uuid="4084f343-9b5d-468e-9340-242374d1f531" x="203" y="19" width="35" height="15">
 					<property name="local_mesure_unitheight" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[Valor:]]></text>
 			</staticText>
+			<line>
+				<reportElement uuid="09c15701-97dd-4891-a6ba-f82b1b39d728" x="0" y="36" width="555" height="1"/>
+			</line>
 		</band>
 	</detail>
 	<pageFooter>

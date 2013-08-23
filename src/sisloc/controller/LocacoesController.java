@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 import sisloc.dao.ClienteDao;
 import sisloc.dao.LocacaoDao;
 import sisloc.dao.OrcamentoDao;
@@ -213,4 +214,30 @@ public class LocacoesController {
 		locacao = dao.selectById(locacao);
 		result.include("locacao", locacao);
 	}	
+	
+	@Path("/locacoes/locacoesperiodo") 
+	public void locacoesperiodo(Date inicio, Date fim) {
+			try{
+				//List<Pagamento> pagamentos = dao. selectById(locacao);
+				Map<String, Object> parametros = new HashMap<String, Object>();
+				parametros.put( "DT_INICIO", inicio );
+				parametros.put( "DT_FIM", fim );
+				 
+				JasperPrint print = JasperFillManager.fillReport(context.getRealPath("/WEB-INF/classes/sisloc/report/template/reportlocacoes.jasper"), parametros, SislocUtils.getConnection());
+				//visualiza o rel apenas no servidor
+				JasperViewer.viewReport(print,false);
+				
+				//envia um pdf para o cliente
+		        //JasperExportManager.exportReportToPdfStream(print, response.getOutputStream());  
+		        
+			}catch(Exception e){e.printStackTrace();}
+
+    	result.permanentlyRedirectTo(this.getClass()).locacoesreport();
+	}
+	
+	@Path("/locacoes/locacoesreport")
+	public void locacoesreport(){
+		
+	}
+
 }
