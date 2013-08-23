@@ -55,7 +55,6 @@ public class ProdutoDao {
 	
 	@SuppressWarnings("unchecked")
 	public List<Produto> listaTodos(){
-		//return this.session.createCriteria(Produto.class).list();
 		List<Produto> t;
 		
 		Query q = manager.createQuery("from Produto order by nome");

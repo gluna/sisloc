@@ -104,7 +104,6 @@ public class PagamentosController {
 	@Path("/pagamentos/report") 
 	public void pdfReport(Date inicio, Date fim) {
 		try{
-			//List<Pagamento> pagamentos = dao. selectById(locacao);
 			Map<String, Object> parametros = new HashMap<String, Object>();
 			parametros.put( "DT_INICIO", inicio );
 			parametros.put( "DT_FIM", fim );
@@ -130,7 +129,6 @@ public class PagamentosController {
 	@Path("/pagamentos/contasapagar") 
 	public void contasapagar(Date inicio, Date fim) {
 			try{
-				//List<Pagamento> pagamentos = dao. selectById(locacao);
 				Map<String, Object> parametros = new HashMap<String, Object>();
 				parametros.put( "DT_INICIO", inicio );
 				parametros.put( "DT_FIM", fim );

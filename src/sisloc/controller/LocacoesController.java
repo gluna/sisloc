@@ -212,28 +212,5 @@ public class LocacoesController {
 	public void devolucao(Locacao locacao){
 		locacao = dao.selectById(locacao);
 		result.include("locacao", locacao);
-	}
-	
-	/*@Path({"/pagamentos/reportlocacoes/{locacao.id}", "/pagamentos/reportlocacoes/"}) 
-	public void reportlocacoes(Date inicio, Date fim) {
-		if(locacao != null) {
-			try{
-				locacao = dao.selectById(locacao);
-				Map<String, Object> parametros = new HashMap<String, Object>();
-				parametros.put( "LOCACAO_ID", locacao.getId() );
-				 
-				JasperPrint print = JasperFillManager.fillReport(context.getRealPath("/WEB-INF/classes/sisloc/report/template/locacaoreport.jasper"), parametros, SislocUtils.getConnection());
-				//visualiza o rel apenas no servidor
-				//JasperViewer.viewReport(print,false);
-				
-				//envia um pdf para o cliente
-		        JasperExportManager.exportReportToPdfStream(print, response.getOutputStream());  
-		        
-			}catch(Exception e){e.printStackTrace();}
-			
-		}
-		result.include("locacao", locacao);
-    	result.permanentlyRedirectTo(this.getClass()).cadastrar();
-	}*/
-	
+	}	
 }

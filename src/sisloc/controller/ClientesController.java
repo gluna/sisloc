@@ -66,12 +66,6 @@ public class ClientesController {
 	    //result.redirectTo(this.getClass()).consultar();	
 	}
 	
-	/*@Path("/clientes/consultar")
-	public List<Cliente> consultar(){
-		List<Cliente> t = dao.listaTodos();
-		return null;
-	}*/
-	
 	@Path("/clientes/consultanome")
 	public List<Cliente> consultanome(Cliente cliente){
 		List<Cliente> c = dao.consultaNome(cliente);	
