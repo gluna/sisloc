@@ -9,6 +9,9 @@
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["/home/gustavo/git/sisloc/src/sisloc/report/template/"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="PATH" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
   pagamento.id,
@@ -44,6 +47,7 @@ order by pagamento.dtpagamento;]]>
 			</line>
 			<image>
 				<reportElement uuid="034c8d80-e853-4d90-b507-e78b019fa18d" x="0" y="0" width="80" height="65"/>
+				<imageExpression><![CDATA[$P{PATH}+"/logo_pagina.png"]]></imageExpression>
 			</image>
 			<line>
 				<reportElement uuid="7eea21aa-7ddb-4cef-b898-3e338aaff561" x="0" y="101" width="555" height="1"/>

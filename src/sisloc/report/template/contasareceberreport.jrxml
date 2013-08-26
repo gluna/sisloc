@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contasareceberreport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="665c56de-8dcd-4793-8a1d-77cff18db63b">
-	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="208"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="DT_INICIO" class="java.util.Date">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -11,6 +11,9 @@
 	</parameter>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["/home/gustavo/git/sisloc/src/sisloc/report/template/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PATH" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT
@@ -57,8 +60,9 @@ order by pagamento.dtvencimento]]>
 				</textElement>
 				<text><![CDATA[RELATÓRIO DE CONTAS A RECEBER]]></text>
 			</staticText>
-			<image>
+			<image vAlign="Middle">
 				<reportElement uuid="08e6e394-07b1-4494-9aaf-2d368aeca97d" x="0" y="0" width="80" height="65"/>
+				<imageExpression><![CDATA[$P{PATH}+"/logo_pagina.png"]]></imageExpression>
 			</image>
 			<textField>
 				<reportElement uuid="cc75908f-3f05-4280-9b60-3c5993b9b97e" x="64" y="107" width="70" height="15"/>
@@ -147,19 +151,19 @@ order by pagamento.dtvencimento]]>
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="26" splitType="Stretch">
+		<band height="19" splitType="Stretch">
 			<textField evaluationTime="Report">
-				<reportElement uuid="8a8b1b88-4ea8-46ec-aa36-40239e872fb1" x="527" y="6" width="23" height="15"/>
+				<reportElement uuid="8a8b1b88-4ea8-46ec-aa36-40239e872fb1" x="527" y="2" width="23" height="15"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy">
-				<reportElement uuid="0716ca7b-aa11-4129-8c61-0753b0275d88" x="4" y="6" width="100" height="15"/>
+				<reportElement uuid="0716ca7b-aa11-4129-8c61-0753b0275d88" x="4" y="2" width="100" height="15"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="62f56ac0-da41-488d-a210-ab95b911ef08" x="447" y="6" width="80" height="15"/>
+				<reportElement uuid="62f56ac0-da41-488d-a210-ab95b911ef08" x="447" y="2" width="80" height="15"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA["Pág. "+$V{PAGE_NUMBER}+"/"]]></textFieldExpression>
 			</textField>

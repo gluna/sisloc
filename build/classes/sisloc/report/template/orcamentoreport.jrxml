@@ -3,8 +3,11 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sisloc"/>
 	<property name="ireport.zoom" value="1.1"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="96"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="ORCAMENTO_ID" class="java.lang.Long"/>
+	<parameter name="PATH" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
      orcamento."id" AS orcamento_id,
@@ -171,7 +174,8 @@ WHERE
 				<reportElement uuid="06eb8ebf-daa0-4737-9147-a8055ddb6636" x="0" y="108" width="555" height="1"/>
 			</line>
 			<image>
-				<reportElement uuid="8ff43988-c853-4e34-a01d-6284c7f95839" x="-1" y="0" width="71" height="50"/>
+				<reportElement uuid="8ff43988-c853-4e34-a01d-6284c7f95839" x="-1" y="0" width="71" height="60"/>
+				<imageExpression><![CDATA[$P{PATH}+"/logo_pagina.png"]]></imageExpression>
 			</image>
 			<textField>
 				<reportElement uuid="eeda0240-2eb9-497b-98b1-f4d08934388b" x="75" y="0" width="436" height="15"/>
