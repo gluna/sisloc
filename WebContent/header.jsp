@@ -42,6 +42,7 @@
          			<li><a href="<c:url value="/locacoes/cadastrar"/>"><span>Locações</span></a></li>
          			<li><a href="<c:url value="/pagamentos/consultalocacao"/>"><span>Pagamentos</span></a></li>
          			<li><a href="<c:url value="/pagamentos/cadastrarcontasapagar"/>"><span>Contas a Pagar</span></a></li>
+         			<li><a href="<c:url value="/empresa/editar/1"/>"><span>Empresa</span></a></li>
       			</ul>
    			</li>
    			<li class='has-sub'><a href='#'><span>Consultar</span></a>
