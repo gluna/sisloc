@@ -106,6 +106,7 @@ public class PagamentosController {
 			Map<String, Object> parametros = new HashMap<String, Object>();
 			parametros.put( "DT_INICIO", inicio );
 			parametros.put( "DT_FIM", fim );
+			parametros.put("PATH", context.getRealPath("/images/"));
 			 
 			JasperPrint print = JasperFillManager.fillReport(context.getRealPath("/WEB-INF/classes/sisloc/report/template/entradasaidareport.jasper"), parametros, SislocUtils.getConnection());
 			//visualiza o rel apenas no servidor
@@ -131,6 +132,7 @@ public class PagamentosController {
 				Map<String, Object> parametros = new HashMap<String, Object>();
 				parametros.put( "DT_INICIO", inicio );
 				parametros.put( "DT_FIM", fim );
+				parametros.put("PATH", context.getRealPath("/images/"));
 				 
 				JasperPrint print = JasperFillManager.fillReport(context.getRealPath("/WEB-INF/classes/sisloc/report/template/contasapagarreport.jasper"), parametros, SislocUtils.getConnection());
 				//visualiza o rel apenas no servidor
@@ -156,6 +158,7 @@ public class PagamentosController {
 				Map<String, Object> parametros = new HashMap<String, Object>();
 				parametros.put( "DT_INICIO", inicio );
 				parametros.put( "DT_FIM", fim );
+				parametros.put("PATH", context.getRealPath("/images/"));
 				 
 				JasperPrint print = JasperFillManager.fillReport(context.getRealPath("/WEB-INF/classes/sisloc/report/template/contasareceberreport.jasper"), parametros, SislocUtils.getConnection());
 				//visualiza o rel apenas no servidor

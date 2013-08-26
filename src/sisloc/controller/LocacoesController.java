@@ -163,6 +163,7 @@ public class LocacoesController {
 				locacao = dao.selectById(locacao);
 				Map<String, Object> parametros = new HashMap<String, Object>();
 				parametros.put( "LOCACAO_ID", locacao.getId() );
+				parametros.put("PATH", context.getRealPath("/images/"));
 				 
 				JasperPrint print = JasperFillManager.fillReport(context.getRealPath("/WEB-INF/classes/sisloc/report/template/contratoreport.jasper"), parametros, SislocUtils.getConnection());
 				//visualiza o rel apenas no servidor
@@ -221,6 +222,7 @@ public class LocacoesController {
 				Map<String, Object> parametros = new HashMap<String, Object>();
 				parametros.put( "DT_INICIO", inicio );
 				parametros.put( "DT_FIM", fim );
+				parametros.put("PATH", context.getRealPath("/images/"));
 				 
 				JasperPrint print = JasperFillManager.fillReport(context.getRealPath("/WEB-INF/classes/sisloc/report/template/reportlocacoes.jasper"), parametros, SislocUtils.getConnection());
 				//visualiza o rel apenas no servidor
