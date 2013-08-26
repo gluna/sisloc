@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.view.JasperViewer;
 import sisloc.dao.ClienteDao;
 import sisloc.dao.LocacaoDao;
 import sisloc.dao.OrcamentoDao;
@@ -225,10 +224,10 @@ public class LocacoesController {
 				 
 				JasperPrint print = JasperFillManager.fillReport(context.getRealPath("/WEB-INF/classes/sisloc/report/template/reportlocacoes.jasper"), parametros, SislocUtils.getConnection());
 				//visualiza o rel apenas no servidor
-				JasperViewer.viewReport(print,false);
+				//JasperViewer.viewReport(print,false);
 				
 				//envia um pdf para o cliente
-		        //JasperExportManager.exportReportToPdfStream(print, response.getOutputStream());  
+		        JasperExportManager.exportReportToPdfStream(print, response.getOutputStream());  
 		        
 			}catch(Exception e){e.printStackTrace();}
 
