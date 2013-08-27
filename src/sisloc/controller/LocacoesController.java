@@ -244,13 +244,22 @@ public class LocacoesController {
 	
 	@Path("/locacoes/locacoesreport")
 	public void fechamentolocacao(Locacao locacao){
-		
+		locacao = dao.selectById(locacao);
+		Long dias = (locacao.getDtfim().getTime()-locacao.getDtinicio().getTime())/1000/60/60/24;
 		for(LocacaoDetalhe detalhe : locacao.getLocacaodetalhe()){
+			Integer quantidade = detalhe.getQuantidade();
 			
 			for(DevolucaoLocacao devolucao : locacao.getDevolucaolocacao()){
 				
 				if(detalhe.getProduto().getId().equals(devolucao.getProduto().getId())){
-					
+					Long diasdeutilizacao = (devolucao.getDtdevolucao().getTime()-locacao.getDtinicio().getTime())/1000/60/60/24;
+					quantidade = quantidade-devolucao.getQuantidade();
+					if(dias < diasdeutilizacao){
+						Pagamento p = new Pagamento();
+						p.setTipo("E");
+						p.setDescricao("Atraso na devolução de equipamento");
+						p.getValor();
+					}
 				}
 				
 			}
