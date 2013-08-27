@@ -15,9 +15,9 @@ public class Empresa {
 	private String nomefantasia;
 	private String razaosocial;
 	@Column(columnDefinition="text")
-	private String contrato;
+	private String contrato; //text do contrato
 	private String cnpj;
-	private String ie;
+	private String ie; //inscrição estadual
 	private String logradouro;
 	private String numero;
 	private String bairro;
