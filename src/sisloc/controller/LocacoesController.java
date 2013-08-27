@@ -75,6 +75,7 @@ public class LocacoesController {
 			    	 }
 		    	 }
 		    	 locacao.setCliente(clientedao.selectById(locacao.getCliente()));
+		    	 locacao.setStatus("A");
 		    	 if(locacao.getId() == null) {
 		    		 dao.salvar(locacao);
 		    	 } else {
@@ -238,6 +239,23 @@ public class LocacoesController {
 	
 	@Path("/locacoes/locacoesreport")
 	public void locacoesreport(){
+		
+	}
+	
+	@Path("/locacoes/locacoesreport")
+	public void fechamentolocacao(Locacao locacao){
+		
+		for(LocacaoDetalhe detalhe : locacao.getLocacaodetalhe()){
+			
+			for(DevolucaoLocacao devolucao : locacao.getDevolucaolocacao()){
+				
+				if(detalhe.getProduto().getId().equals(devolucao.getProduto().getId())){
+					
+				}
+				
+			}
+			
+		}
 		
 	}
 
