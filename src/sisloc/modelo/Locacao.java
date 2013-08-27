@@ -41,6 +41,7 @@ public class Locacao implements Serializable{
 	private String obs;
 	private Double frete;
 	private Double valorfinal; //valor final apos os descontos
+	private String status; //aberta fechada
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@Fetch(FetchMode.SUBSELECT)
@@ -197,5 +198,13 @@ public class Locacao implements Serializable{
 
 	public void setValorfinal(Double valorfinal) {
 		this.valorfinal = valorfinal;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 }
