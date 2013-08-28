@@ -87,16 +87,16 @@ public class Produto implements Serializable{
 	}
 	
 	public Double getPreco(Integer dias){
-		Double preco;
+		Double preco = precos.get(0).getPreco();
 		Integer diferenca = dias-precos.get(0).getDias();
-		Double menorpreco;
 		
 		for(Preco p : precos){
 			if(p.getDias() <= dias){
-				if(diferenca < (dias-p.getDias()));
-				preco = p.getPreco();
+				if(diferenca < (dias-p.getDias())){
+					preco = p.getPreco();
+					diferenca = dias-p.getDias();
+				}	
 			}
-			diasanterior = p.getDias();
 		}
 		
 		return preco;
