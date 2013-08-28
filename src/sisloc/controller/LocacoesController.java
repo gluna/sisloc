@@ -95,8 +95,10 @@ public class LocacoesController {
 		try {
 		     if(locacao != null) {
 		    	 for(DevolucaoLocacao dl : locacao.getDevolucaolocacao() ){
-		    		 dl.setProduto(produtodao.selectById(dl.getProduto()));
-		    		 dl.setDtdevolucao(new Date());
+		    		 if(dl.getId() == null){
+			    		 dl.setProduto(produtodao.selectById(dl.getProduto()));
+			    		 dl.setDtdevolucao(new Date());
+		    		 }
 		    	 }
 		    	 if(locacao.getId() == null) {
 		    		 dao.salvar(locacao);
@@ -242,9 +244,10 @@ public class LocacoesController {
 		
 	}
 	
-	@Path("/locacoes/locacoesreport")
-	public void fechamentolocacao(Locacao locacao){
+	@Path("/locacoes/fechamentolocacao/{locacao.id}")
+	public Locacao fechamentolocacao(Locacao locacao){
 		locacao = dao.selectById(locacao);
+		locacao.setStatus("F");
 		Long dias = (locacao.getDtfim().getTime()-locacao.getDtinicio().getTime())/1000/60/60/24;
 		for(LocacaoDetalhe detalhe : locacao.getLocacaodetalhe()){
 			Integer quantidade = detalhe.getQuantidade();
@@ -258,14 +261,21 @@ public class LocacoesController {
 						Pagamento p = new Pagamento();
 						p.setTipo("E");
 						p.setDescricao("Atraso na devolução de equipamento");
-						p.getValor();
+						p.setValor(devolucao.getProduto().getPreco(diasdeutilizacao-dias)*devolucao.getQuantidade());
+						p.setDtvencimento(new Date());
+						locacao.getPagamentos().add(p);
 					}
-				}
-				
+				}	
 			}
-			
+			if(quantidade > 0){
+				Pagamento p = new Pagamento();
+				p.setTipo("E");
+				p.setDescricao("Equipamento não devolvido");
+				p.setValor(detalhe.getProduto().getValor()*quantidade);
+				p.setDtvencimento(new Date());
+				locacao.getPagamentos().add(p);
+			}
 		}
-		
+		return locacao;
 	}
-
 }

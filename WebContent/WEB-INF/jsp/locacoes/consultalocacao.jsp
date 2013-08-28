@@ -34,7 +34,7 @@
 						  <td>${locacao.cliente.nome}</td>
 						  <td><a href="<c:url value="/locacoes/visualizar/${locacao.id}" />" name="visualizar">Visualizar</a></td>
 						  <td><a href="<c:url value="/locacoes/devolucao/${locacao.id}" />" name="devolucao">Devolução</a></td>
-						  <!-- <td><a href="<c:url value="/fornecedores/excluir/${tarefa.id}"/>">Excluir</a></td> -->
+						  <td><a href="<c:url value="/locacoes/fechamentolocacao/${locacao.id}"/>" name="fechamento">Fechar</a></td> -->
 						</tr>
 					</c:forEach>
 					</tbody></table></div>

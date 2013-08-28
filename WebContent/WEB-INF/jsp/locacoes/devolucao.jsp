@@ -109,15 +109,15 @@
  					'<br>' +
  					'<div class="devolucaoitem">'+
  					'<label>Produto:</label>&nbsp'+
- 					'<select id="produto" name="locacao.devolucaolocacao[${status.index}].produto.id" value="devolucao.produto.id">'+
+ 					'<select id="produto" name="locacao.devolucaolocacao[0].produto.id" value="devolucao.produto.id">'+
  					'	<option value=""></option>'+
  		    		'	<c:forEach items="${locacao.locacaodetalhe}" var="detalhe" varStatus="status">'+
  		    		'		<option value="${detalhe.produto.id}">${detalhe.produto.nome}</option>'+
  		    		'	</c:forEach>'+
  					'</select>&nbsp&nbsp'+
  					'<label>Quantidade:</label>&nbsp'+
- 					'<input type="text" class="dev" style="background-color: #FFFFFF;" name="locacao.devolucaolocacao[${status.index}].quantidade" value="${devolucao.quantidade}" />&nbsp&nbsp'+
- 					'<input type="hidden" name="locacao.devolucaolocacao[${status.index}].id" value="${devolucao.id}" />'+
+ 					'<input type="text" class="dev" style="background-color: #FFFFFF;" name="locacao.devolucaolocacao[0].quantidade" value="${devolucao.quantidade}" />&nbsp&nbsp'+
+ 					'<input type="hidden" name="locacao.devolucaolocacao[0].id" value="${devolucao.id}" />'+
  					'</div>';
     		
     		$('.button-remover').live('click', function() {

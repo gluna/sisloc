@@ -86,9 +86,9 @@ public class Produto implements Serializable{
 		this.valor = valor;
 	}
 	
-	public Double getPreco(Integer dias){
+	public Double getPreco(Long dias){
 		Double preco = precos.get(0).getPreco();
-		Integer diferenca = dias-precos.get(0).getDias();
+		Long diferenca = dias-precos.get(0).getDias();
 		
 		for(Preco p : precos){
 			if(p.getDias() <= dias){
