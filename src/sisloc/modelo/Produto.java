@@ -92,7 +92,7 @@ public class Produto implements Serializable{
 		
 		for(Preco p : precos){
 			if(p.getDias() <= dias){
-				if(diferenca < (dias-p.getDias())){
+				if(diferenca > (dias-p.getDias())){
 					preco = p.getPreco();
 					diferenca = dias-p.getDias();
 				}	

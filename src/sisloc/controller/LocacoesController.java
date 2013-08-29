@@ -93,11 +93,14 @@ public class LocacoesController {
 	@Path("/locacoes/salvardevolucao")
 	public void salvardevolucao(Locacao locacao){
 		try {
+			List<DevolucaoLocacao> devolucoes = locacao.getDevolucaolocacao();
+			locacao = dao.selectById(locacao);
 		     if(locacao != null) {
-		    	 for(DevolucaoLocacao dl : locacao.getDevolucaolocacao() ){
+		    	 for(DevolucaoLocacao dl : devolucoes ){
 		    		 if(dl.getId() == null){
-			    		 dl.setProduto(produtodao.selectById(dl.getProduto()));
+		    			 dl.setProduto(produtodao.selectById(dl.getProduto()));
 			    		 dl.setDtdevolucao(new Date());
+			    		 locacao.getDevolucaolocacao().add(dl);
 		    		 }
 		    	 }
 		    	 if(locacao.getId() == null) {
@@ -247,7 +250,7 @@ public class LocacoesController {
 	@Path("/locacoes/fechamentolocacao/{locacao.id}")
 	public Locacao fechamentolocacao(Locacao locacao){
 		locacao = dao.selectById(locacao);
-		locacao.setStatus("F");
+ 		locacao.setStatus("F");
 		Long dias = (locacao.getDtfim().getTime()-locacao.getDtinicio().getTime())/1000/60/60/24;
 		for(LocacaoDetalhe detalhe : locacao.getLocacaodetalhe()){
 			Integer quantidade = detalhe.getQuantidade();
