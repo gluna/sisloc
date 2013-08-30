@@ -12,21 +12,21 @@ public class Empresa {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String nomefantasia;
+	private String nomefantasia; //OK
 	private String razaosocial;
 	@Column(columnDefinition="text")
 	private String contrato; //text do contrato
-	private String cnpj;
-	private String ie; //inscrição estadual
-	private String logradouro;
-	private String numero;
-	private String bairro;
-	private String complemento;
-	private String cidade;
-	private String uf;
-	private String cep;
-	private String tel;
-	private String email;
+	private String cnpj; //OK
+	private String ie; //inscrição estadual OK
+	private String logradouro; //OK
+	private String numero; //OK
+	private String bairro; //OK
+	private String complemento; //OK
+	private String cidade; //OK
+	private String uf; //OK
+	private String cep; //OK
+	private String tel; //OK
+	private String email; //OK
 	
 	public Long getId() {
 		return id;
