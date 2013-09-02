@@ -25,7 +25,7 @@
 						<td align="left"><input class="maiuscula" type="text" name="produto.quantidade" size=10 value="${produto.quantidade}" /> </td></tr></table><br>
 						<table><tr><td align="right" width="95"> 
 						<td align="right" width="80"><label>Dev. R$:</label></td> 
-						<td align="left"><input type="text" name="produto.valor" size=15 value="${produto.valor}" /></td>
+						<td align="left"><input type="text" name="produto.valor" size=15 value="<fmt:formatNumber value="${produto.valor}" minFractionDigits="2" type="currency"/>" /></td>
 						</tr></table><br>
 						<table><tr>
 						<td align="right" width="95"><label>Descrição:</label></td></tr></table>

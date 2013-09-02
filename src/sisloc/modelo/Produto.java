@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -24,6 +25,7 @@ public class Produto implements Serializable{
 	private String nome;
 	private String descricao;
 	private Integer quantidade;
+	@Column(columnDefinition="money")
 	private Double valor;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)

@@ -52,6 +52,7 @@
          			<li><a href="<c:url value="/produtos/consultanome"/>"><span>Produtos</span></a></li>
          			<li><a href="<c:url value="/orcamentos/consultaorcamento"/>"><span>Orçamentos</span></a></li>
          			<li><a href="<c:url value="/locacoes/consultalocacao"/>"><span>Locações</span></a></li>
+         			<li><a href="<c:url value="/pagamentos/consultarcontasapagar"/>"><span>Contas a Pagar</span></a></li>
       			</ul>
    			</li>
    			<li class='has-sub'><a href='#'><span>Relatórios</span></a>

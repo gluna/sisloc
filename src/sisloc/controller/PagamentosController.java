@@ -66,14 +66,14 @@ public class PagamentosController {
 	@Path("/pagamentos/salvarcontasapagar")
 	public void salvar(Pagamento pagamento){
 		try {
-		     if(pagamento != null) {	
-		    	 	pagamento.setTipo("S");
-			    	 if(pagamento.getId() == null) {
-			    		 dao.salvar(pagamento);
-			    	 } else {
-			    		 dao.atualizar(pagamento);
-		             }
-	          }
+		     if(pagamento != null) {
+		    	 if(pagamento.getId() == null) {
+		    		 pagamento.setTipo("S");
+		    		 dao.salvar(pagamento);
+		    	 } else {
+		    		 dao.atualizar(pagamento);
+	             }
+		     }
 		     result.redirectTo(this.getClass()).cadastrarcontasapagar();
 		} catch (Exception e) {
 			result.include("msg", e.getMessage());
@@ -176,7 +176,11 @@ public class PagamentosController {
 	public void contasareceberreport(){
 		
 	}
-
+	
+	@Path("/pagamentos/consultarcontasapagar")
+	public void consultarcontasapagar(){
+		
+	}
 
 
 }

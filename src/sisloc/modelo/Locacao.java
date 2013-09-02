@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -33,13 +34,16 @@ public class Locacao implements Serializable{
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn
 	private Cliente cliente;
-	
+	@Column(columnDefinition="money")
 	private Double valortotal; //valor sem descontos
+	@Column(columnDefinition="money")
 	private Double descontovalor;
 	private Double descontopercent;
 	private String formapagamento;
 	private String obs;
+	@Column(columnDefinition="money")
 	private Double frete;
+	@Column(columnDefinition="money")
 	private Double valorfinal; //valor final apos os descontos
 	private String status; //aberta fechada
 	

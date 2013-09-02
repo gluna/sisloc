@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -29,6 +30,7 @@ public class Orcamento implements Serializable{
 	private Date inicio;
 	private Date fim;
 	private String cliente;
+	@Column(columnDefinition="money")
 	private Double frete;
 	private String obs;
 	private Long empresa = (long) 1;
