@@ -77,6 +77,9 @@
 						<td align="right" width="50"><label>Tel:</label></td> 
 						<td align="left"> <input class="maiuscula" type="text" name="empresa.tel" size=28 value="${empresa.tel}" /><br> </td>
 						</tr></table>
+						<table><tr>
+						<td align="right" width="95"><label>Contrato:</label></td>
+						<td align="right"><textarea style="resize:none; text-transform: uppercase;" rows="10" cols="130" name="empresa.contrato" />${empresa.contrato}</textarea><br> </td></tr></table><br>
 				</fieldset>
 				<br/>
 				<!-- <fieldset id="telefone-container" style="width: 1140px;">
