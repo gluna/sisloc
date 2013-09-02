@@ -3,7 +3,6 @@ package sisloc.modelo;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +16,6 @@ public class Pagamento implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(columnDefinition="money")
 	private Double valor;
 	private Date dtvencimento;
 	private Date dtpagamento;

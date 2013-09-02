@@ -3,7 +3,6 @@ package sisloc.modelo;
 import java.io.Serializable;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -21,7 +20,6 @@ public class LocacaoDetalhe implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;	
 	private Integer quantidade;
-	@Column(columnDefinition="money")
 	private Double preco;
 	
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
