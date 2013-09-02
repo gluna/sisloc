@@ -128,7 +128,7 @@ var model =
 		'<label>Numero:</label>&nbsp' +
 		'<input type="text" name="cliente.telefones[0].numero" value="${telefone.numero}" />&nbsp&nbsp' +
 		'<label>Contato:</label>&nbsp' +
-		'<input type="text" name="cliente.telefones[0].contato" value="${telefone.contato}" />&nbsp&nbsp' +
+		'<input type="text" class="maiuscula" name="cliente.telefones[0].contato" value="${telefone.contato}" />&nbsp&nbsp' +
 		'<input type="hidden" name="cliente.telefones[0].id" value="${telefone.id}" />' +
 		'<input type="button" class="button-remover" />' +
 	'</div>';
