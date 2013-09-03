@@ -178,8 +178,15 @@ public class PagamentosController {
 	}
 	
 	@Path("/pagamentos/consultarcontasapagar")
-	public void consultarcontasapagar(){
-		
+	public List<Pagamento> consultarcontasapagar(Date inicio, Date fim){
+		List<Pagamento> t = dao.contasapagarnoperiodo(inicio, fim);
+		return t;
+	}
+	
+	@Path("/pagamentos/editarcontasapagar/{pagamento.id}")
+	public Pagamento editarcontasapagar(Pagamento pagamento){
+		pagamento = dao.selectById(pagamento);
+		return pagamento;
 	}
 
 

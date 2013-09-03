@@ -1,6 +1,10 @@
 package sisloc.dao;
 
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import sisloc.modelo.Pagamento;
 import br.com.caelum.vraptor.ioc.Component;
@@ -47,4 +51,15 @@ public class PagamentoDao {
 		return null;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Pagamento> contasapagarnoperiodo(Date inicio, Date fim){
+		Query q = manager.createQuery("from Pagamento t where t.dtvencimento >= :inicio " +
+				                                       "and t.dtvencimento <= :fim " +
+				                                       "and t.dtpagamento is null "+
+				                                       "order by t.dtvencimento");
+		q.setParameter("inicio", inicio);
+		q.setParameter("fim", fim);  
+		return (List<Pagamento>) q.getResultList();	
+
+	}
 }

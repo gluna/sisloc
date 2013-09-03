@@ -16,10 +16,10 @@
 				</legend>
 					<table><tr><td align="right" width="95"> 
 						<label>Dt Inicial:</label></td> 
-						<td align="left"><input	class="maiuscula" type="text" name="pagamento.dtvencimento" size=50 value="${pagamento.dtvencimento}" /><br></td>
+						<td align="left"><input	class="maiuscula" type="text" name="inicio" size=50 value="${inicio}" /><br></td>
 						<td align="right" width="95"> 
 						<label>Dt Final:</label></td> 
-						<td align="left"><input	class="maiuscula" type="text" name="pagamento.dtpagamento" size=50 value="${pagamento.dtpagamento}" /><br></td>
+						<td align="left"><input	class="maiuscula" type="text" name="fim" size=50 value="${fim}" /><br></td>
 						<td><input type="submit" value="Consultar" icon="ui-icon-search"/><br/></td>
 						</tr></table><br>
 				</fieldset>
@@ -31,13 +31,13 @@
 				<div id="users-contain" class="ui-widget">
 					<table id="users" class="ui-widget ui-widget-content">
 					<tbody>
-					<c:forEach items="${paramentoList}" var="pagamento">
+					<c:forEach items="${pagamentoList}" var="pagamento">
 						<tr>
 						  <td>${pagamento.id}</td>
 						  <td>${pagamento.descricao}</td>
 						  <td><fmt:formatDate value="${pagamento.dtvencimento}" dateStyle="medium" /></td>
 						  <td><fmt:formatDate value="${pagamento.dtpagamento}" dateStyle="medium" /></td>
-						  <td><a href="<c:url value="/pagamentos/cadastrarcontasapagar/${locacao.id}" />" name="editar">Editar</a></td>
+						  <td><a href="<c:url value="/pagamentos/editarcontasapagar/${pagamento.id}" />" name="editar">Editar</a></td>
 						  <!-- <td><a href="<c:url value="/fornecedores/excluir/${tarefa.id}"/>">Excluir</a></td> -->
 						</tr>
 					</c:forEach>
