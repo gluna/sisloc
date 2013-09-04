@@ -220,13 +220,13 @@
 				</legend>
 				<table><tr>
 					<td align="right" width="95"><label>Valor (R$):</label></td>
-					<td align="left"><input	type="text" class="dinheiro1" name="locacao.valortotal" value="${locacao.valortotal}" readonly/><br></td>
+					<td align="left"><input	type="text" class="dinheiro1" name="valortotal" value="${locacao.valortotal}" readonly/><br></td>
 					<td align="right" width="95"><label>Desconto (%):</label></td>
-					<td align="left"><input	type="text" name="locacao.descontopercent" onchange="descontapercentual();" value="${locacao.descontopercent}" /><br></td>
+					<td align="left"><input	type="text" name="descontopercent" onchange="descontapercentual();" value="${locacao.descontopercent}" /><br></td>
 					<td align="right" width="95"><label>Desconto (R$):</label></td>
-					<td align="left"><input	type="text" class="dinheiro" name="locacao.descontovalor" onchange="descontavalor();" value="${locacao.descontovalor}" /><br></td>
+					<td align="left"><input	type="text" class="dinheiro" name="descontovalor" onchange="descontavalor();" value="${locacao.descontovalor}" /><br></td>
 					<td align="right" width="80"><label>Total (R$):</label></td>
-					<td align="left"><input	type="text" class="dinheiro1" name="locacao.valorfinal" value="${locacao.valorfinal}" readonly/><br></td>
+					<td align="left"><input	type="text" class="dinheiro1" name="valorfinal" value="${locacao.valorfinal}" readonly/><br></td>
 				</tr></table>
 				</fieldset><br>
 				<fieldset id="pagamentos" style="width: 1140px;">
@@ -244,7 +244,7 @@
 			    		<input type="button" class="button-remover" />
 			    		</div>
 			    	</c:forEach>
-				</fieldset>
+				</fieldset><br>
 				<table align="center">
 					<tr><td>
 					<input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br/>	
@@ -394,7 +394,7 @@
     		'<select id="preco" class="precoitem" onchange="soma();" name="locacao.locacaodetalhe[0].preco" value="locacao.locacaodetalhe[0].preco">'+
     		'</select>&nbsp&nbsp'+
     		'<label>Quantidade:</label>&nbsp' +
-    		'<input type="text" name="locacao.locacaodetalhe[0].quantidade" value="${locacao.locacaodetalhe[0].quantidade}" />&nbsp&nbsp'+
+    		'<input type="text" class="qtde" name="locacao.locacaodetalhe[0].quantidade" onchange="calculaqtd();" value="${locacao.locacaodetalhe[0].quantidade}" />&nbsp&nbsp'+
 			'<input type="button" class="button-remover" />' +
     		'</div>';
     		
@@ -559,26 +559,46 @@
     			});
     		};
     		
+    		function calculaqtd() {
+    			
+    			var contaselect = $('.precoitem').length;
+    			
+    			if (contaselect == 1){
+    				$('.precoitem').each(function() {
+    					var campovalortotal1 = parseFloat($(this).val(), 10);
+    					$('.qtde').each(function(){
+	    					var campoqtde = parseFloat($(this).val(), 10);
+	    					var calculo = campovalortotal1*campoqtde;
+		    				document.form.valortotal.value = calculo;
+		    				document.form.valorfinal.value = calculo;
+    					});
+    				});
+    			};
+    		}
     		
     		function soma()
     		{
     			var contaselect = $('.precoitem').length;
     			
     			if (contaselect == 1){
-    				$('.precoitem').each(function() {
+    				$('.precoitem').each(function(index, item) {
     					var campovalortotal1 = parseFloat($(this).val(), 10);
 	    				document.form.valortotal.value = campovalortotal1;
 	    				document.form.valorfinal.value = campovalortotal1;
+	    				alert("O item: " + item + " está na posição: " + index +"");
     				});
     			}
     			
     			if (contaselect > 1){
     				var acumulador = 0;
-    				$('.precoitem').each(function() {
+    				$('.precoitem').each(function(index, item) {
 	    				var valorselect = parseFloat($(this).val(), 10);
 	    				acumulador = acumulador+valorselect;
 	    				document.form.valortotal.value = acumulador;
 	    				document.form.valorfinal.value = acumulador;
+	    				alert("O item: " + item + " está na posição: " + index +"");
+	    				var teste = $(this).val(function (index, val) {return index;});
+	    				alert(teste);
     				});
     				
 	    		};
