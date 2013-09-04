@@ -18,8 +18,8 @@
 						<tr>
 							<!-- <td align="right" width="95"><label>Número da Locação:</label></td> -->
 							<td align="left"><input type="hidden" class="maiuscula" name="pagamento.id" value="${pagamento.id}" readonly /><br></td>
-							<td align="right" width="95"><label>Dt. Vencimento:</label></td>
-							<td align="left">
+							<td align="right" width="95"><label>Data de Vencimento:</label></td>
+							<td align="left"><input type="text" class="data" name="pagamento.data" value="<fmt:formatDate value="${pagamento.dtpagamento}" dateStyle="medium" />" /></td>
 							<td align="right" width="95"><label>Valor:</label></td>
 							<td align="left"><input type="text" class="text" name="pagamento.valor" value="${pagamento.valor}" /> 
 							<td align="right" width="95"><label>Descrição:</label></td>
@@ -27,8 +27,12 @@
 							 
 							<br></td></tr></table>
 							
-				</fieldset>
-				<input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br/>
+				</fieldset><br>
+				<table align="center">
+					<tr><td>
+						<input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br/>
+					</td></tr>
+				</table>
 			</div>
 		</div>
 	</form>
