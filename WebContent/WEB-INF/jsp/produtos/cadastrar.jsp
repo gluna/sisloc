@@ -4,7 +4,7 @@
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-ui-1.10.3.custom.js"></script>
 <body>
 	<form action="<c:url value='/produtos/salvar'/>" method="post">
-		<div id="tabs" class="container">
+		 <div id="tabs" class="container">
 			<ul>
 				<li><a href="#tabs-1">Cadastro de Produtos</a></li>
 			</ul>
@@ -13,7 +13,7 @@
 				<fieldset id="formulario" style="width: 1140px;"> 
 				<legend>
 					Produto:
-				</legend>
+				</legend>  
 				<!--<label>ID:</label> --><input type="hidden" name="produto.id" value="${produto.id}" readonly />
 					<table><tr><td align="right" width="95"> 
 						<label>Código:</label></td> 
