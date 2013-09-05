@@ -25,7 +25,7 @@
 						<td align="left"><input class="maiuscula" type="text" name="produto.quantidade" size=10 value="${produto.quantidade}" /> </td></tr></table><br>
 						<table><tr><td align="right" width="95"> 
 						<td align="right" width="80"><label>Dev. R$:</label></td> 
-						<td align="left"><input type="text" name="produto.valor" size=15 value="<fmt:formatNumber value="${produto.valor}" minFractionDigits="2" type="currency"/>" /></td>
+						<td align="left"><input type="text" name="produto.valor" id="currency" size=15 value="<fmt:formatNumber value="${produto.valor}" minFractionDigits="2"/>" /></td>
 						</tr></table><br>
 						<table><tr>
 						<td align="right" width="95"><label>Descrição:</label></td></tr></table>
@@ -45,7 +45,7 @@
 						<label>Dias:</label>&nbsp
 						<input type="text" name="produto.precos[${status.index}].dias" value="${preco.dias}" />&nbsp&nbsp
 						<label>Valor R$:</label>&nbsp
-						<input type="text" name="produto.precos[${status.index}].preco" value="${preco.preco}" />&nbsp&nbsp
+						<input type="text" name="produto.precos[${status.index}].preco" id="currency" value="<fmt:formatNumber value="${preco.preco}" minFractionDigits="2"/>" />&nbsp&nbsp
 						<input type="hidden" name="produto.precos[${status.index}].id" value="${preco.id}" />
 						<input type="button" class="button-remover" />
 					</div>
@@ -70,7 +70,7 @@ var model =
 		'<label>Dias:</label>&nbsp' +
 		'<input type="text" name="produto.precos[0].dias" value="${preco.dias}" />&nbsp&nbsp' +
 		'<label>Valor R$:</label>&nbsp' +
-		'<input type="text" name="produto.precos[0].preco" value="${preco.preco}" />&nbsp&nbsp' +
+		'<input type="text" name="produto.precos[0].preco" id="currency" value="<fmt:formatNumber value="${preco.preco}" minFractionDigits="2"/>" />&nbsp&nbsp' +
 		'<input type="hidden" name="produto.precos[0].id" value="${preco.id}" />'+
 		'<input type="button" class="button-remover" />' +
 	'</div>';
@@ -123,8 +123,12 @@ function reorderIndexes() {
 	});
 	
 };
-$(document).ready(function(){
+/*$(document).ready(function(){
     $("input.dinheiro").maskMoney({showSymbol:false, symbol:"R$", decimal:".", thousands:"."});
+});*/
+
+$(document).ready(function(){
+    $("#currency").maskMoney();
 });
 </script>
 <script>
