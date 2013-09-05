@@ -760,5 +760,8 @@ input.dinheiro1 {
   text-transform: uppercase;
   background-color: #FFFFE0;
 }
+input.maiuscula {
+  text-transform: uppercase;
+}
 </style>
 
