@@ -42,8 +42,12 @@
 							 </td></tr></table>
 							</c:forEach>
 							
-				</fieldset>
-				<input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br/>
+				</fieldset><br>
+				<table align="center">
+					<tr><td>
+						<input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br/>
+					</td></tr>
+				</table>
 			</div>
 		</div>
 	</form>
