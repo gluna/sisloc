@@ -21,7 +21,7 @@
 							<td align="right" width="95"><label>Data de Vencimento:</label></td>
 							<td align="left"><input type="text" class="data" name="pagamento.data" value="<fmt:formatDate value="${pagamento.dtpagamento}" dateStyle="medium" />" /></td>
 							<td align="right" width="95"><label>Valor:</label></td>
-							<td align="left"><input type="text" class="text" name="pagamento.valor" value="${pagamento.valor}" /> 
+							<td align="left"><input type="text" class="dinheiro" name="pagamento.valor" value="${pagamento.valor}" /> 
 							<td align="right" width="95"><label>Descrição:</label></td>
 							<td align="left"><input type="text" class="text" name="pagamento.descricao" value="${pagamento.descricao}" /> 
 							 
@@ -38,6 +38,11 @@
 	</form>
 </body>
 <%@ include file="../../../footer.jsp"%>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("input.dinheiro").maskMoney({showSymbol:false, symbol:"R$", decimal:".", thousands:"."});
+});
+</script>
 <script>
 	$(function() {
 		$( "#tabs" ).tabs();		

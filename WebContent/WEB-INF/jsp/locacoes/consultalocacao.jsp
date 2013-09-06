@@ -34,7 +34,7 @@
 						  <td>${locacao.cliente.nome}</td>
 						  <td><a href="<c:url value="/locacoes/visualizar/${locacao.id}" />" name="visualizar">Visualizar</a></td>
 						  <td><a href="<c:url value="/locacoes/devolucao/${locacao.id}" />" name="devolucao">Devolução</a></td>
-						  <td><a href="<c:url value="/locacoes/fechamentolocacao/${locacao.id}"/>" name="fechamento">Fechar</a></td> -->
+						  <td><a href="<c:url value="/locacoes/fechamentolocacao/${locacao.id}"/>" name="fechamento">Fechar</a></td>
 						</tr>
 					</c:forEach>
 					</tbody></table></div>
@@ -64,6 +64,10 @@
 			});
 		$('a[name="devolucao"]').each(function () {
 			   $(this).button({icons: {primary: "ui-icon-transferthick-e-w"}});
+			   $(this).click();
+			});
+		$('a[name="fechamento"]').each(function () {
+			   $(this).button({icons: {primary: "ui-icon-flag"}});
 			   $(this).click();
 			});
 		$('input[type="button"]').each(function () {
