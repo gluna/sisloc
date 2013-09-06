@@ -22,9 +22,11 @@
 					<td align="right" width="95"><label>Cliente:</label></td>
 					
 					<td align="left">
-						<select id="cliente"  name="locacao.cliente.id" value="locacao.cliente.id">
+						<!-- <select id="cliente"  name="locacao.cliente.id" value="locacao.cliente.id">
 							<option value="${locacao.cliente.id}">${locacao.cliente.nome}</option>
-						</select>
+						</select> -->
+						<input	type="text" class="readonly" name="locacaocliente" size=50 value="${locacao.cliente}" readonly /><br></td>
+						<td><input type="button" name="button" id="add-user" value="Procurar" icon="ui-icon-search"/></td>
 					
 					<!-- <input	type="text" class="maiuscula" name="locacao.cliente.nome" size=50 value="${locacao.cliente}" /> -->
 					 
@@ -258,6 +260,17 @@
 			</div>
 		</div>
 	</form>
+	
+	<div id="dialog-form" class="caixa" title="Adicionar Cliente/Empresa">
+		<form name="form1">
+			<fieldset>
+				<label for="name">Cliente/Empresa:</label>
+				<select id="cliente"  name="clienteid" value="locacao.cliente.id">
+				</select>
+			</fieldset>
+		</form>
+	</div>
+	
 </body>
 <%@ include file="../../../footer.jsp"%>
  <script type="text/javascript">
@@ -501,7 +514,7 @@
     		        dataType: 'json',  
     		        success : function(clientes) {
     		            
-    		            	$('.container').each(function(index) {
+    		            	$('.caixa').each(function(index) {
 
     		    				var $campos = $(this).find('select'),
     	    					$input	,
@@ -514,7 +527,7 @@
     	    						$input.find('option').remove();
     	    						$input.append('<option value="">Selecione um Item</option>');
     	    						for (var i = 0; i < clientes.length; i++){
-    	    							$input.append('<option value="'+clientes[i].id+'">'+clientes[i].nome+'</option>');
+    	    							$input.append('<option value="'+clientes[i].nome+'">'+clientes[i].nome+'</option>');
     	    						};
     	    					};
 	    	    			});
@@ -695,7 +708,7 @@
     				  alert("Salve o Orçamento Primeiro");
     			  }
     		  }
-    		
+    		  
     		$(document).ready(function(){
                 $("input.dinheiro").maskMoney({showSymbol:false, symbol:"R$", decimal:".", thousands:"."});
           	});
@@ -739,6 +752,39 @@
 			buttonImage: "${pageContext.request.contextPath}/images/calendar.gif",
 			buttonImageOnly: true
 		});
+		 $( "#add-user" )
+		 //.button()
+		 .click(function() {
+		 	$( "#dialog-form" ).dialog( "open" );
+	 });
+	  
+	 $( "#dialog-form" ).dialog({
+		 autoOpen: false,
+		 show: {
+			 effect: "blind",
+			 duration: 1000
+			 },
+			 hide: {
+			 effect: "explode",
+			 duration: 1000
+			 },
+		 height: 180,
+		 width: 350,
+		 modal: true,
+		 buttons: {
+		 "Adicionar": function() {
+			 var campo1 = document.form1.clienteid;
+			 var valor1 = campo1.value;
+			 document.form.locacaocliente.value = valor1;
+			 $( this ).dialog( "close" );
+		 },
+		 	Cancel: function() {
+		 		$( this ).dialog( "close" );
+		 	}
+		 },
+		 	close: function() {
+		 	}
+		 });
  });
  </script>
 <style type="text/css">
