@@ -17,7 +17,7 @@
 				</legend>
 				<table><tr>
 					<td align="right" width="95"><label>Número do Orçamento:</label></td>
-					<td align="left"><input	type="text" name="orcamento.id" value="${orcamento.id}" readonly /><br></td>
+					<td align="left"><input	type="text" class="readonly" name="orcamento.id" value="${orcamento.id}" readonly /><br></td>
 					<td align="right" width="95"><label>Nome do Cliente/Empresa:</label></td>
 					<td align="left"><input	type="text" class="maiuscula" name="orcamentocliente" size=50 value="${orcamento.cliente}" /><br></td>
 					<td><input type="button" name="button" id="add-user" value="Procurar" icon="ui-icon-search"/></td>
@@ -325,7 +325,10 @@ var model =
 input.maiuscula {
   text-transform: uppercase;
 }
-
+input.readonly {
+  text-transform: uppercase;
+  background-color: #FFFFE0;
+}
 .button-remover {
   background-image: url('${pageContext.request.contextPath}/images/btn_remover.png');
   cursor:pointer;

@@ -18,7 +18,7 @@
 				</legend>
 				<table><tr>
 					<td align="right" width="95"><label>Número da Locação:</label></td>
-					<td align="left"><input	type="text" name="locacao.id" value="${locacao.id}" readonly /><br></td>
+					<td align="left"><input	type="text" class="readonly" name="locacao.id" value="${locacao.id}" readonly /><br></td>
 					<td align="right" width="95"><label>Cliente:</label></td>
 					
 					<td align="left">
@@ -762,6 +762,10 @@ input.dinheiro1 {
 }
 input.maiuscula {
   text-transform: uppercase;
+}
+input.readonly {
+  text-transform: uppercase;
+  background-color: #FFFFE0;
 }
 </style>
 
