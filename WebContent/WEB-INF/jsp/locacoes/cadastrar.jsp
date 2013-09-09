@@ -34,7 +34,7 @@
 					<br></td>
 					
 					<td align="right" width="80"><label>Frete:</label></td>
-					<td align="left"><input	type="text" class="dinheiro" name="locacao.frete" value="${locacao.frete}" /><br></td>
+					<td align="left"><input	type="text" class="dinheiro" name="locacaofrete" value="${locacao.frete}" /><br></td>
 				</tr></table> 
 				</fieldset>
 				<br/>
