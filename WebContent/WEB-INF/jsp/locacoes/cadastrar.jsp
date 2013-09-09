@@ -598,7 +598,7 @@
     					var campovalortotal1 = parseFloat($(this).val(), 10);
 	    				document.form.valortotal.value = campovalortotal1;
 	    				document.form.valorfinal.value = campovalortotal1;
-	    				alert("O item: " + item + " está na posição: " + index +"");
+	    				//alert("O item: " + item + " está na posição: " + index +"");
     				});
     			}
     			
@@ -609,9 +609,9 @@
 	    				acumulador = acumulador+valorselect;
 	    				document.form.valortotal.value = acumulador;
 	    				document.form.valorfinal.value = acumulador;
-	    				alert("O item: " + item + " está na posição: " + index +"");
-	    				var teste = $(this).val(function (index, val) {return index;});
-	    				alert(teste);
+	    				//alert("O item: " + item + " está na posição: " + index +"");
+	    				//var teste = $(this).val(function (index, val) {return index;});
+	    				//alert(teste);
     				});
     				
 	    		};
