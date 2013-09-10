@@ -31,7 +31,7 @@
 						<td align="right" width="95"><label>Descrição:</label></td></tr></table>
 						<table><tr><td width="95"></td> 
 						<td align="right"><textarea style="resize:none; text-transform: uppercase;" rows="10" cols="123" name="produto.descricao" />${produto.descricao}</textarea><br> </td></tr></table><br>
-						<td align="right" width="95"><label>Obs:</label></td></tr></table>
+						<table><tr><td align="right" width="95"><label>Obs:</label></td></tr></table>
 						<table><tr><td width="95"></td> 
 						<td align="right"><textarea style="resize:none; text-transform: uppercase;" rows="10" cols="123" name="produto.obs" />${produto.obs}</textarea><br> </td></tr></table><br> 
 						 
