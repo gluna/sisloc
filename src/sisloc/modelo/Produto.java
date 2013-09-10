@@ -25,6 +25,7 @@ public class Produto implements Serializable{
 	private String descricao;
 	private Integer quantidade;
 	private Double valor;
+	private String obs;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn
@@ -100,6 +101,14 @@ public class Produto implements Serializable{
 		}
 		
 		return preco;
+	}
+
+	public String getObs() {
+		return obs;
+	}
+
+	public void setObs(String obs) {
+		this.obs = obs;
 	}
 
 }
