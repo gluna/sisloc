@@ -117,6 +117,8 @@
  					'</select>&nbsp&nbsp'+
  					'<label>Quantidade:</label>&nbsp'+
  					'<input type="text" class="dev" style="background-color: #FFFFFF;" name="locacao.devolucaolocacao[0].quantidade" value="${devolucao.quantidade}" />&nbsp&nbsp'+
+ 					'<label>Data:</label>&nbsp'+
+ 					'<input type="text" class="dev" style="background-color: #FFFFFF;" name="locacao.devolucaolocacao[0].dtdevolucao" value="${devolucao.dtdevolucao}" />&nbsp&nbsp'+
  					'<input type="hidden" name="locacao.devolucaolocacao[0].id" value="${devolucao.id}" />'+
  					'</div>';
     		

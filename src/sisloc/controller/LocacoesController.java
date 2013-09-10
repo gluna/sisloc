@@ -99,7 +99,6 @@ public class LocacoesController {
 		    	 for(DevolucaoLocacao dl : devolucoes ){
 		    		 if(dl.getId() == null){
 		    			 dl.setProduto(produtodao.selectById(dl.getProduto()));
-			    		 dl.setDtdevolucao(new Date());
 			    		 locacao.getDevolucaolocacao().add(dl);
 		    		 }
 		    	 }
