@@ -19,11 +19,7 @@
 						<label>Nome/Empresa:</label></td> 
 						<td align="left"><input	class="maiuscula" type="text" name="cliente.nome" size=50 value="${cliente.nome}" readonly /><br></td>
 						<td align="right" width="80"><label>CPF/CNPJ:</label></td> 
-						<td align="left"><input class="maiuscula" type="text" name="cliente.cpfcnpj" size=28 value="${cliente.cpfcnpj}" readonly /></td></tr></table><br>
-						<td align="right" width="85"><label>Insc. Est.:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="cliente.ie" size=28 value="${cliente.ie}" readonly/><br> </td>
-						<td align="right" width="85"><label>Insc. Mun.:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="cliente.im" size=28 value="${cliente.im}" readonly/><br> </td>						
+						<td align="left"><input class="maiuscula" type="text" name="cliente.cpfcnpj" size=28 value="${cliente.cpfcnpj}" readonly /></td></tr></table><br>					
 						<table><tr><td align="right" width="95"><label>Endereço:</label> </td>
 						<td align="left"><input class="maiuscula" type="text" name="cliente.logradouro" size=96 value="${cliente.logradouro}" readonly /> </td>
 						<td align="right"><label>Número:</label></td> 
@@ -42,9 +38,14 @@
 						</tr></table><br>
 						<table><tr><td align="right" width="95"> <label>E-mail:</label></td> 
 						<td align="left"><input class="maiuscula" type="text" name="cliente.email" size=50 value="${cliente.email}" readonly /> <br></td>
-						<td align="right" width="85"><label>Contato:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="cliente.contato" size=28 value="${cliente.contato}" readonly /><br> </td>
-						<td align="right" width="50"><label>Rep:</label></td> 
+						<td align="right" width="85"><label>Insc. Est.:</label></td> 
+						<td align="left"> <input class="maiuscula" type="text" name="cliente.ie" size=28 value="${cliente.ie}" readonly/><br> </td>
+						<td align="right" width="85"><label>Insc. Mun.:</label></td> 
+						<td align="left"> <input class="maiuscula" type="text" name="cliente.im" size=28 value="${cliente.im}" readonly/><br> </td></tr></table><br>
+						<table><tr>
+						<td align="right" width="95"><label>Contato:</label></td> 
+						<td align="left"> <input class="maiuscula" type="text" name="cliente.contato" size=50 value="${cliente.contato}" readonly /><br> </td>
+						<td align="right" width="85"><label>Rep:</label></td> 
 						<td align="left"> <input class="maiuscula" type="text" name="cliente.rep" size=28 value="${cliente.rep}" readonly /><br> </td>
 						</tr></table>
 				</fieldset>

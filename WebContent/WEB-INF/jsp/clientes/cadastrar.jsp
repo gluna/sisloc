@@ -72,10 +72,11 @@
 						<td align="right" width="85"><label>Insc. Est.:</label></td> 
 						<td align="left"> <input class="maiuscula" type="text" name="cliente.ie" size=28 value="${cliente.ie}" /><br> </td>
 						<td align="right" width="85"><label>Insc. Mun.:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="cliente.im" size=28 value="${cliente.im}" /><br> </td>
-						<td align="right" width="85"><label>Contato:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="cliente.contato" size=28 value="${cliente.contato}" /><br> </td>
-						<td align="right" width="50"><label>Rep:</label></td> 
+						<td align="left"> <input class="maiuscula" type="text" name="cliente.im" size=28 value="${cliente.im}" /><br> </td></tr></table><br>
+						<table><tr>
+						<td align="right" width="95"><label>Contato:</label></td> 
+						<td align="left"> <input class="maiuscula" type="text" name="cliente.contato" size=50 value="${cliente.contato}" /><br> </td>
+						<td align="right" width="85"><label>Rep:</label></td> 
 						<td align="left"> <input class="maiuscula" type="text" name="cliente.rep" size=28 value="${cliente.rep}" /><br> </td>
 						</tr></table>
 				</fieldset>
