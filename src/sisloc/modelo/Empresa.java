@@ -18,6 +18,7 @@ public class Empresa {
 	private String contrato; //text do contrato
 	private String cnpj; //OK
 	private String ie; //inscrição estadual OK
+	private String im; //inscrição municipal
 	private String logradouro; //OK
 	private String numero; //OK
 	private String bairro; //OK
@@ -117,6 +118,12 @@ public class Empresa {
 	}
 	public void setEmail(String email) {
 		this.email = email.toUpperCase();
+	}
+	public String getIm() {
+		return im;
+	}
+	public void setIm(String im) {
+		this.im = im;
 	}
 
 }

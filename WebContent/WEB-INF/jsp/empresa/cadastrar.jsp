@@ -20,8 +20,11 @@
 						<td align="left"><input	class="maiuscula" type="text" name="empresa.nomefantasia" size=50 value="${empresa.nomefantasia}" /><br></td>
 						<td align="right" width="80"><label>CNPJ:</label></td> 
 						<td align="left"><input class="maiuscula" type="text" name="empresa.cnpj" size=28 value="${empresa.cnpj}" /></td>
-						<td align="right" width="95"> 
-						<label>Razão Social:</label></td> 
+						<td align="right" width="85"><label>Insc. Est.:</label></td> 
+						<td align="left"> <input class="maiuscula" type="text" name="empresa.ie" size=28 value="${empresa.ie}" /><br> </td>
+						<td align="right" width="85"><label>Insc. Mun.:</label></td> 
+						<td align="left"> <input class="maiuscula" type="text" name="empresa.im" size=28 value="${empresa.im}" /><br> </td>
+						<td align="right" width="95"> <label>Razão Social:</label></td> 
 						<td align="left"><input	class="maiuscula" type="text" name="empresa.razaosocial" size=30 value="${empresa.razaosocial}" /><br></td></tr></table><br>
 						<table><tr><td align="right" width="95"><label>Endereço:</label> </td>
 						<td align="left"><input class="maiuscula" type="text" name="empresa.logradouro" size=96 value="${empresa.logradouro}" /> </td>
