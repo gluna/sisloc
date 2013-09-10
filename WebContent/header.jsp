@@ -42,7 +42,7 @@
          			<li><a href="<c:url value="/fornecedores/cadastrar"/>"><span>Fornecedores</span></a></li>
          			<li><a href="<c:url value="/locacoes/cadastrar"/>"><span>Locações</span></a></li>
          			<li><a href="<c:url value="/orcamentos/cadastrar"/>"><span>Orçamentos</span></a></li>
-         			<li><a href="<c:url value="/pagamentos/consultalocacao"/>"><span>Pagamentos</span></a></li>
+         			<li><a href="<c:url value="/pagamentos/consultalocacao"/>"><span>Contas a Receber</span></a></li>
          			<li><a href="<c:url value="/produtos/cadastrar"/>"><span>Produtos</span></a></li>        			
       			</ul>
    			</li>
