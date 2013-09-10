@@ -22,11 +22,12 @@
 					<td align="right" width="95"><label>Cliente:</label></td>
 					
 					<td align="left">
-						<!-- <select id="cliente"  name="locacao.cliente.id" value="locacao.cliente.id">
+						<select id="cliente"  name="locacao.cliente.id" value="locacao.cliente.id">
 							<option value="${locacao.cliente.id}">${locacao.cliente.nome}</option>
-						</select> -->
-						<input	type="text" class="readonly" name="locacaocliente" size=50 value="${locacao.cliente}" readonly /><br></td>
-						<td><input type="button" name="button" id="add-user" value="Procurar" icon="ui-icon-search"/></td>
+						</select>
+						<!-- <input	type="hidden" class="readonly" name="locacaoclienteid" size=50 value="${locacao.cliente.id}" readonly />
+						<input	type="text" class="readonly" name="locacaocliente" size=50 value="${locacao.cliente.nome}" readonly /><br></td>
+						<td><input type="button" name="button" id="add-user" value="Procurar" icon="ui-icon-search"/></td>-->
 					
 					<!-- <input	type="text" class="maiuscula" name="locacao.cliente.nome" size=50 value="${locacao.cliente}" /> -->
 					 
@@ -514,7 +515,7 @@
     		        dataType: 'json',  
     		        success : function(clientes) {
     		            
-    		            	$('.caixa').each(function(index) {
+    		            	$('.container').each(function(index) {
 
     		    				var $campos = $(this).find('select'),
     	    					$input	,
@@ -527,7 +528,7 @@
     	    						$input.find('option').remove();
     	    						$input.append('<option value="">Selecione um Item</option>');
     	    						for (var i = 0; i < clientes.length; i++){
-    	    							$input.append('<option value="'+clientes[i].nome+'">'+clientes[i].nome+'</option>');
+    	    							$input.append('<option value="'+clientes[i].id+'">'+clientes[i].nome+'</option>');
     	    						};
     	    					};
 	    	    			});
