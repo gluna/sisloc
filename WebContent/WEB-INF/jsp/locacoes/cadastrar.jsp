@@ -232,7 +232,7 @@
 					<td align="left"><input	type="text" class="dinheiro1" name="valorfinal" value="${locacao.valorfinal}" readonly/><br></td>
 				</tr></table>
 				</fieldset><br>
-				<fieldset id="pagamentos" style="width: 1140px;">
+				<fieldset id="pagamentos2" style="width: 1140px;">
 				<legend>Pagamentos:</legend>
 				<table align="right"><tr><td>
 					<input type="button" name="button" value="Adicionar" onclick="adicionarpagamento();" icon="ui-icon-contact"/></td></tr>
@@ -415,10 +415,10 @@
     	var pagamentomodel= 
     		'<div class="pagamentos">'+
     		'<label>Valor R$:</label>'+
-    		'<input type="text" class="dinheiro" name="locacao.pagamentos[0].valor" value="${locacao.pagamentos[0].valor}" />&nbsp'+
+    		'<input type="text" class="dinheiro" name="locacao.pagamentos[0].valor" value="${pagamento.valor}" />&nbsp'+
     		'<label>Data de Venciento:</label>'+
-    		'<input type="text" class="data" name="locacao.pagamentos[0].dtvencimento" value="<fmt:formatDate value="${locacao.pagamentos[0].dtvencimento}" dateStyle="medium" />" /> &nbsp&nbsp' +
-    		'<input type="hidden" name="locacao.pagamentos[0].id" value="${locacao.pagamentos[0].id}" />'+
+    		'<input type="text" class="data" name="locacao.pagamentos[0].dtvencimento" value="<fmt:formatDate value="${pagamento.dtvencimento}" dateStyle="medium" />" /> &nbsp&nbsp' +
+    		'<input type="hidden" name="locacao.pagamentos[0].id" value="${pagamento.id}" />'+
     		'<input type="button" class="button-remover" />' +
     		'</div>';
     		
@@ -447,7 +447,7 @@
     		
     		function adicionarpagamento(){
     			
-    			$('#pagamentos').append(pagamentomodel);
+    			$('#pagamentos2').append(pagamentomodel);
     			
     			$(".data").datepicker({
     			    dateFormat: 'dd/mm/yy',
