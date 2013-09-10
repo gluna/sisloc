@@ -20,10 +20,6 @@
 						<td align="left"><input	class="maiuscula" type="text" name="empresa.nomefantasia" size=50 value="${empresa.nomefantasia}" /><br></td>
 						<td align="right" width="80"><label>CNPJ:</label></td> 
 						<td align="left"><input class="maiuscula" type="text" name="empresa.cnpj" size=28 value="${empresa.cnpj}" /></td>
-						<td align="right" width="85"><label>Insc. Est.:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="empresa.ie" size=28 value="${empresa.ie}" /><br> </td>
-						<td align="right" width="85"><label>Insc. Mun.:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="empresa.im" size=28 value="${empresa.im}" /><br> </td>
 						<td align="right" width="95"> <label>Razão Social:</label></td> 
 						<td align="left"><input	class="maiuscula" type="text" name="empresa.razaosocial" size=30 value="${empresa.razaosocial}" /><br></td></tr></table><br>
 						<table><tr><td align="right" width="95"><label>Endereço:</label> </td>
@@ -34,6 +30,8 @@
 						<td align="left"><input class="maiuscula" type="text" name="empresa.complemento" size=50 value="${empresa.complemento}" /> <br></td>
 						<td align="right" width="85"><label>Bairro:</label></td> 
 						<td align="left"> <input class="maiuscula" type="text" name="empresa.bairro" size=29 value="${empresa.bairro}" /><br> </td>
+						<td align="right" width="50"><label>Tel:</label></td> 
+						<td align="left"> <input class="maiuscula" type="text" name="empresa.tel" size=28 value="${empresa.tel}" /><br> </td>
 						</tr></table><br>
 						<table><tr><td align="right" width="95"> <label>Cidade:</label></td> 
 						<td align="left"><input class="maiuscula" type="text" name="empresa.cidade" size=50 value="${empresa.cidade}" /> <br></td>
@@ -77,8 +75,8 @@
 						<td align="left"><input class="maiuscula" type="text" name="empresa.email" size=50 value="${empresa.email}" /> <br></td>
 						<td align="right" width="85"><label>Insc. Est.:</label></td> 
 						<td align="left"> <input class="maiuscula" type="text" name="empresa.ie" size=28 value="${empresa.ie}" /><br> </td>
-						<td align="right" width="50"><label>Tel:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="empresa.tel" size=28 value="${empresa.tel}" /><br> </td>
+						<td align="right" width="85"><label>Insc. Mun.:</label></td> 
+						<td align="left"> <input class="maiuscula" type="text" name="empresa.im" size=28 value="${empresa.im}" /><br> </td>
 						</tr></table>
 						<table><tr>
 						<td align="right" width="95"><label>Contrato:</label></td>
