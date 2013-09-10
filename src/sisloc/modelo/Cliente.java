@@ -33,6 +33,8 @@ public class Cliente implements Serializable{
 	private String contato;
 	private String cpfcnpj;
 	private String rep;
+	private String ie;//inscricao estadual
+	private String im;//inscricao municipal 
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn
@@ -121,6 +123,18 @@ public class Cliente implements Serializable{
 	}
 	public void setRep(String rep) {
 		this.rep = rep.toUpperCase();
+	}
+	public String getIe() {
+		return ie;
+	}
+	public void setIe(String ie) {
+		this.ie = ie;
+	}
+	public String getIm() {
+		return im;
+	}
+	public void setIm(String im) {
+		this.im = im;
 	}
 	
 

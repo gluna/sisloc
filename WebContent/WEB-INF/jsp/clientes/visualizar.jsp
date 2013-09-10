@@ -20,6 +20,10 @@
 						<td align="left"><input	class="maiuscula" type="text" name="cliente.nome" size=50 value="${cliente.nome}" readonly /><br></td>
 						<td align="right" width="80"><label>CPF/CNPJ:</label></td> 
 						<td align="left"><input class="maiuscula" type="text" name="cliente.cpfcnpj" size=28 value="${cliente.cpfcnpj}" readonly /></td></tr></table><br>
+						<td align="right" width="85"><label>Insc. Est.:</label></td> 
+						<td align="left"> <input class="maiuscula" type="text" name="cliente.ie" size=28 value="${cliente.ie}" readonly/><br> </td>
+						<td align="right" width="85"><label>Insc. Mun.:</label></td> 
+						<td align="left"> <input class="maiuscula" type="text" name="cliente.im" size=28 value="${cliente.im}" readonly/><br> </td>						
 						<table><tr><td align="right" width="95"><label>Endereço:</label> </td>
 						<td align="left"><input class="maiuscula" type="text" name="cliente.logradouro" size=96 value="${cliente.logradouro}" readonly /> </td>
 						<td align="right"><label>Número:</label></td> 
