@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Preco implements Serializable{
+public class Preco implements Serializable, Comparable<Preco>{
 
 	/**
 	 * 
@@ -38,5 +38,15 @@ public class Preco implements Serializable{
 	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
+	@Override
+	public int compareTo(Preco preco) {
+        if(this.dias > preco.dias){
+            return 1;
+        }
+        else if(this.dias < preco.dias){
+            return -1;
+        }
+        return this.getPreco().compareTo(preco.getPreco());
+    }
 
 }

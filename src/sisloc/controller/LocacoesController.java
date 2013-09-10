@@ -262,7 +262,7 @@ public class LocacoesController {
 					if(dias < diasdeutilizacao){
 						Pagamento p = new Pagamento();
 						p.setTipo("E");
-						p.setDescricao("Atraso na devolução de equipamento");
+						p.setDescricao("Atraso na devolução de equipamento loc. Nº:"+locacao.getId());
 						p.setValor(devolucao.getProduto().getPreco(diasdeutilizacao-dias)*devolucao.getQuantidade());
 						p.setDtvencimento(new Date());
 						locacao.getPagamentos().add(p);

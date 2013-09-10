@@ -1,6 +1,7 @@
 package sisloc.modelo;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -88,6 +89,7 @@ public class Produto implements Serializable{
 	}
 	
 	public Double getPreco(Long dias){
+		Collections.sort(precos);
 		Double preco = precos.get(0).getPreco();
 		Long diferenca = dias-precos.get(0).getDias();
 		
