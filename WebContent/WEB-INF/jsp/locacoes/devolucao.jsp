@@ -89,7 +89,7 @@
 				<br>
 				<table align="center">
 					<tr><td>
-					<input type="button" name="button" value="Salvar" class="salvar" icon="ui-icon-disk"/><br/>	
+					<input type="button" name="button" onclick="conta();" value="Salvar" class="salvar" icon="ui-icon-disk"/><br/>	
 					</td>
 					<td>
 					<!-- <input type="submit" value="Imprimir" class="imprimir" icon="ui-icon-print"/><br/>  -->
@@ -118,7 +118,7 @@
  					'<label>Quantidade:</label>&nbsp'+
  					'<input type="text" class="dev" style="background-color: #FFFFFF;" name="locacao.devolucaolocacao[0].quantidade" value="${devolucao.quantidade}" />&nbsp&nbsp'+
  					'<label>Data:</label>&nbsp'+
- 					'<input type="text" class="dev" style="background-color: #FFFFFF;" name="locacao.devolucaolocacao[0].dtdevolucao" value="<fmt:formatDate value="${devolucao.dtdevolucao}" dateStyle="medium" />" />&nbsp&nbsp'+
+ 					'<input type="text" style="background-color: #FFFFFF;" name="locacao.devolucaolocacao[0].dtdevolucao" value="<fmt:formatDate value="${devolucao.dtdevolucao}" dateStyle="medium" />" />&nbsp&nbsp'+
  					'<input type="hidden" name="locacao.devolucaolocacao[0].id" value="${devolucao.id}" />'+
  					'</div>';
     		
