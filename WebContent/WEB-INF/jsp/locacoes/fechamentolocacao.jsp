@@ -109,11 +109,11 @@
 					<c:forEach items="${locacao.pagamentos}" var="pagamento" varStatus="status">
 			    		<div class="pagamentos">
 			    		<label>Valor R$:</label>
-			    		<input type="text" name="locacao.pagamentos[${status.index}].valor" value="${pagamento.valor}" />
+			    		<input type="text" name="locacao.pagamentos[${status.index}].valor" size=20 value="${pagamento.valor}" />
 			    		<label>Dt. Venciento:</label>
-			    		<input type="text" name="locacao.pagamentos[${status.index}].dtvencimento" value="<fmt:formatDate value="${pagamento.dtvencimento}" dateStyle="medium" />" />
+			    		<input type="text" name="locacao.pagamentos[${status.index}].dtvencimento" size=20 value="<fmt:formatDate value="${pagamento.dtvencimento}" dateStyle="medium" />" />
 			    		<label>Descrição:</label>
-			    		<input type="text" name="locacao.pagamentos[${status.index}].descricao" size=30 value="${pagamento.descricao}" />
+			    		<input type="text" name="locacao.pagamentos[${status.index}].descricao" size=50 value="${pagamento.descricao}" />
 			    		<input type="hidden" name="locacao.pagamentos[${status.index}].id" value="${pagamento.id}" />
 			    		<input type="button" class="button-remover" />
 			    		</div>
