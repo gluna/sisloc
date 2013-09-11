@@ -74,7 +74,7 @@ order by pagamento.dtpagamento;]]>
 			<subreport>
 				<reportElement uuid="075a69d4-63f2-4ff9-ba79-fd4d121cc8f0" positionType="Float" x="84" y="2" width="467" height="61"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "cabecalhosubreport.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "/cabecalhosubreport.jasper"]]></subreportExpression>
 			</subreport>
 			<staticText>
 				<reportElement uuid="b20a59df-bf7b-4bee-a779-bad042d0d7fe" x="10" y="107" width="54" height="15">
