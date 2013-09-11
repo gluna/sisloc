@@ -249,6 +249,7 @@ public class LocacoesController {
 	@Path("/locacoes/fechamentolocacao/{locacao.id}")
 	public Locacao fechamentolocacao(Locacao locacao){
 		locacao = dao.selectById(locacao);
+		if(locacao.getStatus().equals("A")){
  		locacao.setStatus("F");
 		Long dias = (locacao.getDtfim().getTime()-locacao.getDtinicio().getTime())/1000/60/60/24;
 		for(LocacaoDetalhe detalhe : locacao.getLocacaodetalhe()){
@@ -277,6 +278,8 @@ public class LocacoesController {
 				p.setDtvencimento(new Date());
 				locacao.getPagamentos().add(p);
 			}
+		}
+		
 		}
 		return locacao;
 	}

@@ -112,6 +112,8 @@
 			    		<input type="text" name="locacao.pagamentos[${status.index}].valor" value="${pagamento.valor}" />
 			    		<label>Dt. Venciento:</label>
 			    		<input type="text" name="locacao.pagamentos[${status.index}].dtvencimento" value="<fmt:formatDate value="${pagamento.dtvencimento}" dateStyle="medium" />" />
+			    		<label>Descrição:</label>
+			    		<input type="text" name="locacao.pagamentos[${status.index}].descricao" value="${pagamento.descricao}" />
 			    		<input type="hidden" name="locacao.pagamentos[${status.index}].id" value="${pagamento.id}" />
 			    		<input type="button" class="button-remover" />
 			    		</div>
