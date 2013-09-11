@@ -82,33 +82,7 @@
 						<td align="right" width="95"><label>Contrato:</label></td>
 						<td align="right"><textarea style="resize:none; text-transform: uppercase;" rows="10" cols="130" name="empresa.contrato" />${empresa.contrato}</textarea><br> </td></tr></table><br>
 				</fieldset>
-				<br/>
-				<!-- <fieldset id="telefone-container" style="width: 1140px;">
-				<legend>
-					Telefones:	
-				</legend>
-				<table align="right"><tr><td>
-					<input type="button" name="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-contact"/></td></tr>
-				</table>
-				<c:forEach items="${empresa.telefones}" var="telefone" varStatus="status">
-					<div class="telefoneempresa">
-						<label>Tipo:</label>&nbsp
-						<select id="telefone" name="empresa.telefones[${status.index}].tipo">
-						<option value="${telefone.tipo}">${telefone.tipo}</option>
-						<option value="COMERCIAL" class="comercial">&nbsp&nbsp&nbsp&nbspCOMERCIAL</option>
-						<option value="RESIDENCIAL" class="tel">&nbsp&nbsp&nbsp&nbspRESIDENCIAL</option>
-						<option value="CELULAR" class="cel">&nbsp&nbsp&nbsp&nbspCELULAR</option>
-						</select>&nbsp&nbsp
-						<label>Numero:</label>&nbsp
-						<input type="text" name="empresa.telefones[${status.index}].numero" value="${telefone.numero}" />&nbsp&nbsp
-						<label>Contato:</label>&nbsp
-						<input type="text" name="empresa.telefones[${status.index}].contato" value="${telefone.contato}" />&nbsp&nbsp
-						<input type="hidden" name="empresa.telefones[${status.index}].id" value="${telefone.id}" />
-						<input type="button" class="button-remover"/>
-					</div>
-				</c:forEach>
-				</fieldset>  -->
-	
+				<br/>	
 				<br>
 				<table align="center">
 					<tr><td>

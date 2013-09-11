@@ -33,6 +33,7 @@ public class EmpresaController {
 		    		 dao.atualizar(empresa);
 	             }
 	          }
+		     result.include("empresa", empresa);
 		     result.redirectTo(this.getClass()).cadastrar();
 		} catch (Exception e) {
 			result.include("msg", e.getMessage());
@@ -43,7 +44,7 @@ public class EmpresaController {
 	public void editar(Empresa empresa){
 		empresa = dao.selectById(empresa);
 	    if(empresa != null) {
-	         result.include("cliente", empresa);
+	         result.include("empresa", empresa);
 	    }
 	    result.redirectTo(this.getClass()).cadastrar();
 	}
