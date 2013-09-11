@@ -90,19 +90,16 @@ public class Produto implements Serializable{
 	
 	public Double getPreco(Long dias){
 		Collections.sort(precos);
-		Double preco = precos.get(0).getPreco();
-		Long diferenca = dias-precos.get(0).getDias();
-		
+		Double preco = 0.0;
 		for(Preco p : precos){
+			preco = p.getPreco();
 			if(p.getDias() <= dias){
-				if(diferenca > (dias-p.getDias())){
-					preco = p.getPreco();
-					diferenca = dias-p.getDias();
-				}	
+				return preco;
 			}
 		}
 		
 		return preco;
+		
 	}
 
 	public String getObs() {
