@@ -56,6 +56,7 @@ public class PagamentosController {
 		             }
 		    	 }
 	          }
+		     result.include("locacao", locacao);
 		     result.redirectTo(this.getClass()).cadastrar();
 		} catch (Exception e) {
 			result.include("msg", e.getMessage());
