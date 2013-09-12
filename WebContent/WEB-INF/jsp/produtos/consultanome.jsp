@@ -27,6 +27,12 @@
 				</legend>
 				<div id="users-contain" class="ui-widget">
 					<table id="users" class="ui-widget ui-widget-content">
+					<thead>
+						<tr class="ui-widget-header">
+							<th>Nome</th>
+							<th>Ação</th>
+						</tr>
+					</thead>
 					<tbody>
 					<c:forEach items="${produtoList}" var="produto">
 						<tr>

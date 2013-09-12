@@ -15,11 +15,11 @@
 					Dados da Consulta:
 				</legend>
 					<table><tr><td align="right" width="95"> 
-						<label>Dt Inicial:</label></td> 
-						<td align="left"><input	class="maiuscula" type="text" name="inicio" size=50 value="${inicio}" /><br></td>
+						<label>Data Inicial:</label></td> 
+						<td align="left"><input type="text" class="data" size=10 name="inicio" value="<fmt:formatDate value="${inicio}" dateStyle="medium" />" /><br></td>
 						<td align="right" width="95"> 
-						<label>Dt Final:</label></td> 
-						<td align="left"><input	class="maiuscula" type="text" name="fim" size=50 value="${fim}" /><br></td>
+						<label>Data Final:</label></td> 
+						<td align="left"><input type="text" class="data" size=10 name="fim" value="<fmt:formatDate value="${fim}" dateStyle="medium" />" /><br></td>
 						<td><input type="submit" value="Consultar" icon="ui-icon-search"/><br/></td>
 						</tr></table><br>
 				</fieldset>
@@ -30,13 +30,21 @@
 				</legend>
 				<div id="users-contain" class="ui-widget">
 					<table id="users" class="ui-widget ui-widget-content">
+					<thead>
+						<tr class="ui-widget-header">
+							<th>ID</th>
+							<th>Descrição</th>
+							<th>Data de Vencimento</th>
+							<th>Ação</th>
+						</tr>
+					</thead>
 					<tbody>
 					<c:forEach items="${pagamentoList}" var="pagamento">
 						<tr>
 						  <td>${pagamento.id}</td>
 						  <td>${pagamento.descricao}</td>
 						  <td><fmt:formatDate value="${pagamento.dtvencimento}" dateStyle="medium" /></td>
-						  <td><fmt:formatDate value="${pagamento.dtpagamento}" dateStyle="medium" /></td>
+						  <!-- <td><fmt:formatDate value="${pagamento.dtpagamento}" dateStyle="medium" /></td> -->
 						  <td><a href="<c:url value="/pagamentos/editarcontasapagar/${pagamento.id}" />" name="editar">Editar</a></td>
 						  <!-- <td><a href="<c:url value="/fornecedores/excluir/${tarefa.id}"/>">Excluir</a></td> -->
 						</tr>
@@ -76,6 +84,19 @@
 			         $(this).prev().click();
 			    });
 			});
+		$(".data").datepicker({
+		    dateFormat: 'dd/mm/yy',
+		    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+		    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+		    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+		    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+		    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+		    nextText: 'Próximo',
+		    prevText: 'Anterior',
+		    showOn: "button",
+			buttonImage: "${pageContext.request.contextPath}/images/calendar.gif",
+			buttonImageOnly: true
+		});
 	});
 </script>
 <style>

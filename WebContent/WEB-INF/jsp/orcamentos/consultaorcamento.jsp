@@ -27,6 +27,13 @@
 				</legend>
 				<div id="users-contain" class="ui-widget">
 					<table id="users" class="ui-widget ui-widget-content">
+					<thead>
+						<tr class="ui-widget-header">
+							<th>ID</th>
+							<th>Cliente</th>
+							<th colspan="2">Ação</th>
+						</tr>
+					</thead>
 					<tbody>
 					<c:forEach items="${orcamentoList}" var="orcamento">
 						<tr>
