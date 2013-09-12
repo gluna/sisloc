@@ -35,6 +35,7 @@ public class ProdutosController {
 		    		 dao.atualizar(produto);
 	             }
 	          }
+		     result.include("produto", produto);
 		     result.redirectTo(this.getClass()).cadastrar();
 		} catch (Exception e) {
 			result.include("msg", e.getMessage());

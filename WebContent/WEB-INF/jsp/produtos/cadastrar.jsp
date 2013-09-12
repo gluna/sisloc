@@ -49,7 +49,7 @@
 						<label>Dias:</label>&nbsp
 						<input type="text" name="produto.precos[${status.index}].dias" value="${preco.dias}" />&nbsp&nbsp
 						<label>Valor R$:</label>&nbsp
-						<input type="text" name="produto.precos[${status.index}].preco" id="currency" value="<fmt:formatNumber value="${preco.preco}" minFractionDigits="2"/>" />&nbsp&nbsp
+						<input type="text" name="produto.precos[${status.index}].preco" id="currency" value="${preco.preco}" />&nbsp&nbsp
 						<input type="hidden" name="produto.precos[${status.index}].id" value="${preco.id}" />
 						<input type="button" class="button-remover" />
 					</div>
