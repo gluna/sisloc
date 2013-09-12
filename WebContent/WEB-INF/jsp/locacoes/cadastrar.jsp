@@ -284,13 +284,13 @@
      		'<label>Endereço:</label>' + 
      		'</td>' +
 			'<td align="left">' +
-			'<input class="maiuscula" type="text" name="locacao.enderecos[0].logradouro" size=96 value="${locacao.enderecos[0].logradouro}" />' +
+			'<input class="maiuscula" type="text" name="locacao.enderecos[0].logradouro" size=96 value="${endereco.logradouro}" />' +
 			'</td>' +
 			'<td align="right">' +
 			'<label>Número:</label>' +
 			'</td>' + 
 			'<td align="left">' +
-			'<input class="maiuscula" type="text" name="locacao.enderecos[0].numero" size=10 value="${locacao.enderecos[0].numero}" />' +
+			'<input class="maiuscula" type="text" name="locacao.enderecos[0].numero" size=10 value="${endereco.numero}" />' +
 			'<br>' +
 			'</td>' +
 			'</tr>' +
@@ -302,14 +302,14 @@
 			'<label>Complemento:</label>' +
 			'</td>' + 
 			'<td align="left">' +
-			'<input class="maiuscula" type="text" name="locacao.enderecos[0].complemento" size=50 value="${locacao.enderecos[0].complemento}" />' +
+			'<input class="maiuscula" type="text" name="locacao.enderecos[0].complemento" size=50 value="${endereco.complemento}" />' +
 			'<br>' +
 			'</td>' +
 			'<td align="right" width="85">' +
 			'<label>Bairro:</label>' +
 			'</td>' +
 			'<td align="left">' +
-			'<input class="maiuscula" type="text" name="locacao.enderecos[0].bairro" size=29 value="${locacao.enderecos[0].bairro}" />' +
+			'<input class="maiuscula" type="text" name="locacao.enderecos[0].bairro" size=29 value="${endereco.bairro}" />' +
 			'<br>' +
 			'</td>' +
 			'<td align="right" width="35">' +
@@ -317,7 +317,7 @@
 			'</td>' + 
 			'<td align="left">' + 
 			'<select name="locacao.enderecos[0].tipoendereco">' +
-					'<option value="${locacao.enderecos[0].tipoendereco}">${locacao.enderecos[0].tipoendereco}</option>' +
+					'<option value="${endereco.tipoendereco}">${endereco.tipoendereco}</option>' +
 					'<option value="ENTREGA">ENTREGA</option>' +
 					'<option value="COBRANÇA">COBRANÇA</option>' +
 					'<option value="ENTREGA/COBRANÇA">ENTREGA/COBRANÇA</option>' +
@@ -332,7 +332,7 @@
 			'<label>Cidade:</label>' +
 			'</td>' + 
 			'<td align="left">' +
-			'<input class="maiuscula" type="text" name="locacao.enderecos[0].cidade" size=50 value="${locacao.enderecos[0].cidade}" />' +
+			'<input class="maiuscula" type="text" name="locacao.enderecos[0].cidade" size=50 value="${endereco.cidade}" />' +
 			'<br>' +
 			'</td>' +
 			'<td align="right" width="85">' +
@@ -340,7 +340,7 @@
 			'</td>' + 
 			'<td align="left">' + 
 			'<select name="locacao.enderecos[0].uf">' +
-					'<option value="${locacao.enderecos[0].uf}">${locacao.enderecos[0].uf}</option>' +
+					'<option value="${endereco.uf}">${endereco.uf}</option>' +
 					'<option value="AC">ACRE</option>' +
 					'<option value="AL">ALAGOAS</option>' +
 					'<option value="AP">AMAPÁ</option>' +
@@ -375,7 +375,7 @@
 			'<label>CEP:</label>' +
 			'</td>' + 
 			'<td align="left">' +
-			'<input class="maiuscula" type="text" name="locacao.enderecos[0].cep" size=12 value="${locacao.enderecos[0].cep}" />' +
+			'<input class="maiuscula" type="text" name="locacao.enderecos[0].cep" size=12 value="${endereco.cep}" />' +
 			'<br>' +
 			'</td>' +
 			'</tr>' +
@@ -387,7 +387,7 @@
 			'<label>Contato:</label>' +
 			'</td>' + 
 			'<td align="left">' +
-			'<input class="maiuscula" type="text" name="locacao.enderecos[0].contato" size=50 value="${locacao.enderecos[0].contato}" />' +
+			'<input class="maiuscula" type="text" name="locacao.enderecos[0].contato" size=50 value="${endereco.contato}" />' +
 			'<br>' +
 			'</td>' +
 			'</tr>' +
@@ -398,17 +398,17 @@
  		var model =
     	    '<div class="produtointem">'+
     	    '<label>Produto:</label>&nbsp' +
-    		'<select id="produto" onchange="getpreco(value, name);" name="locacao.locacaodetalhe[0].produto.id" value="locacao.locacaodetalhe[0].produto.id">'+
+    		'<select id="produto" onchange="getpreco(value, name);" name="locacao.locacaodetalhe[0].produto.id" value="${locacaodetalhe.produto.id}">'+
     		'	<option value="">Selecione um Item</option>'+
     		'	<c:forEach items="${produtoList}" var="produto" varStatus="status">'+
     		'		<option value="${produto.id}">${produto.nome}</option>'+
     		'	</c:forEach>'+
     		'</select>&nbsp&nbsp'+
     		'<label>R$:</label>&nbsp' +
-    		'<select id="preco" class="precoitem" onchange="soma();" name="locacao.locacaodetalhe[0].preco" value="locacao.locacaodetalhe[0].preco">'+
+    		'<select id="preco" class="precoitem" onchange="soma();" name="locacao.locacaodetalhe[0].preco" value="${locacaodetalhe.preco}">'+
     		'</select>&nbsp&nbsp'+
     		'<label>Quantidade:</label>&nbsp' +
-    		'<input type="text" class="qtde" name="locacao.locacaodetalhe[0].quantidade" onchange="calculaqtd();" value="${locacao.locacaodetalhe[0].quantidade}" />&nbsp&nbsp'+
+    		'<input type="text" class="qtde" name="locacao.locacaodetalhe[0].quantidade" onchange="calculaqtd();" value="${locacaodetalhe.quantidade}" />&nbsp&nbsp'+
 			'<input type="button" class="button-remover" />' +
     		'</div>';
     		
