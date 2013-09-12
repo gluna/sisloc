@@ -103,17 +103,17 @@
 var model =
     '<div class="produtointem">'+
     '<label>Produto:</label>&nbsp' +
-	'<select id="produto" onchange="getpreco(value, name);" name="orcamento.orcamentodetalhe[0].produto.id" value="orcamento.orcamentodetalhe[0].produto.id">'+
+	'<select id="produto" onchange="getpreco(value, name);" name="orcamento.orcamentodetalhe[0].produto.id" value="${orcamentodetalhe.produto.id}">'+
 	'	<option value="">Selecione um Item</option>'+
 	'	<c:forEach items="${produtoList}" var="produto" varStatus="status">'+
 	'		<option value="${produto.id}">${produto.nome}</option>'+
 	'	</c:forEach>'+
 	'</select>&nbsp&nbsp'+
 	'<label>R$:</label>&nbsp' +
-	'<select id="preco" name="orcamento.orcamentodetalhe[0].preco" value="orcamento.orcamentodetalhe[0].preco">'+
+	'<select id="preco" name="orcamento.orcamentodetalhe[0].preco" value="${orcamentodetalhe.preco}">'+
 	'</select>&nbsp&nbsp'+
 	'<label>Quantidade:</label>&nbsp' +
-	'<input type="text" name="orcamento.orcamentodetalhe[0].quantidade" value="${orcamento.orcamentodetalhe[0].quantidade}" />&nbsp&nbsp'+
+	'<input type="text" name="orcamento.orcamentodetalhe[0].quantidade" value="${orcamentodetalhe.quantidade}" />&nbsp&nbsp'+
 	'<input type="hidden" name="orcamento.orcamentodetalhe[0].id" value="${orcamentodetalhe.id}" />'+
 	'<input type="button" class="button-remover" />' +
 	'</div>';
