@@ -51,7 +51,7 @@ public class Empresa {
 		return contrato;
 	}
 	public void setContrato(String contrato) {
-		this.contrato = contrato.toUpperCase();
+		this.contrato = contrato;
 	}
 	public String getCnpj() {
 		return cnpj;

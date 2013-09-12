@@ -125,10 +125,10 @@ var model =
 		'<option value="CELULAR" class="cel">&nbsp&nbsp&nbsp&nbspCELULAR</option>' +
 		'</select>&nbsp&nbsp' +
 		'<label>Numero:</label>&nbsp' +
-		'<input type="text" name="fornecedor.telefones[${status.index}].numero" value="${telefone.numero}" />&nbsp&nbsp' +
+		'<input type="text" name="fornecedor.telefones[0].numero" value="${telefone.numero}" />&nbsp&nbsp' +
 		'<label>Contato:</label>&nbsp' +
 		'<input type="text" class="maiuscula" name="fornecedor.telefones[0].contato" value="${telefone.contato}" />&nbsp&nbsp' +
-		'<input type="hidden" name="fornecedor.telefones[${status.index}].id" value="${telefone.id}" />' +
+		'<input type="hidden" name="fornecedor.telefones[0].id" value="${telefone.id}" />' +
 		'<input type="button" class="button-remover" />' +
 	'</div>';
 
