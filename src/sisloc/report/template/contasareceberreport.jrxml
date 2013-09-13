@@ -133,7 +133,7 @@ order by pagamento.dtvencimento]]>
 			<textField>
 				<reportElement uuid="2b9c439f-ea88-4b9b-ac0b-9bf7b952dde5" x="84" y="2" width="396" height="15"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{descricao}+" - Nº Loc. "+$F{pagamentos_id}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="98ab7ee2-4fe7-4013-be2a-d64914dbc897" x="2" y="2" width="80" height="15"/>
