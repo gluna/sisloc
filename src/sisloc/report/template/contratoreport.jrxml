@@ -3,7 +3,7 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sisloc"/>
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="108"/>
+	<property name="ireport.y" value="609"/>
 	<import value="static net.sf.jasperreports.expressions.functions.MathFunctions.*"/>
 	<parameter name="LOCACAO_ID" class="java.lang.Long"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
@@ -305,7 +305,7 @@ WHERE
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="100" splitType="Stretch">
+			<band height="239" splitType="Stretch">
 				<textField pattern="¤#,##0.00#;¤-#,##0.00#">
 					<reportElement uuid="db2c123e-29bb-4f10-99ee-fb2b5aad5b68" x="445" y="5" width="106" height="20"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
@@ -327,10 +327,27 @@ WHERE
 					</textElement>
 					<textFieldExpression><![CDATA[$F{contrato}]]></textFieldExpression>
 				</textField>
-			</band>
-			<band height="323">
+				<textField pattern="dd MMMM yyyy">
+					<reportElement uuid="f7724657-4f6d-4e3f-9d7e-d09f33f6f349" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="389" y="132" width="121" height="20"/>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement uuid="f54b663b-63b0-40c0-80c5-b8e4a4a76457" positionType="FixRelativeToBottom" x="224" y="203" width="300" height="1"/>
+				</line>
 				<staticText>
-					<reportElement uuid="f495d801-38c3-4802-bb66-6d63415a6e09" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="16" y="269" width="518" height="15">
+					<reportElement uuid="85ebedaa-a2be-4b25-97bd-5cc3fe1d4dfd" positionType="FixRelativeToBottom" x="239" y="132" width="171" height="20"/>
+					<textElement>
+						<font size="11"/>
+					</textElement>
+					<text><![CDATA[Campos dos Goytacazes,]]></text>
+				</staticText>
+			</band>
+			<band height="260">
+				<staticText>
+					<reportElement uuid="f495d801-38c3-4802-bb66-6d63415a6e09" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="16" y="198" width="518" height="15">
 						<property name="local_mesure_unitheight" value="pixel"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="local_mesure_unity" value="pixel"/>
@@ -342,7 +359,7 @@ WHERE
 					<text><![CDATA[RG:__________________   CPF: ____________________]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="aa863961-b2d0-4f04-9095-5ed42a34022a" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="16" y="108" width="518" height="15">
+					<reportElement uuid="aa863961-b2d0-4f04-9095-5ed42a34022a" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="16" y="37" width="518" height="15">
 						<property name="local_mesure_unitheight" value="pixel"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="local_mesure_unity" value="pixel"/>
@@ -354,7 +371,7 @@ WHERE
 					<text><![CDATA[Nome: ________________________________________________________________________]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="6b9343b4-ac2d-42fe-a0e6-c9dc4ee7b121" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="16" y="147" width="518" height="15">
+					<reportElement uuid="6b9343b4-ac2d-42fe-a0e6-c9dc4ee7b121" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="16" y="76" width="518" height="15">
 						<property name="local_mesure_unitheight" value="pixel"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="local_mesure_unity" value="pixel"/>
@@ -367,7 +384,7 @@ WHERE
 					<text><![CDATA[Ass. ______________________________________________________]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="d6bd28d6-4989-4c42-8459-16cde3ee0ff9" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="16" y="232" width="518" height="15">
+					<reportElement uuid="d6bd28d6-4989-4c42-8459-16cde3ee0ff9" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="16" y="161" width="518" height="15">
 						<property name="local_mesure_unitheight" value="pixel"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="local_mesure_unity" value="pixel"/>
@@ -380,7 +397,7 @@ WHERE
 					<text><![CDATA[Ass. ______________________________________________________]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="2f587192-3cf5-4328-978b-55079f8d5964" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="16" y="92" width="70" height="15">
+					<reportElement uuid="2f587192-3cf5-4328-978b-55079f8d5964" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="16" y="21" width="70" height="15">
 						<property name="local_mesure_unitheight" value="pixel"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
@@ -390,14 +407,7 @@ WHERE
 					<text><![CDATA[Locatária]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="85ebedaa-a2be-4b25-97bd-5cc3fe1d4dfd" positionType="FixRelativeToBottom" x="231" y="5" width="171" height="20"/>
-					<textElement>
-						<font size="11"/>
-					</textElement>
-					<text><![CDATA[Campos dos Goytacazes,]]></text>
-				</staticText>
-				<staticText>
-					<reportElement uuid="2f15ba2a-1106-4829-84f1-2a3cf7ef85dc" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="16" y="124" width="518" height="15">
+					<reportElement uuid="2f15ba2a-1106-4829-84f1-2a3cf7ef85dc" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="16" y="53" width="518" height="15">
 						<property name="local_mesure_unitheight" value="pixel"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="local_mesure_unity" value="pixel"/>
@@ -409,7 +419,7 @@ WHERE
 					<text><![CDATA[RG:__________________   CPF: ____________________]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="58d95e36-aacb-4702-9b7d-37ceabe7bbdd" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="16" y="177" width="95" height="15">
+					<reportElement uuid="58d95e36-aacb-4702-9b7d-37ceabe7bbdd" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="16" y="106" width="95" height="15">
 						<property name="local_mesure_unitheight" value="pixel"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
@@ -419,7 +429,7 @@ WHERE
 					<text><![CDATA[Testemunhas]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="5fdc0117-d1f9-43ed-939a-e530752dc39a" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="16" y="292" width="518" height="15">
+					<reportElement uuid="5fdc0117-d1f9-43ed-939a-e530752dc39a" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="16" y="221" width="518" height="15">
 						<property name="local_mesure_unitheight" value="pixel"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="local_mesure_unity" value="pixel"/>
@@ -432,7 +442,7 @@ WHERE
 					<text><![CDATA[Ass. ______________________________________________________]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="1b7a1565-2163-44ff-ae90-b368f64b37dc" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="16" y="193" width="518" height="15">
+					<reportElement uuid="1b7a1565-2163-44ff-ae90-b368f64b37dc" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="16" y="122" width="518" height="15">
 						<property name="local_mesure_unitheight" value="pixel"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="local_mesure_unity" value="pixel"/>
@@ -444,7 +454,7 @@ WHERE
 					<text><![CDATA[Nome: ________________________________________________________________________]]></text>
 				</staticText>
 				<staticText>
-					<reportElement uuid="93f41b16-2763-4fec-9af0-0c23e1e1a5a8" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="16" y="209" width="518" height="15">
+					<reportElement uuid="93f41b16-2763-4fec-9af0-0c23e1e1a5a8" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="16" y="138" width="518" height="15">
 						<property name="local_mesure_unitheight" value="pixel"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="local_mesure_unity" value="pixel"/>
@@ -455,11 +465,8 @@ WHERE
 					</textElement>
 					<text><![CDATA[RG:__________________   CPF: ____________________]]></text>
 				</staticText>
-				<line>
-					<reportElement uuid="f54b663b-63b0-40c0-80c5-b8e4a4a76457" positionType="FixRelativeToBottom" x="216" y="76" width="300" height="1"/>
-				</line>
 				<staticText>
-					<reportElement uuid="75a08ec6-0a0a-4dde-8d55-825f17fb492f" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="16" y="253" width="518" height="15">
+					<reportElement uuid="75a08ec6-0a0a-4dde-8d55-825f17fb492f" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="16" y="182" width="518" height="15">
 						<property name="local_mesure_unitheight" value="pixel"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 						<property name="local_mesure_unity" value="pixel"/>
@@ -470,13 +477,6 @@ WHERE
 					</textElement>
 					<text><![CDATA[Nome: ________________________________________________________________________]]></text>
 				</staticText>
-				<textField pattern="dd MMMM yyyy">
-					<reportElement uuid="f7724657-4f6d-4e3f-9d7e-d09f33f6f349" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="381" y="5" width="121" height="20"/>
-					<textElement>
-						<font size="11"/>
-					</textElement>
-					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-				</textField>
 			</band>
 		</groupFooter>
 	</group>
