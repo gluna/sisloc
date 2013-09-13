@@ -143,7 +143,7 @@ order by pagamento.dtpagamento;]]>
 			<textField>
 				<reportElement uuid="6a755dee-2316-4a49-a0a6-2d8ad207d8af" x="80" y="2" width="320" height="15"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{descricao}+" - Nº Loc. "+$F{pagamentos_id}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="15340c40-6a9a-4a7c-b9a0-c19a9b62e7d9" x="400" y="2" width="40" height="15"/>
