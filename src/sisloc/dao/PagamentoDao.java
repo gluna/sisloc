@@ -48,7 +48,10 @@ public class PagamentoDao {
 	}
 	
 	public Pagamento selectById(Pagamento pagamento){
-		return null;
+		Query q = manager.createQuery("from Pagamento t where t.id = :pid");
+		q.setParameter("pid", pagamento.getId());
+		 
+		return (Pagamento)q.getSingleResult();
 	}
 	
 	@SuppressWarnings("unchecked")
