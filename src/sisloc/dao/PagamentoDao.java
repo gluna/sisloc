@@ -55,7 +55,8 @@ public class PagamentoDao {
 	public List<Pagamento> contasapagarnoperiodo(Date inicio, Date fim){
 		Query q = manager.createQuery("from Pagamento t where t.dtvencimento >= :inicio " +
 				                                       "and t.dtvencimento <= :fim " +
-				                                       "and t.dtpagamento is null "+
+				                                       "and t.dtpagamento is null " +
+				                                       "and t.tipo = 'S' "+
 				                                       "order by t.dtvencimento");
 		q.setParameter("inicio", inicio);
 		q.setParameter("fim", fim);  

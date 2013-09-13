@@ -186,9 +186,10 @@ public class PagamentosController {
 	}
 	
 	@Path("/pagamentos/editarcontasapagar/{pagamento.id}")
-	public Pagamento editarcontasapagar(Pagamento pagamento){
+	public void editarcontasapagar(Pagamento pagamento){
 		pagamento = dao.selectById(pagamento);
-		return pagamento;
+		result.include("pagamento", pagamento);
+		result.redirectTo(this.getClass()).cadastrarcontasapagar();
 	}
 
 
