@@ -3,7 +3,7 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sisloc"/>
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="336"/>
+	<property name="ireport.y" value="192"/>
 	<import value="static net.sf.jasperreports.expressions.functions.MathFunctions.*"/>
 	<parameter name="LOCACAO_ID" class="java.lang.Long"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
@@ -267,7 +267,7 @@ WHERE
 					<text><![CDATA[Dt. Fim]]></text>
 				</staticText>
 				<subreport>
-					<reportElement uuid="113540b2-8e1e-4e8d-abca-9e966ce3663b" x="2" y="224" width="550" height="33"/>
+					<reportElement uuid="113540b2-8e1e-4e8d-abca-9e966ce3663b" positionType="FixRelativeToBottom" x="2" y="224" width="550" height="33"/>
 					<subreportParameter name="ENDERECO_ID">
 						<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
 					</subreportParameter>
