@@ -65,7 +65,7 @@
 						</select>
 						<br> </td>
 						<td align="right" width="67"><label>CEP:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="cliente.cep" size=13 value="${cliente.cep}" /><br> </td>
+						<td align="left"> <input class="maiuscula" type="text" name="cliente.cep" onkeypress="mascara(this,cep)" size=13 value="${cliente.cep}" /><br> </td>
 						</tr></table><br>
 						<table><tr><td align="right" width="95"> <label>E-mail:</label></td> 
 						<td align="left"><input class="maiuscula" type="text" name="cliente.email" size=50 value="${cliente.email}" /> <br></td>
@@ -217,6 +217,7 @@ function reorderIndexes() {
 			});
 	});
 	
+		
 </script>
 <style type="text/css">
 input.maiuscula {

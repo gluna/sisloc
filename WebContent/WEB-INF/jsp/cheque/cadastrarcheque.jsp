@@ -26,10 +26,12 @@
 						</tr></table><br>
 						<table><tr>
 						<td align="right" width="95"><label>Banco:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="cheque.banco" size=20 value="${cheque.banco}" /><br> </td>
+						<td align="left"> <input class="maiuscula" type="text" name="cheque.banco" size=23 value="${cheque.banco}" /><br> </td>
+						<td align="right" width="60"><label>Agência:</label></td> 
+						<td align="left"> <input class="maiuscula" type="text" name="cheque.agencia" size=5 value="${cheque.agencia}" /><br> </td>
 						<td align="right" width="50"><label>Conta:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="cheque.conta" size=19 value="${cheque.conta}" /><br> </td>
-						<td align="right" width="70"><label>Número:</label></td> 
+						<td align="left"> <input class="maiuscula" type="text" name="cheque.conta" size=10 value="${cheque.conta}" /><br> </td>
+						<td align="right" width="75"><label>Nº Cheque:</label></td> 
 						<td align="left"> <input class="maiuscula" type="text" name="cheque.numero" size=19 value="${cheque.numero}" /><br> </td>
 						<td align="right" width="50"><label>Valor:</label></td> 
 						<td align="left"> <input class="dinheiro" type="text" name="cheque.valor" size=19 value="${cheque.valor}" /><br> </td>
