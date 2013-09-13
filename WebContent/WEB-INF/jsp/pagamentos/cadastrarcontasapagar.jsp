@@ -103,7 +103,6 @@ $(document).ready(function(){
 <style type="text/css">
 input.maiuscula {
   text-transform: uppercase;
-  background-color: #FFFFE0;
 }
 .data1 {
   background-color: #FFFFE0;

@@ -65,9 +65,21 @@ public class LocacoesController {
 	public void salvar(Locacao locacao){
 		try {
 		     if(locacao != null) {
+		    	 Double valortotal = 0.0;
+		    	 if (locacao.getDescontopercent() == null){
+		    		 locacao.setDescontopercent(0.0);
+		    	 }
+		    	 if (locacao.getDescontovalor() == null){
+		    		 locacao.setDescontovalor(0.0);
+		    	 }
 		    	 for(LocacaoDetalhe ld : locacao.getLocacaodetalhe() ){
 		    		 ld.setProduto(produtodao.selectById(ld.getProduto()));
+		    		 valortotal = valortotal+(ld.getPreco()*ld.getQuantidade());
 		    	 }
+		    	 locacao.setValortotal(valortotal);
+		    	 Double desconto = ((valortotal/100)*locacao.getDescontopercent());
+		    	 valortotal = valortotal-desconto;
+		    	 locacao.setValorfinal(valortotal-locacao.getDescontovalor());
 		    	 if(locacao.getPagamentos() != null){
 			    	 for(Pagamento p : locacao.getPagamentos()){
 			    		 p.setTipo("E");
@@ -86,6 +98,7 @@ public class LocacoesController {
 		     result.redirectTo(this.getClass()).cadastrar();
 		} catch (Exception e) {
 			result.include("msg", e.getMessage());
+			System.out.println(e.getMessage());
 		}
 	}
 

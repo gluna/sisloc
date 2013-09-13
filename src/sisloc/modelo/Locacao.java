@@ -36,7 +36,6 @@ public class Locacao implements Serializable{
 	private Double valortotal; //valor sem descontos
 	private Double descontovalor;
 	private Double descontopercent;
-	private String formapagamento;
 	private String obs;
 	private Double frete;
 	private Double valorfinal; //valor final apos os descontos
@@ -133,14 +132,6 @@ public class Locacao implements Serializable{
 
 	public void setDescontopercent(Double descontopercent) {
 		this.descontopercent = descontopercent;
-	}
-
-	public String getFormapagamento() {
-		return formapagamento;
-	}
-
-	public void setFormapagamento(String formapagamento) {
-		this.formapagamento = formapagamento;
 	}
 
 	public List<EnderecoLocacao> getEnderecos() {
