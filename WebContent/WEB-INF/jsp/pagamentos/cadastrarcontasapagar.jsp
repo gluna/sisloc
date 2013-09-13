@@ -24,6 +24,7 @@
 							<td align="left"><input type="text" class="dinheiro" name="pagamento.valor" size=10 value="${pagamento.valor}" /> 
 							<td align="right" width="95"><label>Descrição:</label></td>
 							<td align="left"><input type="text" class="text" name="pagamento.descricao" size=70 value="${pagamento.descricao}" /> 
+							<td align="left"><input type="hidden" class="text" name="pagamento.tipo" size=70 value="${pagamento.tipo}" />
 							 
 							<br></td></tr></table>
 							
