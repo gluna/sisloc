@@ -200,6 +200,8 @@
 			    		<input type="text" class="maiuscula" name="locacao.pagamentos[${status.index}].valor" value="${pagamento.valor}" readonly/>
 			    		<label>Data de Venciento:</label>
 			    		<input type="text" class="data" name="locacao.pagamentos[${status.index}].dtvencimento" value="<fmt:formatDate value="${pagamento.dtvencimento}" dateStyle="medium" />" readonly/>
+			    		<label>Descrição:</label>
+			    		<input type="text" class="maiuscula" size=50 name="locacao.pagamentos[${status.index}].descricao" value="${pagamento.descricao}" readonly/>
 			    		<input type="hidden" name="locacao.pagamentos[${status.index}].id" value="${pagamento.id}" />
 			    		<!-- <input type="button" class="button-remover" />  -->
 			    		</div>
