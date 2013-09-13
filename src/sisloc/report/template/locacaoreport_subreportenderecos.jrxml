@@ -81,7 +81,7 @@ where enderecoLOCACAO.enderecos_id = $P{ENDERECO_ID}]]>
 				<text><![CDATA[Tipo Endereço]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="baef4a86-597e-46c0-964b-73616fb9fd30" x="77" y="2" width="467" height="15"/>
+				<reportElement uuid="baef4a86-597e-46c0-964b-73616fb9fd30" x="77" y="2" width="467" height="15" printWhenGroupChanges="enderecolocacao_id"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{enderecolocacao_tipoendereco}]]></textFieldExpression>
 			</textField>
