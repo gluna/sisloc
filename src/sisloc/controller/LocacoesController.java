@@ -169,6 +169,7 @@ public class LocacoesController {
 				Map<String, Object> parametros = new HashMap<String, Object>();
 				parametros.put( "LOCACAO_ID", locacao.getId() );
 				parametros.put("PATH", context.getRealPath("/images/"));
+				parametros.put("SUBREPORT_DIR", context.getRealPath("/WEB-INF/classes/sisloc/report/template/"));
 				 
 				JasperPrint print = JasperFillManager.fillReport(context.getRealPath("/WEB-INF/classes/sisloc/report/template/contratoreport.jasper"), parametros, SislocUtils.getConnection());
 				//visualiza o rel apenas no servidor
