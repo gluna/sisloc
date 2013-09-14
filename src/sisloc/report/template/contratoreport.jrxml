@@ -3,7 +3,7 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sisloc"/>
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="609"/>
+	<property name="ireport.y" value="0"/>
 	<import value="static net.sf.jasperreports.expressions.functions.MathFunctions.*"/>
 	<parameter name="LOCACAO_ID" class="java.lang.Long"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
@@ -22,6 +22,7 @@
      locacao."descontopercent",
      locacao."formapagamento",
      locacao."valortotal",
+     locacao."valorfinal",
      cliente."nome" AS clientenome,
      cliente."cpfcnpj" AS clientecpfcnpj,
      produto."nome" AS produtonome,
@@ -94,6 +95,7 @@ WHERE
 	<field name="cliente_numero" class="java.lang.String"/>
 	<field name="preco" class="java.lang.Double"/>
 	<field name="dtlocacao" class="java.sql.Timestamp"/>
+	<field name="valorfinal" class="java.lang.Double"/>
 	<group name="Group1">
 		<groupExpression><![CDATA[$F{id}]]></groupExpression>
 		<groupHeader>
@@ -305,44 +307,72 @@ WHERE
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="239" splitType="Stretch">
+			<band height="284" splitType="Stretch">
 				<textField pattern="¤#,##0.00#;¤-#,##0.00#">
 					<reportElement uuid="db2c123e-29bb-4f10-99ee-fb2b5aad5b68" x="445" y="5" width="106" height="20"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="12"/>
 					</textElement>
-					<textFieldExpression><![CDATA[SUM($F{preco} *$F{quantidade})]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{valortotal}]]></textFieldExpression>
 				</textField>
-				<textField pattern="¤#,##0.00#;¤-#,##0.00#">
+				<textField pattern="#,##0.00 %">
 					<reportElement uuid="d299a51e-b65d-48b9-8cdc-48c8c4e50ddb" x="445" y="28" width="106" height="20"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="12"/>
 					</textElement>
-					<textFieldExpression><![CDATA[SUM($F{preco} *$F{quantidade})-((SUM($F{preco} *$F{quantidade})/100)*$F{descontopercent})-$F{descontovalor}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{descontopercent}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement uuid="9f2cc1bd-4e56-49a8-ba05-906af069b5ad" positionType="Float" isPrintRepeatedValues="false" x="9" y="60" width="541" height="30"/>
+					<reportElement uuid="9f2cc1bd-4e56-49a8-ba05-906af069b5ad" positionType="Float" isPrintRepeatedValues="false" x="9" y="117" width="541" height="30"/>
 					<textElement textAlignment="Justified" verticalAlignment="Top" markup="none">
 						<paragraph lineSpacing="Single" spacingAfter="0"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{contrato}]]></textFieldExpression>
 				</textField>
 				<textField pattern="dd MMMM yyyy">
-					<reportElement uuid="f7724657-4f6d-4e3f-9d7e-d09f33f6f349" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="389" y="132" width="121" height="20"/>
+					<reportElement uuid="f7724657-4f6d-4e3f-9d7e-d09f33f6f349" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="389" y="189" width="121" height="20"/>
 					<textElement>
 						<font size="11"/>
 					</textElement>
 					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 				</textField>
 				<line>
-					<reportElement uuid="f54b663b-63b0-40c0-80c5-b8e4a4a76457" positionType="FixRelativeToBottom" x="224" y="203" width="300" height="1"/>
+					<reportElement uuid="f54b663b-63b0-40c0-80c5-b8e4a4a76457" positionType="FixRelativeToBottom" x="224" y="260" width="300" height="1"/>
 				</line>
 				<staticText>
-					<reportElement uuid="85ebedaa-a2be-4b25-97bd-5cc3fe1d4dfd" positionType="FixRelativeToBottom" x="239" y="132" width="171" height="20"/>
+					<reportElement uuid="85ebedaa-a2be-4b25-97bd-5cc3fe1d4dfd" positionType="FixRelativeToBottom" x="239" y="189" width="171" height="20"/>
 					<textElement>
 						<font size="11"/>
 					</textElement>
 					<text><![CDATA[Campos dos Goytacazes,]]></text>
+				</staticText>
+				<textField pattern="¤#,##0.00#;¤-#,##0.00#">
+					<reportElement uuid="5d04dc2f-c13c-444b-9cf7-96ae2825e8a9" x="445" y="51" width="106" height="20"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{descontovalor}]]></textFieldExpression>
+				</textField>
+				<textField pattern="¤#,##0.00#;¤-#,##0.00#">
+					<reportElement uuid="87252524-3705-413b-959f-688f53356fec" x="445" y="74" width="106" height="20"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{valorfinal}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="7b3daad1-56d1-46ea-bfdd-bf3545cc3c72" x="337" y="28" width="106" height="20"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Desc. %]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="87901fe0-fb5b-464c-bf68-958ccd72863d" x="337" y="51" width="106" height="20"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Desc. Val.]]></text>
 				</staticText>
 			</band>
 			<band height="260">
