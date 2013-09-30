@@ -4,44 +4,111 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<parameter name="DT_INICIO" class="java.util.Date"/>
-	<parameter name="DT_FIM" class="java.util.Date"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["/home/gustavo/git/sisloc/src/sisloc/report/template/"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="PATH" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="LOCACAO_ID" class="java.lang.Long">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
-  pagamento.id,
-  pagamento.dtpagamento,
-  pagamento.dtvencimento,
-  pagamento.valor,
-  pagamento.pagamentos_id,
-  pagamento.forma,
-  pagamento.descricao,
-  pagamento.tipo
+     cliente."id" AS cliente_id,
+     cliente."bairro" AS cliente_bairro,
+     cliente."cep" AS cliente_cep,
+     cliente."cidade" AS cliente_cidade,
+     cliente."complemento" AS cliente_complemento,
+     cliente."contato" AS cliente_contato,
+     cliente."cpfcnpj" AS cliente_cpfcnpj,
+     cliente."email" AS cliente_email,
+     cliente."ie" AS cliente_ie,
+     cliente."im" AS cliente_im,
+     cliente."logradouro" AS cliente_logradouro,
+     cliente."nome" AS cliente_nome,
+     cliente."numero" AS cliente_numero,
+     cliente."rep" AS cliente_rep,
+     cliente."uf" AS cliente_uf,
+     devolucaolocacao."id" AS devolucaolocacao_id,
+     devolucaolocacao."dtdevolucao" AS devolucaolocacao_dtdevolucao,
+     devolucaolocacao."quantidade" AS devolucaolocacao_quantidade,
+     devolucaolocacao."produto_id" AS devolucaolocacao_produto_id,
+     devolucaolocacao."devolucaolocacao_id" AS devolucaolocacao_devolucaolocacao_id,
+     locacao."id" AS locacao_id,
+     locacao."descontopercent" AS locacao_descontopercent,
+     locacao."descontovalor" AS locacao_descontovalor,
+     locacao."dtfim" AS locacao_dtfim,
+     locacao."dtinicio" AS locacao_dtinicio,
+     locacao."dtlocacao" AS locacao_dtlocacao,
+     locacao."empresa" AS locacao_empresa,
+     locacao."formapagamento" AS locacao_formapagamento,
+     locacao."frete" AS locacao_frete,
+     locacao."obs" AS locacao_obs,
+     locacao."status" AS locacao_status,
+     locacao."valorfinal" AS locacao_valorfinal,
+     locacao."valortotal" AS locacao_valortotal,
+     locacao."cliente_id" AS locacao_cliente_id,
+     produto."id" AS produto_id,
+     produto."codigo" AS produto_codigo,
+     produto."descricao" AS produto_descricao,
+     produto."nome" AS produto_nome,
+     produto."obs" AS produto_obs,
+     produto."quantidade" AS produto_quantidade,
+     produto."valor" AS produto_valor
 FROM
-  public.pagamento
+     "public"."cliente" cliente INNER JOIN "public"."locacao" locacao ON cliente."id" = locacao."cliente_id"
+     INNER JOIN "public"."devolucaolocacao" devolucaolocacao ON locacao."id" = devolucaolocacao."devolucaolocacao_id"
+     INNER JOIN "public"."produto" produto ON devolucaolocacao."produto_id" = produto."id"
 WHERE
-    pagamento.dtpagamento >= $P{DT_INICIO}
-and pagamento.dtpagamento <= $P{DT_FIM}
-order by pagamento.dtpagamento;]]>
+     locacao.id = $P{LOCACAO_ID}]]>
 	</queryString>
-	<field name="id" class="java.lang.Long"/>
-	<field name="dtpagamento" class="java.sql.Timestamp"/>
-	<field name="dtvencimento" class="java.sql.Timestamp"/>
-	<field name="valor" class="java.lang.Double"/>
-	<field name="pagamentos_id" class="java.lang.Long"/>
-	<field name="forma" class="java.lang.String"/>
-	<field name="descricao" class="java.lang.String"/>
-	<field name="tipo" class="java.lang.String"/>
+	<field name="cliente_id" class="java.lang.Long"/>
+	<field name="cliente_bairro" class="java.lang.String"/>
+	<field name="cliente_cep" class="java.lang.String"/>
+	<field name="cliente_cidade" class="java.lang.String"/>
+	<field name="cliente_complemento" class="java.lang.String"/>
+	<field name="cliente_contato" class="java.lang.String"/>
+	<field name="cliente_cpfcnpj" class="java.lang.String"/>
+	<field name="cliente_email" class="java.lang.String"/>
+	<field name="cliente_ie" class="java.lang.String"/>
+	<field name="cliente_im" class="java.lang.String"/>
+	<field name="cliente_logradouro" class="java.lang.String"/>
+	<field name="cliente_nome" class="java.lang.String"/>
+	<field name="cliente_numero" class="java.lang.String"/>
+	<field name="cliente_rep" class="java.lang.String"/>
+	<field name="cliente_uf" class="java.lang.String"/>
+	<field name="devolucaolocacao_id" class="java.lang.Long"/>
+	<field name="devolucaolocacao_dtdevolucao" class="java.sql.Timestamp"/>
+	<field name="devolucaolocacao_quantidade" class="java.lang.Integer"/>
+	<field name="devolucaolocacao_produto_id" class="java.lang.Long"/>
+	<field name="devolucaolocacao_devolucaolocacao_id" class="java.lang.Long"/>
+	<field name="locacao_id" class="java.lang.Long"/>
+	<field name="locacao_descontopercent" class="java.lang.Double"/>
+	<field name="locacao_descontovalor" class="java.lang.Double"/>
+	<field name="locacao_dtfim" class="java.sql.Timestamp"/>
+	<field name="locacao_dtinicio" class="java.sql.Timestamp"/>
+	<field name="locacao_dtlocacao" class="java.sql.Timestamp"/>
+	<field name="locacao_empresa" class="java.lang.Long"/>
+	<field name="locacao_formapagamento" class="java.lang.String"/>
+	<field name="locacao_frete" class="java.lang.Double"/>
+	<field name="locacao_obs" class="java.lang.String"/>
+	<field name="locacao_status" class="java.lang.String"/>
+	<field name="locacao_valorfinal" class="java.lang.Double"/>
+	<field name="locacao_valortotal" class="java.lang.Double"/>
+	<field name="locacao_cliente_id" class="java.lang.Long"/>
+	<field name="produto_id" class="java.lang.Long"/>
+	<field name="produto_codigo" class="java.lang.String"/>
+	<field name="produto_descricao" class="java.lang.String"/>
+	<field name="produto_nome" class="java.lang.String"/>
+	<field name="produto_obs" class="java.lang.String"/>
+	<field name="produto_quantidade" class="java.lang.Integer"/>
+	<field name="produto_valor" class="java.lang.Double"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="129" splitType="Stretch">
+		<band height="146" splitType="Stretch">
 			<line>
 				<reportElement uuid="0a81a10a-1d87-49eb-bdb4-9d5c14902a5f" x="0" y="73" width="555" height="1"/>
 			</line>
@@ -59,17 +126,17 @@ order by pagamento.dtpagamento;]]>
 					<font fontName="SansSerif" size="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single" lineSpacingSize="1.0" firstLineIndent="0" leftIndent="0" rightIndent="0" spacingBefore="0" spacingAfter="0" tabStopWidth="40"/>
 				</textElement>
-				<text><![CDATA[REL DE ENTRADA E SAÍDA]]></text>
+				<text><![CDATA[RECIBO DE ENTREGA DE MATERIAIS]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="643a37b5-ad2b-453b-8295-c6ac778e8ce2" x="67" y="107" width="70" height="15"/>
+				<reportElement uuid="643a37b5-ad2b-453b-8295-c6ac778e8ce2" x="71" y="107" width="70" height="15"/>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($P{DT_INICIO})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{locacao_id}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="fc8e78f2-cb71-43a3-8438-c25d3084df06" x="230" y="107" width="70" height="15"/>
+				<reportElement uuid="fc8e78f2-cb71-43a3-8438-c25d3084df06" x="54" y="124" width="394" height="15"/>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($P{DT_FIM})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{cliente_nome}]]></textFieldExpression>
 			</textField>
 			<subreport>
 				<reportElement uuid="075a69d4-63f2-4ff9-ba79-fd4d121cc8f0" positionType="Float" x="84" y="2" width="467" height="61"/>
@@ -77,20 +144,20 @@ order by pagamento.dtpagamento;]]>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "/cabecalhosubreport.jasper"]]></subreportExpression>
 			</subreport>
 			<staticText>
-				<reportElement uuid="b20a59df-bf7b-4bee-a779-bad042d0d7fe" x="10" y="107" width="54" height="15">
+				<reportElement uuid="b20a59df-bf7b-4bee-a779-bad042d0d7fe" x="10" y="107" width="62" height="15">
 					<property name="local_mesure_unitheight" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[Data Inicio]]></text>
+				<text><![CDATA[Nº Locação:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="677bc0b6-8dde-4708-a9e9-2538cf4c6570" x="176" y="107" width="54" height="15">
+				<reportElement uuid="677bc0b6-8dde-4708-a9e9-2538cf4c6570" x="10" y="124" width="44" height="15">
 					<property name="local_mesure_unitheight" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[Data Fim]]></text>
+				<text><![CDATA[Cliente]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -113,20 +180,12 @@ order by pagamento.dtpagamento;]]>
 				<text><![CDATA[Referencia]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="be555f63-8619-4c8d-8f68-ed2511045394" x="400" y="2" width="40" height="15">
-					<property name="local_mesure_unitheight" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Tipo]]></text>
-			</staticText>
-			<staticText>
 				<reportElement uuid="5bafad2e-35dd-4140-95ef-7ad246e6f4ce" x="481" y="2" width="70" height="15">
 					<property name="local_mesure_unitheight" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Valor]]></text>
+				<text><![CDATA[Quant]]></text>
 			</staticText>
 			<line>
 				<reportElement uuid="6070ee3e-a611-4f14-99b1-03b3e5a3ed43" x="0" y="19" width="555" height="1"/>
@@ -138,22 +197,17 @@ order by pagamento.dtpagamento;]]>
 			<textField>
 				<reportElement uuid="fcc43c69-2322-4bc8-9962-97fbc8985dce" x="2" y="2" width="70" height="15"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{dtpagamento})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{devolucaolocacao_dtdevolucao})]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="6a755dee-2316-4a49-a0a6-2d8ad207d8af" x="80" y="2" width="320" height="15"/>
+				<reportElement uuid="6a755dee-2316-4a49-a0a6-2d8ad207d8af" x="80" y="2" width="368" height="15"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$F{descricao}+" - Nº Loc. "+$F{pagamentos_id}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="15340c40-6a9a-4a7c-b9a0-c19a9b62e7d9" x="400" y="2" width="40" height="15"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{produto_descricao}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="6130b64f-76cd-4a48-bb98-6fa6259332d9" x="468" y="2" width="83" height="15"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA[NumberFormat.getCurrencyInstance().format($F{valor})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{devolucaolocacao_quantidade}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement uuid="935f32ad-4b1a-4ffa-bda0-d1cd1718cba4" x="0" y="19" width="555" height="1"/>
