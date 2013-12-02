@@ -12,7 +12,7 @@
 				<table><tr><td>
 				<div class="column">
  
-				  <div class="portlet">
+				  <!-- <div class="portlet">
 				    <div class="portlet-header">Contas a Pagar</div>
 				    <div class="portlet-content">R$ 2.000,00</div>
 				  </div>
@@ -20,16 +20,16 @@
 				  <div class="portlet">
 				    <div class="portlet-header">Contas a Receber</div>
 				    <div class="portlet-content">R$ 1.500,00</div>
-				  </div>
+				  </div> -->
 				 
 				</div>
 			</div>
 			<div class="column">
  
-			  <div class="portlet">
+			  <!-- <div class="portlet">
 			    <div class="portlet-header">Pendencias</div>
 			    <div class="portlet-content">Entregar o sistema</div>
-			  </div>
+			  </div> -->
 			 
 			</div>
 			</td></tr></table>
