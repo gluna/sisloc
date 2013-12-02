@@ -56,13 +56,22 @@ public class PagamentoDao {
 	
 	@SuppressWarnings("unchecked")
 	public List<Pagamento> contasapagarnoperiodo(Date inicio, Date fim){
-		Query q = manager.createQuery("from Pagamento t where t.dtvencimento >= :inicio " +
+		Query q;
+		if(inicio == null || fim == null){
+			q = manager.createQuery("from Pagamento t " +
+                    "where t.dtpagamento is null " +
+                    "and t.tipo = 'S' "+
+                    "order by t.dtvencimento");
+			
+		}else{
+			q = manager.createQuery("from Pagamento t where t.dtvencimento >= :inicio " +
 				                                       "and t.dtvencimento <= :fim " +
 				                                       "and t.dtpagamento is null " +
 				                                       "and t.tipo = 'S' "+
 				                                       "order by t.dtvencimento");
-		q.setParameter("inicio", inicio);
-		q.setParameter("fim", fim);  
+			q.setParameter("inicio", inicio);
+			q.setParameter("fim", fim);
+		}
 		return (List<Pagamento>) q.getResultList();	
 
 	}
