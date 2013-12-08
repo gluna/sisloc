@@ -105,6 +105,11 @@ public class PagamentosController {
 	public void pdfReport(Date inicio, Date fim) {
 		try{
 			Map<String, Object> parametros = new HashMap<String, Object>();
+			if(inicio == null || fim == null){
+				inicio = new Date(1);
+				fim = new Date("31/12/2100");
+			}
+
 			parametros.put( "DT_INICIO", inicio );
 			parametros.put( "DT_FIM", fim );
 			parametros.put("PATH", context.getRealPath("/images/"));
