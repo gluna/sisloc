@@ -27,6 +27,7 @@ public class Produto implements Serializable{
 	private Integer quantidade;
 	private Double valor;
 	private String obs;
+	private String status; //ativo inativo
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn
@@ -108,6 +109,14 @@ public class Produto implements Serializable{
 
 	public void setObs(String obs) {
 		this.obs = obs;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 }

@@ -57,7 +57,7 @@ public class ProdutoDao {
 	public List<Produto> listaTodos(){
 		List<Produto> t;
 		
-		Query q = manager.createQuery("from Produto order by nome");
+		Query q = manager.createQuery("from Produto where status = 'A' order by nome" );
 		t = (List<Produto>) q.getResultList();		
 		return t;
 	}
