@@ -13,6 +13,7 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import sisloc.dao.LocacaoDao;
 import sisloc.dao.PagamentoDao;
+import sisloc.modelo.Cliente;
 import sisloc.modelo.Locacao;
 import sisloc.modelo.Pagamento;
 import sisloc.util.SislocUtils;
@@ -156,6 +157,13 @@ public class PagamentosController {
 			}catch(Exception e){e.printStackTrace();}
 
     	result.permanentlyRedirectTo(this.getClass()).contasapagarreport();
+	}
+	
+	@Path("/pagamentos/excluir/{pagamento.id}")
+	public void excluir(Pagamento pagamento){
+		pagamento = dao.selectById(pagamento);
+	    dao.excluir(pagamento);
+	    result.redirectTo("/pagamentos/consultarcontasapagar");	
 	}
 	
 	@Path("/pagamentos/contasapagarreport")

@@ -35,7 +35,7 @@
 							<th>ID</th>
 							<th>Descrição</th>
 							<th>Data de Vencimento</th>
-							<th>Ação</th>
+							<th colspan="2">Ação</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -46,7 +46,7 @@
 						  <td><fmt:formatDate value="${pagamento.dtvencimento}" dateStyle="medium" /></td>
 						  <!-- <td><fmt:formatDate value="${pagamento.dtpagamento}" dateStyle="medium" /></td> -->
 						  <td><a href="<c:url value="/pagamentos/editarcontasapagar/${pagamento.id}" />" name="editar">Editar</a></td>
-						  <!-- <td><a href="<c:url value="/fornecedores/excluir/${tarefa.id}"/>">Excluir</a></td> -->
+						  <td><a href="<c:url value="/pagamentos/excluir/${pagamento.id}"/>" name="excluir">Excluir</a></td>
 						</tr>
 					</c:forEach>
 					</tbody></table></div>
@@ -73,6 +73,10 @@
 			});
 		$('a[name="editar"]').each(function () {
 			   $(this).button({icons: {primary: "ui-icon-pencil"}});
+			   $(this).click();
+			});
+		$('a[name="excluir"]').each(function () {
+			   $(this).button({icons: {primary: "ui-icon-close-thick"}});
 			   $(this).click();
 			});
 		$('input[type="button"]').each(function () {
