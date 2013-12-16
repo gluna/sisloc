@@ -26,6 +26,14 @@
 						<table><tr><td align="right" width="95"> 
 						<td align="right" width="80"><label>Dev. R$:</label></td> 
 						<td align="left"><input type="text" name="produto.valor" id="dinheiro" size=15 value="${produto.valor}"/></td>
+						<td align="right" width="80"><label>Status:</label></td>
+						<td align="left">
+							<select name="produto.status">
+								<option value="${produto.status}">${produto.status}</option>
+								<option value="A">ATIVO</option>
+								<option value="I">INATIVO</option>
+							</select>
+						</td>
 						</tr></table><br>
 						<table><tr>
 						<td align="right" width="95"><label>Descrição:</label></td></tr></table>
