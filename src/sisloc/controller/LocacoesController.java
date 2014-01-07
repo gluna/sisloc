@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -65,34 +66,47 @@ public class LocacoesController {
 	public void salvar(Locacao locacao){
 		try {
 		     if(locacao != null) {
-		    	 Double valortotal = 0.0;
-		    	 if (locacao.getDescontopercent() == null){
-		    		 locacao.setDescontopercent(0.0);
-		    	 }
-		    	 if (locacao.getDescontovalor() == null){
-		    		 locacao.setDescontovalor(0.0);
-		    	 }
+		    	 boolean ok = true;
+
 		    	 for(LocacaoDetalhe ld : locacao.getLocacaodetalhe() ){
-		    		 ld.setProduto(produtodao.selectById(ld.getProduto()));
-		    		 valortotal = valortotal+(ld.getPreco()*ld.getQuantidade());
+		    		 Produto p = produtodao.selectById(ld.getProduto());
+		    		 if(p.getQuantidade()< ld.getQuantidade()){
+		    			 ok = false;
+		    		 }
 		    	 }
-		    	 locacao.setValortotal(valortotal);
-		    	 Double desconto = ((valortotal/100)*locacao.getDescontopercent());
-		    	 valortotal = valortotal-desconto;
-		    	 locacao.setValorfinal(valortotal-locacao.getDescontovalor());
-		    	 if(locacao.getPagamentos() != null){
-			    	 for(Pagamento p : locacao.getPagamentos()){
-			    		 p.setTipo("E");
-			    		 p.setDescricao("Pagamento Locação");
+
+		    	 if(ok){
+			    	 Double valortotal = 0.0;
+			    	 if (locacao.getDescontopercent() == null){
+			    		 locacao.setDescontopercent(0.0);
 			    	 }
-		    	 }
-		    	 locacao.setCliente(clientedao.selectById(locacao.getCliente()));
-		    	 locacao.setStatus("A");
-		    	 if(locacao.getId() == null) {
-		    		 dao.salvar(locacao);
-		    	 } else {
-		    		 dao.atualizar(locacao);
-	             }
+			    	 if (locacao.getDescontovalor() == null){
+			    		 locacao.setDescontovalor(0.0);
+			    	 }
+			    	 for(LocacaoDetalhe ld : locacao.getLocacaodetalhe() ){
+			    		 ld.setProduto(produtodao.selectById(ld.getProduto()));
+			    		 valortotal = valortotal+(ld.getPreco()*ld.getQuantidade());
+			    	 }
+			    	 locacao.setValortotal(valortotal);
+			    	 Double desconto = ((valortotal/100)*locacao.getDescontopercent());
+			    	 valortotal = valortotal-desconto;
+			    	 locacao.setValorfinal(valortotal-locacao.getDescontovalor());
+			    	 if(locacao.getPagamentos() != null){
+				    	 for(Pagamento p : locacao.getPagamentos()){
+				    		 p.setTipo("E");
+				    		 p.setDescricao("Pagamento Locação");
+				    	 }
+			    	 }
+			    	 locacao.setCliente(clientedao.selectById(locacao.getCliente()));
+			    	 locacao.setStatus("A");
+			    	 if(locacao.getId() == null) {
+			    		 dao.salvar(locacao);
+			    	 } else {
+			    		 dao.atualizar(locacao);
+		             }
+		    	 }else{
+		    		 JOptionPane.showMessageDialog(null,"verifique as quantidades");
+		    	 } 
 	          }
 		     result.include("locacao", locacao);
 		     result.redirectTo(this.getClass()).cadastrar();
@@ -234,6 +248,7 @@ public class LocacoesController {
 		result.include("locacao", locacao);
 	}	
 	
+	@SuppressWarnings("deprecation")
 	@Path("/locacoes/locacoesperiodo") 
 	public void locacoesperiodo(Date inicio, Date fim) {
 			try{

@@ -28,10 +28,10 @@
 						<td align="left"><input type="text" name="produto.valor" id="dinheiro" size=15 value="${produto.valor}"/></td>
 						<td align="right" width="80"><label>Status:</label></td>
 						<td align="left">
-							<select name="produto.status">
+							<select id="status" name="produto.status">
 								<option value="${produto.status}">${produto.status}</option>
-								<option value="A">ATIVO</option>
-								<option value="I">INATIVO</option>
+								<option value="A">A</option>
+								<option value="I">I</option>
 							</select>
 						</td>
 						</tr></table><br>

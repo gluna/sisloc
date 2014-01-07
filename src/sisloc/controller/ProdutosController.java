@@ -29,8 +29,8 @@ public class ProdutosController {
 	public void salvar(Produto produto){
 		try {
 		     if(produto != null) {
-		    	 produto.setStatus("A");
 		    	 if(produto.getId() == null) {
+		    		 produto.setStatus("A");
 		    		 dao.salvar(produto);
 		    	 } else {
 		    		 dao.atualizar(produto);

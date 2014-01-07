@@ -79,7 +79,7 @@
 			    });
 			});
 		$(".data").datepicker({
-		    dateFormat: 'dd/mm/yy',
+		    dateFormat: 'dd/mm/yyyy',
 		    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
 		    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
 		    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
@@ -92,7 +92,7 @@
 			buttonImageOnly: true
 		});
 		$(".data1").datepicker({
-		    dateFormat: 'dd/mm/yy',
+		    dateFormat: 'dd/mm/yyyy',
 		    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
 		    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
 		    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
