@@ -85,6 +85,8 @@ public class LocacoesController {
 			    	 }
 			    	 for(LocacaoDetalhe ld : locacao.getLocacaodetalhe() ){
 			    		 ld.setProduto(produtodao.selectById(ld.getProduto()));
+			    		 Produto p = produtodao.selectById(ld.getProduto());
+			    		 p.setQuantidade(p.getQuantidade()-ld.getQuantidade());
 			    		 valortotal = valortotal+(ld.getPreco()*ld.getQuantidade());
 			    	 }
 			    	 locacao.setValortotal(valortotal);
