@@ -195,6 +195,7 @@
 				</table>
 				<c:forEach items="${locacao.locacaodetalhe}" var="locacaodetalhe" varStatus="status">
 		   	        <div class="produtointem">
+		   	        <table><tr>
 		    	    <td><label>Produto:</label></td>&nbsp
 		    	    <td align="left"><input type="text" name="locacao.locacaodetalhe[${status.index}].produto.id" value="${locacaodetalhe.produto.nome}" readonly /><br></td>
 		    		<!-- <select id="produto" onchange="getpreco(value, name);" name="locacao.locacaodetalhe[${status.index}].produto.id" value="locacaodetalhe.produto.id">
@@ -206,9 +207,10 @@
 		    			<option value="${locacaodetalhe.preco}">${locacaodetalhe.preco}</option>
 		    		</select>-->&nbsp&nbsp
 		    		<td><label>Quantidade:</label></td>&nbsp
-		    		<input type="text" name="locacao.locacaodetalhe[${status.index}].quantidade" value="${locacaodetalhe.quantidade}" readonly />&nbsp&nbsp
+		    		<td><input type="text" name="locacao.locacaodetalhe[${status.index}].quantidade" value="${locacaodetalhe.quantidade}" readonly /></td>&nbsp&nbsp
 		    		<input type="hidden" name="locacao.locacaodetalhe[${status.index}].id" value="${locacaodetalhe.id}" />
-					<input type="button" class="button-remover" />
+					<td><input type="button" class="button-remover" /></td>
+					</tr></table>
 		    		</div>
 				</c:forEach>
 				</fieldset>
