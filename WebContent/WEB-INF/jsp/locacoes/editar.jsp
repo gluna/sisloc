@@ -195,17 +195,17 @@
 				</table>
 				<c:forEach items="${locacao.locacaodetalhe}" var="locacaodetalhe" varStatus="status">
 		   	        <div class="produtointem">
-		    	    <label>Produto:</label>&nbsp
-		    	    <td align="left"><input type="text" name="locacao.locacaodetalhe[${status.index}].produto.id" value="locacaodetalhe.produto.nome" readonly /><br></td>
+		    	    <td><label>Produto:</label></td>&nbsp
+		    	    <td align="left"><input type="text" name="locacao.locacaodetalhe[${status.index}].produto.id" value="${locacaodetalhe.produto.nome}" readonly /><br></td>
 		    		<!-- <select id="produto" onchange="getpreco(value, name);" name="locacao.locacaodetalhe[${status.index}].produto.id" value="locacaodetalhe.produto.id">
 		    			<option value="${locacaodetalhe.produto.id}">${locacaodetalhe.produto.nome}</option>
 		    		</select> -->&nbsp&nbsp
-		    		<label>R$:</label>&nbsp
-		    		<td align="left"><input type="text" name="locacao.locacaodetalhe[${status.index}].preco" value="locacaodetalhe.preco" readonly /><br></td>
+		    		<td><label>R$:</label></td>&nbsp
+		    		<td align="left"><input type="text" name="locacao.locacaodetalhe[${status.index}].preco" value="${locacaodetalhe.preco}" readonly /><br></td>
 		    		<!-- <select id="preco" name="locacao.locacaodetalhe[${status.index}].preco" value="locacaodetalhe.preco">
 		    			<option value="${locacaodetalhe.preco}">${locacaodetalhe.preco}</option>
 		    		</select>-->&nbsp&nbsp
-		    		<label>Quantidade:</label>&nbsp
+		    		<td><label>Quantidade:</label></td>&nbsp
 		    		<input type="text" name="locacao.locacaodetalhe[${status.index}].quantidade" value="${locacaodetalhe.quantidade}" readonly />&nbsp&nbsp
 		    		<input type="hidden" name="locacao.locacaodetalhe[${status.index}].id" value="${locacaodetalhe.id}" />
 					<input type="button" class="button-remover" />
