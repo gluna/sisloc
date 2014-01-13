@@ -26,6 +26,8 @@
 						<table><tr><td align="right" width="95"> 
 						<td align="right" width="80"><label>Dev. R$:</label></td> 
 						<td align="left"><input class="dinheiro" type="text" name="produto.valor" size=15 value="${produto.valor}" readonly/></td>
+						<td align="right" width="80"><label>Status:</label></td>
+						<td align="left"><input class="maiuscula" type="text" name="produto.status" id="status" size=2 value="${produto.status}" readonly/></td>
 						</tr></table><br>
 						<table><tr>
 						<td align="right" width="95"><label>Descrição:</label></td></tr></table>
