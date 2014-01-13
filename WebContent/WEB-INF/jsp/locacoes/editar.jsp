@@ -209,7 +209,8 @@
 		    		<td><label>Quantidade:</label></td>&nbsp
 		    		<td><input type="text" name="locacao.locacaodetalhe[${status.index}].quantidade" value="${locacaodetalhe.quantidade}" readonly /></td>&nbsp&nbsp
 		    		<input type="hidden" name="locacao.locacaodetalhe[${status.index}].id" value="${locacaodetalhe.id}" />
-					<td><input type="button" class="button-remover" /></td>
+					<!-- <td><input type="button" class="button-remover" /></td>-->
+					<td><a href="<c:url value="/locacoes/excluirdetalhelocacao/${locacao.id}&${locacaodetalhe.quantidade}"/>" name="excluir" class="button-remover"></a></td>
 					</tr></table>
 		    		</div>
 				</c:forEach>
@@ -750,6 +751,10 @@
 			});
 		$('a[name="imprimir"]').each(function () {
 			   $(this).button({icons: {primary: "ui-icon-print"}});
+			   //$(this).click();
+			});
+		$('a[name="excluir"]').each(function () {
+			   $(this).button();
 			   //$(this).click();
 			});
 		$(".data").datepicker({

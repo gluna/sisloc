@@ -176,6 +176,13 @@ public class LocacoesController {
 	    //result.redirectTo(this.getClass()).consultar();	
 	}
 	
+	@Path("/locacoes/excluirdetalhelocacao/{locacao.id}&${locacaodetalhe.quantidade}")
+	public void excluirdetalhelocacao(Locacao locacao){
+		locacao = dao.selectById(locacao);
+	    dao.excluir(locacao);
+	    //result.redirectTo(this.getClass()).consultar();	
+	}
+	
 	@Path("/clientes/consultar")
 	public List<Locacao> consultar(){
 		List<Locacao> t = dao.listaTodos();
