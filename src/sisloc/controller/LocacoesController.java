@@ -61,6 +61,12 @@ public class LocacoesController {
 		return t;
 	}
 	
+	@Path("/locacoes/editar")
+	public List<Produto> editar(){
+		List<Produto> t = produtodao.listaTodos();
+		return t;
+	}
+	
 	@Post
 	@Path("/locacoes/salvar")
 	public void salvar(Locacao locacao){
@@ -151,7 +157,7 @@ public class LocacoesController {
 	    if(locacao != null) {
 	         result.include("locacao", locacao);
 	    }
-	    result.redirectTo(this.getClass()).cadastrar();
+	    result.redirectTo(this.getClass()).editar();
 	}
 	
 	@Path("/locacoes/visualizar/{locacao.id}")
