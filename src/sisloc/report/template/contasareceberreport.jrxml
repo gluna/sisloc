@@ -93,7 +93,7 @@ order by pagamento.dtvencimento]]>
 			<subreport>
 				<reportElement uuid="1ff5946c-dd9c-478e-aed1-39ab7adfba65" x="84" y="2" width="467" height="61"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "cabecalhosubreport.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "/cabecalhosubreport.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 	</title>

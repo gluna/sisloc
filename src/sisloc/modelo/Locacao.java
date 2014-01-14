@@ -40,6 +40,7 @@ public class Locacao implements Serializable{
 	private Double frete;
 	private Double valorfinal; //valor final apos os descontos
 	private String status; //aberta fechada
+	private String formapagamento;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@Fetch(FetchMode.SUBSELECT)
@@ -196,5 +197,13 @@ public class Locacao implements Serializable{
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public String getFormapagamento() {
+		return formapagamento;
+	}
+
+	public void setFormapagamento(String formapagamento) {
+		this.formapagamento = formapagamento;
 	}
 }

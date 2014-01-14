@@ -185,7 +185,7 @@ public class PagamentosController {
 				parametros.put( "DT_INICIO", inicio );
 				parametros.put( "DT_FIM", fim );
 				parametros.put("PATH", context.getRealPath("/images/"));
-				 
+				parametros.put("SUBREPORT_DIR", context.getRealPath("/WEB-INF/classes/sisloc/report/template/")); 
 				JasperPrint print = JasperFillManager.fillReport(context.getRealPath("/WEB-INF/classes/sisloc/report/template/contasareceberreport.jasper"), parametros, SislocUtils.getConnection());
 				//visualiza o rel apenas no servidor
 				//JasperViewer.viewReport(print,false);
