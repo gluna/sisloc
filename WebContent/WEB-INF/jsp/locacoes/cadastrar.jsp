@@ -412,6 +412,7 @@
     		'</select>&nbsp&nbsp'+
     		'<label>Quantidade:</label>&nbsp' +
     		'<input type="text" class="qtde" name="locacao.locacaodetalhe[0].quantidade" onchange="calculaqtd();" value="${locacaodetalhe.quantidade}" />&nbsp&nbsp'+
+    		//'<input type="hidden" name="locacao.locacaodetalhe[${status.index}].id" value="${locacaodetalhe.id}" />'+
 			'<input type="button" class="button-remover" />' +
     		'</div>';
     		

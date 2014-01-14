@@ -195,23 +195,23 @@
 				</table>
 				<c:forEach items="${locacao.locacaodetalhe}" var="locacaodetalhe" varStatus="status">
 		   	        <div class="produtointem">
-		   	        <table><tr>
-		    	    <td><label>Produto:</label></td>&nbsp
-		    	    <td align="left"><input type="text" name="locacao.locacaodetalhe[${status.index}].produto.id" value="${locacaodetalhe.produto.nome}" readonly /><br></td>
+		   	        
+		    	    <label>Produto:</label>&nbsp
+		    	    <input type="text" name="locacaodetalhe[${status.index}].produto.id" value="${locacaodetalhe.produto.nome}" readonly /><br>
 		    		<!-- <select id="produto" onchange="getpreco(value, name);" name="locacao.locacaodetalhe[${status.index}].produto.id" value="locacaodetalhe.produto.id">
 		    			<option value="${locacaodetalhe.produto.id}">${locacaodetalhe.produto.nome}</option>
 		    		</select> -->&nbsp&nbsp
-		    		<td><label>R$:</label></td>&nbsp
-		    		<td align="left"><input type="text" name="locacao.locacaodetalhe[${status.index}].preco" value="${locacaodetalhe.preco}" readonly /><br></td>
+		    		<label>R$:</label>&nbsp
+		    		<input type="text" name="locacaodetalhe[${status.index}].preco" value="${locacaodetalhe.preco}" readonly /><br>
 		    		<!-- <select id="preco" name="locacao.locacaodetalhe[${status.index}].preco" value="locacaodetalhe.preco">
 		    			<option value="${locacaodetalhe.preco}">${locacaodetalhe.preco}</option>
 		    		</select>-->&nbsp&nbsp
-		    		<td><label>Quantidade:</label></td>&nbsp
-		    		<td><input type="text" name="locacao.locacaodetalhe[${status.index}].quantidade" value="${locacaodetalhe.quantidade}" readonly /></td>&nbsp&nbsp
-		    		<input type="hidden" name="locacao.locacaodetalhe[${status.index}].id" value="${locacaodetalhe.id}" />
-					<!-- <td><input type="button" class="button-remover" /></td>-->
-					<td><a href="<c:url value="/locacoes/excluirdetalhelocacao/${locacao.id}&${locacaodetalhe.quantidade}"/>" name="excluir" class="button-remover"></a></td>
-					</tr></table>
+		    		<label>Quantidade:</label>&nbsp
+		    		<input type="text" name="locacaodetalhe[${status.index}].quantidade" value="${locacaodetalhe.quantidade}" readonly />&nbsp&nbsp
+		    		<input type="hidden" name="locacaodetalhe[${status.index}].id" value="${locacaodetalhe.id}" />
+					<input type="button" class="button-remover" />
+					<!-- <td><a href="<c:url value="/locacoes/salvaredicao/${locacao.id}"/>" name="excluir" class="button-remover"></a></td> -->
+					
 		    		</div>
 				</c:forEach>
 				</fieldset>

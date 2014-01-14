@@ -73,6 +73,65 @@ public class LocacoesController {
 		try {
 		     if(locacao != null) {
 		    	 boolean ok = true;
+		    	 if (locacao.getLocacaodetalhe() == null){
+		    		 JOptionPane.showMessageDialog(null,"verifique os itens");
+		    	 }else{
+			    	 for(LocacaoDetalhe ld : locacao.getLocacaodetalhe() ){
+			    		 Produto p = produtodao.selectById(ld.getProduto());
+			    		 if(p.getQuantidade()< ld.getQuantidade()){
+			    			 ok = false;
+			    		 }
+			    	 }
+		    	 
+		    	 if(ok){
+			    	 Double valortotal = 0.0;
+			    	 if (locacao.getDescontopercent() == null){
+			    		 locacao.setDescontopercent(0.0);
+			    	 }
+			    	 if (locacao.getDescontovalor() == null){
+			    		 locacao.setDescontovalor(0.0);
+			    	 }
+			    	 for(LocacaoDetalhe ld : locacao.getLocacaodetalhe() ){
+			    		 ld.setProduto(produtodao.selectById(ld.getProduto()));
+			    		 Produto p = produtodao.selectById(ld.getProduto());
+			    		 p.setQuantidade(p.getQuantidade()-ld.getQuantidade());
+			    		 valortotal = valortotal+(ld.getPreco()*ld.getQuantidade());
+			    	 }
+			    	 locacao.setValortotal(valortotal);
+			    	 Double desconto = ((valortotal/100)*locacao.getDescontopercent());
+			    	 valortotal = valortotal-desconto;
+			    	 locacao.setValorfinal(valortotal-locacao.getDescontovalor());
+			    	 if(locacao.getPagamentos() != null){
+				    	 for(Pagamento p : locacao.getPagamentos()){
+				    		 p.setTipo("E");
+				    		 p.setDescricao("Pagamento Locação");
+				    	 }
+			    	 }
+			    	 locacao.setCliente(clientedao.selectById(locacao.getCliente()));
+			    	 locacao.setStatus("A");
+			    	 if(locacao.getId() == null) {
+			    		 dao.salvar(locacao);
+			    	 } else {
+			    		 dao.atualizar(locacao);
+		             }
+		    	 }else{
+		    		 JOptionPane.showMessageDialog(null,"verifique as quantidades");
+		    	 } 
+	          }
+		     }
+		     result.include("locacao", locacao);
+		     result.redirectTo(this.getClass()).cadastrar();
+		} catch (Exception e) {
+			result.include("msg", e.getMessage());
+			System.out.println(e.getMessage());
+		}
+	}
+
+/*	@Path("/locacoes/salvaredicao/{locacao.id}")
+	public void salvaredicao(Locacao locacao){
+		try {
+		     if(locacao != null) {
+		    	 boolean ok = true;
 
 		    	 for(LocacaoDetalhe ld : locacao.getLocacaodetalhe() ){
 		    		 Produto p = produtodao.selectById(ld.getProduto());
@@ -117,13 +176,14 @@ public class LocacoesController {
 		    	 } 
 	          }
 		     result.include("locacao", locacao);
-		     result.redirectTo(this.getClass()).cadastrar();
+		     result.redirectTo(this.getClass()).editar();
 		} catch (Exception e) {
 			result.include("msg", e.getMessage());
 			System.out.println(e.getMessage());
 		}
 	}
-
+*/
+	
 	@Post
 	@Path("/locacoes/salvardevolucao")
 	public void salvardevolucao(Locacao locacao){
@@ -176,13 +236,14 @@ public class LocacoesController {
 	    //result.redirectTo(this.getClass()).consultar();	
 	}
 	
-	@Path("/locacoes/excluirdetalhelocacao/{locacao.id}&${locacaodetalhe.quantidade}")
-	public void excluirdetalhelocacao(Locacao locacao){
-		locacao = dao.selectById(locacao);
-	    dao.excluir(locacao);
-	    //result.redirectTo(this.getClass()).consultar();	
+/*	@Path("/locacoes/excluirdetalhelocacao/{locacaodetalhe.id}")
+	public void excluirdetalhelocacao(LocacaoDetalhe locacaodetalhe){
+		locacaodetalhe = dao.buscaLocacaoDetalhe(locacaodetalhe);
+		Produto p = produtodao.selectById(locacaodetalhe.getProduto());
+	    p.setQuantidade(p.getQuantidade()+locacaodetalhe.getQuantidade());
+	    	
 	}
-	
+*/	
 	@Path("/clientes/consultar")
 	public List<Locacao> consultar(){
 		List<Locacao> t = dao.listaTodos();
