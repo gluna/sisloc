@@ -5,7 +5,7 @@
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery.maskMoney.js"></script>
 
 <body onload="getcliente(${locacao.id});">
-	<form name="form" action="<c:url value='/locacoes/salvar'/>" method="post">
+	<form name="form" action="<c:url value='/locacoes/salvaredicao'/>" method="post">
 		<div id="tabs" class="container">
 			<ul>
 				<li><a href="#tabs-1">Cadastro de Locações</a></li>
@@ -197,18 +197,19 @@
 		   	        <div class="produtointem">
 		   	        
 		    	    <label>Produto:</label>&nbsp
-		    	    <input type="text" name="locacaodetalhe[${status.index}].produto.id" value="${locacaodetalhe.produto.nome}" readonly /><br>
+		    	    <input type="hidden" name="locacao.locacaodetalhe[${status.index}].produto.id" value="${locacaodetalhe.produto.id}" /><br>
+		    	    <input type="text" name="locacao.locacaodetalhe[${status.index}].produto.nome" value="${locacaodetalhe.produto.nome}" readonly /><br>
 		    		<!-- <select id="produto" onchange="getpreco(value, name);" name="locacao.locacaodetalhe[${status.index}].produto.id" value="locacaodetalhe.produto.id">
 		    			<option value="${locacaodetalhe.produto.id}">${locacaodetalhe.produto.nome}</option>
 		    		</select> -->&nbsp&nbsp
 		    		<label>R$:</label>&nbsp
-		    		<input type="text" name="locacaodetalhe[${status.index}].preco" value="${locacaodetalhe.preco}" readonly /><br>
+		    		<input type="text" name="locacao.locacaodetalhe[${status.index}].preco" value="${locacaodetalhe.preco}" readonly /><br>
 		    		<!-- <select id="preco" name="locacao.locacaodetalhe[${status.index}].preco" value="locacaodetalhe.preco">
 		    			<option value="${locacaodetalhe.preco}">${locacaodetalhe.preco}</option>
 		    		</select>-->&nbsp&nbsp
 		    		<label>Quantidade:</label>&nbsp
-		    		<input type="text" name="locacaodetalhe[${status.index}].quantidade" value="${locacaodetalhe.quantidade}" readonly />&nbsp&nbsp
-		    		<input type="hidden" name="locacaodetalhe[${status.index}].id" value="${locacaodetalhe.id}" />
+		    		<input type="text" name="locacao.locacaodetalhe[${status.index}].quantidade" value="${locacaodetalhe.quantidade}" readonly />&nbsp&nbsp
+		    		<input type="hidden" name="locacao.locacaodetalhe[${status.index}].id" value="${locacaodetalhe.id}" />
 					<input type="button" class="button-remover" />
 					<!-- <td><a href="<c:url value="/locacoes/salvaredicao/${locacao.id}"/>" name="excluir" class="button-remover"></a></td> -->
 					

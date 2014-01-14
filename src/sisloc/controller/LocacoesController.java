@@ -127,7 +127,8 @@ public class LocacoesController {
 		}
 	}
 
-/*	@Path("/locacoes/salvaredicao/{locacao.id}")
+	@Post
+	@Path("/locacoes/salvaredicao")
 	public void salvaredicao(Locacao locacao){
 		try {
 		     if(locacao != null) {
@@ -150,8 +151,10 @@ public class LocacoesController {
 			    	 }
 			    	 for(LocacaoDetalhe ld : locacao.getLocacaodetalhe() ){
 			    		 ld.setProduto(produtodao.selectById(ld.getProduto()));
-			    		 Produto p = produtodao.selectById(ld.getProduto());
-			    		 p.setQuantidade(p.getQuantidade()-ld.getQuantidade());
+			    		 if(ld.getId() == null){
+			    		   Produto p = produtodao.selectById(ld.getProduto());
+			    		   p.setQuantidade(p.getQuantidade()-ld.getQuantidade());
+			    		 }
 			    		 valortotal = valortotal+(ld.getPreco()*ld.getQuantidade());
 			    	 }
 			    	 locacao.setValortotal(valortotal);
@@ -182,7 +185,7 @@ public class LocacoesController {
 			System.out.println(e.getMessage());
 		}
 	}
-*/
+
 	
 	@Post
 	@Path("/locacoes/salvardevolucao")
