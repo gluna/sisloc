@@ -210,7 +210,8 @@
 		    		<label>Quantidade:</label>&nbsp
 		    		<input type="text" name="locacao.locacaodetalhe[${status.index}].quantidade" value="${locacaodetalhe.quantidade}" readonly />&nbsp&nbsp
 		    		<input type="hidden" name="locacao.locacaodetalhe[${status.index}].id" value="${locacaodetalhe.id}" />
-					<input type="button" class="button-remover" />
+					<!--<input type="button" class="button-remover" />-->
+					<input type="submit" class="button-remover"/><br/>
 					<!-- <td><a href="<c:url value="/locacoes/salvaredicao/${locacao.id}"/>" name="excluir" class="button-remover"></a></td> -->
 					
 		    		</div>
