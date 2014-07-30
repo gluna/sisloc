@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version last-->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportlocacoes" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d337ba3e-11ab-428d-8a5a-d54e80ca39e7">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<parameter name="DT_INICIO" class="java.util.Date">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
-	<parameter name="DT_FIM" class="java.util.Date">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
-	<parameter name="PATH" class="java.lang.String">
-		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-	</parameter>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="DT_INICIO" class="java.util.Date"/>
+	<parameter name="DT_FIM" class="java.util.Date"/>
+	<parameter name="PATH" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
      locacao."id" AS locacao_id,
@@ -20,7 +16,6 @@
      locacao."dtfim" AS locacao_dtfim,
      locacao."dtinicio" AS locacao_dtinicio,
      locacao."dtlocacao" AS locacao_dtlocacao,
-     locacao."formapagamento" AS locacao_formapagamento,
      locacao."valortotal" AS locacao_valortotal,
      locacao."cliente_id" AS locacao_cliente_id,
      locacao."obs" AS locacao_obs,
@@ -58,7 +53,6 @@ order by locacao.dtlocacao, locacao.id]]>
 	<field name="locacao_dtfim" class="java.sql.Timestamp"/>
 	<field name="locacao_dtinicio" class="java.sql.Timestamp"/>
 	<field name="locacao_dtlocacao" class="java.sql.Timestamp"/>
-	<field name="locacao_formapagamento" class="java.lang.String"/>
 	<field name="locacao_valortotal" class="java.lang.Double"/>
 	<field name="locacao_cliente_id" class="java.lang.Long"/>
 	<field name="locacao_obs" class="java.lang.String"/>
