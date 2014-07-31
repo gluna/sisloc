@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 public class Cliente implements Serializable{
@@ -22,23 +26,28 @@ public class Cliente implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
-	private String logradouro;
-	private String numero;
-	private String complemento;
-	private String bairro;
-	private String cidade;
-	private String uf;
-	private String cep;
 	private String email;
 	private String contato;
 	private String cpfcnpj;
 	private String rep;
 	private String ie;//inscricao estadual
-	private String im;//inscricao municipal 
+	private String im;//inscricao municipal
+	private String pai;
+	private String mae;
+	@Column(columnDefinition="text")
+	private String obs;
+	@Column(columnDefinition="text")
+	private String aviso;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SUBSELECT)
 	@JoinColumn
 	private List<TelefoneCliente> telefones;
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SUBSELECT)
+	@JoinColumn
+	private List<EnderecoCliente> enderecos;
 	
 	public Long getId() {
 		return id;
@@ -51,48 +60,6 @@ public class Cliente implements Serializable{
 	}
 	public void setNome(String nome) {
 		this.nome = nome.toUpperCase();
-	}
-	public String getLogradouro() {
-		return logradouro;
-	}
-	public void setLogradouro(String logradouro) {
-		this.logradouro = logradouro.toUpperCase();
-	}
-	public String getNumero() {
-		return numero;
-	}
-	public void setNumero(String numero) {
-		this.numero = numero.toUpperCase();
-	}
-	public String getComplemento() {
-		return complemento;
-	}
-	public void setComplemento(String complemento) {
-		this.complemento = complemento.toUpperCase();
-	}
-	public String getBairro() {
-		return bairro;
-	}
-	public void setBairro(String bairro) {
-		this.bairro = bairro.toUpperCase();
-	}
-	public String getCidade() {
-		return cidade;
-	}
-	public void setCidade(String cidade) {
-		this.cidade = cidade.toUpperCase();
-	}
-	public String getUf() {
-		return uf;
-	}
-	public void setUf(String uf) {
-		this.uf = uf.toUpperCase();
-	}
-	public String getCep() {
-		return cep;
-	}
-	public void setCep(String cep) {
-		this.cep = cep.toUpperCase();
 	}
 	public String getEmail() {
 		return email;
@@ -135,6 +102,36 @@ public class Cliente implements Serializable{
 	}
 	public void setIm(String im) {
 		this.im = im;
+	}
+	public String getPai() {
+		return pai;
+	}
+	public void setPai(String pai) {
+		this.pai = pai;
+	}
+	public String getMae() {
+		return mae;
+	}
+	public void setMae(String mae) {
+		this.mae = mae;
+	}
+	public List<EnderecoCliente> getEnderecos() {
+		return enderecos;
+	}
+	public void setEnderecos(List<EnderecoCliente> enderecos) {
+		this.enderecos = enderecos;
+	}
+	public String getObs() {
+		return obs;
+	}
+	public void setObs(String obs) {
+		this.obs = obs;
+	}
+	public String getAviso() {
+		return aviso;
+	}
+	public void setAviso(String aviso) {
+		this.aviso = aviso;
 	}
 	
 
