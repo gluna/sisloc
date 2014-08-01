@@ -15,7 +15,7 @@ public class TipoEquipamento implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String descricao;
+	private String descricao; //nome do tipo
 	private Double valordia;
 	private Double valormes;
 	private Double valorquinzena;
