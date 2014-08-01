@@ -23,9 +23,9 @@ public class DevolucaoLocacao implements Serializable{
 	private Integer quantidade;
 	private Date dtdevolucao;
 	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	/*@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn
-	private Produto produto;
+	private Produto produto;*/
 
 	public Long getId() {
 		return id;
@@ -43,13 +43,13 @@ public class DevolucaoLocacao implements Serializable{
 		this.quantidade = quantidade;
 	}
 
-	public Produto getProduto() {
+	/*public Produto getProduto() {
 		return produto;
 	}
 
 	public void setProduto(Produto produto) {
 		this.produto = produto;
-	}
+	}*/
 
 	public Date getDtdevolucao() {
 		return dtdevolucao;

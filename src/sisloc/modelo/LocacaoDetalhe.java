@@ -22,9 +22,9 @@ public class LocacaoDetalhe implements Serializable{
 	private Integer quantidade;
 	private Double preco;
 	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	/*@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn
-	private Produto produto;
+	private Produto produto;*/
 
 	public Long getId() {
 		return id;
@@ -50,12 +50,12 @@ public class LocacaoDetalhe implements Serializable{
 		this.preco = preco;
 	}
 
-	public Produto getProduto() {
+	/*public Produto getProduto() {
 		return produto;
 	}
 
 	public void setProduto(Produto produto) {
 		this.produto = produto;
-	}
+	}*/
 
 }

@@ -1,35 +1,12 @@
 package sisloc.controller;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletResponse;
-
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import sisloc.dao.ClienteDao;
-import sisloc.dao.OrcamentoDao;
-import sisloc.dao.ProdutoDao;
-import sisloc.modelo.Cliente;
-import sisloc.modelo.Orcamento;
-import sisloc.modelo.OrcamentoDetalhe;
-import sisloc.modelo.Preco;
-import sisloc.modelo.Produto;
-import sisloc.util.SislocUtils;
-import br.com.caelum.vraptor.Path;
-import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
-import br.com.caelum.vraptor.Result;
-import br.com.caelum.vraptor.view.Results;
 
 
 @Resource
 public class OrcamentosController {
 
-	private OrcamentoDao dao;
+	/*private OrcamentoDao dao;
 	private Result result;
 	private ServletContext context;
 	private ProdutoDao produtodao;
@@ -149,6 +126,6 @@ public class OrcamentosController {
 	public List<Orcamento> consultaorcamento(Orcamento orcamento){
 		List<Orcamento> t = dao.consultaorcamento(orcamento);
 		return t;
-	}
+	}*/
 	
 }

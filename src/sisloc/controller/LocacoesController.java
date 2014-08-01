@@ -1,44 +1,13 @@
 package sisloc.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletResponse;
-import javax.swing.JOptionPane;
-
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import sisloc.dao.ClienteDao;
-import sisloc.dao.LocacaoDao;
-import sisloc.dao.OrcamentoDao;
-import sisloc.dao.ProdutoDao;
-import sisloc.modelo.Cliente;
-import sisloc.modelo.DevolucaoLocacao;
-import sisloc.modelo.Locacao;
-import sisloc.modelo.LocacaoDetalhe;
-import sisloc.modelo.Orcamento;
-import sisloc.modelo.OrcamentoDetalhe;
-import sisloc.modelo.Pagamento;
-import sisloc.modelo.Preco;
-import sisloc.modelo.Produto;
-import sisloc.util.SislocUtils;
-import br.com.caelum.vraptor.Path;
-import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
-import br.com.caelum.vraptor.Result;
-import br.com.caelum.vraptor.view.Results;
 
 @Resource
 public class LocacoesController {
 	
-	private LocacaoDao dao;
+	/*private LocacaoDao dao;
 	private Result result;
-	private ProdutoDao produtodao;
+	//private ProdutoDao produtodao;
 	private ServletContext context;
 	private ClienteDao clientedao;
 	private OrcamentoDao orcamentodao;
@@ -246,7 +215,7 @@ public class LocacoesController {
 	    p.setQuantidade(p.getQuantidade()+locacaodetalhe.getQuantidade());
 	    	
 	}
-*/	
+	
 	@Path("/clientes/consultar")
 	public List<Locacao> consultar(){
 		List<Locacao> t = dao.listaTodos();
@@ -395,5 +364,5 @@ public class LocacoesController {
 		
 		}
 		return locacao;
-	}
+	}*/
 }
