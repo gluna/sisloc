@@ -34,6 +34,7 @@ public class Cliente implements Serializable{
 	private String im;//inscricao municipal
 	private String pai;
 	private String mae;
+	private String rg;
 	@Column(columnDefinition="text")
 	private String obs;
 	@Column(columnDefinition="text")
@@ -132,6 +133,12 @@ public class Cliente implements Serializable{
 	}
 	public void setAviso(String aviso) {
 		this.aviso = aviso;
+	}
+	public String getRg() {
+		return rg;
+	}
+	public void setRg(String rg) {
+		this.rg = rg;
 	}
 	
 
