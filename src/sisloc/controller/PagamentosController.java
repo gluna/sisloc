@@ -13,7 +13,6 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import sisloc.dao.LocacaoDao;
 import sisloc.dao.PagamentoDao;
-import sisloc.modelo.Cliente;
 import sisloc.modelo.Locacao;
 import sisloc.modelo.Pagamento;
 import sisloc.util.SislocUtils;
@@ -102,6 +101,7 @@ public class PagamentosController {
 		return t;
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Path("/pagamentos/report") 
 	public void pdfReport(Date inicio, Date fim) {
 		try{
@@ -134,6 +134,7 @@ public class PagamentosController {
 		
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Path("/pagamentos/contasapagar") 
 	public void contasapagar(Date inicio, Date fim) {
 			try{
@@ -172,6 +173,7 @@ public class PagamentosController {
 		
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Path("/pagamentos/contasareceber") 
 	public void contasareceber(Date inicio, Date fim) {
 			try{

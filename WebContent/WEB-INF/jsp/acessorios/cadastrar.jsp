@@ -14,15 +14,15 @@
 				<legend>
 					Informações:
 				</legend>
-				<!--<label>ID:</label> --><input type="hidden" name="acessorios.id" value="${acessorio.id}" readonly />
+				<!--<label>ID:</label> --><input type="hidden" name="acessorio.id" value="${acessorio.id}" readonly />
 					<table><tr><td align="right" width="95"> 
 						<label>Nome:</label></td> 
-						<td align="left"><input	class="maiuscula" type="text" name="acessorios.descricao" size=50 value="${acessorio.descricao}" /><br></td>
+						<td align="left"><input	class="maiuscula" type="text" name="acessorio.descricao" size=50 value="${acessorio.descricao}" /><br></td>
 						</tr></table><br> 
 						<table><tr><td align="right"> <label>Valor R$:</label></td>
-						<td align="left"> <input class="maiuscula" type="text" name="acessorios.valor" size=28 value="${acessorio.valor}" /><br> </td> 
+						<td align="left"> <input class="maiuscula" type="text" name="acessorio.valor" size=28 value="${acessorio.valor}" /><br> </td> 
 						<td align="right" width="95"><label>Quantidade:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="acessorios.quantidade" size=28 value="${acessorio.quantidade}" /><br> </td>
+						<td align="left"> <input class="maiuscula" type="text" name="acessorio.quantidade" size=28 value="${acessorio.quantidade}" /><br> </td>
 						</tr></table><br>
 				</fieldset>
 				<br/>	

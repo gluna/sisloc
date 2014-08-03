@@ -3,6 +3,7 @@ package sisloc.controller;
 import java.util.List;
 
 import sisloc.dao.AcessorioDao;
+import sisloc.dao.ClienteDao;
 import sisloc.modelo.Acessorio;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
@@ -14,6 +15,11 @@ public class AcessoriosController {
 	
 	private AcessorioDao dao;
 	private Result result;
+	
+	public AcessoriosController(AcessorioDao dao, Result result){
+		this.dao = dao;
+		this.result = result;
+	}
 	
 	@Path("/acessorios/cadastrar")
 	public void cadastrar(){
