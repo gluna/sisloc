@@ -3,7 +3,6 @@ package sisloc.controller;
 import java.util.List;
 
 import sisloc.dao.AcessorioDao;
-import sisloc.dao.ClienteDao;
 import sisloc.modelo.Acessorio;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
