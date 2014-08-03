@@ -15,7 +15,7 @@ public class Acessorio implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String descricao;
+	private String descricao; //nome do acessorio
 	private Double valor;
 	private Integer quantidade;
 	
