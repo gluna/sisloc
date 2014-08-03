@@ -15,10 +15,8 @@ import javax.persistence.OneToMany;
 @Entity
 public class Fornecedor implements Serializable{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 3248151392754097936L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -34,6 +32,8 @@ public class Fornecedor implements Serializable{
 	private String contato;
 	private String cpfcnpj;
 	private String rep;
+	private String razaosocial;
+	private String ie; //inscricao estadual
 	
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
@@ -123,6 +123,18 @@ public class Fornecedor implements Serializable{
 	}
 	public void setRep(String rep) {
 		this.rep = rep.toUpperCase();
+	}
+	public String getRazaosocial() {
+		return razaosocial;
+	}
+	public void setRazaosocial(String razaosocial) {
+		this.razaosocial = razaosocial;
+	}
+	public String getIe() {
+		return ie;
+	}
+	public void setIe(String ie) {
+		this.ie = ie;
 	}
 	
 
