@@ -1,9 +1,6 @@
 package sisloc.controller;
 
-import java.util.List;
-
 import sisloc.dao.TipoEquipamentoDao;
-import sisloc.modelo.Cliente;
 import sisloc.modelo.TipoEquipamento;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
@@ -67,11 +64,4 @@ public class TipoEquipamentosController {
 	    //result.redirectTo(this.getClass()).consultar();	
 	}
 	
-	/*@Path("/tipo/consultanome")
-	public List<Cliente> consultanome(Cliente cliente){
-		List<Cliente> c = dao.consultaNome(cliente);	
-		return c;
-	}*/
-
-
 }
