@@ -9,30 +9,10 @@
 			</ul>
 			<div id="tabs-1">
 				<br>
-				<table><tr><td>
-				<div class="column">
- 
-				  <!-- <div class="portlet">
-				    <div class="portlet-header">Contas a Pagar</div>
-				    <div class="portlet-content">R$ 2.000,00</div>
-				  </div>
-				 
-				  <div class="portlet">
-				    <div class="portlet-header">Contas a Receber</div>
-				    <div class="portlet-content">R$ 1.500,00</div>
-				  </div> -->
-				 
-				</div>
+				<table><tr>
+					<td width="440"></td><td><img src="${pageContext.request.contextPath}/images/inicio.png" height="180" width="250">	
+				</td></tr></table>
 			</div>
-			<div class="column">
- 
-			  <!-- <div class="portlet">
-			    <div class="portlet-header">Pendencias</div>
-			    <div class="portlet-content">Entregar o sistema</div>
-			  </div> -->
-			 
-			</div>
-			</td></tr></table>
 </div>	
 </body>
 <%@ include file="../../../footer.jsp" %> 
