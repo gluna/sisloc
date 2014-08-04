@@ -26,7 +26,7 @@
 						<td align="right" width="80"><label>RG:</label></td> 
 						<td align="left"><input class="maiuscula" type="text" name="cliente.rg" size=28 value="${cliente.rg}" /></td>
 						</tr></table><br> 
-						<table><tr><td align="right"> <label>Nome do Pai:</label></td> 
+						<table><tr><td align="right" width="95"> <label>Nome do Pai:</label></td> 
 						<td align="left"><input class="maiuscula" type="text" name="cliente.pai" size=50 value="${cliente.pai}" /> <br></td>
 						<td align="right"> <label>Nome da Mãe:</label></td> 
 						<td align="left"><input class="maiuscula" type="text" name="cliente.mae" size=50 value="${cliente.mae}" /> <br></td>
