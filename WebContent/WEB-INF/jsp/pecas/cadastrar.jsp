@@ -3,10 +3,10 @@
 <!-- <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script> --> 
  <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-ui-1.10.3.custom.js"></script> 
 <body>
-	<form action="<c:url value='/acessorios/salvar'/>" method="post">
+	<form action="<c:url value='/pecas/salvar'/>" method="post">
 		<div id="tabs" class="container">
 			<ul>
-				<li><a href="#tabs-1">Acessórios</a></li>
+				<li><a href="#tabs-1">Peças de Reposição</a></li>
 			</ul>
 			<div id="tabs-1">
 				<br>
@@ -14,15 +14,15 @@
 				<legend>
 					Informações:
 				</legend>
-				<!--<label>ID:</label> --><input type="hidden" name="acessorio.id" value="${acessorio.id}" readonly />
+				<!--<label>ID:</label> --><input type="hidden" name="peca.id" value="${peca.id}" readonly />
 					<table><tr><td align="right" width="95"> 
 						<label>Nome:</label></td> 
-						<td align="left"><input	class="maiuscula" type="text" name="acessorio.descricao" size=50 value="${acessorio.descricao}" /><br></td>
+						<td align="left"><input	class="maiuscula" type="text" name="peca.descricao" size=50 value="${peca.descricao}" /><br></td>
 						</tr></table><br> 
 						<table><tr><td align="right" width="95"> <label>Valor R$:</label></td>
-						<td align="left"> <input class="maiuscula" type="text" name="acessorio.valor" size=28 value="${acessorio.valor}" /><br> </td> 
+						<td align="left"> <input class="maiuscula" type="text" name="peca.valor" size=28 value="${peca.valor}" /><br> </td> 
 						<td align="right" width="95"><label>Quantidade:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="acessorio.quantidade" size=28 value="${acessorio.quantidade}" /><br> </td>
+						<td align="left"> <input class="maiuscula" type="text" name="peca.quantidade" size=28 value="${peca.quantidade}" /><br> </td>
 						</tr></table><br>
 				</fieldset>
 				<br/>	

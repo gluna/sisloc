@@ -15,7 +15,7 @@ public class Peca implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String descricao; //nome do acessorio
+	private String descricao; //nome da peca
 	private Double valor;
 	private Integer quantidade;
 	
