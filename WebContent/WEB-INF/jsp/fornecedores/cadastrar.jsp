@@ -56,13 +56,13 @@
 		     		<label>Endereço:</label>
 		     		</td>
 					<td align="left">
-					<input class="maiuscula" type="text" name="fornecedor.logradouro" size=96 value="${endereco.logradouro}" />
+					<input class="maiuscula" type="text" name="fornecedor.logradouro" size=96 value="${fornecedor.logradouro}" />
 					</td>
 					<td align="right">
 					<label>Número:</label>
 					</td>
 					<td align="left">
-					<input class="maiuscula" type="text" name="fornecedor.numero" size=10 value="${endereco.numero}" />
+					<input class="maiuscula" type="text" name="fornecedor.numero" size=10 value="${fornecedor.numero}" />
 					<br>
 					</td>
 					</tr>
@@ -74,14 +74,14 @@
 					<label>Complemento:</label>
 					</td>
 					<td align="left">
-					<input class="maiuscula" type="text" name="fornecedor.complemento" size=50 value="${endereco.complemento}" />
+					<input class="maiuscula" type="text" name="fornecedor.complemento" size=50 value="${fornecedor.complemento}" />
 					<br>
 					</td>
 					<td align="right" width="85">
 					<label>Bairro:</label>
 					</td>
 					<td align="left">
-					<input class="maiuscula" type="text" name="fornecedor.bairro" size=29 value="${endereco.bairro}" />
+					<input class="maiuscula" type="text" name="fornecedor.bairro" size=29 value="${fornecedor.bairro}" />
 					<br>
 					</td>
 					</tr>
@@ -93,7 +93,7 @@
 					<label>Cidade:</label>
 					</td>
 					<td align="left">
-					<input class="maiuscula" type="text" name="fornecedor.cidade" size=50 value="${endereco.cidade}" />
+					<input class="maiuscula" type="text" name="fornecedor.cidade" size=50 value="${fornecedor.cidade}" />
 					<br>
 					</td>
 					<td align="right" width="85">
@@ -101,7 +101,7 @@
 					</td>
 					<td align="left"> 
 					<select name="fornecedor.uf">
-							<option value="${endereco.uf}">${endereco.uf}</option>
+							<option value="${fornecedor.uf}">${fornecedor.uf}</option>
 							<option value="AC">ACRE</option>
 							<option value="AL">ALAGOAS</option>
 							<option value="AP">AMAPÁ</option>
@@ -136,7 +136,7 @@
 					<label>CEP:</label>
 					</td>
 					<td align="left">
-					<input class="maiuscula" type="text" name="fornecedor.cep" size=12 value="${endereco.cep}" />
+					<input class="maiuscula" type="text" name="fornecedor.cep" size=12 value="${fornecedor.cep}" />
 					<br>
 					</td>
 					</tr>

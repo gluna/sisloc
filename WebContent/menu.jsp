@@ -9,7 +9,7 @@
          			<li><a href="<c:url value="/acessorios/cadastrar"/>"><span>Acessórios</span></a></li>
          			<li><a href="<c:url value="/pecas/cadastrar"/>"><span>Peças de Reposição</span></a></li>
          			<!-- <li><a href="<c:url value="/pagamentos/cadastrarcontasapagar"/>"><span>Contas a Pagar</span></a></li>  -->
-         			<!-- <li><a href="<c:url value="/empresa/editar/1"/>"><span>Empresa</span></a></li>  -->
+         			<li><a href="<c:url value="/empresa/editar/1"/>"><span>Empresa</span></a></li>
          			<li><a href="<c:url value="/fornecedores/cadastrar"/>"><span>Fornecedores</span></a></li>
          			<!-- <li><a href="<c:url value="/locacoes/cadastrar"/>"><span>Locações</span></a></li>  -->
          			<!-- <li><a href="<c:url value="/orcamentos/cadastrar"/>"><span>Orçamentos</span></a></li>  -->

@@ -7,12 +7,15 @@
 		<div id="tabs" class="container">
 			<ul>
 				<li><a href="#tabs-1">Cadastro da Empresa</a></li>
+				<li><a href="#tabs-2">Endereço</a></li>
+				<li><a href="#tabs-3">Telefone</a></li>
+				<li><a href="#tabs-4">Outros</a></li>
 			</ul>
 			<div id="tabs-1">
 				<br>
 				<fieldset id="formulario" style="width: 1140px;"> 
 				<legend>
-					Informações:
+					Dados Pessoais:
 				</legend>
 				<!--<label>ID:</label> --><input type="hidden" name="empresa.id" value="${empresa.id}" readonly />
 					<table><tr><td align="right" width="95"> 
@@ -20,67 +23,17 @@
 						<td align="left"><input	class="maiuscula" type="text" name="empresa.nomefantasia" size=50 value="${empresa.nomefantasia}" /><br></td>
 						<td align="right" width="80"><label>CNPJ:</label></td> 
 						<td align="left"><input class="maiuscula" type="text" name="empresa.cnpj" size=28 value="${empresa.cnpj}" /></td>
-						<td align="right" width="95"> <label>Razão Social:</label></td> 
-						<td align="left"><input	class="maiuscula" type="text" name="empresa.razaosocial" size=30 value="${empresa.razaosocial}" /><br></td></tr></table><br>
-						<table><tr><td align="right" width="95"><label>Endereço:</label> </td>
-						<td align="left"><input class="maiuscula" type="text" name="empresa.logradouro" size=96 value="${empresa.logradouro}" /> </td>
-						<td align="right"><label>Número:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="empresa.numero" size=10 value="${empresa.numero}" /><br> </td></tr></table><br> 
-						<table><tr><td align="right"> <label>Complemento:</label></td> 
-						<td align="left"><input class="maiuscula" type="text" name="empresa.complemento" size=50 value="${empresa.complemento}" /> <br></td>
-						<td align="right" width="85"><label>Bairro:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="empresa.bairro" size=29 value="${empresa.bairro}" /><br> </td>
-						<td align="right" width="50"><label>Tel:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="empresa.tel" size=28 value="${empresa.tel}" /><br> </td>
+						</tr></table><br> 
+						<table><tr><td align="right" width="95"> <label>Razão Social:</label></td> 
+						<td align="left"><input class="maiuscula" type="text" name="empresa.razaosocial" size=50 value="${empresa.razaosocial}" /> <br></td>
+						<td align="right" width="80"><label>Insc. Est.:</label></td> 
+						<td align="left"> <input class="maiuscula" type="text" name="empresa.ie" size=28 value="${empresa.ie}" /><br> </td>
 						</tr></table><br>
-						<table><tr><td align="right" width="95"> <label>Cidade:</label></td> 
-						<td align="left"><input class="maiuscula" type="text" name="empresa.cidade" size=50 value="${empresa.cidade}" /> <br></td>
-						<td align="right" width="85"><label>UF:</label></td> 
-						<td align="left"> 
-						<select name="empresa.uf">
-								<option value="${empresa.uf}">${empresa.uf}</option>
-								<option value="AC">ACRE</option>
-								<option value="AL">ALAGOAS</option>
-								<option value="AP">AMAPÁ</option>
-								<option value="AM">AMAZONAS</option>
-								<option value="BA">BAHIA</option>
-								<option value="CE">CEARÁ</option>
-								<option value="DF">DISTRITO FEDERAL</option>
-								<option value="ES">ESPIRITO SANTO</option>
-								<option value="GO">GOIÁS</option>
-								<option value="MA">MARANHÃO</option>
-								<option value="MS">MATO GROSSO DO SUL</option>
-								<option value="MT">MATO GROSSO</option>
-								<option value="MG">MINAS GERAIS</option>
-								<option value="PA">PARÁ</option>
-								<option value="PB">PARAÍBA</option>
-								<option value="PR">PARANÁ</option>
-								<option value="PE">PERNAMBUCO</option>
-								<option value="PI">PIAUÍ</option>
-								<option value="RJ">RIO DE JANEIRO</option>
-								<option value="RN">RIO GRANDE DO NORTE</option>
-								<option value="RS">RIO GRANDE DO SUL</option>
-								<option value="RO">RONDÔNIA</option>
-								<option value="RR">RORAIMA</option>
-								<option value="SC">SANTA CATARINA</option>
-								<option value="SP">SÃO PAULO</option>
-								<option value="SE">SERGIPE</option>
-								<option value="TO">TOCANTINS</option>
-						</select>
-						<br> </td>
-						<td align="right" width="67"><label>CEP:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="empresa.cep" size=13 value="${empresa.cep}" /><br> </td>
-						</tr></table><br>
-						<table><tr><td align="right" width="95"> <label>E-mail:</label></td> 
-						<td align="left"><input class="maiuscula" type="text" name="empresa.email" size=50 value="${empresa.email}" /> <br></td>
-						<td align="right" width="85"><label>Insc. Est.:</label></td> 
+						<!-- <table><tr>
+						<td align="right" width="95"><label>Insc. Est.:</label></td> 
 						<td align="left"> <input class="maiuscula" type="text" name="empresa.ie" size=28 value="${empresa.ie}" /><br> </td>
 						<td align="right" width="85"><label>Insc. Mun.:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="empresa.im" size=28 value="${empresa.im}" /><br> </td>
-						</tr></table>
-						<table><tr>
-						<td align="right" width="95"><label>Contrato:</label></td>
-						<td align="right"><textarea style="resize:none; text-transform: uppercase;" rows="10" cols="130" name="empresa.contrato" />${empresa.contrato}</textarea><br> </td></tr></table><br>
+						<td align="left"> <input class="maiuscula" type="text" name="empresa.im" size=28 value="${empresa.im}" /><br> </td></tr></table><br>  -->
 				</fieldset>
 				<br/>	
 				<br>
@@ -90,6 +43,170 @@
 					</td></tr>
 				</table>
 			</div>
+			
+			<div id="tabs-2">
+				<br>
+				<fieldset id="endereco-container" style="width: 1140px;">
+				<legend>
+					Endereço:	
+				</legend>
+				<table>
+		     		<tr>
+		     		<td align="right" width="95">
+		     		<label>Endereço:</label>
+		     		</td>
+					<td align="left">
+					<input class="maiuscula" type="text" name="empresa.logradouro" size=96 value="${empresa.logradouro}" />
+					</td>
+					<td align="right">
+					<label>Número:</label>
+					</td>
+					<td align="left">
+					<input class="maiuscula" type="text" name="empresa.numero" size=10 value="${empresa.numero}" />
+					<br>
+					</td>
+					</tr>
+					</table>
+					<br>
+					<table>
+					<tr>
+					<td align="right" width="95">
+					<label>Complemento:</label>
+					</td>
+					<td align="left">
+					<input class="maiuscula" type="text" name="empresa.complemento" size=50 value="${empresa.complemento}" />
+					<br>
+					</td>
+					<td align="right" width="85">
+					<label>Bairro:</label>
+					</td>
+					<td align="left">
+					<input class="maiuscula" type="text" name="empresa.bairro" size=29 value="${empresa.bairro}" />
+					<br>
+					</td>
+					</tr>
+					</table>
+					<br>
+					<table>
+					<tr>
+					<td align="right" width="95">
+					<label>Cidade:</label>
+					</td>
+					<td align="left">
+					<input class="maiuscula" type="text" name="empresa.cidade" size=50 value="${empresa.cidade}" />
+					<br>
+					</td>
+					<td align="right" width="85">
+					<label>UF:</label>
+					</td>
+					<td align="left"> 
+					<select name="empresa.uf">
+							<option value="${empresa.uf}">${empresa.uf}</option>
+							<option value="AC">ACRE</option>
+							<option value="AL">ALAGOAS</option>
+							<option value="AP">AMAPÁ</option>
+							<option value="AM">AMAZONAS</option>
+							<option value="BA">BAHIA</option>
+							<option value="CE">CEARÁ</option>
+							<option value="DF">DISTRITO FEDERAL</option>
+							<option value="ES">ESPIRITO SANTO</option>
+							<option value="GO">GOIÁS</option>
+							<option value="MA">MARANHÃO</option>
+							<option value="MS">MATO GROSSO DO SUL</option>
+							<option value="MT">MATO GROSSO</option>
+							<option value="MG">MINAS GERAIS</option>
+							<option value="PA">PARÁ</option>
+							<option value="PB">PARAÍBA</option>
+							<option value="PR">PARANÁ</option>
+							<option value="PE">PERNAMBUCO</option>
+							<option value="PI">PIAUÍ</option>
+							<option value="RJ">RIO DE JANEIRO</option>
+							<option value="RN">RIO GRANDE DO NORTE</option>
+							<option value="RS">RIO GRANDE DO SUL</option>
+							<option value="RO">RONDÔNIA</option>
+							<option value="RR">RORAIMA</option>
+							<option value="SC">SANTA CATARINA</option>
+							<option value="SP">SÃO PAULO</option>
+							<option value="SE">SERGIPE</option>
+							<option value="TO">TOCANTINS</option>
+					</select>
+					<br>
+					</td>
+					<td align="right" width="67">
+					<label>CEP:</label>
+					</td>
+					<td align="left">
+					<input class="maiuscula" type="text" name="empresa.cep" size=12 value="${empresa.cep}" />
+					<br>
+					</td>
+					</tr>
+					</table>
+					<br>
+				</fieldset>
+	
+				<br>
+				<table align="center">
+					<tr><td>
+					<input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br/>	
+					</td></tr>
+				</table>
+			</div>
+			
+			<div id="tabs-3">
+				<br>
+				<fieldset id="telefone-container" style="width: 1140px;">
+				<legend>
+					Telefones:	
+				</legend>
+				<table align="right"><tr><td>
+					<input type="button" name="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-contact"/></td></tr>
+				</table>
+				<c:forEach items="${empresa.telefones}" var="telefone" varStatus="status">
+					<div class="telefoneempresa">
+						<label>Tipo:</label>&nbsp
+						<select id="telefone" name="empresa.telefones[${status.index}].tipo">
+						<option value="${telefone.tipo}">${telefone.tipo}</option>
+						<option value="COMERCIAL" class="comercial">&nbsp&nbsp&nbsp&nbspCOMERCIAL</option>
+						<option value="RESIDENCIAL" class="tel">&nbsp&nbsp&nbsp&nbspRESIDENCIAL</option>
+						<option value="CELULAR" class="cel">&nbsp&nbsp&nbsp&nbspCELULAR</option>
+						</select>&nbsp&nbsp
+						<label>Numero:</label>&nbsp
+						<input type="text" name="empresa.telefones[${status.index}].numero" value="${telefone.numero}" />&nbsp&nbsp
+						<label>Contato:</label>&nbsp
+						<input type="text" name="empresa.telefones[${status.index}].contato" value="${telefone.contato}" />&nbsp&nbsp
+						<input type="hidden" name="empresa.telefones[${status.index}].id" value="${telefone.id}" />
+						<input type="button" class="button-remover"/>
+					</div>
+				</c:forEach>
+				</fieldset>
+	
+				<br>
+				<table align="center">
+					<tr><td>
+					<input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br/>	
+					</td></tr>
+				</table>
+			</div>
+			
+			<div id="tabs-4">
+				<br>
+				<fieldset id="cobranca-container" style="width: 1140px;">
+				<legend>
+					Informações:	
+				</legend>
+				<table><tr><td align="right" width="95"> <label>E-mail:</label></td> 
+						<td align="left"><input class="maiuscula" type="text" name="empresa.email" size=50 value="${empresa.email}" /> <br></td>
+						</tr></table>
+				</fieldset>
+	
+				<br>
+				<table align="center">
+					<tr><td>
+					<input type="submit" value="Salvar" class="salvar" icon="ui-icon-disk"/><br/>	
+					</td></tr>
+				</table>
+			</div>
+			
 		</div>	
 	</form>
 
@@ -97,6 +214,7 @@
 <%@ include file="../../../footer.jsp"%>
 
 <script type="text/javascript">
+
 var model =
 	'<div class="telefoneempresa">' +
 		'<label>Tipo:</label>&nbsp' +
@@ -109,7 +227,7 @@ var model =
 		'<label>Numero:</label>&nbsp' +
 		'<input type="text" name="empresa.telefones[0].numero" value="${telefone.numero}" />&nbsp&nbsp' +
 		'<label>Contato:</label>&nbsp' +
-		'<input type="text" name="empresa.telefones[0].contato" value="${telefone.contato}" />&nbsp&nbsp' +
+		'<input type="text" class="maiuscula" name="empresa.telefones[0].contato" value="${telefone.contato}" />&nbsp&nbsp' +
 		'<input type="hidden" name="empresa.telefones[0].id" value="${telefone.id}" />' +
 		'<input type="button" class="button-remover" />' +
 	'</div>';
@@ -193,6 +311,7 @@ function reorderIndexes() {
 			});
 	});
 	
+		
 </script>
 <style type="text/css">
 input.maiuscula {
