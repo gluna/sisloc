@@ -2,11 +2,19 @@ package sisloc.modelo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 public class Funcionario implements Serializable{
@@ -32,6 +40,11 @@ public class Funcionario implements Serializable{
 	private String pai;
 	private String mae;
 	private String ctps;
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SUBSELECT)
+	@JoinColumn
+	private List<TelefoneFuncionario> telefones;
 	
 	public Long getId() {
 		return id;
@@ -134,6 +147,12 @@ public class Funcionario implements Serializable{
 	}
 	public void setCtps(String ctps) {
 		this.ctps = ctps;
+	}
+	public List<TelefoneFuncionario> getTelefones() {
+		return telefones;
+	}
+	public void setTelefones(List<TelefoneFuncionario> telefones) {
+		this.telefones = telefones;
 	}
 
 }
