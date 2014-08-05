@@ -11,6 +11,7 @@
          			<!-- <li><a href="<c:url value="/pagamentos/cadastrarcontasapagar"/>"><span>Contas a Pagar</span></a></li>  -->
          			<li><a href="<c:url value="/empresa/editar/1"/>"><span>Empresa</span></a></li>
          			<li><a href="<c:url value="/fornecedores/cadastrar"/>"><span>Fornecedores</span></a></li>
+         			<li><a href="<c:url value="/funcionarios/cadastrar"/>"><span>Funcionários</span></a></li>
          			<!-- <li><a href="<c:url value="/locacoes/cadastrar"/>"><span>Locações</span></a></li>  -->
          			<!-- <li><a href="<c:url value="/orcamentos/cadastrar"/>"><span>Orçamentos</span></a></li>  -->
          			<!-- <li><a href="<c:url value="/pagamentos/consultalocacao"/>"><span>Contas a Receber</span></a></li>  -->

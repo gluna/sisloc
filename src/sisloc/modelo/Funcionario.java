@@ -37,6 +37,7 @@ public class Funcionario implements Serializable{
 	private String rg;
 	private String cnh;
 	private Date   dtadmissao;
+	private Date   dtdemissao;
 	private String pai;
 	private String mae;
 	private String ctps;
@@ -153,6 +154,12 @@ public class Funcionario implements Serializable{
 	}
 	public void setTelefones(List<TelefoneFuncionario> telefones) {
 		this.telefones = telefones;
+	}
+	public Date getDtdemissao() {
+		return dtdemissao;
+	}
+	public void setDtdemissao(Date dtdemissao) {
+		this.dtdemissao = dtdemissao;
 	}
 
 }
