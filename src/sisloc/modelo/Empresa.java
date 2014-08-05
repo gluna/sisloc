@@ -1,10 +1,19 @@
 package sisloc.modelo;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 public class Empresa {
@@ -28,6 +37,11 @@ public class Empresa {
 	private String cep; //OK
 	private String tel; //OK
 	private String email; //OK
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	@Fetch(FetchMode.SUBSELECT)
+	@JoinColumn
+	private List<TelefoneEmpresa> telefones;
 	
 	public Long getId() {
 		return id;
@@ -124,6 +138,12 @@ public class Empresa {
 	}
 	public void setIm(String im) {
 		this.im = im;
+	}
+	public List<TelefoneEmpresa> getTelefones() {
+		return telefones;
+	}
+	public void setTelefones(List<TelefoneEmpresa> telefones) {
+		this.telefones = telefones;
 	}
 
 }
