@@ -27,6 +27,7 @@ public class Manutencao implements Serializable{
 	private Equipamento equipamento;
 	private Date dtinicio;
 	private Date dtfim;
+	private String custo; //custo da manutencao
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@Fetch(FetchMode.SUBSELECT)
@@ -71,6 +72,14 @@ public class Manutencao implements Serializable{
 
 	public void setPecas(List<PecasManutencao> pecas) {
 		this.pecas = pecas;
+	}
+
+	public String getCusto() {
+		return custo;
+	}
+
+	public void setCusto(String custo) {
+		this.custo = custo;
 	}
 
 }
