@@ -1,7 +1,7 @@
 <%@ include file="../../../header.jsp"%>
- <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery.min.js"></script> 
+<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery.min.js"></script> 
 <!-- <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script> --> 
- <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-ui-1.10.3.custom.js"></script> 
+<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-ui-1.10.3.custom.js"></script> 
 <body>
 	<form action="<c:url value='/equipamentos/salvar'/>" method="post">
 		<div id="tabs" class="container">
@@ -22,8 +22,8 @@
 						<td align="left"><input	class="maiuscula" type="text" name="equipamento.patrimonio" size=28 value="${equipamento.patrimonio}" /><br></td>
 						<td align="right" width="95"><label>Categoria:</label></td>
 						<td align="left">
-						<select name="equipamento.tipoequipamento.tipo.id" value="equipamento.tipoequipamento.id">
-							<c:forEach items="${tipoequipamentoList}" var="tipoequipamento" varStatus="status">
+						<select id="tipoequipamento" name="equipamento.tipoequipamento.id" value="equipamento.tipoequipamento.id">
+							<c:forEach items="${tipoEquipamentoList}" var="tipoequipamento" varStatus="status">
 								<option value="${tipoequipamento.id}">${tipoequipamento.descricao}</option>
 							</c:forEach>
 						</select></td>
