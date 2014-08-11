@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -24,15 +25,19 @@ public class Manutencao implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Equipamento equipamento;
 	private Date dtinicio;
 	private Date dtfim;
 	private String custo; //custo da manutencao
 	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn
+	private Equipamento equipamento;
+	
+	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@Fetch(FetchMode.SUBSELECT)
 	@JoinColumn
-	private List<PecasManutencao> pecas;
+	private List<PecaManutencao> pecas;
 
 	public Long getId() {
 		return id;
@@ -66,11 +71,11 @@ public class Manutencao implements Serializable{
 		this.dtfim = dtfim;
 	}
 
-	public List<PecasManutencao> getPecas() {
+	public List<PecaManutencao> getPecas() {
 		return pecas;
 	}
 
-	public void setPecas(List<PecasManutencao> pecas) {
+	public void setPecas(List<PecaManutencao> pecas) {
 		this.pecas = pecas;
 	}
 

@@ -78,12 +78,14 @@
 var model =
 	'<div class="manutencaoequipamento">'+
 		'<label>Tipo:</label>&nbsp'+
-		'<select id="peca" name="manutencao.pecas[${status.index}].peca.id" value="pecas.peca.id">'+
-			'<option value="${pecas.peca.id}">${pecas.peca.descricao}</option>'+
+		'<select id="peca" name="manutencao.pecas[0].peca.id" value="pecas.peca.id">'+
+		'  <c:forEach items="${pecaList}" var="peca" varStatus="status">'+
+			'<option value="${peca.id}">${peca.descricao}</option>'+
+		'	</c:forEach>'+
 		'</select>&nbsp&nbsp'+
 		'<label>Quantidade:</label>&nbsp'+
-		'<input type="text" name="manutencao.pecas[${status.index}].peca.quantidade" value="${pecas.peca.quantidade}" />&nbsp&nbsp'+
-		'<input type="hidden" name="manutencao.pecas[${status.index}].id" value="${pecas.id}" />'+
+		'<input type="text" name="manutencao.pecas[0].peca.quantidade" value="${pecas.peca.quantidade}" />&nbsp&nbsp'+
+		'<input type="hidden" name="manutencao.pecas[0].id" value="${pecas.id}" />'+
 		'<input type="button" class="button-remover"/>'+
 	'</div>';
 

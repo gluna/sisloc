@@ -2,21 +2,29 @@ package sisloc.modelo;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
-public class PecasManutencao implements Serializable{
+public class PecaManutencao implements Serializable{
 
 	private static final long serialVersionUID = 1144237260974696789L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Peca peca;
+
 	private Integer quantidade;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn
+	private Peca peca;
+	
 	public Long getId() {
 		return id;
 	}

@@ -1,7 +1,11 @@
 package sisloc.controller;
 
+import java.util.List;
+
 import sisloc.dao.ManutencaoDao;
+import sisloc.dao.PecaDao;
 import sisloc.modelo.Manutencao;
+import sisloc.modelo.Peca;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
@@ -11,15 +15,18 @@ import br.com.caelum.vraptor.Result;
 public class ManutencaoController {
 	
 	private ManutencaoDao dao;
+	private PecaDao pecaDao;
 	private Result result;
 	
-	public ManutencaoController(ManutencaoDao dao, Result result){
+	public ManutencaoController(ManutencaoDao dao, Result result, PecaDao pecaDao){
 		this.dao = dao;
 		this.result = result;
+		this.pecaDao = pecaDao;
 	}
 	
 	@Path("/manutencao/cadastrar")
-	public void cadastrar(){
+	public List<Peca> cadastrar(){
+		return pecaDao.listaTodos();
 	}
 	
 	@Post
