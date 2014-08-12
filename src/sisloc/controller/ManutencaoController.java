@@ -97,13 +97,15 @@ public class ManutencaoController {
 	    //result.redirectTo(this.getClass()).visualizar();
 	}
 	
-	@Path("/manutancao/excluir/{manutencao.id}")
+	@Path("/manutencao/excluir/{manutencao.id}")
 	public void excluir(Manutencao manutencao){
 		manutencao = dao.selectById(manutencao);
 	    dao.excluir(manutencao);
 	    //result.redirectTo(this.getClass()).consultar();	
 	}
 	
+	@Post
+	@Path("/manutencao/getequipamento/{equipamento.patrimonio}")
 	public void buscaEquipamento(Equipamento equipamento){
 		Equipamento e = equipamentoDao.selectByPat(equipamento);
 		result.use(Results.json()).withoutRoot().from(e).serialize(); 		
