@@ -15,6 +15,7 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.view.Results;
 
 @Resource
 public class ManutencaoController {
@@ -103,8 +104,9 @@ public class ManutencaoController {
 	    //result.redirectTo(this.getClass()).consultar();	
 	}
 	
-	public Equipamento buscaEquipamento(Equipamento equipamento){
-		return equipamentoDao.selectByPat(equipamento);		
+	public void buscaEquipamento(Equipamento equipamento){
+		Equipamento e = equipamentoDao.selectByPat(equipamento);
+		result.use(Results.json()).withoutRoot().from(e).serialize(); 		
 	}
 	
 
