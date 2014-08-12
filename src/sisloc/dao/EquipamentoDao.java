@@ -62,6 +62,13 @@ public class EquipamentoDao {
 		return t;
 	}
 	
+	public Equipamento selectByPat(Equipamento equipamento) {
+		Query q = manager.createQuery("from Equipamento t where t.patrimonio = :pid");
+		q.setParameter("pid", equipamento.getPatrimonio());
+		 
+		return (Equipamento)q.getSingleResult();
+	}
+	
 	/*@SuppressWarnings("unchecked")
 	public List<Equipamento> consultaNome(Equipamento equipamento){
 		if(equipamento == null){

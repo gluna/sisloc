@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import sisloc.dao.EquipamentoDao;
 import sisloc.dao.ManutencaoDao;
 import sisloc.dao.PecaDao;
+import sisloc.modelo.Equipamento;
 import sisloc.modelo.Manutencao;
 import sisloc.modelo.Peca;
 import sisloc.modelo.PecaManutencao;
@@ -19,12 +21,14 @@ public class ManutencaoController {
 	
 	private ManutencaoDao dao;
 	private PecaDao pecaDao;
+	private EquipamentoDao equipamentoDao;
 	private Result result;
 	
-	public ManutencaoController(ManutencaoDao dao, Result result, PecaDao pecaDao){
+	public ManutencaoController(ManutencaoDao dao, Result result, PecaDao pecaDao, EquipamentoDao equipamentoDao){
 		this.dao = dao;
 		this.result = result;
 		this.pecaDao = pecaDao;
+		this.equipamentoDao = equipamentoDao;
 	}
 	
 	@Path("/manutencao/cadastrar")
@@ -97,6 +101,10 @@ public class ManutencaoController {
 		manutencao = dao.selectById(manutencao);
 	    dao.excluir(manutencao);
 	    //result.redirectTo(this.getClass()).consultar();	
+	}
+	
+	public Equipamento buscaEquipamento(Equipamento equipamento){
+		return equipamentoDao.selectByPat(equipamento);		
 	}
 	
 
