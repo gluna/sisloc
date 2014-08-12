@@ -19,11 +19,11 @@
 						<label>Nome:</label></td> 
 						<td align="left"><input	class="maiuscula" type="text" name="peca.descricao" size=50 value="${peca.descricao}" /><br></td>
 						</tr></table><br> 
-						<table><tr><td align="right" width="95"> <label>Valor R$:</label></td>
+						<!-- <table><tr><td align="right" width="95"> <label>Valor R$:</label></td>
 						<td align="left"> <input class="maiuscula" type="text" name="peca.valor" size=28 value="${peca.valor}" /><br> </td> 
 						<td align="right" width="95"><label>Quantidade:</label></td> 
 						<td align="left"> <input class="maiuscula" type="text" name="peca.quantidade" size=28 value="${peca.quantidade}" /><br> </td>
-						</tr></table><br>
+						</tr></table><br> -->
 				</fieldset>
 				<br/>	
 				<br>

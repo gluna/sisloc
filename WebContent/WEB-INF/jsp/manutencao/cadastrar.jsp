@@ -16,11 +16,14 @@
 				</legend>
 				<!--<label>ID:</label> --><input type="hidden" name="manutencao.id" value="${manutencao.id}" readonly />
 					<table><tr><td align="right" width="95"> 
-						<label>Núm. Série:</label></td> 
+						<label>Núm. Pat:</label></td> 
 						<td align="left"><input	class="maiuscula" type="text" name="manutencao.equipamento" size=28 value="${manutencao.equipamento}" /><br></td>
-						<td align="right" width="95"><label>Custo R$:</label></td> 
-						<td align="left"><input	class="maiuscula" type="text" name="manutencao.custo" size=15 value="${manutencao.custo}" /><br></td>
-						<td align="right" width="85"><label>Dt. Inicio:</label></td> 
+						<td><input type="button" name="buscar" value="Buscar" class="buscar" icon="ui-icon-search"/><br/></td>
+						<td align="right" width="90"><label>Descrição:</label></td> 
+						<td align="left"><input type="text" class="leitura" name="manutencao.descricao" value="" size=40 readonly /><br></td>
+						</tr></table><br>
+						<table><tr>
+						<td align="right" width="95"><label>Dt. Inicio:</label></td> 
 						<td align="left"><input type="text" class="data" name="manutencao.dtadmissao" value="<fmt:formatDate value="${manutencao.dtadmissao}" dateStyle="medium" />" /><br></td>
 						<td align="right" width="85"><label>Dt Fim:</label></td> 
 						<td align="left"><input type="text" class="data" name="manutencao.dtdemissao" value="<fmt:formatDate value="${manutencao.dtdemissao}" dateStyle="medium" />" /><br></td>
@@ -57,6 +60,16 @@
 					</div>
 				</c:forEach>
 				</fieldset>
+				<br><br>
+				<fieldset id="valores" style="width: 1140px;"> 
+				<legend>
+					Valores:
+				</legend>
+					<table><tr>
+						<td align="right" width="95"><label>Custo R$:</label></td> 
+						<td align="left"><input	class="leitura" type="text" name="manutencao.custo" size=15 value="${manutencao.custo}" readonly/><br></td>
+						</tr></table><br> 
+				</fieldset><br>
 				
 				<br/>	
 				<br>
@@ -154,6 +167,15 @@ function reorderIndexes() {
 			         $(this).prev().click();
 			    });
 			});
+		$('input[name="buscar"]').each(function () {
+			   $(this).hide().after('<button>').next().button({
+			        icons: { primary: $(this).attr('icon') },
+			        label: $(this).val()
+			    }).click(function (event) {
+			         event.preventDefault();
+			         $(this).prev().click();
+			    });
+			});
 		$('input[name="button"]').each(function () {
 			   $(this).hide().after('<button>').next().button({
 			        icons: { primary: $(this).attr('icon') },
@@ -183,6 +205,11 @@ function reorderIndexes() {
 <style type="text/css">
 input.maiuscula {
   text-transform: uppercase;
+}
+
+input.leitura {
+  text-transform: uppercase;
+  background-color: #FFFFE0;
 }
 
 .button-remover {
