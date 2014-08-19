@@ -8,7 +8,7 @@
       				<li><a href="<c:url value="/clientes/cadastrar"/>"><span>Clientes</span></a></li>
       				<li><a href="<c:url value="/empresa/editar/1"/>"><span>Empresa</span></a></li>
       				<li><a href="<c:url value="/equipamentos/cadastrar"/>"><span>Equipamentos</span></a></li>
-      				<li><a href="<c:url value="/entradaPecas/cadastrar"/>"><span>Estoque de Peças</span></a></li>
+      				<li><a href="<c:url value="/entradapecas/cadastrar"/>"><span>Estoque de Peças</span></a></li>
          			<li><a href="<c:url value="/fornecedores/cadastrar"/>"><span>Fornecedores</span></a></li>
          			<li><a href="<c:url value="/funcionarios/cadastrar"/>"><span>Funcionários</span></a></li>
          			<li><a href="<c:url value="/manutencao/cadastrar"/>"><span>Manutenção</span></a></li>
