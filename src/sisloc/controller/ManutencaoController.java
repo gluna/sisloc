@@ -11,6 +11,7 @@ import sisloc.modelo.Equipamento;
 import sisloc.modelo.Manutencao;
 import sisloc.modelo.Peca;
 import sisloc.modelo.PecaManutencao;
+import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
@@ -83,7 +84,7 @@ public class ManutencaoController {
 	public void editar(Manutencao manutencao){
 		manutencao = dao.selectById(manutencao);
 	    if(manutencao != null) {
-	         result.include("cliente", manutencao);
+	         result.include("manutencao", manutencao);
 	    }
 	    result.redirectTo(this.getClass()).cadastrar();
 	}
@@ -104,10 +105,12 @@ public class ManutencaoController {
 	    //result.redirectTo(this.getClass()).consultar();	
 	}
 	
-	@Post
-	@Path("/manutencao/getequipamento/{equipamento.patrimonio}")
-	public void buscaEquipamento(Equipamento equipamento){
-		Equipamento e = equipamentoDao.selectByPat(equipamento);
+	@Get
+	@Path("/manutencao/getequipamento/{manutencao.equipamento.patrimonio}")
+	public void getequipamento(String patrimonio){
+		Equipamento equi = new Equipamento();
+		equi.setPatrimonio(patrimonio);
+		Equipamento e = equipamentoDao.selectByPat(equi);
 		result.use(Results.json()).withoutRoot().from(e).serialize(); 		
 	}
 	

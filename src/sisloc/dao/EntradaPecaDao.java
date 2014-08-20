@@ -5,18 +5,18 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import sisloc.modelo.EntradaPecas;
+import sisloc.modelo.EntradaPeca;
 import br.com.caelum.vraptor.ioc.Component;
 
 @Component
-public class EntradaPecasDao {
+public class EntradaPecaDao {
 	public EntityManager manager;
 
-	public EntradaPecasDao(EntityManager manager){
+	public EntradaPecaDao(EntityManager manager){
 		 this.manager = manager;
 	}
 	
-	public boolean salvar(EntradaPecas entradaPecas){
+	public boolean salvar(EntradaPeca entradaPecas){
 		try{
 			manager.persist(entradaPecas);
 		}catch(Exception e){
@@ -26,7 +26,7 @@ public class EntradaPecasDao {
 		return true;
 	}
 	
-	public boolean excluir(EntradaPecas entradaPecas){
+	public boolean excluir(EntradaPeca entradaPecas){
 		try{
 			manager.remove(entradaPecas);
 		}catch(Exception e){
@@ -35,7 +35,7 @@ public class EntradaPecasDao {
 		return true;
 	}
 	
-	public boolean atualizar(EntradaPecas entradaPecas){
+	public boolean atualizar(EntradaPeca entradaPecas){
 		try{
 			manager.merge(entradaPecas);
 		}catch(Exception e){
@@ -45,19 +45,19 @@ public class EntradaPecasDao {
 		return true;
 	}
 	
-	public EntradaPecas selectById(EntradaPecas entradaPecas) {
+	public EntradaPeca selectById(EntradaPeca entradaPecas) {
 		Query q = manager.createQuery("from EntradaPecas t where t.id = :pid");
 		q.setParameter("pid", entradaPecas.getId());
 		 
-		return (EntradaPecas)q.getSingleResult();
+		return (EntradaPeca)q.getSingleResult();
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<EntradaPecas> listaTodos(){
-		List<EntradaPecas> t;
+	public List<EntradaPeca> listaTodos(){
+		List<EntradaPeca> t;
 		
-		Query q = manager.createQuery("from EntradaPecas");
-		t = (List<EntradaPecas>) q.getResultList();		
+		Query q = manager.createQuery("from EntradaPeca");
+		t = (List<EntradaPeca>) q.getResultList();		
 		return t;
 	}
 	
