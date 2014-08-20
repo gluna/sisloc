@@ -18,7 +18,7 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 @Entity
-public class EntradaPecas implements Serializable{
+public class EntradaPeca implements Serializable{
 
 	private static final long serialVersionUID = 4750758111824234536L;
 	
