@@ -6,7 +6,7 @@
 	<form action="<c:url value='/manutencao/salvar'/>" method="post">
 		<div id="tabs" class="container">
 			<ul>
-				<li><a href="#tabs-1">Manutenção</a></li>
+				<li><a href="#tabs-1">Entrada de Peças</a></li>
 			</ul>
 			<div id="tabs-1">
 				<br>
@@ -14,13 +14,19 @@
 				<legend>
 					Informações:
 				</legend>
-				<!--<label>ID:</label> --><input type="hidden" name="manutencao.id" value="${manutencao.id}" readonly />
+				<!--<label>ID:</label> --><input type="hidden" name="entradapeca.id" value="${entradapeca.id}" readonly />
 					<table><tr><td align="right" width="95"> 
-						<label>Núm. Pat:</label></td> 
-						<td align="left"><input	class="maiuscula" type="text" id="equipamento" name="manutencao.equipamento" size=28 value="${manutencao.equipamento}" /><br></td>
-						<td><input type="button" name="buscar" value="Buscar" onclick="getpatrimonio();" icon="ui-icon-search"/><br/></td>
-						<td align="right" width="90"><label>Descrição:</label></td> 
-						<td align="left"><input type="text" class="leitura" id="descricao" name="manutencao.descricao" value="" size=40 readonly /><br></td>
+						<label>Nota:</label></td> 
+						<td align="left"><input	class="maiuscula" type="text" name="entradapeca.nota" size=28 value="${entradapeca.nota}" /><br></td>
+						<td align="right" width="90"><label>Data:</label></td> 
+						<td align="left"><input type="text" class="data" name="entradapeca.dtEntrada" value="<fmt:formatDate value="${entradapeca.dtEntrada}" dateStyle="medium" />" /><br></td>
+						<td align="right" width="95"><label>Fornecedor:</label></td> 
+						<td align="left">
+						<select id="tipofornecedor" name="entradapeca.fornecedor.id" value="entradapeca.fornecedor.id">
+							<c:forEach items="${fornecedorList}" var="tipofornecedor" varStatus="status">
+								<option value="${tipofornecedor.id}">${tipofornecedor.nome}</option>
+							</c:forEach>
+						</select></td>
 						</tr></table><br>
 						<table><tr>
 						<td align="right" width="95"><label>Dt. Inicio:</label></td> 
