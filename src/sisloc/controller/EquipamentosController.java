@@ -36,6 +36,7 @@ public class EquipamentosController {
 	@Path("/equipamentos/salvar")
 	public void salvar(Equipamento equipamento){
 		try {
+			 equipamento.setTipoequipamento(tipodao.selectById(equipamento.getTipoequipamento()));
 		     if(equipamento != null) {
 		    	 if(equipamento.getId() == null) {
 		    		 dao.salvar(equipamento);

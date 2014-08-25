@@ -2,10 +2,13 @@ package sisloc.modelo;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Equipamento implements Serializable{
@@ -22,6 +25,9 @@ public class Equipamento implements Serializable{
 	private String patrimonio;
 	private String marca;
 	private Double valorcompra;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn
 	private TipoEquipamento tipoequipamento;
 	
 	public Long getId() {

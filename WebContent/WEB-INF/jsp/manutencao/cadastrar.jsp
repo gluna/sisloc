@@ -17,10 +17,10 @@
 				<!--<label>ID:</label> --><input type="hidden" name="manutencao.id" value="${manutencao.id}" readonly />
 					<table><tr><td align="right" width="95"> 
 						<label>Núm. Pat:</label></td> 
-						<td align="left"><input	class="maiuscula" type="text" id="equipamento" name="manutencao.equipamento.patrimonio" size=28 value="${manutencao.equipamento.patrimonio}" /><br></td>
+						<td align="left"><input	class="maiuscula" type="text" id="equipamento" name="equipamento.patrimonio" size=28 value="${manutencao.equipamento.patrimonio}" /><br></td>
 						<td><input type="button" name="buscar" value="Buscar" onclick="getpatrimonio();" icon="ui-icon-search"/><br/></td>
 						<td align="right" width="90"><label>Descrição:</label></td> 
-						<td align="left"><input type="text" class="leitura" id="descricao" name="manutencao.equipamento.descricao" value="" size=40 readonly /><br></td>
+						<td align="left"><input type="text" class="leitura" id="descricao" name="equipamento.descricao" value="${manutencao.equipamento.descricao}" size=40 readonly /><br></td>
 						</tr></table><br>
 						<table><tr>
 						<td align="right" width="95"><label>Dt. Inicio:</label></td> 
@@ -160,11 +160,10 @@ function getpatrimonio(){
     $.ajax({  
         url: '/sisloc/manutencao/getequipamento/',
         data: {p:patrimonio},
-        type : 'get',
+        type : 'GET',
         dataType: 'json',  
-        success : function(equipamentos) {
-            
-        	document.getElementById('descricao').value = equipamentos;
+        success : function(equipamento) {
+        	document.getElementById('descricao').value = equipamento.descricao;
         }  
     });
 };

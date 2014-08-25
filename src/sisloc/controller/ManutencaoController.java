@@ -11,7 +11,6 @@ import sisloc.modelo.Equipamento;
 import sisloc.modelo.Manutencao;
 import sisloc.modelo.Peca;
 import sisloc.modelo.PecaManutencao;
-import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
@@ -105,13 +104,12 @@ public class ManutencaoController {
 	    //result.redirectTo(this.getClass()).consultar();	
 	}
 	
-	@Get
-	@Path("/manutencao/getequipamento/{manutencao.equipamento.patrimonio}")
-	public void getequipamento(String patrimonio){
+	@Path("/manutencao/getequipamento/{equipamento.patrimonio}")
+	public void getequipamento(String p){
 		Equipamento equi = new Equipamento();
-		equi.setPatrimonio(patrimonio);
+		equi.setPatrimonio(p);
 		Equipamento e = equipamentoDao.selectByPat(equi);
-		result.use(Results.json()).withoutRoot().from(e).serialize(); 		
+		result.use(Results.json()).withoutRoot().from(e.getTipoequipamento()).serialize(); 		
 	}
 	
 
