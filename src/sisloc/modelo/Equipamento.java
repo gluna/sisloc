@@ -21,7 +21,6 @@ public class Equipamento implements Serializable{
 	
 	private String numserie;
 	private String notafiscal;
-	private String fornrcedor;
 	private String patrimonio;
 	private String marca;
 	private Double valorcompra;
@@ -29,6 +28,9 @@ public class Equipamento implements Serializable{
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn
 	private TipoEquipamento tipoequipamento;
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn
+	private Fornecedor fornecedor;
 	
 	public Long getId() {
 		return id;
@@ -47,12 +49,6 @@ public class Equipamento implements Serializable{
 	}
 	public void setNotafiscal(String notafiscal) {
 		this.notafiscal = notafiscal;
-	}
-	public String getFornrcedor() {
-		return fornrcedor;
-	}
-	public void setFornrcedor(String fornrcedor) {
-		this.fornrcedor = fornrcedor;
 	}
 	public String getPatrimonio() {
 		return patrimonio;
@@ -77,6 +73,12 @@ public class Equipamento implements Serializable{
 	}
 	public void setTipoequipamento(TipoEquipamento tipoequipamento) {
 		this.tipoequipamento = tipoequipamento;
+	}
+	public Fornecedor getFornecedor() {
+		return fornecedor;
+	}
+	public void setFornecedor(Fornecedor fornecedor) {
+		this.fornecedor = fornecedor;
 	}
 	
 

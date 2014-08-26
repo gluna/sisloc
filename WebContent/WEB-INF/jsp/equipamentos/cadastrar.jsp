@@ -32,8 +32,14 @@
 						</tr></table><br> 
 						<table><tr><td align="right" width="95"> <label>Nota Fiscal:</label></td>
 						<td align="left"> <input class="maiuscula" type="text" name="equipamento.notafiscal" size=28 value="${equipamento.notafiscal}" /><br> </td> 
-						<td align="right" width="95"><label>Fornecedor:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="equipamento.fornrcedor" size=50 value="${equipamento.fornrcedor}" /><br> </td>
+						<td align="right" width="95"><label>Fornecedor:</label></td>
+						<td align="left">
+						<select id="fornecedor" name="fornecedor.id" value="fornecedor.id">
+							<c:forEach items="${fornecedorList}" var="fornecedor" varStatus="status">
+								<option value="${fornecedor.id}">${fornecedor.nome}</option>
+							</c:forEach>
+						</select></td> 
+						<!-- <td align="left"> <input class="maiuscula" type="text" name="equipamento.fornrcedor" size=50 value="${equipamento.fornrcedor}" /><br> </td>  -->
 						</tr></table><br>
 						<table><tr><td align="right" width="95"> <label>Marca:</label></td>
 						<td align="left"> <input class="maiuscula" type="text" name="equipamento.marca" size=28 value="${equipamento.marca}" /><br> </td> 
