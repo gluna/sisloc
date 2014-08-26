@@ -39,15 +39,19 @@ public class ManutencaoController {
 	
 	@Post
 	@Path("/manutencao/salvar")
-	public void salvar(Manutencao manutencao){
+	public void salvar(Manutencao manutencao, String patrimonio){
 		try {
 		     if(manutencao != null) {
 		    	 boolean ok = true;
+		    	 Equipamento e = new Equipamento();
+		    	 e.setPatrimonio(patrimonio);
+		    	 manutencao.setEquipamento(equipamentoDao.selectByPat(e));
 		    	 if(manutencao.getPecas() == null){
 		    		 JOptionPane.showMessageDialog(null,"verifique os itens");
 		    	 }else{
 		    		 for(PecaManutencao pm : manutencao.getPecas()){//verifica se a quantidade existe
 		    			 Peca p = pecaDao.selectById(pm.getPeca());
+		    			 pm.setPeca(p);
 		    			 if(p.getQuantidade() < pm.getQuantidade()){
 		    				 ok = false;
 		    			 }
@@ -56,7 +60,7 @@ public class ManutencaoController {
 		    		 if(ok){
 		    			 Double valor = 0.0;
 			    		 for(PecaManutencao pm : manutencao.getPecas()){
-			    			 Peca p = pecaDao.selectById(pm.getPeca());
+			    			 Peca p = pm.getPeca();
 			    			 p.setQuantidade(p.getQuantidade()-pm.getQuantidade());
 			    			 valor = valor+(p.getValor()*pm.getQuantidade());
 			    		 }

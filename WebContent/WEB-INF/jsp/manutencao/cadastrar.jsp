@@ -17,16 +17,16 @@
 				<!--<label>ID:</label> --><input type="hidden" name="manutencao.id" value="${manutencao.id}" readonly />
 					<table><tr><td align="right" width="95"> 
 						<label>Núm. Pat:</label></td> 
-						<td align="left"><input	class="maiuscula" type="text" id="equipamento" name="equipamento.patrimonio" size=28 value="${manutencao.equipamento.patrimonio}" /><br></td>
+						<td align="left"><input	class="maiuscula" type="text" id="equipamento" name="patrimonio" size=28 value="${patrimonio}" /><br></td>
 						<td><input type="button" name="buscar" value="Buscar" onclick="getpatrimonio();" icon="ui-icon-search"/><br/></td>
 						<td align="right" width="90"><label>Descrição:</label></td> 
-						<td align="left"><input type="text" class="leitura" id="descricao" name="equipamento.descricao" value="${manutencao.equipamento.descricao}" size=40 readonly /><br></td>
+						<td align="left"><input type="text" class="leitura" id="descricao" name="manutencao.equipamento.tipoequipamento.descricao" value="${manutencao.equipamento.tipoequipamento.descricao}" size=40 readonly /><br></td>
 						</tr></table><br>
 						<table><tr>
 						<td align="right" width="95"><label>Dt. Inicio:</label></td> 
-						<td align="left"><input type="text" class="data" name="manutencao.dtadmissao" value="<fmt:formatDate value="${manutencao.dtadmissao}" dateStyle="medium" />" /><br></td>
+						<td align="left"><input type="text" class="data" name="manutencao.dtinicio" value="<fmt:formatDate value="${manutencao.dtinicio}" dateStyle="medium" />" /><br></td>
 						<td align="right" width="85"><label>Dt Fim:</label></td> 
-						<td align="left"><input type="text" class="data" name="manutencao.dtdemissao" value="<fmt:formatDate value="${manutencao.dtdemissao}" dateStyle="medium" />" /><br></td>
+						<td align="left"><input type="text" class="data" name="manutencao.dtfim" value="<fmt:formatDate value="${manutencao.dtfim}" dateStyle="medium" />" /><br></td>
 						<!--  <td align="right" width="95"><label>Categoria:</label></td>
 						<td align="left">
 						<select id="tipomanutencao" name="manutencao.tipomanutencao.id" value="manutencao.tipomanutencao.id">
@@ -97,7 +97,7 @@ var model =
 		'	</c:forEach>'+
 		'</select>&nbsp&nbsp'+
 		'<label>Quantidade:</label>&nbsp'+
-		'<input type="text" name="manutencao.pecas[0].peca.quantidade" value="${pecas.peca.quantidade}" />&nbsp&nbsp'+
+		'<input type="text" name="manutencao.pecas[0].quantidade" value="${pecas.quantidade}" />&nbsp&nbsp'+
 		'<input type="hidden" name="manutencao.pecas[0].id" value="${pecas.id}" />'+
 		'<input type="button" class="button-remover"/>'+
 	'</div>';

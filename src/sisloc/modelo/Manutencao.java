@@ -29,7 +29,7 @@ public class Manutencao implements Serializable{
 	private Date dtfim;
 	private String custo; //custo da manutencao
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn
 	private Equipamento equipamento;
 	

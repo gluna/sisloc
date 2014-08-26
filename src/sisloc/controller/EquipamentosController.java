@@ -3,8 +3,10 @@ package sisloc.controller;
 import java.util.List;
 
 import sisloc.dao.EquipamentoDao;
+import sisloc.dao.FornecedorDao;
 import sisloc.dao.TipoEquipamentoDao;
 import sisloc.modelo.Equipamento;
+import sisloc.modelo.Fornecedor;
 import sisloc.modelo.TipoEquipamento;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
@@ -17,21 +19,23 @@ public class EquipamentosController {
 	private EquipamentoDao dao;
 	private TipoEquipamentoDao tipodao;
 	private Result result;
+	private FornecedorDao fornecedordao;
 	
-	public EquipamentosController(EquipamentoDao dao, Result result, TipoEquipamentoDao tipodao){
+	public EquipamentosController(EquipamentoDao dao, Result result, TipoEquipamentoDao tipodao, FornecedorDao fornecedordao){
 		this.dao = dao;
 		this.result = result;
 		this.tipodao = tipodao;
+		this.fornecedordao = fornecedordao;
 	}
 	
 	@Path("/equipamentos/cadastrar")
 	public List<TipoEquipamento> cadastrar(){
 		List<TipoEquipamento> t = tipodao.listaTodos();
+		List<Fornecedor> t2 = fornecedordao.listaTodos();
 		return t;
 
 	}
-	
-	
+
 	@Post
 	@Path("/equipamentos/salvar")
 	public void salvar(Equipamento equipamento){
