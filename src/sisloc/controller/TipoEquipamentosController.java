@@ -18,19 +18,19 @@ public class TipoEquipamentosController {
 		this.result = result;
 	}
 	
-	@Path("/tipo/cadastrar")
+	@Path("/tipoequipamento/cadastrar")
 	public void cadastrar(){
 	}
 	
 	@Post
-	@Path("/tipo/salvar")
-	public void salvar(TipoEquipamento tipo){
+	@Path("/tipoequipamento/salvar")
+	public void salvar(TipoEquipamento tipoequipamento){
 		try {
-		     if(tipo != null) {
-		    	 if(tipo.getId() == null) {
-		    		 dao.salvar(tipo);
+		     if(tipoequipamento != null) {
+		    	 if(tipoequipamento.getId() == null) {
+		    		 dao.salvar(tipoequipamento);
 		    	 } else {
-		    		 dao.atualizar(tipo);
+		    		 dao.atualizar(tipoequipamento);
 	             }
 	          }
 		     result.redirectTo(this.getClass()).cadastrar();
@@ -39,28 +39,28 @@ public class TipoEquipamentosController {
 		}
 	}
 	
-	@Path("/tipo/editar/{tipoequipamento.id}")
-	public void editar(TipoEquipamento tipo){
-		tipo = dao.selectById(tipo);
-	    if(tipo != null) {
-	         result.include("tipo", tipo);
+	@Path("/tipoequipamento/editar/{tipoequipamento.id}")
+	public void editar(TipoEquipamento tipoequipamento){
+		tipoequipamento = dao.selectById(tipoequipamento);
+	    if(tipoequipamento != null) {
+	         result.include("tipo", tipoequipamento);
 	    }
 	    result.redirectTo(this.getClass()).cadastrar();
 	}
 	
-	@Path("/tipo/visualizar/{tipoequipamento.id}")
-	public void visualizar(TipoEquipamento tipo){
-		tipo = dao.selectById(tipo);
-	    if(tipo != null) {
-	         result.include("cliente", tipo);
+	@Path("/tipoequipamento/visualizar/{tipoequipamento.id}")
+	public void visualizar(TipoEquipamento tipoequipamento){
+		tipoequipamento = dao.selectById(tipoequipamento);
+	    if(tipoequipamento != null) {
+	         result.include("cliente", tipoequipamento);
 	    }
 	    //result.redirectTo(this.getClass()).visualizar();
 	}
 	
-	@Path("/tipo/excluir/{tipoequipamento.id}")
-	public void excluir(TipoEquipamento tipo){
-		tipo = dao.selectById(tipo);
-	    dao.excluir(tipo);
+	@Path("/tipoequipamento/excluir/{tipoequipamento.id}")
+	public void excluir(TipoEquipamento tipoequipamento){
+		tipoequipamento = dao.selectById(tipoequipamento);
+	    dao.excluir(tipoequipamento);
 	    //result.redirectTo(this.getClass()).consultar();	
 	}
 	

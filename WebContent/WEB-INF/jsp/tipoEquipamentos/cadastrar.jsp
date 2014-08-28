@@ -3,7 +3,7 @@
 <!-- <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script> --> 
  <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-ui-1.10.3.custom.js"></script> 
 <body>
-	<form action="<c:url value='/tipo/salvar'/>" method="post">
+	<form action="<c:url value='/tipoequipamento/salvar'/>" method="post">
 		<div id="tabs" class="container">
 			<ul>
 				<li><a href="#tabs-1">Categoria</a></li>
@@ -14,21 +14,21 @@
 				<legend>
 					Informações:
 				</legend>
-				<!--<label>ID:</label> --><input type="hidden" name="tipo.id" value="${tipo.id}" readonly />
+				<!--<label>ID:</label> --><input type="hidden" name="tipoequipamento.id" value="${tipoequipamento.id}" readonly />
 					<table><tr><td align="right" width="95"> 
 						<label>Nome:</label></td> 
-						<td align="left"><input	class="maiuscula" type="text" name="tipo.descricao" size=50 value="${tipo.descricao}" /><br></td>
+						<td align="left"><input	class="maiuscula" type="text" name="tipoequipamento.descricao" size=50 value="${tipoequipamento.descricao}" /><br></td>
 						</tr></table><br> 
 						<table><tr><td align="right"> <label>Valor Diário R$:</label></td>
-						<td align="left"> <input class="maiuscula" type="text" name="tipo.valordia" size=28 value="${tipo.valordia}" /><br> </td> 
+						<td align="left"> <input class="maiuscula" type="text" name="tipoequipamento.valordia" size=28 value="${tipoequipamento.valordia}" /><br> </td> 
 						<td align="right" width="95"><label>Valor Sem R$:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="tipo.valorsemana" size=28 value="${tipo.valorsemana}" /><br> </td>
+						<td align="left"> <input class="maiuscula" type="text" name="tipoequipamento.valorsemana" size=28 value="${tipoequipamento.valorsemana}" /><br> </td>
 						</tr></table><br>
 						<table><tr>
 						<td align="right" width="95"><label>Valor Quin R$:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="tipo.valorquinzena" size=28 value="${tipo.valorquinzena}" /><br> </td>
+						<td align="left"> <input class="maiuscula" type="text" name="tipoequipamento.valorquinzena" size=28 value="${tipoequipamento.valorquinzena}" /><br> </td>
 						<td align="right" width="95"><label>Valor Men R$:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="tipo.valormes" size=28 value="${tipo.valormes}" /><br> </td>
+						<td align="left"> <input class="maiuscula" type="text" name="tipoequipamento.valormes" size=28 value="${tipoequipamento.valormes}" /><br> </td>
 						</tr></table><br>
 				</fieldset>
 				<br/>	

@@ -27,8 +27,6 @@
 								<option value="${tipoequipamento.id}">${tipoequipamento.descricao}</option>
 							</c:forEach>
 						</select></td>
-						<!-- <td align="right" width="95"><label>Tipo:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="equipamento.tipo" size=28 value="${equipamento.tipo}" /><br> </td> -->
 						</tr></table><br> 
 						<table><tr><td align="right" width="95"> <label>Nota Fiscal:</label></td>
 						<td align="left"> <input class="maiuscula" type="text" name="equipamento.notafiscal" size=28 value="${equipamento.notafiscal}" /><br> </td> 

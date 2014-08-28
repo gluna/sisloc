@@ -4,7 +4,7 @@
    			<li class='has-sub'><a href='#'><span>Cadastrar</span></a>
       			<ul>
       				<li><a href="<c:url value="/acessorios/cadastrar"/>"><span>Acessórios</span></a></li>
-      				<li><a href="<c:url value="/tipo/cadastrar"/>"><span>Categoria de Equipamento</span></a></li>
+      				<li><a href="<c:url value="/tipoequipamento/cadastrar"/>"><span>Categoria de Equipamento</span></a></li>
       				<li><a href="<c:url value="/clientes/cadastrar"/>"><span>Clientes</span></a></li>
       				<li><a href="<c:url value="/empresa/editar/1"/>"><span>Empresa</span></a></li>
       				<li><a href="<c:url value="/equipamentos/cadastrar"/>"><span>Equipamentos</span></a></li>

@@ -28,6 +28,7 @@ public class Equipamento implements Serializable{
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn
 	private TipoEquipamento tipoequipamento;
+	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn
 	private Fornecedor fornecedor;
