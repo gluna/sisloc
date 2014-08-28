@@ -2,7 +2,7 @@
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery.min.js"></script> 
 <!-- <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script> --> 
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-ui-1.10.3.custom.js"></script> 
-<body>
+<body onload="getfornecedor();">
 	<form action="<c:url value='/equipamentos/salvar'/>" method="post">
 		<div id="tabs" class="container">
 			<ul>
@@ -59,6 +59,23 @@
 
 </body>
 <%@ include file="../../../footer.jsp"%>
+
+ <script type="text/javascript">
+ function getfornecedor(){
+		
+	 $(document).ready(function()
+	 {
+	 	$.ajax({  
+	        url: '/sisloc/fornecedores/consultar/',
+	        type : 'GET',
+	        dataType: 'json',  
+	        success : function(fornec) {
+	        	window.alert = fornec.nome;
+	        }  
+	    });
+	 });
+	};
+ </script>
 
 <script>
 	$(function() {
