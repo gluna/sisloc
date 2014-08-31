@@ -28,21 +28,6 @@
 							</c:forEach>
 						</select></td>
 						</tr></table><br>
-						<table><tr>
-						<td align="right" width="95"><label>Dt. Inicio:</label></td> 
-						<td align="left"><input type="text" class="data" name="manutencao.dtadmissao" value="<fmt:formatDate value="${manutencao.dtadmissao}" dateStyle="medium" />" /><br></td>
-						<td align="right" width="85"><label>Dt Fim:</label></td> 
-						<td align="left"><input type="text" class="data" name="manutencao.dtdemissao" value="<fmt:formatDate value="${manutencao.dtdemissao}" dateStyle="medium" />" /><br></td>
-						<!--  <td align="right" width="95"><label>Categoria:</label></td>
-						<td align="left">
-						<select id="tipomanutencao" name="manutencao.tipomanutencao.id" value="manutencao.tipomanutencao.id">
-							<c:forEach items="${tipomanutencaoList}" var="tipomanutencao" varStatus="status">
-								<option value="${tipomanutencao.id}">${tipomanutencao.descricao}</option>
-							</c:forEach>
-						</select></td> -->
-						<!-- <td align="right" width="95"><label>Tipo:</label></td> 
-						<td align="left"> <input class="maiuscula" type="text" name="manutencao.tipo" size=28 value="${manutencao.tipo}" /><br> </td> -->
-						</tr></table><br> 
 				</fieldset><br>
 				
 				<br>
