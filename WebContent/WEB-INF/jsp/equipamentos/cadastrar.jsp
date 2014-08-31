@@ -2,7 +2,7 @@
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery.min.js"></script> 
 <!-- <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script> --> 
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-ui-1.10.3.custom.js"></script> 
-<body onload="getfornecedor();">
+<body >
 	<form action="<c:url value='/equipamentos/salvar'/>" method="post">
 		<div id="tabs" class="container">
 			<ul>
@@ -22,7 +22,7 @@
 						<td align="left"><input	class="maiuscula" type="text" name="equipamento.patrimonio" size=28 value="${equipamento.patrimonio}" /><br></td>
 						<td align="right" width="95"><label>Categoria:</label></td>
 						<td align="left">
-						<select id="tipoequipamento" name="equipamento.tipoequipamento.id" value="equipamento.tipoequipamento.id">
+						<select id="tipoequipamento" name="equipamento.tipoequipamento.id" value="equipamento.tipoequipamento.id" >
 							<c:forEach items="${tipoEquipamentoList}" var="tipoequipamento" varStatus="status">
 								<option value="${tipoequipamento.id}">${tipoequipamento.descricao}</option>
 							</c:forEach>
@@ -32,15 +32,15 @@
 						<td align="left"> <input class="maiuscula" type="text" name="equipamento.notafiscal" size=28 value="${equipamento.notafiscal}" /><br> </td> 
 						<td align="right" width="95"><label>Fornecedor:</label></td>
 						<td align="left">
-						<select id="fornecedor" name="fornecedor.id" value="fornecedor.id">
-							<c:forEach items="${fornecedorList}" var="fornecedor" varStatus="status">
+						<select id="fornecedor" name="fornecedor.id" value="fornecedor.id" >
+							<c:forEach items="${fornecedorList}" var="fornecedor" varStatus="status" >
 								<option value="${fornecedor.id}">${fornecedor.nome}</option>
 							</c:forEach>
 						</select></td> 
 						<!-- <td align="left"> <input class="maiuscula" type="text" name="equipamento.fornrcedor" size=50 value="${equipamento.fornrcedor}" /><br> </td>  -->
 						</tr></table><br>
 						<table><tr><td align="right" width="95"> <label>Marca:</label></td>
-						<td align="left"> <input class="maiuscula" type="text" name="equipamento.marca" size=28 value="${equipamento.marca}" /><br> </td> 
+						<td align="left"> <input class="maiuscula" type="text" name="equiparmento.marca" size=28 value="${equipamento.marca}" /><br> </td> 
 						<td align="right" width="95"><label>Valor R$:</label></td> 
 						<td align="left"> <input class="maiuscula" type="text" name="equipamento.valorcompra" size=15 value="${equipamento.valorcompra}" /><br> </td>
 						</tr></table><br>
@@ -59,23 +59,6 @@
 
 </body>
 <%@ include file="../../../footer.jsp"%>
-
- <script type="text/javascript">
- function getfornecedor(){
-		
-	 $(document).ready(function()
-	 {
-	 	$.ajax({  
-	        url: '/sisloc/fornecedores/consultar/',
-	        type : 'GET',
-	        dataType: 'json',  
-	        success : function(fornec) {
-	        	window.alert = fornec.nome;
-	        }  
-	    });
-	 });
-	};
- </script>
 
 <script>
 	$(function() {

@@ -39,13 +39,11 @@ public class ManutencaoController {
 	
 	@Post
 	@Path("/manutencao/salvar")
-	public void salvar(Manutencao manutencao, String patrimonio){
+	public void salvar(Manutencao manutencao){
 		try {
 		     if(manutencao != null) {
 		    	 boolean ok = true;
-		    	 Equipamento e = new Equipamento();
-		    	 e.setPatrimonio(patrimonio);
-		    	 manutencao.setEquipamento(equipamentoDao.selectByPat(e));
+		    	 manutencao.setEquipamento(equipamentoDao.selectByPat(manutencao.getEquipamento()));
 		    	 if(manutencao.getPecas() == null){
 		    		 JOptionPane.showMessageDialog(null,"verifique os itens");
 		    	 }else{
@@ -80,6 +78,7 @@ public class ManutencaoController {
 		     result.redirectTo(this.getClass()).cadastrar();
 		} catch (Exception e) {
 			result.include("msg", e.getMessage());
+			System.out.println(e.getMessage());
 		}
 	}
 	

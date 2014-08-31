@@ -8,6 +8,7 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.view.Results;
 
 @Resource
 public class FornecedoresController {
@@ -22,6 +23,7 @@ public class FornecedoresController {
 	
 	@Path("/fornecedores/cadastrar")
 	public void cadastrar(){
+		
 	}
 	
 	@Post
@@ -70,6 +72,12 @@ public class FornecedoresController {
 	public List<Fornecedor> consultar(){
 		List<Fornecedor> t = dao.listaTodos();
 		return t;
+	}
+	
+	@Path("/fornecedores/lista")
+	public void lista(){
+		List<Fornecedor> fornecedores = dao.listaTodos();
+		result.use(Results.json()).withoutRoot().from(fornecedores).serialize();  
 	}
 	
 	@Path("/fornecedores/consultanome")

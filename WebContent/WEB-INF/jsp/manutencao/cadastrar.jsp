@@ -17,7 +17,7 @@
 				<!--<label>ID:</label> --><input type="hidden" name="manutencao.id" value="${manutencao.id}" readonly />
 					<table><tr><td align="right" width="95"> 
 						<label>Núm. Pat:</label></td> 
-						<td align="left"><input	class="maiuscula" type="text" id="equipamento" name="patrimonio" size=28 value="${patrimonio}" /><br></td>
+						<td align="left"><input	class="maiuscula" type="text" id="equipamento" name="manutencao.equipamento.patrimonio" size=28 value="${manutencao.equipamento.patrimonio}" /><br></td>
 						<td><input type="button" name="buscar" value="Buscar" onclick="getpatrimonio();" icon="ui-icon-search"/><br/></td>
 						<td align="right" width="90"><label>Descrição:</label></td> 
 						<td align="left"><input type="text" class="leitura" id="descricao" name="manutencao.equipamento.tipoequipamento.descricao" value="${manutencao.equipamento.tipoequipamento.descricao}" size=40 readonly /><br></td>
@@ -46,7 +46,7 @@
 							<option value="${pecas.peca.id}">${pecas.peca.descricao}</option>
 						</select>&nbsp&nbsp
 						<label>Quantidade:</label>&nbsp
-						<input type="text" name="manutencao.pecas[${status.index}].peca.quantidade" value="${pecas.peca.quantidade}" />&nbsp&nbsp
+						<input type="text" name="manutencao.pecas[${status.index}].peca.quantidade" value="${pecas.quantidade}" />&nbsp&nbsp
 						<input type="hidden" name="manutencao.pecas[${status.index}].id" value="${pecas.id}" />
 						<input type="button" class="button-remover"/>
 					</div>

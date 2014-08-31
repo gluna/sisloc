@@ -6,6 +6,7 @@ import sisloc.dao.EquipamentoDao;
 import sisloc.dao.FornecedorDao;
 import sisloc.dao.TipoEquipamentoDao;
 import sisloc.modelo.Equipamento;
+import sisloc.modelo.Fornecedor;
 import sisloc.modelo.TipoEquipamento;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
@@ -30,11 +31,15 @@ public class EquipamentosController {
 	@Path("/equipamentos/cadastrar")
 	public List<TipoEquipamento> cadastrar(){
 		List<TipoEquipamento> t = tipodao.listaTodos();
-		//List<Fornecedor> t2 = fornecedordao.listaTodos();
+		result.include("fornecedorList", fornecedordao.listaTodos());
 		return t;
 
 	}
-
+	
+	@Path("/equipamento/getfornecedores")
+	public List<Fornecedor> getfornecedores(){
+		return fornecedordao.listaTodos();
+	}
 	@Post
 	@Path("/equipamentos/salvar")
 	public void salvar(Equipamento equipamento){
