@@ -3,7 +3,7 @@
 <!-- <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-1.9.1.js"></script> --> 
 <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/js/jquery-ui-1.10.3.custom.js"></script> 
 <body>
-	<form action="<c:url value='/manutencao/salvar'/>" method="post">
+	<form action="<c:url value='/entradaPeca/salvar'/>" method="post">
 		<div id="tabs" class="container">
 			<ul>
 				<li><a href="#tabs-1">Entrada de Peças</a></li>
@@ -38,17 +38,17 @@
 				<table align="right"><tr><td>
 					<input type="button" name="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-contact"/></td></tr>
 				</table>
-				<c:forEach items="${manutencao.pecas}" var="pecas" varStatus="status">
-					<div class="manutencaoequipamento">
+				<c:forEach items="${entradaPecasDetalhe.pecas}" var="pecas" varStatus="status">
+					<div class="entradaPecasDetalheequipamento">
 						<label>Tipo:</label>&nbsp
-						<select id="peca" name="manutencao.pecas[${status.index}].peca.id" value="pecas.peca.id">
+						<select id="peca" name="entradaPecasDetalhe.pecas[${status.index}].peca.id" value="pecas.peca.id">
 							<option value="${pecas.peca.id}">${pecas.peca.descricao}</option>
 						</select>&nbsp&nbsp
 						<label>Quantidade:</label>&nbsp
-						<input type="text" name="manutencao.pecas[${status.index}].peca.quantidade" value="${pecas.peca.quantidade}" />&nbsp&nbsp
+						<input type="text" name="entradaPecasDetalhe.pecas[${status.index}].peca.quantidade" value="${pecas.peca.quantidade}" />&nbsp&nbsp
 						<label>Valor R$:</label>&nbsp
-						<input type="text" name="manutencao.pecas[${status.index}].peca.valorunitario" value="${pecas.peca.valorunitario}" />&nbsp&nbsp
-						<input type="hidden" name="manutencao.pecas[${status.index}].id" value="${pecas.id}" />
+						<input type="text" name="entradaPecasDetalhe.pecas[${status.index}].peca.valorunitario" value="${pecas.peca.valorunitario}" />&nbsp&nbsp
+						<input type="hidden" name="entradaPecasDetalhe.pecas[${status.index}].id" value="${pecas.id}" />
 						<input type="button" class="button-remover"/>
 					</div>
 				</c:forEach>
@@ -82,18 +82,18 @@
 <script type="text/javascript">
 
 var model =
-	'<div class="manutencaoequipamento">'+
+	'<div class="entradaPecasDetalheequipamento">'+
 		'<label>Tipo:</label>&nbsp'+
-		'<select id="peca" name="manutencao.pecas[0].peca.id" value="pecas.peca.id">'+
+		'<select id="peca" name="entradaPecasDetalhe.pecas[0].peca.id" value="pecas.peca.id">'+
 		'  <c:forEach items="${pecaList}" var="peca" varStatus="status">'+
 			'<option value="${peca.id}">${peca.descricao}</option>'+
 		'	</c:forEach>'+
 		'</select>&nbsp&nbsp'+
 		'<label>Quantidade:</label>&nbsp'+
-		'<input type="text" name="manutencao.pecas[0].peca.quantidade" value="${pecas.peca.quantidade}" />&nbsp&nbsp'+
+		'<input type="text" name="entradaPecasDetalhe.pecas[0].peca.quantidade" value="${pecas.peca.quantidade}" />&nbsp&nbsp'+
 		'<label>Valor R$:</label>&nbsp'+
-		'<input type="text" name="manutencao.pecas[0].peca.valorunitario" value="${pecas.peca.valorunitario}" />&nbsp&nbsp'+
-		'<input type="hidden" name="manutencao.pecas[0].id" value="${pecas.id}" />'+
+		'<input type="text" name="entradaPecasDetalhe.pecas[0].peca.valorunitario" value="${pecas.peca.valorunitario}" />&nbsp&nbsp'+
+		'<input type="hidden" name="entradaPecasDetalhe.pecas[0].id" value="${pecas.id}" />'+
 		'<input type="button" class="button-remover"/>'+
 	'</div>';
 
