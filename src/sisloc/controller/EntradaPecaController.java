@@ -2,6 +2,7 @@ package sisloc.controller;
 
 import sisloc.dao.EntradaPecaDao;
 import sisloc.dao.FornecedorDao;
+import sisloc.dao.PecaDao;
 import sisloc.modelo.EntradaPeca;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
@@ -13,17 +14,20 @@ public class EntradaPecaController {
 	
 	private EntradaPecaDao dao;
 	private FornecedorDao fornecedordao;
+	private PecaDao pecadao;
 	private Result result;
 	
-	public EntradaPecaController(EntradaPecaDao dao, Result result, FornecedorDao fornecedordao){
+	public EntradaPecaController(EntradaPecaDao dao, Result result, FornecedorDao fornecedordao,PecaDao pecadao){
 		this.dao = dao;
 		this.fornecedordao = fornecedordao;
+		this.pecadao = pecadao;
 		this.result = result;
 	}
 	
 	@Path("/entradapeca/cadastrar")
 	public void cadastrar(){
 		result.include("fornecedorList", fornecedordao.listaTodos());
+		result.include("pecaList", pecadao.listaTodos());
 	}
 	
 	@Post
