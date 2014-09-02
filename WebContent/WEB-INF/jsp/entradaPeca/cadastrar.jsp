@@ -46,6 +46,8 @@
 						</select>&nbsp&nbsp
 						<label>Quantidade:</label>&nbsp
 						<input type="text" name="manutencao.pecas[${status.index}].peca.quantidade" value="${pecas.peca.quantidade}" />&nbsp&nbsp
+						<label>Valor R$:</label>&nbsp
+						<input type="text" name="manutencao.pecas[${status.index}].peca.valorunitario" value="${pecas.peca.valorunitario}" />&nbsp&nbsp
 						<input type="hidden" name="manutencao.pecas[${status.index}].id" value="${pecas.id}" />
 						<input type="button" class="button-remover"/>
 					</div>
@@ -89,6 +91,8 @@ var model =
 		'</select>&nbsp&nbsp'+
 		'<label>Quantidade:</label>&nbsp'+
 		'<input type="text" name="manutencao.pecas[0].peca.quantidade" value="${pecas.peca.quantidade}" />&nbsp&nbsp'+
+		'<label>Valor R$:</label>&nbsp'+
+		'<input type="text" name="manutencao.pecas[0].peca.valorunitario" value="${pecas.peca.valorunitario}" />&nbsp&nbsp'+
 		'<input type="hidden" name="manutencao.pecas[0].id" value="${pecas.id}" />'+
 		'<input type="button" class="button-remover"/>'+
 	'</div>';
