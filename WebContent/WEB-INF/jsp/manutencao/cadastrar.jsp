@@ -156,7 +156,10 @@ function getpatrimonio(){
         dataType: 'json',  
         success : function(equipamento) {
         	document.getElementById('descricao').value = equipamento.descricao;
-        }  
+        },
+        error : function() {
+        	alert ('Equipamento não encontrado!!');
+        }
     });
 };
 </script>
