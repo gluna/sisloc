@@ -25,6 +25,16 @@
          			<!-- <li><a href="<c:url value="/produtos/cadastrar"/>"><span>Produtos</span></a></li>  -->       			
       			</ul>
    			</li>
+   			<li class='has-sub'><a href='#'><span>Locação</span></a>
+      			<ul>
+         			<li><a href="<c:url value="/orcamentos/cadastrar"/>"><span>Orçamento</span></a></li>
+         			<!-- <li><a href="<c:url value="/pagamentos/consultarcontasapagar"/>"><span>Contas a Pagar</span></a></li> -->
+         			<!-- <li><a href="<c:url value="/fornecedores/consultanome"/>"><span>Fornecedores</span></a></li> -->
+         			<!-- <li><a href="<c:url value="/locacoes/consultalocacao"/>"><span>Locações</span></a></li> -->
+         			<!-- <li><a href="<c:url value="/orcamentos/consultaorcamento"/>"><span>Orçamentos</span></a></li> -->
+         			<!-- <li><a href="<c:url value="/produtos/consultanome"/>"><span>Produtos</span></a></li> -->       			
+      			</ul>
+   			</li>
    			<li class='has-sub'><a href='#'><span>Consultar</span></a>
       			<ul>
          			<!-- <li><a href="<c:url value="/clientes/consultanome"/>"><span>Clientes</span></a></li> -->
