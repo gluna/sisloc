@@ -45,9 +45,9 @@
 							<option value="${pecas.peca.id}">${pecas.peca.descricao}</option>
 						</select>&nbsp&nbsp
 						<label>Quantidade:</label>&nbsp
-						<input type="text" name="entradaPecasDetalhe.pecas[${status.index}].peca.quantidade" value="${pecas.peca.quantidade}" />&nbsp&nbsp
+						<input type="text" name="entradaPecasDetalhe.pecas[${status.index}].quantidade" value="${pecas.quantidade}" />&nbsp&nbsp
 						<label>Valor R$:</label>&nbsp
-						<input type="text" name="entradaPecasDetalhe.pecas[${status.index}].peca.valorunitario" value="${pecas.peca.valorunitario}" />&nbsp&nbsp
+						<input type="text" name="entradaPecasDetalhe.pecas[${status.index}].valorunitario" value="${pecas.valorunitario}" />&nbsp&nbsp
 						<input type="hidden" name="entradaPecasDetalhe.pecas[${status.index}].id" value="${pecas.id}" />
 						<input type="button" class="button-remover"/>
 					</div>
@@ -90,9 +90,9 @@ var model =
 		'	</c:forEach>'+
 		'</select>&nbsp&nbsp'+
 		'<label>Quantidade:</label>&nbsp'+
-		'<input type="text" name="entradapeca.pecas[0].peca.quantidade" value="${pecas.peca.quantidade}" />&nbsp&nbsp'+
+		'<input type="text" name="entradapeca.pecas[0].quantidade" value="${entradapeca.pecas.quantidade}" />&nbsp&nbsp'+
 		'<label>Valor R$:</label>&nbsp'+
-		'<input type="text" name="entradapeca.pecas[0].peca.valorunitario" value="${pecas.peca.valorunitario}" />&nbsp&nbsp'+
+		'<input type="text" name="entradapeca.pecas[0].valorunitario" value="${entradapeca.pecas.valorunitario}" />&nbsp&nbsp'+
 		'<input type="hidden" name="entradapeca.pecas[0].id" value="${pecas.id}" />'+
 		'<input type="button" class="button-remover"/>'+
 	'</div>';

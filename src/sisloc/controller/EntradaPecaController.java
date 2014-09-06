@@ -5,6 +5,7 @@ import sisloc.dao.FornecedorDao;
 import sisloc.dao.PecaDao;
 import sisloc.modelo.EntradaPeca;
 import sisloc.modelo.EntradaPecasDetalhe;
+import sisloc.modelo.Peca;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
@@ -36,9 +37,13 @@ public class EntradaPecaController {
 	public void salvar(EntradaPeca entradapeca){
 		try {
 		     if(entradapeca!= null) {
-		    	 /*for(EntradaPecasDetalhe detalhe : entradaPeca.getPecas()){
-		    		 
-		    	 }*/
+		    	 for(EntradaPecasDetalhe detalhe : entradapeca.getPecas()){
+		    		 Peca p = pecadao.selectById(detalhe.getPeca());
+		    		 p.setQuantidade(p.getQuantidade()+detalhe.getQuantidade());
+		    		 p.setValor(detalhe.getValorunitario());
+		    		detalhe.setPeca(p); 
+		    	 }
+		    	 entradapeca.setFornecedor(fornecedordao.selectById(entradapeca.getFornecedor()));
 		    	 
 		    	 if(entradapeca.getId() == null) {
 		    		 dao.salvar(entradapeca);
