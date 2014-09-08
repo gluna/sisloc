@@ -13,9 +13,11 @@ import net.sf.jasperreports.engine.JasperPrint;
 import sisloc.dao.ClienteDao;
 import sisloc.dao.EquipamentoDao;
 import sisloc.dao.OrcamentoDao;
+import sisloc.dao.TipoEquipamentoDao;
 import sisloc.modelo.Cliente;
 import sisloc.modelo.Equipamento;
 import sisloc.modelo.Orcamento;
+import sisloc.modelo.TipoEquipamento;
 import sisloc.util.SislocUtils;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
@@ -32,16 +34,18 @@ public class OrcamentosController {
 	private ServletContext context;
 	private ClienteDao clientedao;
 	private EquipamentoDao equipamentodao;
+	private TipoEquipamentoDao tipoequipamentodao;
 	private HttpServletResponse response;
 	
 	public OrcamentosController(OrcamentoDao dao, Result result,final ServletContext context, 
-			ClienteDao clientedao, HttpServletResponse response, EquipamentoDao equipamentodao){
+			ClienteDao clientedao, HttpServletResponse response, EquipamentoDao equipamentodao, TipoEquipamentoDao tipoequipamentodao){
 		this.dao = dao;
 		this.result = result;
 		this.context = context;
 		this.clientedao = clientedao;
 		this.response = response;
 		this.equipamentodao = equipamentodao;
+		this.tipoequipamentodao = tipoequipamentodao;
 	}
 	
 	@Path("/orcamentos/cadastrar")
@@ -135,13 +139,13 @@ public class OrcamentosController {
     	result.permanentlyRedirectTo(this.getClass()).cadastrar();
 	}
 	
-	/*@Path("/orcamentos/getprecos/{produto.id}")
+	@Path("/orcamentos/getprecos/{tipoequipamento.id}")
 	public void getprecos(Long p){
-		Produto prod = new Produto();
-		prod.setId(p);
-		List<Preco> precos = produtodao.selectById(prod).getPrecos();
-		result.use(Results.json()).withoutRoot().from(precos).serialize();  
-	}*/
+		TipoEquipamento te = new TipoEquipamento();
+		te.setId(p);
+		te = tipoequipamentodao.selectById(te);
+		result.use(Results.json()).withoutRoot().from(te).serialize();  
+	}
 	
 	@Path("/orcamentos/consultaorcamento")
 	public List<Orcamento> consultaorcamento(Orcamento orcamento){
