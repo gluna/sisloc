@@ -54,17 +54,17 @@
 					<input type="button" name="button" value="Adicionar" onclick="adicionar();" icon="ui-icon-contact"/></td></tr>
 				</table>
 				<c:forEach items="${orcamento.orcamentodetalhe}" var="orcamentodetalhe" varStatus="status">
-					    <div class="produtointem">
-						    <label>Produto:</label>&nbsp
-							<select id="produto" onchange="getpreco(value, name);" name="orcamento.orcamentodetalhe[${status.index}].produto.id" value="orcamentodetalhe.produto.id">
-								<option value="${orcamentodetalhe.produto.id}">${orcamentodetalhe.produto.nome}</option>
+					    <div class="equipamentointem">
+						    <label>Equipamento:</label>&nbsp
+							<select id="equipamento" onchange="getpreco(value);" name="orcamento.orcamentodetalhe[${status.index}].equipamento.id" value="orcamentodetalhe.equipamento.id">
+								<option value="${orcamentodetalhe.equipamento.id}">${orcamentodetalhe.equipamento.tipoequipamento.descricao}</option>
+							</select>&nbsp&nbsp
+							<label>Período:</label>&nbsp
+							<select id="preco" name="orcamento.orcamentodetalhe[${status.index}].periodo" value="orcamentodetalhe.periodo">
+								<option value="${orcamentodetalhe.periodo}">${orcamentodetalhe.periodo}</option>
 							</select>&nbsp&nbsp
 							<label>R$:</label>&nbsp
-							<select id="preco" name="orcamento.orcamentodetalhe[${status.index}].preco" value="orcamentodetalhe.preco">
-								<option value="${orcamentodetalhe.preco}">${orcamentodetalhe.preco}</option>
-							</select>&nbsp&nbsp
-							<label>Quantidade:</label>&nbsp
-							<input type="text" name="orcamento.orcamentodetalhe[${status.index}].quantidade" value="${orcamentodetalhe.quantidade}" />&nbsp&nbsp
+							<input type="text" name="orcamento.orcamentodetalhe[${status.index}].preco" value="${orcamentodetalhe.preco}" />&nbsp&nbsp
 							<input type="hidden" name="orcamento.orcamentodetalhe[${status.index}].id" value="${orcamentodetalhe.id}" />
 							<input type="button" class="button-remover" />
 						</div>
@@ -101,35 +101,38 @@
 
 <script type="text/javascript">
 var model =
-    '<div class="produtointem">'+
-    '<label>Produto:</label>&nbsp' +
-	'<select id="produto" onchange="getpreco(value, name);" name="orcamento.orcamentodetalhe[0].produto.id" value="${orcamentodetalhe.produto.id}">'+
+    '<div class="equipamentointem">'+
+    '<label>Equipamento:</label>&nbsp' +
+	'<select id="equipamento" onchange="getpreco(value);" name="orcamento.orcamentodetalhe[0].equipamento.id" value="${orcamentodetalhe.equipamento.id}">'+
 	'	<option value="">Selecione um Item</option>'+
-	'	<c:forEach items="${produtoList}" var="produto" varStatus="status">'+
-	'		<option value="${produto.id}">${produto.nome}</option>'+
+	'	<c:forEach items="${equipamentoList}" var="equipamento" varStatus="status">'+
+	'		<option value="${equipamento.id}">${equipamento.tipoequipamento.descricao}</option>'+
 	'	</c:forEach>'+
 	'</select>&nbsp&nbsp'+
-	'<label>R$:</label>&nbsp' +
-	'<select id="preco" name="orcamento.orcamentodetalhe[0].preco" value="${orcamentodetalhe.preco}">'+
+	'<label>Período:</label>&nbsp' +
+	'<select id="preco" name="orcamento.orcamentodetalhe[0].periodo" value="${orcamentodetalhe.periodo}">'+
 	'</select>&nbsp&nbsp'+
-	'<label>Quantidade:</label>&nbsp' +
-	'<input type="text" name="orcamento.orcamentodetalhe[0].quantidade" value="${orcamentodetalhe.quantidade}" />&nbsp&nbsp'+
+	'<label>R$:</label>&nbsp' +
+	'<input type="text" name="orcamento.orcamentodetalhe[0].preco value="${orcamentodetalhe.preco}" />&nbsp&nbsp'+
 	'<input type="hidden" name="orcamento.orcamentodetalhe[0].id" value="${orcamentodetalhe.id}" />'+
 	'<input type="button" class="button-remover" />' +
 	'</div>';
 	
-	function getpreco(id, nome){
-		
-		var indice = nome.substring(nome.indexOf('[')+1, nome.indexOf(']'));
-		
+	//function valor(){
+		//var teste = document.getElementById("preco").val();
+		//alert(teste);
+	//}
+	
+	function getpreco(id){
+		//if(id == null){
 	    $.ajax({  
 	        url: '/sisloc/orcamentos/getprecos/',  
-	        data: {p:id},  
 	        type : 'get',  
-	        dataType: 'json',  
+	        dataType: 'json',
+	        data: {p:id},
 	        success : function(precos) {
 	            
-	            	$('.produtointem').each(function(index) {
+	            	$('.equipamentointem').each(function(index) {
 
 	    				var $campos = $(this).find('select'),
     					$input	,
@@ -138,20 +141,58 @@ var model =
     			    $campos.each(function() {
     					$input	= $(this),
     					name	= $input.attr('id');
-    					npreco  = $input.attr('name');
-    					index2 = npreco.substring(npreco.indexOf('[')+1, npreco.indexOf(']'));
-    					if(name == 'preco' && indice == index2){
+    					if(name == 'preco'){
     						$input.find('option').remove();
-    						for (var i = 0; i < precos.length; i++){
-    							$input.append('<option value="'+precos[i].preco+'">'+precos[i].preco+'&nbsp/&nbsp'+precos[i].dias+'&nbspdia(s)'+'</option>');
-    						}
-    					}
+    						$input.append('<option value="">Selecione um Item</option>');
+    						//for (var i = 0; i < clientes.length; i++){
+    							$input.append('<option value="'+precos.valordia+'">'+'Diário'+'</option>');
+    							$input.append('<option value="'+precos.valorsemana+'">'+'Semanal'+'</option>');
+    							$input.append('<option value="'+precos.valorquinzena+'">'+'Quinzenal'+'</option>');
+    							$input.append('<option value="'+precos.valormes+'">'+'Mensal'+'</option>');
+    						//};
+    					};
 	    			});
 	            		
 	            	});    
 	        }  
 	    });
+		//};
 	}
+	
+	//function getpreco(id, descricao){
+		
+		//var indice = nome.substring(nome.indexOf('[')+1, nome.indexOf(']'));
+		
+	    //$.ajax({  
+	      //  url: '/sisloc/orcamentos/getprecos/',  
+	      //  data: {p:id},  
+	      //  type : 'get',  
+	      //  dataType: 'json',  
+	      //  success : function(precos) {
+	            
+	        //    	$('.equipamentointem').each(function(index) {
+
+	    		//		var $campos = $(this).find('select'),
+    				//	$input	,
+    				//	name	;
+
+    		//	    $campos.each(function() {
+    		//			$input	= $(this),
+    		//			name	= $input.attr('id');
+    		//			npreco  = $input.attr('name');
+    		//			index2 = npreco.substring(npreco.indexOf('[')+1, npreco.indexOf(']'));
+    		//			if(name == 'preco' && indice == index2){
+    		//				$input.find('option').remove();
+    		//				for (var i = 0; i < precos.length; i++){
+    		//					$input.append('<option value="'+precos[i].preco+'">'+precos[i].preco+'&nbsp/&nbsp'+precos[i].dias+'&nbspdia(s)'+'</option>');
+    		//				}
+    		//			}
+	    	//		});
+	            		
+	        //    	});    
+	        //}  
+	    //});
+	//}
 		
 	$('.button-remover').live('click', function() {
 		$(this).parent().remove();
@@ -202,7 +243,7 @@ var model =
 	function reorderIndexes() {
 		var regex = /\[[0-9]\]/g;
 		
-		$('.produtointem').each(function(index) {
+		$('.equipamentointem').each(function(index) {
 			
 			var $campos = $(this).find('input'),
 				$input	,
@@ -245,6 +286,12 @@ var model =
 </script>
 <script>
 	$(function() {
+		
+		$("#preco").change(function(){
+			//var teste = this.val();
+			alert(this.val());
+		});
+		
 		$( "#tabs" ).tabs();
 		$('input[type="submit"]').each(function () {
 			   $(this).hide().after('<button>').next().button({
