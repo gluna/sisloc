@@ -22,6 +22,7 @@ public class OrcamentoDetalhe implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;	
 	private Double preco;
+	private String periodo;
 	
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn
@@ -49,6 +50,14 @@ public class OrcamentoDetalhe implements Serializable{
 
 	public void setEquipamento(Equipamento equipamento) {
 		this.equipamento = equipamento;
+	}
+
+	public String getPeriodo() {
+		return periodo;
+	}
+
+	public void setPeriodo(String periodo) {
+		this.periodo = periodo;
 	}
 
 
